@@ -44,7 +44,7 @@ android {
 
 dependencies {
     implementation(Dependencies.Hilt)
-    // implementation(platform(Dependencies.FirebaseBom))
+    implementation(platform(Dependencies.FirebaseBom))
 
     implementation(project(":data"))
     implementation(project(":domain"))
