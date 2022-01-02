@@ -1,2 +1,6 @@
 rootProject.name = "dahaeng-android"
-include(":app")
+include(
+    ":data",
+    ":domain",
+    ":presentation"
+)
