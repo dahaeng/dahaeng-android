@@ -1,24 +1,20 @@
-# AndroidBaseComposeTemplate
-Android base Jetpack Compose project template with Gradle Kotlin-DSL.
+# 다행
 
-# Includes
-```kotlin
-val essential = listOf(
-    "androidx.core:core-ktx:${Versions.Essential.Ktx}",
-    "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Essential.Coroutines}"
-)
+> **다**같이 정하는 여**행** 계획
 
-val compose = listOf(
-    "androidx.compose.ui:ui:${Versions.Compose.Master}",
-    "androidx.compose.ui:ui-tooling:${Versions.Compose.Master}",
-    "androidx.compose.compiler:compiler:${Versions.Compose.Master}",
-    "androidx.compose.material:material:${Versions.Compose.Master}",
-    "androidx.activity:activity-compose:${Versions.Compose.Activity}",
-    "androidx.compose.runtime:runtime-livedata:${Versions.Compose.Master}",
-    "androidx.lifecycle:lifecycle-viewmodel-compose:${Versions.Compose.LifeCycle}"
-)
+매번 발생하는 읽씹과 파토나는 여행 계획 새우기. <br>
+한 번에, 빠르고, 편리하게 일정을 잡을 수 있게 도와드립니다.
 
-val ui = listOf(
-    "com.google.android.material:material:${Versions.Ui.Material}"
-)
-```
+—
+
+#  프로젝트 규칙
+
+1. 애자일/스크럼 개발 프로세스 채택
+2. 클린 아키텍처 적용
+3. 코틀린 린트로 코드 스타일 통일
+4. 서버는 파이어베이스 사용
+
+# 개발
+
+- [@jisungbin](https://github.com/jisungbin)
+- [@210202](https://github.com/jkey20)
