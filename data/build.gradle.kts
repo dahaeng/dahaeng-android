@@ -31,4 +31,5 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    Dependencies.Essential.forEach(::implementation)
 }

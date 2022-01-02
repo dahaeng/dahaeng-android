@@ -30,5 +30,5 @@ android {
 }
 
 dependencies {
-    // Dependencies.Essentail.forEach(::implementation)
+    Dependencies.Essential.forEach(::implementation)
 }
