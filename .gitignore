@@ -4,7 +4,7 @@ local.properties
 /build
 /buildSrc/.gradle/
 /buildSrc/build/
-/data/release
+/data/build
 /domain/build
 /presentation/build
 /presentation/release
