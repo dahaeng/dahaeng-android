@@ -1,2 +1,2 @@
-rootProject.name = "ComposeTemplate"
+rootProject.name = "dahaeng-android"
 include(":app")
