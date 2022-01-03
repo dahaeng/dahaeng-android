@@ -5,6 +5,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("com.google.android.gms.oss-licenses-plugin")
     id("name.remal.check-dependency-updates") version Versions.Util.CheckDependencyUpdates
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -53,6 +54,7 @@ dependencies {
     Dependencies.Util.forEach(::implementation)
     Dependencies.Room.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
+    Dependencies.Firebase.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
 

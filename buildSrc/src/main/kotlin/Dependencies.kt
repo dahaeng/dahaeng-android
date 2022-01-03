@@ -3,7 +3,7 @@ import org.gradle.api.JavaVersion
 object Application {
     const val minSdk = 24
     const val targetSdk = 30
-    const val compileSdk = 30
+    const val compileSdk = 31
     const val jvmTarget = "11"
     const val versionCode = 1
     const val versionName = "1.0.0"
@@ -14,17 +14,20 @@ object Application {
 
 object Versions {
     const val FirebaseBom = "29.0.3"
+    const val FirebaseStore = "21.4.0"
 
     object Essential {
         const val Ktx = "1.6.0"
         const val Kotlin = "1.6.10"
         const val Coroutines = "1.5.2"
         const val Gradle = "7.1.0-beta05"
-        const val GoogleService = "4.3.10"
+        const val GoogleService = "4.3.3"
     }
 
     object Ui {
         const val Material = "1.4.0"
+        const val Appcompat = "1.4.0"
+        const val ConstraintLayout = "2.1.2"
     }
 
     object Util {
@@ -52,7 +55,10 @@ object Dependencies {
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
-    val firebase = listOf("com.google.firebase:firebase-firestore-ktx")
+    val Firebase = listOf(
+        "com.google.firebase:firebase-firestore-ktx",
+        "com.google.firebase:firebase-firestore:${Versions.FirebaseStore}"
+    )
 
     val Essential = listOf(
         "androidx.core:core-ktx:${Versions.Essential.Ktx}",
@@ -61,7 +67,9 @@ object Dependencies {
 
     val Ui = listOf(
         "com.google.android.material:material:${Versions.Ui.Material}",
-        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}"
+        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
+        "androidx.appcompat:appcompat:${Versions.Ui.Appcompat}",
+        "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}"
     )
 
     val Util = listOf(

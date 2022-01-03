@@ -1,4 +1,4 @@
-package team.dahaeng.android.activity
+package team.dahaeng.android.activity.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
