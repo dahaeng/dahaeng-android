@@ -1,9 +1,10 @@
 package team.dahaeng.android.activity.community
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
@@ -15,10 +16,17 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        var postList = arrayListOf<Post>()
-        val db = FirebaseFirestore.getInstance()
+
+
         binding.recyclerviewCommunity.adapter = CommunityAdapter()
 
+        // loadFireStore()
+
+    }
+
+    private fun loadFireStore(){
+        val db = FirebaseFirestore.getInstance()
+        var postList = arrayListOf<Post>()
         db.collection("test0103")
             .get()
             .addOnSuccessListener { result ->
@@ -36,6 +44,12 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
             .addOnFailureListener { exception ->
                 Log.i("exception", exception.message.toString())
             }
+
+    }
+
+    private fun loadFirebaseStorage(){
+        // Todo : 이미지 로드
+        val storage = Firebase.storage
 
     }
 }
