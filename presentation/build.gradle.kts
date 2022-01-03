@@ -19,6 +19,10 @@ android {
         multiDexEnabled = true
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+    
     buildTypes {
         release {
             isDebuggable = false
