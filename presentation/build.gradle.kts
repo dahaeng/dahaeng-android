@@ -5,6 +5,7 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("com.google.android.gms.oss-licenses-plugin")
     id("name.remal.check-dependency-updates") version Versions.Util.CheckDependencyUpdates
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -18,6 +19,10 @@ android {
         multiDexEnabled = true
     }
 
+    buildFeatures {
+        dataBinding = true
+    }
+    
     buildTypes {
         release {
             isDebuggable = false
@@ -44,7 +49,7 @@ android {
 
 dependencies {
     implementation(Dependencies.Hilt)
-    // implementation(platform(Dependencies.FirebaseBom))
+    implementation(platform(Dependencies.FirebaseBom))
 
     implementation(project(":data"))
     implementation(project(":domain"))
@@ -53,6 +58,7 @@ dependencies {
     Dependencies.Util.forEach(::implementation)
     Dependencies.Room.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
+    Dependencies.Firebase.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
 

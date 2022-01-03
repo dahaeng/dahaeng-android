@@ -14,7 +14,12 @@
         android:theme="@style/Theme.Dahaeng">
 
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.login.LoginActivity"
+            android:exported="true">
+        </activity>
+
+        <activity
+            android:name=".activity.community.CommunityActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
