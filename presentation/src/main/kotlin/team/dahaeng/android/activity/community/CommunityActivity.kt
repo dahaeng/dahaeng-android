@@ -1,5 +1,8 @@
 package team.dahaeng.android.activity.community
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
@@ -9,10 +12,16 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
 import team.dahaeng.android.domain.model.Post
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
     R.layout.activity_community
 ) {
+
+    var image = 0
+    var uriPhoto : Uri?= null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,6 +30,12 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
         binding.recyclerviewCommunity.adapter = CommunityAdapter()
 
         // loadFireStore()
+
+        binding.buttonCommunityLoadimage.setOnClickListener {
+            val imagePickIntent = Intent(Intent.ACTION_PICK)
+            imagePickIntent.type = "image/*"
+            startActivityForResult(imagePickIntent, image)
+        }
 
     }
 
@@ -50,6 +65,30 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
     private fun loadFirebaseStorage(){
         // Todo : 이미지 로드
         val storage = Firebase.storage
+        var storageRef = storage.reference.child("image")
 
+    }
+
+    private fun uploadFirebaseStorage() {
+
+        var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        var imgFileName = "IMAGE_" + timeStamp + "_.png"
+        val storage = Firebase.storage
+        var storageRef = storage.reference.child("image").child(imgFileName)
+        storageRef.putFile(uriPhoto!!).addOnSuccessListener {
+            Log.i("UPLOAD FIREBASE", "SUCCESS")
+
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == image){
+            if(resultCode == Activity.RESULT_OK){
+                uriPhoto = data?.data
+                binding.imageviewCommunity.setImageURI(uriPhoto)
+                uploadFirebaseStorage()
+            }
+        }
     }
 }
