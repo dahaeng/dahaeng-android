@@ -18,7 +18,6 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
@@ -43,8 +42,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 when (event) {
                     is LoginEvent.Failure -> toast(getString(R.string.activity_login_toast_login_fail))
                     is LoginEvent.Success -> {
-                        logeukes { "로그인 성공!\n\n" }
-                        logeukes { event.user }
                         toast("로그인 성공!")
                     }
                 }

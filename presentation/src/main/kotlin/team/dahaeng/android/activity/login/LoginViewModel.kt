@@ -10,9 +10,11 @@
 package team.dahaeng.android.activity.login
 
 import android.content.Context
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
+import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.domain.aouth.repository.LoginRepository
 import javax.inject.Inject
@@ -21,7 +23,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(private val repository: LoginRepository) :
     BaseViewModel<LoginEvent>() {
 
-    suspend fun login(context: Context) {
+    fun login(context: Context) = viewModelScope.launch {
         val result = repository.login(context)
         if (result.isFailure()) {
             logeukes(type = LoggerType.E) { result.exception }

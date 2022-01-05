@@ -50,6 +50,7 @@ android {
 
 dependencies {
     implementation(Dependencies.Hilt)
+    implementation(Dependencies.Kakao)
     implementation(platform(Dependencies.FirebaseBom))
 
     implementation(project(":data"))
