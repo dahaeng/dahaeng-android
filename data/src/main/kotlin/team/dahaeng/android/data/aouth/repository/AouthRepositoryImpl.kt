@@ -17,13 +17,13 @@ import kotlinx.coroutines.withContext
 import team.dahaeng.android.data.aouth.mapper.toLoginResult
 import team.dahaeng.android.data.aouth.model.UserResponse
 import team.dahaeng.android.domain.aouth.model.LoginResult
-import team.dahaeng.android.domain.aouth.repository.LoginRepository
+import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import kotlin.coroutines.resume
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
-class LoginRepositoryImpl : LoginRepository {
-    override suspend fun login(context: Context): LoginResult {
+class AouthRepositoryImpl : AouthRepository {
+    override suspend fun kakaoLogin(context: Context): LoginResult {
         val loginResult = withContext(Dispatchers.IO) {
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
                 loginWithKakaoTalk(context)

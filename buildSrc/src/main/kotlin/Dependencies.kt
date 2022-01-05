@@ -43,6 +43,7 @@ object Versions {
         const val LeakCanary = "2.8"
         const val SystemUiController = "1.0.0"
         const val CheckDependencyUpdates = "1.5.0"
+        const val SecretsGradlePlugin = "2.0.0"
     }
 
     object Jetpack {

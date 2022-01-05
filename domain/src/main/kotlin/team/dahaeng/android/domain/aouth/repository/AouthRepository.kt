@@ -12,6 +12,6 @@ package team.dahaeng.android.domain.aouth.repository
 import android.content.Context
 import team.dahaeng.android.domain.aouth.model.LoginResult
 
-interface LoginRepository {
-    suspend fun login(context: Context): LoginResult
+interface AouthRepository {
+    suspend fun kakaoLogin(context: Context): LoginResult
 }

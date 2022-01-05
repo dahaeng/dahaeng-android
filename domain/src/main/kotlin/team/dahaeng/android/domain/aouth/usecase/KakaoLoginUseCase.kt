@@ -11,11 +11,11 @@ package team.dahaeng.android.domain.aouth.usecase
 
 import android.content.Context
 import team.dahaeng.android.domain.aouth.model.LoginResult
-import team.dahaeng.android.domain.aouth.repository.LoginRepository
+import team.dahaeng.android.domain.aouth.repository.AouthRepository
 
-class KakaoLoginUseCase(private val repository: LoginRepository) {
+class KakaoLoginUseCase(private val repository: AouthRepository) {
     suspend operator fun invoke(context: Context) = try {
-        repository.login(context)
+        repository.kakaoLogin(context)
     } catch (exception: Exception) {
         LoginResult(exception = exception)
     }

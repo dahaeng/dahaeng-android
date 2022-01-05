@@ -16,15 +16,15 @@ import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.domain.aouth.repository.LoginRepository
+import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(private val repository: LoginRepository) :
+class LoginViewModel @Inject constructor(private val kakaoLoginUseCase: KakaoLoginUseCase) :
     BaseViewModel<LoginEvent>() {
 
     fun login(context: Context) = viewModelScope.launch {
-        val result = repository.login(context)
+        val result = kakaoLoginUseCase(context)
         if (result.isFailure()) {
             logeukes(type = LoggerType.E) { result.exception }
             emitEvent(LoginEvent.Failure)
