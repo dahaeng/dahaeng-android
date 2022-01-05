@@ -11,6 +11,5 @@
     <string name="app_name">다행</string>
     <string name="app_motto">다같이 정하는 여행 계획</string>
 
-    <string name="activity_login_btn_login">로그인</string>
-    <string name="activity_login_btn_register">회원가입</string>
+    <string name="activity_login_btn_start">카카오톡으로 시작하기</string>
 </resources>
