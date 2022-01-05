@@ -1,6 +1,26 @@
+# 다행 네이밍 컨벤션
+
+## 리소스
+
+> 스네이크 표기법 사용
+
+#### strings.xml
+
+**\> 타입_사용구역_주제_설명**
+
+> activity_setting_notification_access_permission (주제: notification)
+> fragment_setting_toast_storage_permission_granted (주제: toast)
+
+###### 사용구역
+
+1. dialog: 다이얼로그 리소스
+2. activity: 엑티비티 리소스
+3. fragment: 프레그맨트 리소스
+4. bottomsheet: 바텀시트 리소스
+
 #### drawable
 
-\> **사용용도\_타입_설명\_사이즈**
+**\> 사용용도\_타입_설명\_사이즈**
 
 > bg_baseline_gradient_500
 
