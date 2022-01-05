@@ -13,8 +13,12 @@ object Application {
 }
 
 object Versions {
-    const val FirebaseBom = "29.0.3"
-    const val FirebaseStore = "21.4.0"
+
+    object Firebase {
+        const val FirebaseBom = "29.0.3"
+        const val FirebaseStore = "21.4.0"
+        const val FirebaseStorage = "20.0.0"
+    }
 
     object Essential {
         const val Ktx = "1.6.0"
@@ -53,11 +57,13 @@ object Dependencies {
     const val HiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
 
-    const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
+    const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.Firebase.FirebaseBom}"
 
     val Firebase = listOf(
         "com.google.firebase:firebase-firestore-ktx",
-        "com.google.firebase:firebase-firestore:${Versions.FirebaseStore}"
+        "com.google.firebase:firebase-firestore:${Versions.Firebase.FirebaseStore}",
+        "com.google.firebase:firebase-storage-ktx",
+        "com.google.firebase:firebase-storage:${Versions.Firebase.FirebaseStorage}",
     )
 
     val Essential = listOf(
