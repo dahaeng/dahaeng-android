@@ -14,6 +14,7 @@ object Application {
 
 object Versions {
     const val FirebaseBom = "29.0.3"
+    const val Glide = "4.12.0"
 
     object Essential {
         const val Kotlin = "1.6.10"
@@ -61,6 +62,9 @@ object Dependencies {
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
+
+    const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
+    const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",

@@ -37,15 +37,24 @@
 
 
         <Button
-            android:id="@+id/button_community_loadimage"
+            android:id="@+id/button_uploadimage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이미지 불러오기"
+            android:text="이미지 업로드"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
         </Button>
 
+        <Button
+            android:id="@+id/button_loadimage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="이미지 로드"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/button_uploadimage">
+
+        </Button>
         <ImageView
             android:id="@+id/imageview_community"
             android:layout_width="wrap_content"

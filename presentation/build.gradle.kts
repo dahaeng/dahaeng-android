@@ -49,6 +49,7 @@ android {
 
 dependencies {
     implementation(Dependencies.Hilt)
+    implementation(Dependencies.Glide)
     implementation(platform(Dependencies.FirebaseBom))
 
     implementation(project(":data"))
@@ -65,4 +66,5 @@ dependencies {
 
     kapt(Dependencies.HiltCompiler) // TODO: ksp
     kapt(Dependencies.RoomCompiler) // TODO: ksp
+    kapt(Dependencies.GlideCompiler)
 }
