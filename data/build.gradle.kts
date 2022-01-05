@@ -31,5 +31,6 @@ android {
 
 dependencies {
     implementation(project(":domain"))
+    implementation(Dependencies.Kakao)
     Dependencies.Essential.forEach(::implementation)
 }
