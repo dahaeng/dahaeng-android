@@ -12,8 +12,7 @@
 1. 애자일/스크럼 개발 프로세스 채택
 2. 클린 아키텍처 적용
 3. [코틀린 린트](https://ktlint.github.io/), [다행 네이빙 컨벤션](https://github.com/dahaeng/dahaeng-android/blob/develop/naming-convention.md)으로 코드 스타일 통일
-4. 서버는 파이어베이스 사용
-5. 프로젝트 최대한 깔끔하게 진행 (warning 지양)
+4. 프로젝트 최대한 깔끔하게 진행 (warning 지양)
 
 # 개발
 
