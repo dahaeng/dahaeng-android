@@ -1,18 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Dahaeng © 2021 Ji Sungbin, jkey20. all rights reserved.
+  ~ Dahaeng license is under the MIT.
+  ~
+  ~ [themes.xml] created by Ji Sungbin on 22. 1. 5. 오후 5:11
+  ~
+  ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+  -->
+
 <resources xmlns:tools="http://schemas.android.com/tools">
+
     <style name="Theme.Dahaeng" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primaryDark</item>
+        <item name="colorSecondary">@color/primaryLight</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
     </style>
 
-    <style name="textview_title">
-
-        <item name="android:textSize">24dp</item>
+    <style name="tv_title">
+        <item name="android:textSize">24sp</item>
         <item name="android:textStyle">bold</item>
     </style>
-
 </resources>
