@@ -10,7 +10,7 @@ class CommunityAdapter : RecyclerView.Adapter<CommunityAdapter.CommunityViewHold
 
     private var postList = listOf<Post>()
 
-    fun setPostList(list : List<Post>){
+    fun setPostList(list: List<Post>) {
         postList = list
         notifyDataSetChanged()
     }

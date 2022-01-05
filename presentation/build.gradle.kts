@@ -22,7 +22,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    
+
     buildTypes {
         release {
             isDebuggable = false
@@ -55,10 +55,11 @@ dependencies {
     implementation(project(":domain"))
 
     Dependencies.Ui.forEach(::implementation)
+    Dependencies.Ktx.forEach(::implementation)
     Dependencies.Util.forEach(::implementation)
     Dependencies.Room.forEach(::implementation)
-    Dependencies.Essential.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
+    Dependencies.Essential.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
 

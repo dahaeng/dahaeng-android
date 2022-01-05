@@ -13,37 +13,37 @@ object Application {
 }
 
 object Versions {
-
-    object Firebase {
-        const val FirebaseBom = "29.0.3"
-        const val FirebaseStore = "21.4.0"
-        const val FirebaseStorage = "20.0.0"
-    }
+    const val FirebaseBom = "29.0.3"
 
     object Essential {
-        const val Ktx = "1.6.0"
         const val Kotlin = "1.6.10"
-        const val Coroutines = "1.5.2"
+        const val Coroutines = "1.6.0"
         const val Gradle = "7.1.0-beta05"
         const val GoogleService = "4.3.3"
     }
 
+    object Ktx {
+        const val Core = "1.7.0"
+        const val LifeCycle = "2.4.0"
+        const val ViewModel = "2.4.0"
+    }
+
     object Ui {
         const val Material = "1.4.0"
-        const val Appcompat = "1.4.0"
+        const val AppCompat = "1.4.0"
         const val ConstraintLayout = "2.1.2"
     }
 
     object Util {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
-        const val LeakCanary = "2.7"
+        const val LeakCanary = "2.8"
         const val CheckDependencyUpdates = "1.5.0"
     }
 
     object Jetpack {
         const val Hilt = "2.40.5"
-        const val Room = "2.3.0"
+        const val Room = "2.4.0"
     }
 
     object OssLicense {
@@ -55,26 +55,30 @@ object Versions {
 object Dependencies {
     const val Hilt = "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
     const val HiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
+
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
 
-    const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.Firebase.FirebaseBom}"
+    const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
     val Firebase = listOf(
-        "com.google.firebase:firebase-firestore-ktx",
-        "com.google.firebase:firebase-firestore:${Versions.Firebase.FirebaseStore}",
         "com.google.firebase:firebase-storage-ktx",
-        "com.google.firebase:firebase-storage:${Versions.Firebase.FirebaseStorage}",
+        "com.google.firebase:firebase-firestore-ktx"
     )
 
     val Essential = listOf(
-        "androidx.core:core-ktx:${Versions.Essential.Ktx}",
         "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Essential.Coroutines}"
+    )
+
+    val Ktx = listOf(
+        "androidx.core:core-ktx:${Versions.Ktx.Core}",
+        "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
     )
 
     val Ui = listOf(
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
-        "androidx.appcompat:appcompat:${Versions.Ui.Appcompat}",
+        "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}"
     )
 
