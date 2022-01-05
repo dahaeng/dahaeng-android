@@ -6,13 +6,13 @@ import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.PostItemBinding
 import team.dahaeng.android.domain.model.Post
 
+// TODO: DiffUtil 찾아보시구, 이걸로 어뎁터 바꿔주세용
 class CommunityAdapter : RecyclerView.Adapter<CommunityAdapter.CommunityViewHolder>() {
-
     private var postList = listOf<Post>()
 
     fun setPostList(list: List<Post>) {
         postList = list
-        notifyDataSetChanged()
+        notifyDataSetChanged() // <- 이거 쓰면 모든 아이템 다 다시 그려서 성능저하 돼요
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityViewHolder {

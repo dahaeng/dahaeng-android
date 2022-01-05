@@ -24,6 +24,7 @@ object Versions {
 
     object Ktx {
         const val Core = "1.7.0"
+        const val Fragment = "1.4.0"
         const val LifeCycle = "2.4.0"
         const val ViewModel = "2.4.0"
     }
@@ -38,6 +39,7 @@ object Versions {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
         const val LeakCanary = "2.8"
+        const val SystemUiController = "1.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
 
@@ -71,20 +73,22 @@ object Dependencies {
 
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
+        "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
     )
 
     val Ui = listOf(
-        "com.google.android.material:material:${Versions.Ui.Material}",
-        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
-        "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}"
+        "com.google.android.material:material:${Versions.Ui.Material}",
+        "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
+        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
     )
 
     val Util = listOf(
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
-        "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}"
+        "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
+        "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"
     )
 
     val Room = listOf(

@@ -12,7 +12,7 @@
 
         <TextView
             android:id="@+id/textview_post_title"
-            style="@style/textview_title"
+            style="@style/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

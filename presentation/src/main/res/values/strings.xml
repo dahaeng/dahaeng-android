@@ -1,3 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Dahaeng © 2021 Ji Sungbin, jkey20. all rights reserved.
+  ~ Dahaeng license is under the MIT.
+  ~
+  ~ [strings.xml] created by Ji Sungbin on 22. 1. 5. 오후 5:11
+  ~
+  ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+  -->
+
 <resources>
     <string name="app_name">다행</string>
 </resources>

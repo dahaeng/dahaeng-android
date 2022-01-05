@@ -5,22 +5,26 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import com.google.firebase.firestore.FirebaseFirestore
+import androidx.activity.viewModels
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
-import java.text.SimpleDateFormat
-import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
 import team.dahaeng.android.domain.model.Post
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
-class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
+class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewModel>(
     R.layout.activity_community
 ) {
+    private var image = 0
+    private var uriPhoto: Uri? = null
+    private val storage by lazy { Firebase.storage } // 반복되는 storage 변수 선언 대신 최상단에 한 번만 선언
 
-    var image = 0
-    var uriPhoto: Uri? = null
+    override val vm: CommunityViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,14 +36,14 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
         binding.buttonCommunityLoadimage.setOnClickListener {
             val imagePickIntent = Intent(Intent.ACTION_PICK)
             imagePickIntent.type = "image/*"
-            startActivityForResult(imagePickIntent, image)
+            startActivityForResult(imagePickIntent, image) // Deprecated!
         }
     }
 
+    // TODO: 비즈니스 로직은 뷰모델에 들어가야 해요
     private fun loadFireStore() {
-        val db = FirebaseFirestore.getInstance()
         var postList = arrayListOf<Post>()
-        db.collection("test0103")
+        Firebase.firestore.collection("test0103")
             .get()
             .addOnSuccessListener { result ->
                 for (document in result) {
@@ -58,17 +62,14 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding>(
     }
 
     private fun loadFirebaseStorage() {
-        // Todo : 이미지 로드
-        val storage = Firebase.storage
+        // TODO: 이미지 로드 -> TedImagePicker 등등 이미지 피커 라이브러리 사용
         var storageRef = storage.reference.child("image")
     }
 
     private fun uploadFirebaseStorage() {
-
-        var timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
-        var imgFileName = "IMAGE_" + timeStamp + "_.png"
-        val storage = Firebase.storage
-        var storageRef = storage.reference.child("image").child(imgFileName)
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
+        val imgFileName = "IMAGE_" + timeStamp + "_.png"
+        val storageRef = storage.reference.child("image").child(imgFileName)
         storageRef.putFile(uriPhoto!!).addOnSuccessListener {
             Log.i("UPLOAD FIREBASE", "SUCCESS")
         }

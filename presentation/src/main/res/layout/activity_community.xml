@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+
+    <!-- NOTE: @string 사용해주세요, 하드코딩 지양! -->
     <data>
 
         <variable

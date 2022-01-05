@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.activity.login
 
+import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
 
-class LoginViewModel : BaseViewModel()
+class LoginViewModel : BaseViewModel<BaseEvent>()
