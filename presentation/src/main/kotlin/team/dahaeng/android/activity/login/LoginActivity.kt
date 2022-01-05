@@ -12,14 +12,20 @@ package team.dahaeng.android.activity.login
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
+import dagger.hilt.android.AndroidEntryPoint
+import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityLoginBinding
+import team.dahaeng.android.util.extensions.toast
 
+@AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
 
     override val vm: LoginViewModel by viewModels()
@@ -31,6 +37,19 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+
+        lifecycleScope.launchWhenCreated {
+            vm.eventFlow.flowWithLifecycle(lifecycle).collect { event ->
+                when (event) {
+                    is LoginEvent.Failure -> toast(getString(R.string.activity_login_toast_login_fail))
+                    is LoginEvent.Success -> {
+                        logeukes { "로그인 성공!\n\n" }
+                        logeukes { event.user }
+                        toast("로그인 성공!")
+                    }
+                }
+            }
+        }
     }
 
     private fun initExoPlayer() {

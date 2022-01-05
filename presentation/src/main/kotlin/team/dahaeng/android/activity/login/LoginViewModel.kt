@@ -10,12 +10,24 @@
 package team.dahaeng.android.activity.login
 
 import android.content.Context
-import com.kakao.sdk.user.UserApiClient
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.activity.base.BaseViewModel
+import team.dahaeng.android.domain.aouth.repository.LoginRepository
+import javax.inject.Inject
 
-class LoginViewModel : BaseViewModel<LoginEvent>() {
-    fun login(context: Context) {
+@HiltViewModel
+class LoginViewModel @Inject constructor(private val repository: LoginRepository) :
+    BaseViewModel<LoginEvent>() {
 
+    suspend fun login(context: Context) {
+        val result = repository.login(context)
+        if (result.isFailure()) {
+            logeukes(type = LoggerType.E) { result.exception }
+            emitEvent(LoginEvent.Failure)
+        } else {
+            emitEvent(LoginEvent.Success(result.user!!))
         }
     }
 }

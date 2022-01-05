@@ -11,7 +11,6 @@ package team.dahaeng.android.data.aouth.repository
 
 import android.content.Context
 import com.kakao.sdk.user.UserApiClient
-import kotlin.coroutines.resume
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
@@ -19,6 +18,7 @@ import team.dahaeng.android.data.aouth.mapper.toLoginResult
 import team.dahaeng.android.data.aouth.model.UserResponse
 import team.dahaeng.android.domain.aouth.model.LoginResult
 import team.dahaeng.android.domain.aouth.repository.LoginRepository
+import kotlin.coroutines.resume
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
