@@ -11,5 +11,5 @@ package team.dahaeng.android.domain.util
 
 interface BaseModel {
     val exception: Throwable?
-    fun isFailure() = exception == null
+    fun isFailure() = exception != null
 }

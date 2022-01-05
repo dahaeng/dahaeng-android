@@ -16,7 +16,7 @@ import team.dahaeng.android.domain.aouth.model.LoginResult
 private typealias UserDomain = team.dahaeng.android.domain.aouth.model.User
 
 fun UserResponse.toLoginResult() = if (isFailure()) {
-    LoginResult(exception = exception)
+    LoginResult(exception = exception!!)
 } else {
     LoginResult(user = user!!.toDomain())
 }
