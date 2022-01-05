@@ -9,7 +9,28 @@
 
 package team.dahaeng.android.activity.login
 
-import team.dahaeng.android.activity.base.BaseEvent
+import android.content.Context
+import com.kakao.sdk.user.UserApiClient
 import team.dahaeng.android.activity.base.BaseViewModel
 
-class LoginViewModel : BaseViewModel<BaseEvent>()
+class LoginViewModel : BaseViewModel<LoginEvent>() {
+    fun login(context: Context) {
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
+            UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
+                if (error != null) {
+                    event(LoginEvent.Error(error))
+                } else if (token != null) {
+                    event(LoginEvent.Success(token))
+                }
+            }
+        } else {
+            UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
+                if (error != null) {
+                    event(LoginEvent.Error(error))
+                } else if (token != null) {
+                    event(LoginEvent.Success(token))
+                }
+            }
+        }
+    }
+}

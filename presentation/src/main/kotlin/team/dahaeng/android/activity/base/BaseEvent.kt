@@ -9,6 +9,4 @@
 
 package team.dahaeng.android.activity.base
 
-interface BaseEvent {
-    fun toast(message: String)
-}
+interface BaseEvent

@@ -32,6 +32,7 @@ object Versions {
     object Ui {
         const val Material = "1.4.0"
         const val AppCompat = "1.4.0"
+        const val ExoPlayer = "2.16.1"
         const val ConstraintLayout = "2.1.2"
     }
 
@@ -39,6 +40,7 @@ object Versions {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
         const val LeakCanary = "2.8"
+        const val KakaoLogin = "2.8.4"
         const val SystemUiController = "1.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
@@ -81,11 +83,14 @@ object Dependencies {
     val Ui = listOf(
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "com.google.android.material:material:${Versions.Ui.Material}",
+        "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
+        "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
         "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
     )
 
     val Util = listOf(
+        "com.kakao.sdk:v2-user:${Versions.Util.KakaoLogin}",
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
         "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
         "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"

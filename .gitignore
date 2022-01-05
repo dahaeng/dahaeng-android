@@ -9,3 +9,4 @@ google-services.json
 /domain/build
 /presentation/build
 /presentation/release
+/presentation/src/main/kotlin/team/dahaeng/android/secret/
