@@ -14,7 +14,7 @@ import team.dahaeng.android.domain.aouth.model.LoginResult
 import team.dahaeng.android.domain.aouth.repository.LoginRepository
 
 class KakaoLoginUseCase(private val repository: LoginRepository) {
-    operator fun invoke(context: Context) = try {
+    suspend operator fun invoke(context: Context) = try {
         repository.login(context)
     } catch (exception: Exception) {
         LoginResult(exception = exception)
