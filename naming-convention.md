@@ -9,9 +9,10 @@
 **> 타입_사용구역_주제_설명**
 
 > activity_setting_notification_access_permission (주제: notification)
+>
 > fragment_setting_toast_storage_permission_granted (주제: toast)
 
-###### 사용구역
+##### 사용구역
 
 1. dialog: 다이얼로그 리소스
 2. activity: 엑티비티 리소스
@@ -24,17 +25,17 @@
 
 > bg_baseline_gradient_500
 
-###### 사용용도
+##### 사용용도
 
 1. bg: 배경사진 용도
 2. ic: 아이콘 용도
 
-###### 타입
+##### 타입
 
 1. rounded: 원형
 2. baseline: 기본값
 
-###### 사이즈
+##### 사이즈
 
 사이즈는 dp기준으로 하며 끝에 dp 표기는 생략함
 
