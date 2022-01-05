@@ -13,6 +13,7 @@ object Application {
 }
 
 object Versions {
+    const val Kakao = "2.8.4"
     const val FirebaseBom = "29.0.3"
 
     object Essential {
@@ -40,7 +41,6 @@ object Versions {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
         const val LeakCanary = "2.8"
-        const val KakaoLogin = "2.8.4"
         const val SystemUiController = "1.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
@@ -63,6 +63,8 @@ object Dependencies {
     const val RoomCompiler = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
+
+    const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
@@ -90,7 +92,6 @@ object Dependencies {
     )
 
     val Util = listOf(
-        "com.kakao.sdk:v2-user:${Versions.Util.KakaoLogin}",
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
         "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
         "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"

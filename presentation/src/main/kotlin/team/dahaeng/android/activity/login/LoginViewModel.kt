@@ -15,22 +15,7 @@ import team.dahaeng.android.activity.base.BaseViewModel
 
 class LoginViewModel : BaseViewModel<LoginEvent>() {
     fun login(context: Context) {
-        if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
-            UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
-                if (error != null) {
-                    event(LoginEvent.Error(error))
-                } else if (token != null) {
-                    event(LoginEvent.Success(token))
-                }
-            }
-        } else {
-            UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
-                if (error != null) {
-                    event(LoginEvent.Error(error))
-                } else if (token != null) {
-                    event(LoginEvent.Success(token))
-                }
-            }
+
         }
     }
 }

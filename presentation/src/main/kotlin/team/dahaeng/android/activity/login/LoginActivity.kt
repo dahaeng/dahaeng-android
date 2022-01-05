@@ -15,10 +15,10 @@ import androidx.activity.viewModels
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
+import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityLoginBinding
-import team.dahaeng.android.secret.Resources
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
 
@@ -40,7 +40,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 repeatMode = Player.REPEAT_MODE_ONE
             }
             .also { player ->
-                val video = MediaItem.fromUri(Resources.Intro)
+                val video = MediaItem.fromUri(BuildConfig.LOGIN_INTRO_VIDEO_URI)
                 player.setMediaItem(video)
                 binding.exoPlayer.player = player
             }

@@ -14,7 +14,6 @@ import com.kakao.sdk.common.KakaoSdk
 import dagger.hilt.android.HiltAndroidApp
 import io.github.jisungbin.erratum.Erratum
 import io.github.jisungbin.logeukes.Logeukes
-import team.dahaeng.android.secret.ApiKey
 
 @HiltAndroidApp
 class DahaengAndroid : Application() {
@@ -22,7 +21,7 @@ class DahaengAndroid : Application() {
         super.onCreate()
 
         Erratum.setup(this) // TODO: Exception activity
-        KakaoSdk.init(this, ApiKey.Kakao)
+        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
 
         if (BuildConfig.DEBUG) {
             Logeukes.setup()
