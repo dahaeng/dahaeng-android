@@ -6,6 +6,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -33,10 +34,13 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
 
         // loadFireStore()
 
-        binding.buttonCommunityLoadimage.setOnClickListener {
+        binding.buttonUploadimage.setOnClickListener {
             val imagePickIntent = Intent(Intent.ACTION_PICK)
             imagePickIntent.type = "image/*"
             startActivityForResult(imagePickIntent, image) // Deprecated!
+        }
+        binding.buttonLoadimage.setOnClickListener {
+            loadFirebaseStorage()
         }
     }
 
@@ -63,7 +67,13 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
 
     private fun loadFirebaseStorage() {
         // TODO: 이미지 로드 -> TedImagePicker 등등 이미지 피커 라이브러리 사용
-        var storageRef = storage.reference.child("image")
+        var storageRef = storage.reference
+        storageRef.child("image/IMAGE_20220104_103538_.png").downloadUrl.addOnSuccessListener { Uri ->
+            Glide.with(this)
+                .load(Uri)
+                .into(binding.imageviewCommunity)
+        }
+
     }
 
     private fun uploadFirebaseStorage() {

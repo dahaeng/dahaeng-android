@@ -15,6 +15,7 @@ object Application {
 object Versions {
     const val Kakao = "2.8.4"
     const val FirebaseBom = "29.0.3"
+    const val Glide = "4.12.0"
 
     object Essential {
         const val Kotlin = "1.6.10"
@@ -65,7 +66,12 @@ object Dependencies {
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
+
+    const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
+    const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
+
     const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
+
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
