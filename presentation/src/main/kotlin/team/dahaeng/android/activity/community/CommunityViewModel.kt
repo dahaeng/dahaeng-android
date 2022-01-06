@@ -9,7 +9,21 @@
 
 package team.dahaeng.android.activity.community
 
+import android.net.Uri
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
+import team.dahaeng.android.domain.aouth.usecase.UploadFirebaseStorageUseCase
+import javax.inject.Inject
 
-class CommunityViewModel : BaseViewModel<BaseEvent>()
+@HiltViewModel
+class CommunityViewModel @Inject constructor(private val uploadFirebaseStorageUseCase: UploadFirebaseStorageUseCase) :
+    BaseViewModel<BaseEvent>() {
+
+    fun uploadImage(uri: Uri) = viewModelScope.launch {
+        val result = uploadFirebaseStorageUseCase(uri)
+    }
+
+}
