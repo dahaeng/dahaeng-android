@@ -17,14 +17,25 @@
 
         <activity
             android:name=".activity.login.LoginActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".activity.community.CommunityActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="${KAKAO_AOUTH_HOST_SCHEME}" />
             </intent-filter>
         </activity>
 

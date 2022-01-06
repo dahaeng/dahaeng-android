@@ -13,13 +13,14 @@ object Application {
 }
 
 object Versions {
+    const val Kakao = "2.8.4"
     const val FirebaseBom = "29.0.3"
     const val Glide = "4.12.0"
 
     object Essential {
         const val Kotlin = "1.6.10"
         const val Coroutines = "1.6.0"
-        const val Gradle = "7.1.0-beta05"
+        const val Gradle = "7.1.0-rc01"
         const val GoogleService = "4.3.3"
     }
 
@@ -33,6 +34,7 @@ object Versions {
     object Ui {
         const val Material = "1.4.0"
         const val AppCompat = "1.4.0"
+        const val ExoPlayer = "2.16.1"
         const val ConstraintLayout = "2.1.2"
     }
 
@@ -42,6 +44,7 @@ object Versions {
         const val LeakCanary = "2.8"
         const val SystemUiController = "1.0.0"
         const val CheckDependencyUpdates = "1.5.0"
+        const val SecretsGradlePlugin = "2.0.0"
     }
 
     object Jetpack {
@@ -63,8 +66,12 @@ object Dependencies {
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
+
     const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
     const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
+
+    const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
+
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
@@ -85,6 +92,8 @@ object Dependencies {
     val Ui = listOf(
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "com.google.android.material:material:${Versions.Ui.Material}",
+        "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
+        "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
         "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
     )

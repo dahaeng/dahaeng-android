@@ -13,7 +13,7 @@ import com.google.firebase.storage.ktx.storage
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
-import team.dahaeng.android.domain.model.Post
+import team.dahaeng.android.domain.community.model.Post
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.PostItemBinding
-import team.dahaeng.android.domain.model.Post
+import team.dahaeng.android.domain.community.model.Post
 
 // TODO: DiffUtil 찾아보시구, 이걸로 어뎁터 바꿔주세용
 class CommunityAdapter : RecyclerView.Adapter<CommunityAdapter.CommunityViewHolder>() {
