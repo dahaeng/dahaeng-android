@@ -1,3 +1,12 @@
+/*
+ * Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+ * Dahaeng license is under the MIT.
+ *
+ * [CommunityActiivity.kt] created by 210202
+ *
+ * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+ */
+
 package team.dahaeng.android.activity.community
 
 import android.content.Intent
@@ -26,20 +35,15 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
 
         binding.recyclerviewCommunity.adapter = CommunityAdapter()
 
+        loadFireStore()
+
         val result =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 vm.uploadImage(result.data?.data!!) // registerForActivityResult는 미리 생성하고 실행해야함
             }
 
-        binding.buttonUploadimage.setOnClickListener {
-            val imagePickIntent = Intent(Intent.ACTION_PICK)
-            imagePickIntent.type = "image/*"
 
-            result.launch(imagePickIntent)
-        }
-        binding.buttonLoadimage.setOnClickListener {
-            // loadFirebaseStorage()
-        }
+
     }
 
     // TODO: 비즈니스 로직은 뷰모델에 들어가야 해요

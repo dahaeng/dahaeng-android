@@ -13,4 +13,10 @@
 
     <string name="activity_login_btn_start">카카오톡으로 시작하기</string>
     <string name="activity_login_toast_login_fail">로그인에 실패했어요 😢\n잠시후 다시 시도해 주세요.</string>
+    <string name="post_item_extension">10만원 ~ 15만원</string>
+    <string name="post_item_title">에베레스트는 못가도 지리산은 간다</string>
+    <string name="post_item_period">2박 3일</string>
+    <string name="post_item_content">친구들과 에베레스트를 가려고했는데\n 코로나라 못가서 아쉬운대로 지리산을 갔다\n지리산은 너무 높아서 가는데 힘들었다</string>
+    <string name="post_item_tag_location">국내</string>
+    <string name="post_item_tag_theme">산</string>
 </resources>

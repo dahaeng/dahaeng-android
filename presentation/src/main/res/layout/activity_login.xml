@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+ ~ Dahaeng license is under the MIT.
+ ~
+ ~ [activity_login.xml] created by Ji Sungbin
+ ~
+ ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+ -->
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">

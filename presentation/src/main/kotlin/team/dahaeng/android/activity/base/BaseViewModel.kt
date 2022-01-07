@@ -1,3 +1,12 @@
+/*
+ * Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+ * Dahaeng license is under the MIT.
+ *
+ * [BaseViewModel.kt] created by Ji Sungbin
+ *
+ * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+ */
+
 package team.dahaeng.android.activity.base
 
 import androidx.lifecycle.ViewModel
