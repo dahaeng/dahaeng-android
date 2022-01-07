@@ -17,8 +17,17 @@
     </style>
 
     <style name="tv_title">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv_content">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="tv_tag">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="iv_circle">

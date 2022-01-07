@@ -39,6 +39,10 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".activity.community.CommunityActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
