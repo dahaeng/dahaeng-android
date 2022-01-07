@@ -1,5 +1,5 @@
 /*
- * Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+ * Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  * Dahaeng license is under the MIT.
  *
  * [FirebaseRepositoryImpl.kt] created by 210202
@@ -19,7 +19,7 @@ import java.util.*
 
 class FirebaseRepositoryImpl : FirebaseRepository {
 
-    val storage = Firebase.storage
+    private val storage = Firebase.storage
 
     override suspend fun uploadImage(uri : Uri) {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())

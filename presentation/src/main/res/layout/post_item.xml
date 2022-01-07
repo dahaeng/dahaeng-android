@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-  ~ Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+  ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
   ~ Dahaeng license is under the MIT.
   ~
   ~ [post_item.xml] created by Ji Sungbin on 22. 1. 5. 오후 9:29
@@ -108,8 +108,7 @@
             style="@style/tv_tag"
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginVertical="8dp"
             android:background="@drawable/bg_baseline_tag_30"
             android:gravity="center"
             android:text="@string/post_item_tag_theme"

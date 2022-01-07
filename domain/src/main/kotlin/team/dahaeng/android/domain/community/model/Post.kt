@@ -1,5 +1,5 @@
 /*
- * Dahaeng © 2022 Ji Sungbin, jkey20. all rights reserved.
+ * Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  * Dahaeng license is under the MIT.
  *
  * [Post.kt] created by 210202
