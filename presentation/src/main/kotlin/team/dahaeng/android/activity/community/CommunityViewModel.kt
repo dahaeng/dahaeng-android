@@ -15,15 +15,28 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.domain.aouth.usecase.UploadFirebaseStorageUseCase
+import team.dahaeng.android.domain.community.usecase.ImportFirebaseStorageUseCase
+import team.dahaeng.android.domain.community.usecase.UploadFirebaseStorageUseCase
+import team.dahaeng.android.activity.community.model.ListLiveData
+import team.dahaeng.android.domain.community.model.Post
 import javax.inject.Inject
 
 @HiltViewModel
-class CommunityViewModel @Inject constructor(private val uploadFirebaseStorageUseCase: UploadFirebaseStorageUseCase) :
+class CommunityViewModel @Inject constructor(
+    private val uploadFirebaseStorageUseCase: UploadFirebaseStorageUseCase,
+    private val importFirebaseStorageUseCase: ImportFirebaseStorageUseCase
+) :
     BaseViewModel<BaseEvent>() {
 
+    val postList = ListLiveData<Post>()
+
     fun uploadImage(uri: Uri) = viewModelScope.launch {
-        val result = uploadFirebaseStorageUseCase(uri)
+        uploadFirebaseStorageUseCase(uri)
     }
+
+    fun importPostList() = viewModelScope.launch {
+       postList.addAll(importFirebaseStorageUseCase.invoke())
+    }
+
 
 }

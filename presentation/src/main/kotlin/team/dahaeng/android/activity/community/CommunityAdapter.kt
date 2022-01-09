@@ -9,42 +9,52 @@
 
 package team.dahaeng.android.activity.community
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.PostItemBinding
 import team.dahaeng.android.domain.community.model.Post
 
-// TODO: DiffUtil 찾아보시구, 이걸로 어뎁터 바꿔주세용
-class CommunityAdapter : RecyclerView.Adapter<CommunityAdapter.CommunityViewHolder>() {
-    private var postList = listOf<Post>()
+class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(PostDiffCallback()) {
 
-    fun setPostList(list: List<Post>) {
-        postList = list
-        notifyDataSetChanged() // <- 이거 쓰면 모든 아이템 다 다시 그려서 성능저하 돼요
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityAdapter.PostViewHolder {
+        return PostViewHolder(
+            PostItemBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommunityViewHolder {
-        val binding = PostItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CommunityViewHolder(binding)
+    override fun onBindViewHolder(holder: CommunityAdapter.PostViewHolder, position: Int) {
+        val post = getItem(position) as Post
+        holder.bind(post)
     }
 
-    override fun onBindViewHolder(holder: CommunityViewHolder, position: Int) {
-        holder.titleTextView.text = postList[position].title
-        holder.contentTextView.text = postList[position].content
-        holder.idTextView.text = postList[position].id
+    inner class PostViewHolder(
+        private val binding: PostItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(post: Post) {
+            binding.post = post
+            binding.executePendingBindings()
+        }
+
     }
 
-    override fun getItemCount(): Int = postList.size
+    private class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
 
-    class CommunityViewHolder(private val binding: PostItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        var titleTextView = binding.textviewPostTitle
-        var idTextView = binding.textviewPostId
-        var contentTextView = binding.textviewPostContent
-
-//        fun bind(){
-//                  Todo: item DataBinding
-//        }
+        override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem == newItem
+        }
+        @SuppressLint
+        override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+            return oldItem.number == newItem.number
+        }
     }
+
 }

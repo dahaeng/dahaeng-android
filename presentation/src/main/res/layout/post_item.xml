@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><!--
+<?xml version="1.0" encoding="utf-8"?>
+<!--
   ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
   ~ Dahaeng license is under the MIT.
   ~
@@ -11,12 +12,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="post"
+            type="team.dahaeng.android.domain.community.model.Post" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/browser_actions_bg_grey">
 
         <ImageView
             android:id="@+id/iv_travelphoto"
@@ -25,8 +29,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            >
+            app:layout_constraintTop_toTopOf="parent">
 
         </ImageView>
 
@@ -43,13 +46,14 @@
             app:layout_constraintTop_toTopOf="@+id/iv_travelphoto">
 
             <TextView
-                android:id="@+id/textview_post_title"
+                android:textColor="@color/black"
+                android:id="@+id/tv_post_title"
                 style="@style/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="7"
-                android:text="@string/post_item_title"
+                android:text="@{post.title}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -62,19 +66,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="3"
                 android:gravity="end"
-                android:text="@string/post_item_extension"
+                android:text="@{post.expense}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textview_post_title" />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/tv_period"
             style="@style/tv_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="@string/post_item_period"
+            android:text="@{post.period}"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
@@ -85,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:maxLines="2"
-            android:text="@string/post_item_content"
+            android:text="@{post.content}"
             app:layout_constraintEnd_toEndOf="@+id/linearLayout"
             app:layout_constraintStart_toStartOf="@+id/iv_travelphoto"
             app:layout_constraintTop_toBottomOf="@+id/iv_travelphoto" />
@@ -98,7 +102,7 @@
             android:layout_marginEnd="4dp"
             android:background="@drawable/bg_baseline_tag_30"
             android:gravity="center"
-            android:text="@string/post_item_tag_location"
+            android:text="@{post.tagLocation}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_tag_theme"
             app:layout_constraintEnd_toStartOf="@+id/tv_tag_theme"
             app:layout_constraintTop_toTopOf="@+id/tv_tag_theme" />
@@ -111,7 +115,7 @@
             android:layout_marginVertical="8dp"
             android:background="@drawable/bg_baseline_tag_30"
             android:gravity="center"
-            android:text="@string/post_item_tag_theme"
+            android:text="@{post.tagTheme}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tv_content"
             app:layout_constraintTop_toBottomOf="@+id/tv_content" />
