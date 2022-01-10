@@ -29,7 +29,7 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.recyclerviewCommunity.adapter = CommunityAdapter()
+        binding.rvCommunity.adapter = CommunityAdapter()
         vm.importPostList()
         val result =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -38,14 +38,14 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
                 }
             }
 
-        binding.btnUploadimage.setOnClickListener {
-            val imagePickIntent = Intent(Intent.ACTION_PICK)
-            imagePickIntent.type = "image/*"
-            result.launch(imagePickIntent)
-        }
+//        binding.btnUploadimage.setOnClickListener {
+//            val imagePickIntent = Intent(Intent.ACTION_PICK)
+//            imagePickIntent.type = "image/*"
+//            result.launch(imagePickIntent)
+//        }
         vm.postList.observe(this, { postList ->
             if (postList.isNotEmpty()) {
-                (binding.recyclerviewCommunity.adapter as CommunityAdapter).submitList(postList)
+                (binding.rvCommunity.adapter as CommunityAdapter).submitList(postList)
             }
         })
     }

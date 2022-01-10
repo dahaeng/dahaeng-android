@@ -19,28 +19,55 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/rv_lightgrey"
         android:id="@+id/ccl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".activity.community.CommunityActivity">
 
-        <Button
-            android:id="@+id/btn_uploadimage"
-            android:layout_width="match_parent"
+
+        <TextView
+            android:id="@+id/tv_communitytitle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nanumbarungothic"
+
+            android:text="여행지 추천"
+            android:textColor="@color/black"
+
+            android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></Button>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="나만의 여행지, 숨겨진 여행지를 추천해보세요"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="@+id/tv_communitytitle"
+            app:layout_constraintTop_toBottomOf="@+id/tv_communitytitle" />
+
+<!--        <ImageButton-->
+<!--            android:background="@drawable/ic_baseline_write_24"-->
+<!--            android:id="@+id/btn_writepost"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"></ImageButton>-->
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview_community"
+            android:layout_marginTop="8dp"
+            android:id="@+id/rv_community"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:background="@color/rv_lightgrey"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_uploadimage"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
             tools:listitem="@layout/post_item" />
 
 

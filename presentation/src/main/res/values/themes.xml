@@ -17,7 +17,7 @@
     </style>
 
     <style name="tv_title">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
