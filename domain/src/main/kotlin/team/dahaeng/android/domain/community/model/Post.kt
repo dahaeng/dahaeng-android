@@ -11,6 +11,7 @@ package team.dahaeng.android.domain.community.model
 
 data class Post(
     val number: Long = 0,
+    val imgUrl: String = "",
     val title: String = "",
     val content: String = "",
     val expense: String = "",

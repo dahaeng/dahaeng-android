@@ -15,4 +15,5 @@ import team.dahaeng.android.domain.community.model.Post
 interface FirebaseRepository {
     fun uploadImage(uri : Uri)
     suspend fun importPost() : List<Post>
+    fun importImages()
 }

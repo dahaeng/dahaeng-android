@@ -24,11 +24,11 @@ import java.util.*
 class FirebaseRepositoryImpl : FirebaseRepository {
 
     private val storage = Firebase.storage
-
+    private val storageRef = storage.reference
     override fun uploadImage(uri: Uri) {
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
         val imgFileName = "IMAGE_" + timeStamp + "_.png"
-        val storageRef = storage.reference.child("image").child(imgFileName)
+        storageRef.child("image").child(imgFileName)
         storageRef.putFile(uri).addOnSuccessListener {
             Log.i("UPLOAD FIREBASE", "SUCCESS")
         }
@@ -36,7 +36,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
 
     override suspend fun importPost(): List<Post> =
         suspendCancellableCoroutine { continuation ->
-            val postList = arrayListOf<Post>()
+            val postList = mutableListOf<Post>()
             Firebase.firestore.collection("test0103")
                 .get()
                 .addOnSuccessListener {  result ->
@@ -47,8 +47,15 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     continuation.resume(postList, null)
                 }
                 .addOnFailureListener { exception ->
-                    Log.i("exception", exception.message.toString())
+                    continuation.resume(listOf(), null)
                 }
         }
+
+    override fun importImages() {
+//        storageRef.child("image/IMAGE_20220104_103538_.png").downloadUrl.addOnSuccessListener { Uri ->
+//            Glide.with(this)
+//                .load(Uri)
+//                .into(binding.imageviewCommunity)
+    }
 
 }

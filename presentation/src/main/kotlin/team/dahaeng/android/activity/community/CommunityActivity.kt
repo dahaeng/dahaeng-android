@@ -31,18 +31,7 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
 
         binding.rvCommunity.adapter = CommunityAdapter()
         vm.importPostList()
-        val result =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.data?.data != null) {
-                    vm.uploadImage(result.data?.data!!) // registerForActivityResult는 미리 생성하고 실행해야함
-                }
-            }
 
-//        binding.btnUploadimage.setOnClickListener {
-//            val imagePickIntent = Intent(Intent.ACTION_PICK)
-//            imagePickIntent.type = "image/*"
-//            result.launch(imagePickIntent)
-//        }
         vm.postList.observe(this, { postList ->
             if (postList.isNotEmpty()) {
                 (binding.rvCommunity.adapter as CommunityAdapter).submitList(postList)
