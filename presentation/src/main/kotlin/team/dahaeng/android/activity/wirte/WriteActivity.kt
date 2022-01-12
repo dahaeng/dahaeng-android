@@ -12,6 +12,7 @@ package team.dahaeng.android.activity.wirte
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -29,7 +30,7 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setAdapter()
         val result =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                 if (result.data?.data != null) {
@@ -37,12 +38,24 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(
                 }
             }
 
-        binding.butnUpload.setOnClickListener {
+        binding.btnUpload.setOnClickListener {
             // TODO: 이미지 로드 -> TedImagePicker 등등 이미지 피커 라이브러리 사용
             val imagePickIntent = Intent(Intent.ACTION_PICK)
             imagePickIntent.type = "image/*"
             result.launch(imagePickIntent)
         }
 
+    }
+
+    private fun setAdapter(){
+        val themes = resources.getStringArray(R.array.themes)
+        val expenses = resources.getStringArray(R.array.expenses)
+        val periods = resources.getStringArray(R.array.periods)
+        val arrayThemeAdapter = ArrayAdapter(this, R.layout.dropdown_item, themes)
+        val arrayExpenseAdapter = ArrayAdapter(this, R.layout.dropdown_item, expenses)
+        val arrayPeriodAdapter = ArrayAdapter(this, R.layout.dropdown_item, periods)
+        binding.autocompletetvTheme.setAdapter(arrayThemeAdapter)
+        binding.autocompletetvExpense.setAdapter(arrayExpenseAdapter)
+        binding.autocompletetvPeriod.setAdapter(arrayPeriodAdapter)
     }
 }

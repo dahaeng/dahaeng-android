@@ -17,6 +17,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
+import team.dahaeng.android.activity.wirte.WriteActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
 
 @AndroidEntryPoint
@@ -32,23 +33,17 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
         binding.rvCommunity.adapter = CommunityAdapter()
         vm.importPostList()
 
+        binding.btnWritepost.setOnClickListener {
+            val intent = Intent(applicationContext, WriteActivity::class.java)
+            startActivity(intent)
+        }
+
         vm.postList.observe(this, { postList ->
             if (postList.isNotEmpty()) {
                 (binding.rvCommunity.adapter as CommunityAdapter).submitList(postList)
             }
         })
+
     }
-
-
-    /*private fun loadFirebaseStorage() {
-        // TODO: 이미지 로드 -> TedImagePicker 등등 이미지 피커 라이브러리 사용
-            var storageRef = storage.reference
-        storageRef.child("image/IMAGE_20220104_103538_.png").downloadUrl.addOnSuccessListener { Uri ->
-            Glide.with(this)
-                .load(Uri)
-                .into(binding.imageviewCommunity)
-        }
-
-    }*/
 
 }

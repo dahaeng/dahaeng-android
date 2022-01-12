@@ -21,13 +21,146 @@
         android:layout_height="match_parent"
         tools:context=".activity.wirte.WriteActivity">
 
-        <Button
-            android:id="@+id/butn_upload"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></Button>
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_baseline_camera"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="12dp"
+                    android:background="@drawable/ic_baseline_add_photo_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"></ImageButton>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginHorizontal="16dp"
+                android:ellipsize="end"
+                android:hint="제목"
+                android:maxLines="1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout"></com.google.android.material.textfield.TextInputEditText>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/primary"></LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayout_theme"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:hint="테마">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/autocompletetv_theme"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none">
+
+                    </com.google.android.material.textfield.MaterialAutoCompleteTextView>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayout_expense"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:hint="비용">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/autocompletetv_expense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none">
+
+                    </com.google.android.material.textfield.MaterialAutoCompleteTextView>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textinputlayout_period"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginVertical="8dp"
+                    android:hint="기간">
+
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/autocompletetv_period"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none">
+
+                    </com.google.android.material.textfield.MaterialAutoCompleteTextView>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/primary"></LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:padding="16dp"
+            android:gravity="start"
+            android:hint="내용을 입력해주세요"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@null"
+            app:layout_constraintBottom_toTopOf="@+id/btn_upload"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"></com.google.android.material.textfield.TextInputEditText>
+
+        <Button
+            android:background="@color/primary"
+            android:id="@+id/btn_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="등록"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"></Button>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

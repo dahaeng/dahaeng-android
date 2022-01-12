@@ -56,24 +56,20 @@
 
         <TextView
             android:id="@+id/tv_tag_theme"
-            style="@style/tv_tag"
+            style="@style/all_tag"
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_marginTop="4dp"
-            android:background="@drawable/bg_baseline_tag"
-            android:gravity="center"
             android:text="@{post.tagTheme}"
             app:layout_constraintStart_toStartOf="@+id/tv_post_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_post_title" />
 
         <TextView
             android:id="@+id/tv_expense"
-            style="@style/tv_tag"
+            style="@style/all_tag"
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_marginStart="4dp"
-            android:background="@drawable/bg_baseline_tag"
-            android:gravity="center"
             android:text="@{post.expense}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_tag_theme"
             app:layout_constraintStart_toEndOf="@+id/tv_tag_theme"
@@ -81,12 +77,10 @@
 
         <TextView
             android:id="@+id/tv_period"
-            style="@style/tv_tag"
+            style="@style/all_tag"
             android:layout_width="50dp"
             android:layout_height="20dp"
             android:layout_marginStart="4dp"
-            android:background="@drawable/bg_baseline_tag"
-            android:gravity="center"
             android:text="@{post.period}"
             app:layout_constraintBottom_toBottomOf="@+id/tv_expense"
             app:layout_constraintStart_toEndOf="@+id/tv_expense"

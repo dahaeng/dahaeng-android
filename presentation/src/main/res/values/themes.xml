@@ -25,7 +25,9 @@
         <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="tv_tag">
+    <style name="all_tag">
+        <item name="android:background">@drawable/bg_baseline_tag</item>
+        <item name="android:gravity">center</item>
         <item name="android:textSize">8sp</item>
         <item name="android:textColor">@color/white</item>
     </style>

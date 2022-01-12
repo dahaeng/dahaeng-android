@@ -51,11 +51,6 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 }
         }
 
-    override fun importImages() {
-//        storageRef.child("image/IMAGE_20220104_103538_.png").downloadUrl.addOnSuccessListener { Uri ->
-//            Glide.with(this)
-//                .load(Uri)
-//                .into(binding.imageviewCommunity)
-    }
+
 
 }

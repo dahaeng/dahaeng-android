@@ -30,8 +30,4 @@ class CommunityViewModel @Inject constructor(
         postList.addAll(importFirebaseStorageUseCase.invoke())
     }
 
-    fun importPostImages() = viewModelScope.launch{
-
-    }
-
 }
