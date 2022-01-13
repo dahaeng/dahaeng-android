@@ -15,8 +15,8 @@ import com.kakao.sdk.user.model.User
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import team.dahaeng.android.data.util.UserDomain
 import team.dahaeng.android.data.aouth.mapper.toDomain
+import team.dahaeng.android.data.util.UserDomain
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import kotlin.coroutines.resume
 
