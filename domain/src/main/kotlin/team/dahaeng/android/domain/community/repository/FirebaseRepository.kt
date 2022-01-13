@@ -7,10 +7,14 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.aouth.repository
+package team.dahaeng.android.domain.community.repository
 
 import android.net.Uri
+import team.dahaeng.android.domain.community.model.Post
 
 interface FirebaseRepository {
-    suspend fun uploadImage(uri : Uri)
+    fun uploadImage(uri : Uri, imgFileName : String)
+    fun uploadPost(post : Post)
+    suspend fun importPost() : List<Post>
+
 }

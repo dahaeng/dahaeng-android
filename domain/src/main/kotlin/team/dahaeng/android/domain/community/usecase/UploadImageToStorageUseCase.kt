@@ -7,14 +7,14 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.aouth.usecase
+package team.dahaeng.android.domain.community.usecase
 
 import android.net.Uri
-import team.dahaeng.android.domain.aouth.repository.FirebaseRepository
+import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
-class UploadFirebaseStorageUseCase(private val repository: FirebaseRepository) {
-    suspend operator fun invoke(uri: Uri) = try {
-        repository.uploadImage(uri)
+class UploadImageToStorageUseCase(private val repository: FirebaseRepository) {
+    operator fun invoke(uri: Uri, imgFileName : String) = try {
+        repository.uploadImage(uri, imgFileName)
     } catch (exception: Exception){
         // upload fail exception
     }

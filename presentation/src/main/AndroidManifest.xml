@@ -14,16 +14,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dahaeng">
-
+        <activity
+            android:name=".activity.wirte.WriteActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -38,11 +40,9 @@
                     android:scheme="${KAKAO_AOUTH_HOST_SCHEME}" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.community.CommunityActivity"
             android:exported="true" />
-
     </application>
 
 </manifest>
