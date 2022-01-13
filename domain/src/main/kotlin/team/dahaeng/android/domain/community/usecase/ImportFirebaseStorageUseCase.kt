@@ -9,13 +9,10 @@
 
 package team.dahaeng.android.domain.community.usecase
 
-import team.dahaeng.android.domain.community.model.PostResult
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class ImportFirebaseStorageUseCase(private val repository: FirebaseRepository) {
-    suspend operator fun invoke() = try {
+    suspend operator fun invoke() = runCatching {
         repository.importPost()
-    } catch (exception: Exception) {
-        PostResult(exception = exception)
     }
 }

@@ -7,10 +7,9 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.wirte
+package team.dahaeng.android.activity.community.wirte
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResult

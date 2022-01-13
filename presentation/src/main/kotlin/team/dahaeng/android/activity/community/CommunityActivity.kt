@@ -11,13 +11,11 @@ package team.dahaeng.android.activity.community
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.activity.wirte.WriteActivity
+import team.dahaeng.android.activity.community.wirte.WriteActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
 
 @AndroidEntryPoint
@@ -38,11 +36,11 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
             startActivity(intent)
         }
 
-        vm.postList.observe(this, { postList ->
+        vm.postList.observe(this) { postList ->
             if (postList.isNotEmpty()) {
                 (binding.rvCommunity.adapter as CommunityAdapter).submitList(postList)
             }
-        })
+        }
 
     }
 

@@ -51,7 +51,7 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
             val storageRef = Firebase.storage.reference
             binding.post = post
             binding.executePendingBindings()
-            storageRef.child("image").child(post.imgUrl).downloadUrl.addOnSuccessListener { uri ->
+            storageRef.child("image").child(post.imageUrl).downloadUrl.addOnSuccessListener { uri ->
                 Glide.with(binding.root).load(uri).fitCenter().into(binding.ivTravelphoto)
             }.addOnFailureListener { exception ->
                 Log.e("GLIDE EXCEPTION", exception.message.toString())

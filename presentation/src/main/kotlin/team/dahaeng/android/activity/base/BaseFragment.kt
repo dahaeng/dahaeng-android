@@ -34,7 +34,7 @@ abstract class BaseFragment<B : ViewDataBinding, VM : ViewModel>(@LayoutRes priv
     ): View {
         binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         with(binding) {
-            lifecycleOwner = this@BaseFragment
+            lifecycleOwner = this@BaseFragment.viewLifecycleOwner
             setVariable(BR.vm, vm)
         }
         return binding.root

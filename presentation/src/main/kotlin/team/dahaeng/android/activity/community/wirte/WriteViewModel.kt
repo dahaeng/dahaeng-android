@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.wirte
+package team.dahaeng.android.activity.community.wirte
 
 import android.net.Uri
 import android.util.Log
@@ -22,7 +22,8 @@ import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.usecase.UploadImageToStorageUseCase
 import team.dahaeng.android.domain.community.usecase.UploadPostToStorageUseCase
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,7 +33,7 @@ class WriteViewModel @Inject constructor(
 ) : BaseViewModel<BaseEvent>() {
     private val userName = "210202" // kakao userName
     private val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
-    private val imgFileName = timeStamp + "_"+ userName + "_.png"
+    private val imgFileName = timeStamp + "_" + userName + "_.png"
 
     private val _postImage = MutableLiveData<Uri>()
     val postImage: LiveData<Uri> get() = _postImage
@@ -50,12 +51,12 @@ class WriteViewModel @Inject constructor(
         uploadImageToStorageUseCase.invoke(uri, imgFileName)
     }
 
-    fun setPost(title :String, content : String, expense :String, period : String, tagTheme : String) {
+    fun setPost(title: String, content: String, expense: String, period: String, tagTheme: String) {
         Log.i("setPost", imgFileName)
-        _post.value = Post(imgFileName, title,content,expense, period, tagTheme, userName)
+        _post.value = Post(imgFileName, title, content, expense, period, tagTheme, userName)
     }
 
-    fun getPost() : Post? {
+    fun getPost(): Post? {
         return _post.value
     }
 

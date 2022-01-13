@@ -9,12 +9,15 @@
 
 package team.dahaeng.android.domain.community.model
 
+import kotlin.random.Random
+import team.dahaeng.android.domain.community.model.travel.Theme
+import team.dahaeng.android.domain.community.model.travel.Period
+import team.dahaeng.android.domain.community.model.travel.Travel
+
 data class Post(
-    val imgUrl: String = "",
+    val id: Int = Random.nextInt(),
+    val imageUrl: String = "",
     val title: String = "",
     val content: String = "",
-    val expense: String = "",
-    val period: String = "",
-    val tagTheme: String = "",
-    val id: String = ""
+    val travel: Travel
 )
