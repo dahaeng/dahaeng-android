@@ -12,7 +12,7 @@ package team.dahaeng.android.domain.community.usecase
 import android.net.Uri
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
-class UploadImageToStorageUseCase(private val repository: FirebaseRepository) {
+class UploadImageUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke(uri: Uri, imageName: String) = runCatching {
         repository.uploadImage(uri, imageName)
     }

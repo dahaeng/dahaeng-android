@@ -24,6 +24,8 @@ import team.dahaeng.android.domain.community.model.Post
 
 class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(PostDiffCallback()) {
 
+    private val storageRef by lazy { Firebase.storage.reference }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -38,8 +40,7 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
     }
 
     override fun onBindViewHolder(holder: CommunityAdapter.PostViewHolder, position: Int) {
-        val post = getItem(position) as Post
-        holder.bind(post)
+        holder.bind(getItem(position))
     }
 
     inner class PostViewHolder(
@@ -47,9 +48,6 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(post: Post) {
-
-            val storageRef = Firebase.storage.reference
-            binding.post = post
             binding.executePendingBindings()
             storageRef.child("image").child(post.imageUrl).downloadUrl.addOnSuccessListener { uri ->
                 Glide.with(binding.root).load(uri).fitCenter().into(binding.ivTravelphoto)
@@ -57,19 +55,18 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
                 Log.e("GLIDE EXCEPTION", exception.message.toString())
             }
         }
-
     }
 
     private class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
-
         override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
             return oldItem == newItem
         }
 
         @SuppressLint
         override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-            return oldItem.content  == newItem.content
+            return oldItem.content == newItem.content
         }
     }
 
+    override fun getItemId(position: Int) = getItem(position).id
 }

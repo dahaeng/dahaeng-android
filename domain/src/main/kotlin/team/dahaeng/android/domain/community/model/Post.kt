@@ -13,7 +13,7 @@ import team.dahaeng.android.domain.community.model.travel.Travel
 import kotlin.random.Random
 
 data class Post(
-    val id: Int = Random.nextInt(),
+    val id: Long = Random.nextLong(),
     val imageUrl: String = "",
     val title: String = "",
     val content: String = "",

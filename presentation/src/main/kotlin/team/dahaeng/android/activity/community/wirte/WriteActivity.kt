@@ -58,16 +58,15 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(
             vm.uploadPost()
             finish()
         }
-
     }
 
     private fun setAdapter() {
         val themes = resources.getStringArray(R.array.themes)
         val expenses = resources.getStringArray(R.array.expenses)
         val periods = resources.getStringArray(R.array.periods)
-        val arrayThemeAdapter = ArrayAdapter(this, R.layout.dropdown_item, themes)
-        val arrayExpenseAdapter = ArrayAdapter(this, R.layout.dropdown_item, expenses)
-        val arrayPeriodAdapter = ArrayAdapter(this, R.layout.dropdown_item, periods)
+        val arrayThemeAdapter = ArrayAdapter(this, R.layout.layout_dropdown_item, themes)
+        val arrayExpenseAdapter = ArrayAdapter(this, R.layout.layout_dropdown_item, expenses)
+        val arrayPeriodAdapter = ArrayAdapter(this, R.layout.layout_dropdown_item, periods)
         binding.autocompletetvTheme.setAdapter(arrayThemeAdapter)
         binding.autocompletetvExpense.setAdapter(arrayExpenseAdapter)
         binding.autocompletetvPeriod.setAdapter(arrayPeriodAdapter)

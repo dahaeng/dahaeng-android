@@ -12,11 +12,11 @@ package team.dahaeng.android.activity.login
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
+import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
 import javax.inject.Inject
 
@@ -24,15 +24,14 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
     private val dispatcher: CoroutineDispatcher
-) : BaseViewModel<LoginEvent>() {
-    suspend fun login(context: Context) = viewModelScope.launch {
+) : BaseViewModel<ResultEvent<User>>() {
+    fun login(context: Context) = viewModelScope.launch {
         kakaoLoginUseCase(context, dispatcher)
             .onSuccess { user ->
-                emitEvent(LoginEvent.Success(user))
+                emitEvent(ResultEvent.Success(user))
             }
             .onFailure { exception ->
-                logeukes(type = LoggerType.E) { exception }
-                emitEvent(LoginEvent.Failure)
+                emitEvent(ResultEvent.Failure(exception))
             }
     }
 }

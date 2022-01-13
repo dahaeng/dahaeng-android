@@ -19,8 +19,8 @@ import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.usecase.UploadImageToStorageUseCase
-import team.dahaeng.android.domain.community.usecase.UploadPostToStorageUseCase
+import team.dahaeng.android.domain.community.usecase.UploadImageUseCase
+import team.dahaeng.android.domain.community.usecase.UploadPostUseCase
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -28,8 +28,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WriteViewModel @Inject constructor(
-    private val uploadImageToStorageUseCase: UploadImageToStorageUseCase,
-    private val uploadPostToStorageUseCase: UploadPostToStorageUseCase
+    private val uploadImageUseCase: UploadImageUseCase,
+    private val uploadPostUseCase: UploadPostUseCase
 ) : BaseViewModel<BaseEvent>() {
     private val userName = "210202" // kakao userName
     private val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
@@ -42,13 +42,13 @@ class WriteViewModel @Inject constructor(
     val post: LiveData<Post> get() = _post
 
     fun uploadPost() = viewModelScope.launch {
-        uploadPostToStorageUseCase.invoke(getPost()!!)
+        uploadPostUseCase.invoke(getPost()!!)
     }
 
     fun uploadImage(uri: Uri) = viewModelScope.launch {
 
         Log.i("uploadImage", imgFileName)
-        uploadImageToStorageUseCase.invoke(uri, imgFileName)
+        uploadImageUseCase.invoke(uri, imgFileName)
     }
 
     fun setPost(title: String, content: String, expense: String, period: String, tagTheme: String) {

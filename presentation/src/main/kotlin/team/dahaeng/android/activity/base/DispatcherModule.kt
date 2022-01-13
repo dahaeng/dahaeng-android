@@ -19,7 +19,7 @@ import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object BaseModule {
+object DispatcherModule {
     @Provides
     @ViewModelScoped
     fun provideIoCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO

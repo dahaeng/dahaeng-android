@@ -12,7 +12,7 @@ package team.dahaeng.android.domain.community.usecase
 import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
-class UploadPostToStorageUseCase(private val repository: FirebaseRepository) {
+class UploadPostUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke(post: Post) = runCatching {
         repository.uploadPost(post)
     }

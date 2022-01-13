@@ -11,23 +11,30 @@ package team.dahaeng.android.activity.community
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.activity.community.model.ListLiveData
-import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.usecase.ImportFirebaseStorageUseCase
+import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.data.DataStore
+import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class CommunityViewModel @Inject constructor(
-    private val importFirebaseStorageUseCase: ImportFirebaseStorageUseCase
-) : BaseViewModel<BaseEvent>() {
+    private val importPostsUseCase: ImportPostsUseCase
+) : BaseViewModel<ResultEvent<Nothing>>() {
 
-    val postList = ListLiveData<Post>()
+    private val _posts = MutableStateFlow(DataStore.posts)
+    val posts = _posts.asStateFlow()
 
-    fun importPostList() = viewModelScope.launch {
-        postList.addAll(importFirebaseStorageUseCase.invoke())
+    fun reimportPosts() = viewModelScope.launch {
+        importPostsUseCase()
+            .onSuccess { posts ->
+                _posts.emit(posts)
+            }
+            .onFailure { exception ->
+                emitEvent(ResultEvent.Failure(exception))
+            }
     }
-
 }

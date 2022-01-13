@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  ~ Dahaeng license is under the MIT.
  ~
@@ -37,10 +36,10 @@
             android:layout_height="75dp"
             android:layout_marginStart="50dp"
             android:layout_marginTop="100sp"
-            android:src="@drawable/ic_launcher_background"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/iv_round_border" />
+            app:shapeAppearanceOverlay="@style/iv_round_border"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
         <TextView
             android:id="@+id/tv_motto"
@@ -61,7 +60,7 @@
             android:layout_height="60dp"
             android:layout_marginBottom="100dp"
             android:fontFamily="@font/nanumbarungothic"
-            android:onClick="@{(v) -> vm.login(v.context)}"
+            android:onClick="@{(view) -> vm.login(view.context)}"
             android:text="@string/activity_login_btn_start"
             android:textColor="@color/white"
             android:textSize="15sp"

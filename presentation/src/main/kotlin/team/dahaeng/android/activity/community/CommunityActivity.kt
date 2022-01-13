@@ -17,6 +17,7 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.community.wirte.WriteActivity
 import team.dahaeng.android.databinding.ActivityCommunityBinding
+import team.dahaeng.android.util.extensions.collectWithLifecycle
 
 @AndroidEntryPoint
 class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewModel>(
@@ -24,24 +25,28 @@ class CommunityActivity : BaseActivity<ActivityCommunityBinding, CommunityViewMo
 ) {
 
     override val vm: CommunityViewModel by viewModels()
+    private val adapter by lazy {
+        CommunityAdapter().apply {
+            setHasStableIds(true)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.rvCommunity.adapter = CommunityAdapter()
-        vm.importPostList()
+        binding.rvCommunity.setHasFixedSize(true)
+        binding.rvCommunity.adapter = adapter
+        vm.reimportPosts()
 
         binding.btnWritepost.setOnClickListener {
             val intent = Intent(applicationContext, WriteActivity::class.java)
             startActivity(intent)
         }
 
-        vm.postList.observe(this) { postList ->
-            if (postList.isNotEmpty()) {
-                (binding.rvCommunity.adapter as CommunityAdapter).submitList(postList)
+        vm.posts.collectWithLifecycle(this) { posts ->
+            if (posts.isNotEmpty()) {
+                adapter.submitList(posts)
             }
         }
-
     }
-
 }

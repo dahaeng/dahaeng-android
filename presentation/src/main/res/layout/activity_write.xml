@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  ~ Dahaeng license is under the MIT.
  ~
@@ -38,9 +37,9 @@
                 android:layout_margin="12dp"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/bg_baseline_camera"
-                app:shapeAppearanceOverlay="@style/iv_round_border"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/iv_round_border">
 
             </com.google.android.material.imageview.ShapeableImageView>
 
@@ -60,9 +59,9 @@
                 app:layout_constraintTop_toTopOf="@+id/iv_travelphoto"></com.google.android.material.textfield.TextInputEditText>
 
             <LinearLayout
-                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:orientation="vertical"
                 app:layout_constraintTop_toBottomOf="@+id/iv_travelphoto">
 
@@ -131,31 +130,31 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="8dp"
-                    android:background="@color/primary"></LinearLayout>
+                    android:background="@color/primary" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textinputedittext_content"
-            android:padding="16dp"
-            android:gravity="start"
-            android:hint="내용을 입력해주세요"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:background="@null"
+            android:gravity="start"
+            android:hint="내용을 입력해주세요"
+            android:padding="16dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_upload"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"></com.google.android.material.textfield.TextInputEditText>
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 
         <Button
-            android:background="@color/primary"
             android:id="@+id/btn_upload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
             android:text="등록"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"></Button>
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
