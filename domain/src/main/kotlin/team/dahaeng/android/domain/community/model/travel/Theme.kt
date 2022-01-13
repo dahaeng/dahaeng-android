@@ -26,8 +26,8 @@ value class Theme(val value: String) {
 }
 
 object ThemeList {
-    const val Pension = "펜션"
-    const val Camping = "캠핑"
-    const val Sport = "스포츠"
-    const val Healing = "힐링"
+    val Pension = Theme("펜션")
+    val Camping = Theme("캠핑")
+    val Sport = Theme("스포츠")
+    val Healing = Theme("힐링")
 }

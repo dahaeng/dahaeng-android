@@ -9,4 +9,17 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-data class Transportation
+@JvmInline
+value class Transportation(val value: String) {
+    companion object {
+        val NONE = Transportation("")
+    }
+}
+
+object TransportationList {
+    val Car = Transportation("자동차")
+    val Bus = Transportation("버스")
+    val Subway = Transportation("지하철")
+    val Plane = Transportation("비행기")
+    val Ship = Transportation("배")
+}

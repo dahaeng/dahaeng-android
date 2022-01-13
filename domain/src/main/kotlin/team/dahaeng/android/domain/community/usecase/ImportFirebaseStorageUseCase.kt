@@ -13,6 +13,6 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class ImportFirebaseStorageUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke() = runCatching {
-        repository.importPost()
+        repository.importPosts()
     }
 }

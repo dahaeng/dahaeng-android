@@ -17,7 +17,7 @@ value class Target(val value: String) {
 }
 
 object TargetList {
-    const val Parent = "부모님"
-    const val Friend = "친구"
-    const val Lover = "애인"
+    val Parent = Target("부모님")
+    val Friend = Target("친구")
+    val Lover = Target("애인")
 }

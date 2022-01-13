@@ -9,3 +9,6 @@
 
 package team.dahaeng.android.data.util
 
+import com.google.firebase.firestore.DocumentSnapshot
+
+inline fun <reified T> DocumentSnapshot.toObjectNonNull(): T = toObject(T::class.java)!!

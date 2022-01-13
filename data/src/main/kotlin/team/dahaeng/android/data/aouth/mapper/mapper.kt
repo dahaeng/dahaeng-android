@@ -10,7 +10,7 @@
 package team.dahaeng.android.data.aouth.mapper
 
 import com.kakao.sdk.user.model.User
-import team.dahaeng.android.data.UserDomain
+import team.dahaeng.android.data.util.UserDomain
 
 fun User.toDomain() = UserDomain(
     nickname = kakaoAccount?.profile?.nickname ?: UserDomain.getDefaultNickname(),

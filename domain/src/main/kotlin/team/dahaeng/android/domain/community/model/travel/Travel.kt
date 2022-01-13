@@ -10,10 +10,10 @@
 package team.dahaeng.android.domain.community.model.travel
 
 data class Travel(
-    val totalPrice: Long = 0, // 필수, 총 가격
-    val transportation: Transportation, // 교통 수단
+    val totalPrice: Long = 0, // 총 가격
+    val transportation: Transportation = Transportation.NONE, // 교통 수단
     val period: Period = Period.NONE, // 기간
-    val place: String = "", // 필수, 여행지 이름
+    val places: List<Place> = emptyList(), // 여행지 목록
     val photos: List<String> = emptyList(), // 여행지 사진
     val theme: Theme = Theme.NONE, // 태그
     val target: Target = Target.NONE // 추천 대상
