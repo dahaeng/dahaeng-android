@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
@@ -33,21 +34,35 @@ class WriteActivity : BaseActivity<ActivityWriteBinding, WriteViewModel>(
         setAdapter()
         val result =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-                if (result.data?.data != null) {
-                    vm.uploadImage(result.data?.data!!) // registerForActivityResult는 미리 생성하고 실행해야함
+                val uri = result.data?.data
+                if (uri != null) {
+                    vm.setPostImage(uri)
+                    Glide.with(this).load(uri).fitCenter().into(binding.ivTravelphoto)
                 }
             }
 
-        binding.btnUpload.setOnClickListener {
+        binding.ivTravelphoto.setOnClickListener {
             // TODO: 이미지 로드 -> TedImagePicker 등등 이미지 피커 라이브러리 사용
             val imagePickIntent = Intent(Intent.ACTION_PICK)
             imagePickIntent.type = "image/*"
             result.launch(imagePickIntent)
         }
+        binding.btnUpload.setOnClickListener {
+            vm.uploadImage(vm.getPostImage()!!)
+            vm.setPost(
+                binding.textinputedittextTitle.text.toString(),
+                binding.textinputedittextContent.text.toString(),
+                binding.autocompletetvExpense.text.toString(),
+                binding.autocompletetvPeriod.text.toString(),
+                binding.autocompletetvTheme.text.toString()
+            )
+            vm.uploadPost()
+            finish()
+        }
 
     }
 
-    private fun setAdapter(){
+    private fun setAdapter() {
         val themes = resources.getStringArray(R.array.themes)
         val expenses = resources.getStringArray(R.array.expenses)
         val periods = resources.getStringArray(R.array.periods)

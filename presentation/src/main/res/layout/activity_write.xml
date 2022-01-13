@@ -30,30 +30,23 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/bg_baseline_camera"
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_travelphoto"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_margin="12dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/bg_baseline_camera"
+                app:shapeAppearanceOverlay="@style/iv_round_border"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="12dp"
-                    android:background="@drawable/ic_baseline_add_photo_24"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></ImageButton>
+            </com.google.android.material.imageview.ShapeableImageView>
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editText"
+                android:id="@+id/textinputedittext_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
@@ -61,16 +54,17 @@
                 android:ellipsize="end"
                 android:hint="제목"
                 android:maxLines="1"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_travelphoto"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/constraintLayout"
-                app:layout_constraintTop_toTopOf="@+id/constraintLayout"></com.google.android.material.textfield.TextInputEditText>
+                app:layout_constraintStart_toEndOf="@+id/iv_travelphoto"
+                app:layout_constraintTop_toTopOf="@+id/iv_travelphoto"></com.google.android.material.textfield.TextInputEditText>
 
             <LinearLayout
+                android:layout_marginTop="16dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+                app:layout_constraintTop_toBottomOf="@+id/iv_travelphoto">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -134,15 +128,16 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
                     android:background="@color/primary"></LinearLayout>
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textinputedittext_content"
             android:padding="16dp"
             android:gravity="start"
             android:hint="내용을 입력해주세요"

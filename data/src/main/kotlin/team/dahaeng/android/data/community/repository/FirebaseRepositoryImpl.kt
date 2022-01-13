@@ -14,33 +14,47 @@ import android.util.Log
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageException
 import com.google.firebase.storage.ktx.storage
+import kotlinx.coroutines.handleCoroutineException
 import kotlinx.coroutines.suspendCancellableCoroutine
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import team.dahaeng.android.domain.community.model.Post
-import java.text.SimpleDateFormat
-import java.util.*
+import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class FirebaseRepositoryImpl : FirebaseRepository {
 
-    private val storage = Firebase.storage
-    private val storageRef = storage.reference
-    override fun uploadImage(uri: Uri) {
-        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.KOREA).format(Date())
-        val imgFileName = "IMAGE_" + timeStamp + "_.png"
-        storageRef.child("image").child(imgFileName)
-        storageRef.putFile(uri).addOnSuccessListener {
+    // private val storage = Firebase.storage
+    // private val storageRef = storage.reference
+    private val store = Firebase.firestore
+    override fun uploadImage(uri: Uri, imgFileName: String) {
+
+        val storage = Firebase.storage
+        val storageRef = storage.reference
+        storageRef.child("image").child(imgFileName).putFile(uri).addOnSuccessListener {
             Log.i("UPLOAD FIREBASE", "SUCCESS")
+        }.addOnFailureListener { exception ->
+            val errorCode = (exception as StorageException).errorCode
+            val errorMessage = exception.message
+            Log.i("UPLOAD FAIL errorcode", errorCode.toString())
+            Log.i("UPLOAD FAIL errormessage", errorMessage.toString())
+        }
+    }
+
+    override fun uploadPost(post: Post) {
+        store.collection("test0103").document().set(post).addOnSuccessListener {
+            Log.i("UPLOAD STORE", "SUCCESS")
+        }.addOnFailureListener {
+            Log.i("UPLOAD STORE", "FAIL")
         }
     }
 
     override suspend fun importPost(): List<Post> =
         suspendCancellableCoroutine { continuation ->
             val postList = mutableListOf<Post>()
-            Firebase.firestore.collection("test0103")
+            store.collection("test0103")
                 .get()
-                .addOnSuccessListener {  result ->
-                    for(document in result){
+                .addOnSuccessListener { result ->
+                    for (document in result) {
                         val post = document.toObject<Post>()
                         postList.add(post)
                     }
@@ -50,7 +64,6 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     continuation.resume(listOf(), null)
                 }
         }
-
 
 
 }

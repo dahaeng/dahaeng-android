@@ -51,7 +51,7 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
             val storageRef = Firebase.storage.reference
             binding.post = post
             binding.executePendingBindings()
-            storageRef.child(post.imgUrl).downloadUrl.addOnSuccessListener { uri ->
+            storageRef.child("image").child(post.imgUrl).downloadUrl.addOnSuccessListener { uri ->
                 Glide.with(binding.root).load(uri).fitCenter().into(binding.ivTravelphoto)
             }.addOnFailureListener { exception ->
                 Log.e("GLIDE EXCEPTION", exception.message.toString())
@@ -68,7 +68,7 @@ class CommunityAdapter : ListAdapter<Post, CommunityAdapter.PostViewHolder>(Post
 
         @SuppressLint
         override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-            return oldItem.number == newItem.number
+            return oldItem.content  == newItem.content
         }
     }
 
