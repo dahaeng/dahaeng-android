@@ -11,10 +11,10 @@ package team.dahaeng.android.domain.community.repository
 
 import android.net.Uri
 import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.PostResult
 
 interface FirebaseRepository {
-    fun uploadImage(uri : Uri, imgFileName : String)
-    fun uploadPost(post : Post)
-    suspend fun importPost() : List<Post>
-
+    fun uploadImage(uri: Uri, imgFileName: String)
+    fun uploadPost(post: Post)
+    suspend fun importPost(): PostResult
 }

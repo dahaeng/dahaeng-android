@@ -13,9 +13,7 @@ import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class UploadPostToStorageUseCase(private val repository: FirebaseRepository) {
-    operator fun invoke(post : Post) = try {
+    operator fun invoke(post: Post) = runCatching {
         repository.uploadPost(post)
-    } catch (exception: Exception){
-        // upload fail exception
     }
 }

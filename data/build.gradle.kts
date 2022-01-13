@@ -31,9 +31,10 @@ android {
 }
 
 dependencies {
-    implementation(platform(Dependencies.FirebaseBom))
-    implementation(project(":domain"))
     implementation(Dependencies.Kakao)
+    implementation(project(":domain"))
+    implementation(platform(Dependencies.FirebaseBom))
+
     Dependencies.Essential.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
 }

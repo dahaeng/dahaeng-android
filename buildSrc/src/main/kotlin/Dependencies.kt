@@ -66,12 +66,10 @@ object Dependencies {
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
-
     const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
     const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
 
     const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
-
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
