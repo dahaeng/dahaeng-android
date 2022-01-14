@@ -1,4 +1,5 @@
 .gradle
+secrets.tar
 local.properties
 google-services.json
 /.idea
