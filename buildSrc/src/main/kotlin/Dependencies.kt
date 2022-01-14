@@ -32,23 +32,23 @@ object Versions {
     }
 
     object Ui {
-        const val Material = "1.4.0"
-        const val AppCompat = "1.4.0"
+        const val Material = "1.5.0"
+        const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
-        const val ConstraintLayout = "2.1.2"
+        const val ConstraintLayout = "2.1.3"
     }
 
     object Util {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
-        const val LeakCanary = "2.8"
+        const val LeakCanary = "2.8.1"
         const val SystemUiController = "1.0.0"
         const val SecretsGradlePlugin = "2.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
 
     object Jetpack {
-        const val Room = "2.4.0"
+        const val Room = "2.4.1"
         const val Hilt = "2.40.5"
     }
 
