@@ -1,4 +1,4 @@
-# 다행
+# 다행 ![ci](https://github.com/dahaeng/dahaeng-android/actions/workflows/android-ci.yml/badge.svg)
 
 > **다**같이 정하는 여**행** 계획
 
