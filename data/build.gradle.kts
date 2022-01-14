@@ -35,6 +35,6 @@ dependencies {
     implementation(project(":domain"))
     implementation(platform(Dependencies.FirebaseBom))
 
-    Dependencies.Essential.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
+    Dependencies.Essential.forEach(::implementation)
 }

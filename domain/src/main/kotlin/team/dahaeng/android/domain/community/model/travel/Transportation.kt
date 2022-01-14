@@ -16,10 +16,14 @@ value class Transportation(val value: String) {
     }
 }
 
+@Suppress("FunctionName", "MemberVisibilityCanBePrivate")
 object TransportationList {
     val Car = Transportation("자동차")
     val Bus = Transportation("버스")
     val Subway = Transportation("지하철")
     val Plane = Transportation("비행기")
     val Ship = Transportation("배")
+    val All = listOf(Car, Bus, Subway, Plane, Ship).map(Transportation::value)
+
+    fun Other(transportation: String) = Transportation(transportation)
 }

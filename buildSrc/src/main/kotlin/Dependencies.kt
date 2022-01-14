@@ -14,8 +14,8 @@ object Application {
 
 object Versions {
     const val Kakao = "2.8.4"
-    const val FirebaseBom = "29.0.3"
     const val Glide = "4.12.0"
+    const val FirebaseBom = "29.0.3"
 
     object Essential {
         const val Kotlin = "1.6.10"
@@ -43,13 +43,13 @@ object Versions {
         const val Logeukes = "1.0.1"
         const val LeakCanary = "2.8"
         const val SystemUiController = "1.0.0"
-        const val CheckDependencyUpdates = "1.5.0"
         const val SecretsGradlePlugin = "2.0.0"
+        const val CheckDependencyUpdates = "1.5.0"
     }
 
     object Jetpack {
-        const val Hilt = "2.40.5"
         const val Room = "2.4.0"
+        const val Hilt = "2.40.5"
     }
 
     object OssLicense {

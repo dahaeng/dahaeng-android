@@ -16,8 +16,12 @@ value class Target(val value: String) {
     }
 }
 
+@Suppress("FunctionName", "MemberVisibilityCanBePrivate")
 object TargetList {
     val Parent = Target("부모님")
     val Friend = Target("친구")
     val Lover = Target("애인")
+    val All = listOf(Parent, Friend, Lover).map(Target::value)
+
+    fun Other(target: String) = Target(target)
 }
