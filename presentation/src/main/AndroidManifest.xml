@@ -25,10 +25,6 @@
         </activity>
 
         <activity
-            android:name="team.dahaeng.android.activity.community.wirte.WriteActivity"
-            android:exported="false" />
-
-        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
@@ -42,10 +38,6 @@
                     android:scheme="${KAKAO_AOUTH_HOST_SCHEME}" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".activity.community.CommunityActivity"
-            android:exported="true" />
 
     </application>
 
