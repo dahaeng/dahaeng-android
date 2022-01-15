@@ -11,66 +11,62 @@ package team.dahaeng.android.data.aouth.repository
 
 import android.content.Context
 import com.kakao.sdk.user.UserApiClient
-import kotlinx.coroutines.Dispatchers
+import com.kakao.sdk.user.model.User
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
-import team.dahaeng.android.data.aouth.mapper.toLoginResult
-import team.dahaeng.android.data.aouth.model.UserResponse
-import team.dahaeng.android.domain.aouth.model.LoginResult
+import team.dahaeng.android.data.aouth.mapper.toDomain
+import team.dahaeng.android.data.util.UserDomain
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import kotlin.coroutines.resume
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
 class AouthRepositoryImpl : AouthRepository {
-    override suspend fun kakaoLogin(context: Context): LoginResult {
-        val loginResult = withContext(Dispatchers.IO) {
+    override suspend fun kakaoLogin(context: Context, dispatcher: CoroutineDispatcher): UserDomain {
+        withContext(dispatcher) {
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
                 loginWithKakaoTalk(context)
             } else {
                 loginWithWebView(context)
             }
         }
-        return if (loginResult.isFailure()) {
-            loginResult // 로그인에서 실패했으므로 실패한 정보 바로 보내기
-        } else {
-            getUser().toLoginResult() // 로그인에 성공했으므로 유저 정보 가져와서 보내기
-        }
+        return getUser().toDomain()
     }
 
-    private suspend fun loginWithKakaoTalk(context: Context): LoginResult =
+    private suspend fun loginWithKakaoTalk(context: Context): Unit =
         suspendCancellableCoroutine { continuation ->
             UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
                 continuation.resume(
                     when {
-                        error != null -> LoginResult(exception = error)
-                        token != null -> LoginResult()
-                        else -> LoginResult(exception = Throwable(RESPONSE_NOTHING))
+                        error != null -> throw error
+                        token != null -> Unit
+                        else -> throw Throwable(RESPONSE_NOTHING)
                     }
                 )
             }
         }
 
-    private suspend fun loginWithWebView(context: Context): LoginResult =
+    private suspend fun loginWithWebView(context: Context): Unit =
         suspendCancellableCoroutine { continuation ->
             UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
                 continuation.resume(
                     when {
-                        error != null -> LoginResult(exception = error)
-                        token != null -> LoginResult()
-                        else -> LoginResult(exception = Throwable(RESPONSE_NOTHING))
+                        error != null -> throw error
+                        token != null -> Unit
+                        else -> throw Throwable(RESPONSE_NOTHING)
                     }
                 )
             }
         }
 
-    private suspend fun getUser(): UserResponse = suspendCancellableCoroutine { continuation ->
+    private suspend fun getUser(): User = suspendCancellableCoroutine { continuation ->
         UserApiClient.instance.me { user, error ->
             continuation.resume(
                 when {
-                    error != null -> UserResponse(exception = error)
-                    user != null -> UserResponse(user = user)
-                    else -> UserResponse(exception = Throwable(RESPONSE_NOTHING))
+                    error != null -> throw error
+                    user != null -> user
+                    else -> throw Throwable(RESPONSE_NOTHING)
                 }
             )
         }

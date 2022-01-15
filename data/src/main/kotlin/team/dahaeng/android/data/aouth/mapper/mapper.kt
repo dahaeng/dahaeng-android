@@ -10,18 +10,9 @@
 package team.dahaeng.android.data.aouth.mapper
 
 import com.kakao.sdk.user.model.User
-import team.dahaeng.android.data.aouth.model.UserResponse
-import team.dahaeng.android.domain.aouth.model.LoginResult
+import team.dahaeng.android.data.util.UserDomain
 
-private typealias UserDomain = team.dahaeng.android.domain.aouth.model.User
-
-fun UserResponse.toLoginResult() = if (isFailure()) {
-    LoginResult(exception = exception!!)
-} else {
-    LoginResult(user = user!!.toDomain())
-}
-
-private fun User.toDomain() = UserDomain(
+fun User.toDomain() = UserDomain(
     nickname = kakaoAccount?.profile?.nickname ?: UserDomain.getDefaultNickname(),
     profileImageUrl = kakaoAccount?.profile?.profileImageUrl
         ?: UserDomain.getDefaultProfileImageColor()

@@ -14,8 +14,8 @@ object Application {
 
 object Versions {
     const val Kakao = "2.8.4"
-    const val FirebaseBom = "29.0.3"
     const val Glide = "4.12.0"
+    const val FirebaseBom = "29.0.3"
 
     object Essential {
         const val Kotlin = "1.6.10"
@@ -32,24 +32,24 @@ object Versions {
     }
 
     object Ui {
-        const val Material = "1.4.0"
-        const val AppCompat = "1.4.0"
+        const val Material = "1.5.0"
+        const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
-        const val ConstraintLayout = "2.1.2"
+        const val ConstraintLayout = "2.1.3"
     }
 
     object Util {
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
-        const val LeakCanary = "2.8"
+        const val LeakCanary = "2.8.1"
         const val SystemUiController = "1.0.0"
-        const val CheckDependencyUpdates = "1.5.0"
         const val SecretsGradlePlugin = "2.0.0"
+        const val CheckDependencyUpdates = "1.5.0"
     }
 
     object Jetpack {
+        const val Room = "2.4.1"
         const val Hilt = "2.40.5"
-        const val Room = "2.4.0"
     }
 
     object OssLicense {
@@ -66,12 +66,10 @@ object Dependencies {
 
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
-
     const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
     const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
 
     const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
-
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",

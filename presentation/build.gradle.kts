@@ -5,7 +5,6 @@ plugins {
     id("dagger.hilt.android.plugin")
     id("com.google.android.gms.oss-licenses-plugin")
     id("name.remal.check-dependency-updates") version Versions.Util.CheckDependencyUpdates
-    id("com.google.gms.google-services")
     id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
@@ -51,9 +50,6 @@ android {
 dependencies {
     implementation(Dependencies.Hilt)
     implementation(Dependencies.Glide)
-    implementation(Dependencies.Kakao)
-
-    implementation(platform(Dependencies.FirebaseBom))
 
     implementation(project(":data"))
     implementation(project(":domain"))
@@ -62,7 +58,6 @@ dependencies {
     Dependencies.Ktx.forEach(::implementation)
     Dependencies.Util.forEach(::implementation)
     Dependencies.Room.forEach(::implementation)
-    Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)

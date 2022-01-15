@@ -13,8 +13,7 @@ import android.net.Uri
 import team.dahaeng.android.domain.community.model.Post
 
 interface FirebaseRepository {
-    fun uploadImage(uri : Uri, imgFileName : String)
-    fun uploadPost(post : Post)
-    suspend fun importPost() : List<Post>
-
+    suspend fun uploadImage(uri: Uri, imageName: String)
+    suspend fun uploadPost(post: Post)
+    suspend fun importPosts(): List<Post>
 }

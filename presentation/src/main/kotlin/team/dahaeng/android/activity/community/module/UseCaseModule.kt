@@ -15,26 +15,25 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.community.usecase.ImportFirebaseStorageUseCase
-import team.dahaeng.android.domain.community.usecase.UploadImageToStorageUseCase
-import team.dahaeng.android.domain.community.usecase.UploadPostToStorageUseCase
+import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
+import team.dahaeng.android.domain.community.usecase.UploadImageUseCase
+import team.dahaeng.android.domain.community.usecase.UploadPostUseCase
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object UseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideUploadImageToStorageUseCase(repository: FirebaseRepository) =
-        UploadImageToStorageUseCase(repository)
+    fun provideUploadImageUseCase(repository: FirebaseRepository): UploadImageUseCase =
+        UploadImageUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideUploadPostToStorageUseCase(repository: FirebaseRepository) =
-        UploadPostToStorageUseCase(repository)
+    fun provideUploadPostUseCase(repository: FirebaseRepository): UploadPostUseCase =
+        UploadPostUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideImportFirebaseStorageUseCase(repository: FirebaseRepository) =
-        ImportFirebaseStorageUseCase(repository)
-
+    fun provideImportPostsUseCase(repository: FirebaseRepository): ImportPostsUseCase =
+        ImportPostsUseCase(repository)
 }

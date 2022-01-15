@@ -12,10 +12,8 @@ package team.dahaeng.android.domain.community.usecase
 import android.net.Uri
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
-class UploadImageToStorageUseCase(private val repository: FirebaseRepository) {
-    operator fun invoke(uri: Uri, imgFileName : String) = try {
-        repository.uploadImage(uri, imgFileName)
-    } catch (exception: Exception){
-        // upload fail exception
+class UploadImageUseCase(private val repository: FirebaseRepository) {
+    suspend operator fun invoke(uri: Uri, imageName: String) = runCatching {
+        repository.uploadImage(uri, imageName)
     }
 }
