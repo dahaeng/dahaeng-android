@@ -28,10 +28,10 @@ class LoginViewModel @Inject constructor(
     fun login(context: Context) = viewModelScope.launch {
         kakaoLoginUseCase(context, dispatcher)
             .onSuccess { user ->
-                emitEvent(ResultEvent.Success(user))
+                event(ResultEvent.Success(user))
             }
             .onFailure { exception ->
-                emitEvent(ResultEvent.Failure(exception))
+                event(ResultEvent.Failure(exception))
             }
     }
 }

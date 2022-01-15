@@ -10,21 +10,8 @@
 package team.dahaeng.android.util.extensions
 
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
-
-fun <T> LifecycleOwner.flowCollectWithLifecycle(
-    flow: Flow<T>,
-    action: suspend (T) -> Unit
-) {
-    lifecycleScope.launchWhenCreated {
-        flow.flowWithLifecycle(lifecycle).collect { value ->
-            action(value)
-        }
-    }
-}
 
 fun LifecycleOwner.doDelayed(ms: Long, action: suspend () -> Unit) {
     lifecycleScope.launchWhenCreated {

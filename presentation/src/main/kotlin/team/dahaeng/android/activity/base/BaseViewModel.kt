@@ -19,7 +19,7 @@ abstract class BaseViewModel<EVENT : BaseEvent> : ViewModel() {
     private val _eventFlow = MutableSharedFlow<EVENT>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    open fun emitEvent(event: EVENT) = viewModelScope.launch {
+    open fun event(event: EVENT) = viewModelScope.launch {
         _eventFlow.emit(event)
     }
 }

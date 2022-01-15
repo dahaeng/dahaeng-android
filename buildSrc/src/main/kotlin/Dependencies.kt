@@ -35,6 +35,7 @@ object Versions {
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
+        const val SmoothBottomBar = "1.7.8"
         const val ConstraintLayout = "2.1.3"
     }
 
@@ -92,6 +93,7 @@ object Dependencies {
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
+        "com.github.ibrahimsn98:SmoothBottomBar:${Versions.Ui.SmoothBottomBar}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
         "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
     )

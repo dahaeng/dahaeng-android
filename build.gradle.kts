@@ -19,6 +19,7 @@ allprojects {
         google()
         mavenCentral()
         maven { setUrl("https://devrepo.kakao.com/nexus/content/groups/public/") }
+        maven { setUrl("https://www.jitpack.io") }
     }
 }
 

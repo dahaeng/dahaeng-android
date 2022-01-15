@@ -31,10 +31,11 @@ class CommunityViewModel @Inject constructor(
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
+                DataStore.updatePosts(posts)
                 _posts.emit(posts)
             }
             .onFailure { exception ->
-                emitEvent(ResultEvent.Failure(exception))
+                event(ResultEvent.Failure(exception))
             }
     }
 }
