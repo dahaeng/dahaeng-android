@@ -92,17 +92,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         }
     }
 
+    // TODO: 플리커가 왜 생기지??
     private fun playbackStateListener() = object : Player.Listener {
         override fun onPlaybackStateChanged(playbackState: Int) {
             when (playbackState) {
                 ExoPlayer.STATE_BUFFERING, ExoPlayer.STATE_IDLE -> {
-                    binding.exoPlayer.visibility = View.INVISIBLE
+                    binding.exoPlayer.visibility = View.GONE
                     binding.ivIntroThumbnail.visibility = View.VISIBLE
                 }
                 ExoPlayer.STATE_READY -> {
                     binding.exoPlayer.visibility = View.VISIBLE
                     binding.ivIntroThumbnail.visibility = View.GONE
-                    logeukes { "READY" }
                 }
                 ExoPlayer.STATE_ENDED -> {}
             }
