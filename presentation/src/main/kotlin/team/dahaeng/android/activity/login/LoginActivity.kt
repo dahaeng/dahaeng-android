@@ -23,8 +23,6 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
@@ -32,7 +30,6 @@ import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
 import team.dahaeng.android.util.extensions.collectWithLifecycle
-import team.dahaeng.android.util.extensions.doDelayed
 import team.dahaeng.android.util.extensions.toast
 
 @AndroidEntryPoint
@@ -40,17 +37,18 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
     override val vm: LoginViewModel by viewModels()
     private var player: ExoPlayer? = null
+    private var isReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        var isReady = false
-        doDelayed(1000) {
+        vm.importPostsWithAction {
             isReady = true
         }
 
@@ -81,8 +79,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         vm.eventFlow.collectWithLifecycle(this) { event ->
             when (event) {
                 is ResultEvent.Failure -> {
-                    logeukes(type = LoggerType.E) { event.exception }
-                    toast(getString(R.string.activity_login_toast_login_fail))
+                    toast(getString(R.string.activity_login_toast_start_fail)) // TODO: handle exception
                 }
                 is ResultEvent.Success -> {
                     DataStore.me = event.data

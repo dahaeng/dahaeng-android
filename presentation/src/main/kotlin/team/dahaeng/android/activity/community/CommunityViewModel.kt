@@ -11,6 +11,8 @@ package team.dahaeng.android.activity.community
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -35,6 +37,7 @@ class CommunityViewModel @Inject constructor(
                 _posts.emit(posts)
             }
             .onFailure { exception ->
+                logeukes(type = LoggerType.E) { exception }
                 event(ResultEvent.Failure(exception))
             }
     }

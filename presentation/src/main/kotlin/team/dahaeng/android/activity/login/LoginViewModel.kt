@@ -12,17 +12,22 @@ package team.dahaeng.android.activity.login
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
+import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
+    private val importPostsUseCase: ImportPostsUseCase,
     private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel<ResultEvent<User>>() {
     fun login(context: Context) = viewModelScope.launch {
@@ -31,6 +36,19 @@ class LoginViewModel @Inject constructor(
                 event(ResultEvent.Success(user))
             }
             .onFailure { exception ->
+                event(ResultEvent.Failure(exception))
+            }
+    }
+
+    // TODO: 이게 좋은 방법일까
+    fun importPostsWithAction(doneAction: () -> Unit) = viewModelScope.launch {
+        importPostsUseCase()
+            .onSuccess { posts ->
+                DataStore.updatePosts(posts)
+                doneAction()
+            }
+            .onFailure { exception ->
+                logeukes(type = LoggerType.E) { exception }
                 event(ResultEvent.Failure(exception))
             }
     }
