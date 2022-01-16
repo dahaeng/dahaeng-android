@@ -8,12 +8,11 @@
     <application
         android:name=".DahaengAndroid"
         android:allowBackup="true"
-        android:fullBackupContent="true"
         android:fullBackupOnly="true"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Dahaeng">
+        android:theme="@style/Theme.Dahaeng.Splash">
 
         <activity
             android:name=".activity.login.LoginActivity"
