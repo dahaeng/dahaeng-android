@@ -41,7 +41,7 @@ class LoginViewModel @Inject constructor(
     }
 
     // TODO: 이게 좋은 방법일까
-    fun importPostsWithAction(doneAction: () -> Unit) = viewModelScope.launch {
+    fun importPostsWithDoneAction(doneAction: () -> Unit) = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
                 DataStore.updatePosts(posts)

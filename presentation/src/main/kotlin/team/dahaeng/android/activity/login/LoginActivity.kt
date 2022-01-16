@@ -48,7 +48,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        vm.importPostsWithAction {
+        vm.importPostsWithDoneAction {
             isReady = true
         }
 

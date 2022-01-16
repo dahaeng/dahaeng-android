@@ -21,7 +21,6 @@
     <style name="Theme.Dahaeng.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
-        <item name="windowSplashScreenAnimationDuration">300</item>
         <item name="postSplashScreenTheme">@style/Theme.Dahaeng</item>
 
         <item name="android:statusBarColor">@color/white</item>
