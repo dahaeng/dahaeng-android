@@ -35,6 +35,7 @@ object Versions {
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
+        const val Splash = "1.0.0-beta01"
         const val SmoothBottomBar = "1.7.8"
         const val ConstraintLayout = "2.1.3"
     }
@@ -90,6 +91,7 @@ object Dependencies {
 
     val Ui = listOf(
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
+        "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
