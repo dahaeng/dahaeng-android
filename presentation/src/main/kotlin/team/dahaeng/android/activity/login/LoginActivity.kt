@@ -92,6 +92,23 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         }
     }
 
+    private fun playbackStateListener() = object : Player.Listener {
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            when (playbackState) {
+                ExoPlayer.STATE_BUFFERING, ExoPlayer.STATE_IDLE -> {
+                    binding.exoPlayer.visibility = View.INVISIBLE
+                    binding.ivIntroThumbnail.visibility = View.VISIBLE
+                }
+                ExoPlayer.STATE_READY -> {
+                    binding.exoPlayer.visibility = View.VISIBLE
+                    binding.ivIntroThumbnail.visibility = View.GONE
+                    logeukes { "READY" }
+                }
+                ExoPlayer.STATE_ENDED -> {}
+            }
+        }
+    }
+
     private fun initExoPlayer() {
         player = ExoPlayer.Builder(this)
             .build()
@@ -104,6 +121,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 binding.exoPlayer.player = player
             }
 
+        player!!.addListener(playbackStateListener())
         player!!.playWhenReady = true
         player!!.prepare()
     }

@@ -27,8 +27,17 @@
             android:id="@+id/exo_player"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="invisible"
             app:resize_mode="fixed_height"
             app:use_controller="false" />
+
+        <ImageView
+            android:id="@+id/iv_intro_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/bg_intro_thumbnail" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_logo"
