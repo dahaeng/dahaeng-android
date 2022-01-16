@@ -8,15 +8,10 @@
   -->
 
 <resources>
-    <color name="primary">#e18a68</color>
-    <color name="primaryDark">#ac5c3d</color>
-    <color name="primaryLight">#ffbb96</color>
+    <color name="primary">#faa376</color>
+    <color name="primaryDark">#c47449</color>
+    <color name="primaryLight">#ffd5a5</color>
 
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
-    <color name="rv_lightgrey">#dfedec</color>
-    <color name="light_blue_400">#FF29B6F6</color>
-    <color name="light_blue_600">#FF039BE5</color>
-    <color name="gray_400">#FFBDBDBD</color>
-    <color name="gray_600">#FF757575</color>
 </resources>
