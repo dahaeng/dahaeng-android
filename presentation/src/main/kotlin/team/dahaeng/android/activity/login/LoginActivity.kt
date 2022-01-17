@@ -10,6 +10,7 @@
 package team.dahaeng.android.activity.login
 
 import android.animation.ObjectAnimator
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -27,6 +28,7 @@ import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
 import team.dahaeng.android.util.extensions.collectWithLifecycle
@@ -83,7 +85,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 }
                 is ResultEvent.Success -> {
                     DataStore.me = event.data
-                    toast("로그인 성공!") // TODO: 하드코딩
+                    toast("로그인 성공!") // TODO: 하드코딩, 자동 로그인 처리
+                    startMainActivity()
                 }
             }
         }
@@ -136,5 +139,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override fun onStop() {
         super.onStop()
         releaseExoPlayer()
+    }
+
+    private fun startMainActivity() {
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }
