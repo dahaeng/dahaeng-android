@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
+import team.dahaeng.android.di.qualifier.IoDispatcher
 import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
@@ -28,7 +29,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
     private val importPostsUseCase: ImportPostsUseCase,
-    private val dispatcher: CoroutineDispatcher
+    @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : BaseViewModel<ResultEvent<User>>() {
     fun login(context: Context) = viewModelScope.launch {
         kakaoLoginUseCase(context, dispatcher)

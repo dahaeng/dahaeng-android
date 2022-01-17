@@ -29,6 +29,7 @@ object Versions {
         const val Fragment = "1.4.0"
         const val LifeCycle = "2.4.0"
         const val ViewModel = "2.4.0"
+        const val Navigation = "2.3.5"
     }
 
     object Ui {
@@ -85,8 +86,10 @@ object Dependencies {
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
         "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.Ktx.Navigation}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
+        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}"
     )
 
     val Ui = listOf(
@@ -97,7 +100,7 @@ object Dependencies {
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
         "com.github.ibrahimsn98:SmoothBottomBar:${Versions.Ui.SmoothBottomBar}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
-        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
+        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}"
     )
 
     val Util = listOf(
