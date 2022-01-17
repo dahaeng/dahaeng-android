@@ -27,8 +27,17 @@
             android:id="@+id/exo_player"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="gone"
             app:resize_mode="fixed_height"
             app:use_controller="false" />
+
+        <ImageView
+            android:id="@+id/iv_intro_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/bg_intro_thumbnail" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_logo"
@@ -38,8 +47,8 @@
             android:layout_marginTop="100sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/iv_round_border"
-            app:srcCompat="@drawable/ic_launcher_background" />
+            app:shapeAppearanceOverlay="@style/iv_round_cornor"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/tv_motto"

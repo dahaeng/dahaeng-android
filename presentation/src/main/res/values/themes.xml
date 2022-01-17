@@ -7,13 +7,30 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.Dahaeng" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryVariant">@color/primaryDark</item>
         <item name="colorSecondary">@color/primaryLight</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Theme.Dahaeng.MainActivity" parent="Theme.Dahaeng">
+        <item name="android:windowBackground">@color/backgroundWhite</item>
+        <item name="android:statusBarColor">@color/backgroundWhite</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="Theme.Dahaeng.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="postSplashScreenTheme">@style/Theme.Dahaeng</item>
+
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="tv_title">
@@ -30,7 +47,7 @@
         <item name="cornerSize">50%</item>
     </style>
 
-    <style name="iv_round_border">
+    <style name="iv_round_cornor">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20%</item>
     </style>

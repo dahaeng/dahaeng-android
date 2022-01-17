@@ -33,8 +33,12 @@ android {
 dependencies {
     implementation(Dependencies.Kakao)
     implementation(project(":domain"))
+
+    Dependencies.Room.forEach(::implementation)
     implementation(platform(Dependencies.FirebaseBom))
 
     Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
+
+    kapt(Dependencies.RoomCompiler) // TODO: ksp
 }

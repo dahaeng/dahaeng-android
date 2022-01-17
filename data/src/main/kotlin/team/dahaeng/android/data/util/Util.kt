@@ -12,8 +12,6 @@ package team.dahaeng.android.data.util
 import android.content.Context
 import com.kakao.sdk.common.KakaoSdk
 
-object Util {
-    fun initKakaoSdk(context: Context, apiKey: String) {
-        KakaoSdk.init(context, apiKey)
-    }
+fun initKakaoSdk(context: Context, apiKey: String) {
+    KakaoSdk.init(context, apiKey)
 }

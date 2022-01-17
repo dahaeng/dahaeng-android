@@ -9,19 +9,26 @@
 
 package team.dahaeng.android.activity.login
 
+import android.animation.ObjectAnimator
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.ViewTreeObserver
 import android.view.WindowManager
+import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
 import team.dahaeng.android.util.extensions.collectWithLifecycle
@@ -32,24 +39,72 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
     override val vm: LoginViewModel by viewModels()
     private var player: ExoPlayer? = null
+    private var isReady = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
+
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
+        vm.importPostsWithDoneAction {
+            isReady = true
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener { splashScreenView ->
+                ObjectAnimator.ofFloat(splashScreenView, View.ALPHA, 1f, 0f).run {
+                    interpolator = AnticipateInterpolator()
+                    duration = 200L
+                    doOnEnd { splashScreenView.remove() }
+                    start()
+                }
+            }
+        }
+
+        binding.root.viewTreeObserver.addOnPreDrawListener(
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    return if (isReady) {
+                        binding.root.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else {
+                        false
+                    }
+                }
+            }
+        )
+
         vm.eventFlow.collectWithLifecycle(this) { event ->
             when (event) {
                 is ResultEvent.Failure -> {
-                    logeukes(type = LoggerType.E) { event.exception }
-                    toast(getString(R.string.activity_login_toast_login_fail))
+                    toast(getString(R.string.activity_login_toast_start_fail)) // TODO: handle exception
                 }
                 is ResultEvent.Success -> {
                     DataStore.me = event.data
-                    toast("로그인 성공!") // TODO: 하드코딩
+                    toast("로그인 성공!") // TODO: 하드코딩, 자동 로그인 처리
+                    startMainActivity()
                 }
+            }
+        }
+    }
+
+    // TODO: 플리커가 왜 생기지??
+    private fun playbackStateListener() = object : Player.Listener {
+        override fun onPlaybackStateChanged(playbackState: Int) {
+            when (playbackState) {
+                ExoPlayer.STATE_BUFFERING, ExoPlayer.STATE_IDLE -> {
+                    binding.exoPlayer.visibility = View.GONE
+                    binding.ivIntroThumbnail.visibility = View.VISIBLE
+                }
+                ExoPlayer.STATE_READY -> {
+                    binding.exoPlayer.visibility = View.VISIBLE
+                    binding.ivIntroThumbnail.visibility = View.GONE
+                }
+                ExoPlayer.STATE_ENDED -> {}
             }
         }
     }
@@ -66,6 +121,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                 binding.exoPlayer.player = player
             }
 
+        player!!.addListener(playbackStateListener())
         player!!.playWhenReady = true
         player!!.prepare()
     }
@@ -83,5 +139,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override fun onStop() {
         super.onStop()
         releaseExoPlayer()
+    }
+
+    private fun startMainActivity() {
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 }

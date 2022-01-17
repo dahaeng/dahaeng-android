@@ -2,7 +2,7 @@ import org.gradle.api.JavaVersion
 
 object Application {
     const val minSdk = 24
-    const val targetSdk = 30
+    const val targetSdk = 31
     const val compileSdk = 31
     const val jvmTarget = "11"
     const val versionCode = 1
@@ -29,12 +29,14 @@ object Versions {
         const val Fragment = "1.4.0"
         const val LifeCycle = "2.4.0"
         const val ViewModel = "2.4.0"
+        const val Navigation = "2.3.5"
     }
 
     object Ui {
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
+        const val Splash = "1.0.0-beta01"
         const val ConstraintLayout = "2.1.3"
     }
 
@@ -83,17 +85,20 @@ object Dependencies {
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
         "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
+        "androidx.navigation:navigation-ui-ktx:${Versions.Ktx.Navigation}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
+        "androidx.navigation:navigation-fragment-ktx:${Versions.Ktx.Navigation}"
     )
 
     val Ui = listOf(
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
+        "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
-        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
+        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}"
     )
 
     val Util = listOf(

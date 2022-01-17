@@ -57,12 +57,10 @@ dependencies {
     Dependencies.Ui.forEach(::implementation)
     Dependencies.Ktx.forEach(::implementation)
     Dependencies.Util.forEach(::implementation)
-    Dependencies.Room.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
 
     kapt(Dependencies.HiltCompiler) // TODO: ksp
-    kapt(Dependencies.RoomCompiler) // TODO: ksp
     kapt(Dependencies.GlideCompiler)
 }

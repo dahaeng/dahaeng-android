@@ -7,10 +7,12 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.community
+package team.dahaeng.android.activity.main.fragment.community
 
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -31,10 +33,12 @@ class CommunityViewModel @Inject constructor(
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
+                DataStore.updatePosts(posts)
                 _posts.emit(posts)
             }
             .onFailure { exception ->
-                emitEvent(ResultEvent.Failure(exception))
+                logeukes(type = LoggerType.E) { exception }
+                event(ResultEvent.Failure(exception))
             }
     }
 }

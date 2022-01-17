@@ -16,11 +16,13 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import team.dahaeng.android.di.qualifier.IoDispatcher
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object DispatcherModule {
     @Provides
+    @IoDispatcher
     @ViewModelScoped
     fun provideIoCoroutineDispatcher(): CoroutineDispatcher = Dispatchers.IO
 }
