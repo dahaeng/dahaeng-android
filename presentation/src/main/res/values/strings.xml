@@ -8,6 +8,7 @@
   -->
 
 <resources>
+    <string name="ellipsis">&#8230;</string>
     <string name="app_name">다행</string>
     <string name="app_motto">다같이 정하는 여행 계획</string>
 

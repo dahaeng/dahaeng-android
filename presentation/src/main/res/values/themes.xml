@@ -16,16 +16,18 @@
         <item name="android:windowLightStatusBar">false</item>
     </style>
 
-    <style name="Theme.Dahaeng.NoWindowBackground" parent="Theme.Dahaeng">
-        <item name="android:windowBackground">@null</item>
+    <style name="Theme.Dahaeng.MainActivity" parent="Theme.Dahaeng">
+        <item name="android:windowBackground">@color/backgroundWhite</item>
+        <item name="android:statusBarColor">@color/backgroundWhite</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.Dahaeng.Splash" parent="Theme.SplashScreen">
         <item name="windowSplashScreenBackground">@color/white</item>
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
-        <item name="postSplashScreenTheme">@style/Theme.Dahaeng.NoWindowBackground</item>
+        <item name="postSplashScreenTheme">@style/Theme.Dahaeng</item>
 
-        <item name="android:windowBackground">@null</item>
         <item name="android:statusBarColor">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>

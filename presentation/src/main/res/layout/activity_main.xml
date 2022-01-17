@@ -12,14 +12,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <me.ibrahimsn.lib.SmoothBottomBar
+    <team.dahaeng.android.ui.smoothbottombar.SmoothBottomBar
         android:id="@+id/sbb_menu"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        app:activeItem="1"
-        app:cornerRadius="20dp"
-        app:itemFontFamily="@font/nanumbarungothic"
+        app:activeItem="0"
+        app:cornerRadius="30dp"
+        app:corners="top_left|top_right"
+        app:iconTint="@color/primaryLight"
+        app:iconTintActive="@color/primaryDark"
+        app:itemFontFamily="@font/nanumbarunpen_b"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/main_menu" />
+        app:menu="@menu/main_menu"
+        app:textColor="@color/primaryDark" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

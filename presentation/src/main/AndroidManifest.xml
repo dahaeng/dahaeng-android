@@ -25,7 +25,8 @@
 
         <activity
             android:name=".activity.main.MainActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/Theme.Dahaeng.MainActivity" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
