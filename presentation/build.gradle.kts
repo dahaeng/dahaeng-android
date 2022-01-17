@@ -48,11 +48,11 @@ android {
 }
 
 dependencies {
+    implementation(projects.data)
+    implementation(projects.domain)
+
     implementation(Dependencies.Hilt)
     implementation(Dependencies.Glide)
-
-    implementation(project(":data"))
-    implementation(project(":domain"))
 
     Dependencies.Ui.forEach(::implementation)
     Dependencies.Ktx.forEach(::implementation)
