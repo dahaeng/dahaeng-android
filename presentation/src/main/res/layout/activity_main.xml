@@ -12,6 +12,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcv_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/sbb_menu"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <team.dahaeng.android.ui.smoothbottombar.SmoothBottomBar
         android:id="@+id/sbb_menu"
         android:layout_width="match_parent"
