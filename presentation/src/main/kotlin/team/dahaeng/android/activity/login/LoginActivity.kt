@@ -65,10 +65,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             DataStore.updatePosts(posts)
             if (sharedPreferences[Key.User.KakaoProfile] != null) {
                 // 자동 로그인 상태
+                val me = sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>()
+                DataStore.me = me
                 logeukes {
                     listOf(
                         "자동 로그인됨",
-                        sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>(),
+                        me,
                         posts
                     )
                 }

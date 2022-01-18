@@ -8,7 +8,8 @@
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,18 +19,35 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ccl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="16dp">
 
-        <TextView
-            android:id="@+id/tv_test"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/iv_round_cornor"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_locate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="LIST_FRAGMENT"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:gravity="center"
+            android:text="@string/fragment_list_loading_location"
+            android:textColor="@color/primary"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/ic_outline_location_on_24"
+            app:drawableTint="@color/primary"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/iv_avatar"
+            tools:text="서울 한강로" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

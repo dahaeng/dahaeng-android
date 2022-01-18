@@ -32,6 +32,7 @@
             android:id="@+id/sbb_menu"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+            android:elevation="15dp"
             app:activeItem="0"
             app:cornerRadius="30dp"
             app:corners="top_left|top_right"

@@ -14,11 +14,11 @@
         <item name="colorPrimaryVariant">@color/primaryDark</item>
         <item name="colorSecondary">@color/primaryLight</item>
         <item name="android:windowLightStatusBar">false</item>
+        <item name="fontFamily">@font/nanumbarungothic</item>
     </style>
 
     <style name="Theme.Dahaeng.MainActivity" parent="Theme.Dahaeng">
-        <item name="android:windowBackground">@color/backgroundWhite</item>
-        <item name="android:statusBarColor">@color/backgroundWhite</item>
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
