@@ -15,6 +15,6 @@ import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.FragmentLikeBinding
 
-class LikeFragment : BaseFragment<FragmentLikeBinding, MainViewModel>(R.layout.fragment_tasking) {
+class LikeFragment : BaseFragment<FragmentLikeBinding, MainViewModel>(R.layout.fragment_like) {
     override val vm: MainViewModel by activityViewModels()
 }

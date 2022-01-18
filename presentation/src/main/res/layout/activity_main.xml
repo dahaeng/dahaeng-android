@@ -7,30 +7,40 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fcv_fragment"
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/sbb_menu"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
 
-    <team.dahaeng.android.ui.smoothbottombar.SmoothBottomBar
-        android:id="@+id/sbb_menu"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        app:activeItem="0"
-        app:cornerRadius="30dp"
-        app:corners="top_left|top_right"
-        app:iconTint="@color/primaryLight"
-        app:iconTintActive="@color/primaryDark"
-        app:itemFontFamily="@font/nanumbarunpen_b"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/main_menu"
-        app:textColor="@color/primaryDark" />
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcv_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@+id/sbb_menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navGraph='@navigation/main_navigation' />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <team.dahaeng.android.ui.smoothbottombar.SmoothBottomBar
+            android:id="@+id/sbb_menu"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:activeItem="0"
+            app:cornerRadius="30dp"
+            app:corners="top_left|top_right"
+            app:iconTint="@color/primaryLight"
+            app:iconTintActive="@color/primaryDark"
+            app:itemFontFamily="@font/nanumbarunpen_b"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:menu="@menu/main_menu"
+            app:textColor="@color/primaryDark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
