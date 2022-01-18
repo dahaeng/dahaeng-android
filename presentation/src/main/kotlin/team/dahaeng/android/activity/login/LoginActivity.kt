@@ -32,10 +32,13 @@ import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
-import team.dahaeng.android.util.constants.SharedPreferencesKey
+import team.dahaeng.android.domain.aouth.model.User
+import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.set
+import team.dahaeng.android.util.extensions.toJsonString
+import team.dahaeng.android.util.extensions.toModel
 import team.dahaeng.android.util.extensions.toast
 import javax.inject.Inject
 
@@ -60,7 +63,15 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         vm.importPostsWithDoneAction { posts ->
             DataStore.updatePosts(posts)
-            isReady = true
+            if (sharedPreferences[Key.User.KakaoProfile] != null) {
+                // 자동 로그인 상태
+                logeukes {
+                    listOf(sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>(), posts)
+                }
+                startMainActivity()
+            } else {
+                isReady = true
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -71,13 +82,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     scaleY(0f)
                     interpolator = AnticipateInterpolator()
                     duration = 200L
-                    withEndAction {
-                        if (sharedPreferences[SharedPreferencesKey.Login.AutoLogin] == null) {
-                            splashScreenView.remove()
-                        } else {
-                            startMainActivity()
-                        }
-                    }
+                    withEndAction { splashScreenView.remove() }
                     withLayer()
                     start()
                 }
@@ -107,7 +112,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     DataStore.me = event.data
                     toast(getString(R.string.activity_login_toast_welcome))
                     startMainActivity()
-                    sharedPreferences[SharedPreferencesKey.Login.AutoLogin] = "true"
+                    sharedPreferences[Key.User.KakaoProfile] = event.data.toJsonString()
                 }
             }
         }

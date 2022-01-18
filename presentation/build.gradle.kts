@@ -34,6 +34,7 @@ android {
     sourceSets {
         getByName("main").run {
             java.srcDirs("src/main/kotlin")
+            kotlin.srcDir("build/generated/ksp/main/kotlin")
         }
     }
 
@@ -48,19 +49,22 @@ android {
 }
 
 dependencies {
+    val kapts = listOf(
+        Dependencies.Compiler.Hilt,
+        Dependencies.Compiler.Glide
+    )
+
     implementation(projects.data)
     implementation(projects.domain)
-
     implementation(Dependencies.Hilt)
-    implementation(Dependencies.Glide)
 
     Dependencies.Ui.forEach(::implementation)
     Dependencies.Ktx.forEach(::implementation)
     Dependencies.Util.forEach(::implementation)
+    Dependencies.Jackson.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
 
-    kapt(Dependencies.HiltCompiler) // TODO: ksp
-    kapt(Dependencies.GlideCompiler)
+    kapts.forEach(::kapt)
 }

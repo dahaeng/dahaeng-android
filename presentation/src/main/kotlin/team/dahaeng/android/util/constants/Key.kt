@@ -9,8 +9,8 @@
 
 package team.dahaeng.android.util.constants
 
-object SharedPreferencesKey {
-    object Login {
-        const val AutoLogin = "auto-login"
+object Key {
+    object User {
+        const val KakaoProfile = "user-kakao-profile"
     }
 }

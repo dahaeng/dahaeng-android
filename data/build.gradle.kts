@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
+    id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
 }
 
@@ -17,6 +17,7 @@ android {
     sourceSets {
         getByName("main").run {
             java.srcDirs("src/main/kotlin")
+            kotlin.srcDir("build/generated/ksp/main/kotlin")
         }
     }
 
@@ -31,15 +32,13 @@ android {
 }
 
 dependencies {
-    val dataLayerOnlyDependencies = listOf(Dependencies.Kakao)
-
     implementation(projects.domain)
+    implementation(Dependencies.Kakao)
     implementation(platform(Dependencies.FirebaseBom))
 
     Dependencies.Room.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
-    dataLayerOnlyDependencies.forEach(::implementation)
 
-    kapt(Dependencies.RoomCompiler) // TODO: ksp
+    ksp(Dependencies.Compiler.RoomKsp)
 }

@@ -13,7 +13,7 @@ import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 import io.github.jisungbin.erratum.Erratum
 import io.github.jisungbin.logeukes.Logeukes
-import team.dahaeng.android.data.util.initKakaoSdk
+import team.dahaeng.android.data.util.DataLayerUtil
 
 @HiltAndroidApp
 class DahaengAndroid : Application() {
@@ -21,7 +21,7 @@ class DahaengAndroid : Application() {
         super.onCreate()
 
         Erratum.setup(this) // TODO: Exception activity
-        initKakaoSdk(this, BuildConfig.KAKAO_API_KEY)
+        DataLayerUtil.initKakaoSdk(this, BuildConfig.KAKAO_API_KEY)
         if (BuildConfig.DEBUG) {
             Logeukes.setup()
         }
