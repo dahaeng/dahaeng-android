@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.activity.login
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -17,6 +18,7 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
+import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
@@ -54,12 +56,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             splashScreen.setOnExitAnimationListener { splashScreenView ->
-                splashScreenView.animate().run {
-                    alpha(0f)
+                ObjectAnimator.ofFloat(splashScreenView, View.ALPHA, 1f, 0f).run {
                     interpolator = AnticipateInterpolator()
                     duration = 200L
-                    withEndAction { splashScreenView.remove() }
-                    withLayer()
+                    doOnEnd { splashScreenView.remove() }
                     start()
                 }
             }
