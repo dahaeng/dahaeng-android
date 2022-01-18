@@ -10,6 +10,7 @@
 package team.dahaeng.android.activity.login
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -22,6 +23,8 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
@@ -29,8 +32,12 @@ import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
+import team.dahaeng.android.util.constants.SharedPreferencesKey
 import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.get
+import team.dahaeng.android.util.extensions.set
 import team.dahaeng.android.util.extensions.toast
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
@@ -38,6 +45,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override val vm: LoginViewModel by viewModels()
     private var player: ExoPlayer? = null
     private var isReady = false
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
@@ -48,7 +58,8 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        vm.importPostsWithDoneAction {
+        vm.importPostsWithDoneAction { posts ->
+            DataStore.updatePosts(posts)
             isReady = true
         }
 
@@ -60,7 +71,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     scaleY(0f)
                     interpolator = AnticipateInterpolator()
                     duration = 200L
-                    withEndAction { splashScreenView.remove() }
+                    withEndAction {
+                        if (sharedPreferences[SharedPreferencesKey.Login.AutoLogin] == null) {
+                            splashScreenView.remove()
+                        } else {
+                            startMainActivity()
+                        }
+                    }
                     withLayer()
                     start()
                 }
@@ -83,12 +100,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         vm.eventFlow.collectWithLifecycle(this) { event ->
             when (event) {
                 is ResultEvent.Failure -> {
-                    toast(getString(R.string.activity_login_toast_start_fail)) // TODO: handle exception
+                    logeukes(type = LoggerType.E) { event.exception }
+                    toast(getString(R.string.activity_login_toast_start_fail))
                 }
                 is ResultEvent.Success -> {
                     DataStore.me = event.data
-                    toast("로그인 성공!") // TODO: 하드코딩, 자동 로그인 처리
+                    toast(getString(R.string.activity_login_toast_welcome))
                     startMainActivity()
+                    sharedPreferences[SharedPreferencesKey.Login.AutoLogin] = "true"
                 }
             }
         }

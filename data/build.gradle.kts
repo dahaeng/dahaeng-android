@@ -31,13 +31,15 @@ android {
 }
 
 dependencies {
+    val dataLayerOnlyDependencies = listOf(Dependencies.Kakao)
+
     implementation(projects.domain)
-    implementation(Dependencies.Kakao)
     implementation(platform(Dependencies.FirebaseBom))
 
     Dependencies.Room.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
+    dataLayerOnlyDependencies.forEach(::implementation)
 
     kapt(Dependencies.RoomCompiler) // TODO: ksp
 }
