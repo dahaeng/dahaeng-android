@@ -66,7 +66,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             if (sharedPreferences[Key.User.KakaoProfile] != null) {
                 // 자동 로그인 상태
                 logeukes {
-                    listOf(sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>(), posts)
+                    listOf(
+                        "자동 로그인됨",
+                        sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>(),
+                        posts
+                    )
                 }
                 startMainActivity()
             } else {
