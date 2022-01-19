@@ -46,7 +46,7 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
     private fun Location.tryParseAddress() = try {
         val geoCoder = Geocoder(requireContext().applicationContext, Locale.KOREA)
         val addressList = geoCoder.getFromLocation(latitude, longitude, 2)
-        val address = addressList[1].getAddressLine(0)
+        val address = addressList[1].getAddressLine(0).replace("대한민국 ", "")
         lastestAddress = address
         address
     } catch (exception: Exception) {
