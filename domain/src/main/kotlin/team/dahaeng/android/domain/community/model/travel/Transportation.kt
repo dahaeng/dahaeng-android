@@ -12,7 +12,8 @@ package team.dahaeng.android.domain.community.model.travel
 @JvmInline
 value class Transportation(val value: String) {
     companion object {
-        val NONE = Transportation("")
+        val None = Transportation("")
+        val Random get() = TransportationList.All.random()
     }
 }
 
@@ -23,7 +24,7 @@ object TransportationList {
     val Subway = Transportation("지하철")
     val Plane = Transportation("비행기")
     val Ship = Transportation("배")
-    val All = listOf(Car, Bus, Subway, Plane, Ship).map(Transportation::value)
+    val All = listOf(Car, Bus, Subway, Plane, Ship)
 
     fun Other(transportation: String) = Transportation(transportation)
 }

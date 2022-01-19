@@ -17,12 +17,11 @@ import androidx.fragment.app.activityViewModels
 import com.birjuvachhani.locus.Locus
 import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
-import team.dahaeng.android.GlideApp
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentListBinding
+import team.dahaeng.android.util.test.TestUtil
 import java.util.Locale
 
 class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
@@ -40,6 +39,16 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
             }
             result.error?.let { exception ->
                 logeukes(type = LoggerType.E) { exception }
+            }
+        }
+
+        binding.rvPost.run {
+            setHasFixedSize(true)
+            setItemViewCacheSize(10)
+            adapter = PostAdapter { post ->
+                logeukes { "Post clicked: $post" }
+            }.apply {
+                submitList(TestUtil.post())
             }
         }
 

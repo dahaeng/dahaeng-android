@@ -11,9 +11,15 @@ package team.dahaeng.android.ui.databinding
 
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.bumptech.glide.load.DecodeFormat
 import team.dahaeng.android.GlideApp
 
 @BindingAdapter("with_glide_small")
-fun loadSrcWithGlide(view: ImageView, src: Any) {
-    GlideApp.with(view).load(src).override(100).into(view)
+fun loadSrcWithGlideSmallSize(view: ImageView, src: Any) {
+    GlideApp.with(view).load(src).format(DecodeFormat.PREFER_RGB_565).into(view)
+}
+
+@BindingAdapter("with_glide_big")
+fun loadSrcWithGlideBigSize(view: ImageView, src: Any) {
+    GlideApp.with(view).load(src).format(DecodeFormat.PREFER_ARGB_8888).into(view)
 }

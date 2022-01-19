@@ -1,0 +1,44 @@
+/*
+ * Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
+ * Dahaeng license is under the MIT.
+ *
+ * [TestUtil.kt] created by Ji Sungbin on 22. 1. 19. 오후 5:13
+ *
+ * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+ */
+
+package team.dahaeng.android.util.test
+
+import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.travel.Period
+import team.dahaeng.android.domain.community.model.travel.Target
+import team.dahaeng.android.domain.community.model.travel.Theme
+import team.dahaeng.android.domain.community.model.travel.Transportation
+import team.dahaeng.android.domain.community.model.travel.Travel
+import java.util.Date
+import kotlin.random.Random
+
+object TestUtil {
+    private const val TestPostImageUrl =
+        "https://github.com/dahaeng/dahaeng-resource/blob/main/hotel.png?raw=true"
+
+    fun post(count: Int = 10) = List(count) { index ->
+        Post(
+            imageUrl = TestPostImageUrl,
+            title = "여행지 - $index",
+            content = "이것은 아름다운 ${index}번째 여행지 입니다.",
+            travel = Travel(
+                totalPrice = Random.nextLong(10_000, 1_000_000_000),
+                transportation = Transportation.Random,
+                period = Period(from = "어제", to = "내일"),
+                places = listOf(),
+                photos = listOf(),
+                theme = Theme.Random,
+                target = Target.Random,
+                rating = Random.nextInt(1, 6),
+                commonAddress = "서울시 한강로"
+            ),
+            createdAt = Date().time
+        )
+    }
+}
