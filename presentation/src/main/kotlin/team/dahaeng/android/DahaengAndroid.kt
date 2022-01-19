@@ -20,7 +20,7 @@ class DahaengAndroid : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Erratum.setup(this) // TODO: Exception activity
+        // Erratum.setup(this) // TODO: Exception activity
         DataLayerUtil.initKakaoSdk(this, BuildConfig.KAKAO_API_KEY)
         if (BuildConfig.DEBUG) {
             Logeukes.setup()

@@ -52,6 +52,11 @@ object Versions {
         const val CheckDependencyUpdates = "1.5.0"
     }
 
+    object Location {
+        const val Gms = "19.0.1"
+        const val Locus = "4.0.1"
+    }
+
     object Jetpack {
         const val Room = "2.4.1"
         const val Hilt = "2.40.5"
@@ -108,6 +113,11 @@ object Dependencies {
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
         "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
         "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"
+    )
+
+    val Location = listOf(
+        "com.github.BirjuVachhani:locus-android:${Versions.Location.Locus}",
+        "com.google.android.gms:play-services-location:${Versions.Location.Gms}"
     )
 
     val Jackson = listOf(

@@ -62,6 +62,7 @@ dependencies {
     Dependencies.Ktx.forEach(::implementation)
     Dependencies.Util.forEach(::implementation)
     Dependencies.Jackson.forEach(::implementation)
+    Dependencies.Location.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
 
     Dependencies.Debug.forEach(::debugImplementation)
