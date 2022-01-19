@@ -14,11 +14,9 @@ object Application {
 
 object Versions {
     const val Kakao = "2.8.4"
-    const val Glide = "4.12.0"
     const val FirebaseBom = "29.0.3"
 
     object Essential {
-        const val Ksp = "1.6.10-1.0.2"
         const val Kotlin = "1.6.10"
         const val Coroutines = "1.6.0"
         const val Gradle = "7.1.0-rc01"
@@ -34,6 +32,9 @@ object Versions {
     }
 
     object Ui {
+        const val Glide = "4.12.0"
+        const val Lottie = "4.2.2"
+        const val Flexbox = "3.0.0"
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
@@ -58,7 +59,6 @@ object Versions {
     }
 
     object Jetpack {
-        const val Room = "2.4.1"
         const val Hilt = "2.40.5"
     }
 
@@ -74,8 +74,7 @@ object Dependencies {
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
     object Compiler {
-        const val Glide = "com.github.bumptech.glide:compiler:${Versions.Glide}"
-        const val RoomKsp = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
+        const val Glide = "com.github.bumptech.glide:compiler:${Versions.Ui.Glide}"
         const val Hilt = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
     }
 
@@ -98,9 +97,11 @@ object Dependencies {
     )
 
     val Ui = listOf(
-        "com.github.bumptech.glide:glide:${Versions.Glide}",
+        "com.airbnb.android:lottie:${Versions.Ui.Lottie}",
+        "com.github.bumptech.glide:glide:${Versions.Ui.Glide}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
+        "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
@@ -125,11 +126,6 @@ object Dependencies {
         "com.fasterxml.jackson.core:jackson-databind:${Versions.Util.Jackson}",
         "com.fasterxml.jackson.core:jackson-annotations:${Versions.Util.Jackson}",
         "com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.Util.Jackson}"
-    )
-
-    val Room = listOf(
-        "androidx.room:room-ktx:${Versions.Jetpack.Room}",
-        "androidx.room:room-runtime:${Versions.Jetpack.Room}"
     )
 
     val Debug = listOf(

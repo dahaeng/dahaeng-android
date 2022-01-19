@@ -13,4 +13,9 @@ object Key {
     object User {
         const val KakaoProfile = "user-kakao-profile"
     }
+
+    object Intent {
+        const val Error = "intent-error"
+        const val NoInternet = "intent-no-internet"
+    }
 }

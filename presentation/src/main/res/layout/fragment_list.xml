@@ -22,7 +22,9 @@
         android:id="@+id/ccl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:background="@color/white"
+        tools:theme="@style/Theme.Dahaeng">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_avatar"

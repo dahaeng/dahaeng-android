@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("com.google.devtools.ksp")
     id("com.google.gms.google-services")
 }
 
@@ -36,9 +35,6 @@ dependencies {
     implementation(Dependencies.Kakao)
     implementation(platform(Dependencies.FirebaseBom))
 
-    Dependencies.Room.forEach(::implementation)
     Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
-
-    ksp(Dependencies.Compiler.RoomKsp)
 }
