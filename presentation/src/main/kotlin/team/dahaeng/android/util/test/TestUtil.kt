@@ -20,11 +20,10 @@ import kotlin.random.Random
 
 object TestUtil {
     private const val TestPostImageUrl =
-        "https://github.com/dahaeng/dahaeng-resource/blob/main/hotel.png?raw=true"
+        "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1283&q=80"
 
     fun post(count: Int = 10) = List(count) { index ->
         Post(
-            imageUrl = TestPostImageUrl,
             title = "여행지 - $index",
             content = "이것은 아름다운 ${index}번째 여행지 입니다.",
             travel = Travel(
@@ -32,10 +31,9 @@ object TestUtil {
                 transportation = Transportation.Random,
                 period = Period(from = "어제", to = "내일"),
                 places = listOf(),
-                photos = listOf(),
+                photos = listOf(TestPostImageUrl),
                 theme = Theme.Random,
                 target = Target.Random,
-                rating = Random.nextInt(1, 6),
                 commonAddress = "서울시 한강로"
             ),
             createdAt = Date().time

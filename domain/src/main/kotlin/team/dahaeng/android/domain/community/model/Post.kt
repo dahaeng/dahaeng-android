@@ -15,7 +15,6 @@ import kotlin.random.Random
 
 data class Post(
     val id: Long = Random.nextLong(),
-    val imageUrl: String = "",
     val title: String = "",
     val content: String = "",
     val travel: Travel = Travel(),

@@ -23,12 +23,14 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:paddingHorizontal="16dp">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_thumbnuil"
             android:layout_width="75dp"
             android:layout_height="75dp"
+            android:scaleType="fitXY"
             app:shapeAppearance="@style/iv_round_cornor"
             app:with_glide_small="@{post.travel.photos.get(0)}"
             tools:src="@tools:sample/avatars" />
@@ -72,8 +74,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
-                    android:gravity="center_vertical"
-                    android:text="@{post.travel.rating}"
+                    android:gravity="center"
+                    android:text="@{String.valueOf(post.travel.rating)}"
                     app:drawableStartCompat="@drawable/ic_round_star_24"
                     app:drawableTint="@color/primary"
                     app:layout_constraintBottom_toBottomOf="parent"
