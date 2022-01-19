@@ -29,10 +29,12 @@ import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
 import team.dahaeng.android.domain.aouth.model.User
+import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.get
@@ -55,6 +57,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        if (!NetworkUtil.isNetworkAvailable(applicationContext)) {
+            finish()
+            startActivity(
+                Intent(this, ErrorActivity::class.java).apply {
+                    putExtra(Key.Intent.Error, Key.Intent.NoInternet)
+                }
+            )
+            return
+        }
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,

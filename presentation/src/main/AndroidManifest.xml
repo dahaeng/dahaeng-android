@@ -27,7 +27,11 @@
         <activity
             android:name=".activity.main.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.Dahaeng.MainActivity" />
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
+
+        <activity
+            android:name=".activity.error.ErrorActivity"
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

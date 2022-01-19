@@ -17,5 +17,6 @@ object Key {
     object Intent {
         const val Error = "intent-error"
         const val NoInternet = "intent-no-internet"
+        const val Exception = "intent-exception"
     }
 }

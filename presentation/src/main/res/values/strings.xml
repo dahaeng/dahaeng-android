@@ -32,4 +32,5 @@
     <string name="activity_error_exception">현재 다행 사용자가 많아 일시적 오류가 발생했어요 😢\n문제가 지속되면 고객센터로 문의해 주세요.</string>
 
     <string name="fragment_list_loading_location">위치 조회중…</string>
+    <string name="activity_error_btn_retry">다시 시도</string>
 </resources>

@@ -48,14 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:maxLines="3"
+                android:maxLines="5"
                 tools:text="@tools:sample/lorem/random" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_restart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="다시 시도" />
+                android:text="@string/activity_error_btn_retry" />
 
         </com.google.android.flexbox.FlexboxLayout>
 
@@ -66,7 +66,6 @@
             android:layout_height="300dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:lottie_autoPlay="true"
-            app:lottie_loop="true"
             tools:src="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
