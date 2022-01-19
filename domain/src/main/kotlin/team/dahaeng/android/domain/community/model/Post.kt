@@ -17,5 +17,5 @@ data class Post(
     val imageUrl: String = "",
     val title: String = "",
     val content: String = "",
-    val travel: Travel = Travel()
+    val travel: Travel = Travel(),
 )

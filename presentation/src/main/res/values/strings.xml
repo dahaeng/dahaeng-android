@@ -33,4 +33,6 @@
 
     <string name="fragment_list_loading_location">위치 조회중…</string>
     <string name="activity_error_btn_retry">다시 시도</string>
+    <string name="fragment_list_hint_search_place">장소 검색</string>
+    <string name="fragment_list_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
 </resources>

@@ -32,6 +32,7 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        lastestAddress = getString(R.string.fragment_list_loading_location)
         GlideApp.with(this).load(DataStore.me.profileImageUrl).override(100).into(binding.ivAvatar)
         Locus.startLocationUpdates(this) { result ->
             result.location?.let { location ->
