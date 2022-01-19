@@ -39,6 +39,7 @@
                 android:id="@+id/tv_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
                 android:text="@string/activity_error_unexpected_issue"
                 android:textColor="@color/primary"
                 android:textSize="20sp" />
@@ -47,6 +48,7 @@
                 android:id="@+id/tv_exception"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarunpen_b"
                 android:gravity="center"
                 android:maxLines="5"
                 tools:text="@tools:sample/lorem/random" />
@@ -55,10 +57,10 @@
                 android:id="@+id/btn_restart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
                 android:text="@string/activity_error_btn_retry" />
 
         </com.google.android.flexbox.FlexboxLayout>
-
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lav_lottie"

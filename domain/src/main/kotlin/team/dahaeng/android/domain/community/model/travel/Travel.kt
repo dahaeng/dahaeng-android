@@ -17,5 +17,6 @@ data class Travel(
     val photos: List<String> = emptyList(), // 여행지 사진
     val theme: Theme = Theme.NONE, // 태그
     val target: Target = Target.NONE, // 추천 대상
-    val rating: Int = 0 // 평점, 최대 5점
+    val rating: Int = 0, // 평점, 최대 5점
+    var address: String = "" // 주소
 )

@@ -14,8 +14,6 @@
         <item name="colorPrimaryVariant">@color/primaryDark</item>
         <item name="colorSecondary">@color/primaryLight</item>
         <item name="android:windowLightStatusBar">false</item>
-        <item name="fontFamily">@font/nanumbarungothic</item>
-        <item name="android:fontFamily">@font/nanumbarungothic</item>
     </style>
 
     <style name="Theme.Dahaeng.WhiteScreen" parent="Theme.Dahaeng">

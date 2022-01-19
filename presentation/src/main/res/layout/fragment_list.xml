@@ -14,6 +14,10 @@
     <data>
 
         <variable
+            name="datastore"
+            type="team.dahaeng.android.data.DataStore" />
+
+        <variable
             name="vm"
             type="team.dahaeng.android.activity.main.MainViewModel" />
     </data>
@@ -35,12 +39,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/iv_round_cornor"
+            app:with_glide_small="@{datastore.INSTANCE.me.profileImageUrl}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_locate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumbarungothic"
             android:gravity="center"
             android:text="@string/fragment_list_loading_location"
             android:textColor="@color/primary"
@@ -91,9 +97,11 @@
                 android:id="@+id/tiet_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/nanumbarungothic"
                 android:imeOptions="actionSearch"
                 android:maxLines="1"
-                android:singleLine="true" />
+                android:singleLine="true"
+                tools:text="@tools:sample/lorem" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
