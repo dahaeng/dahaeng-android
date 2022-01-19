@@ -9,8 +9,8 @@
 
 package team.dahaeng.android.activity.login
 
-import android.animation.ObjectAnimator
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -18,21 +18,31 @@ import android.view.ViewTreeObserver
 import android.view.WindowManager
 import android.view.animation.AnticipateInterpolator
 import androidx.activity.viewModels
-import androidx.core.animation.doOnEnd
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.base.ResultEvent
+import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
+import team.dahaeng.android.domain.aouth.model.User
+import team.dahaeng.android.util.NetworkUtil
+import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.get
+import team.dahaeng.android.util.extensions.set
+import team.dahaeng.android.util.extensions.toJsonString
+import team.dahaeng.android.util.extensions.toModel
 import team.dahaeng.android.util.extensions.toast
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
@@ -41,25 +51,57 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     private var player: ExoPlayer? = null
     private var isReady = false
 
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
+
+        if (!NetworkUtil.isNetworkAvailable(applicationContext)) {
+            finish()
+            startActivity(
+                Intent(this, ErrorActivity::class.java).apply {
+                    putExtra(Key.Intent.Error, Key.Intent.NoInternet)
+                }
+            )
+            return
+        }
 
         window.setFlags(
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        vm.importPostsWithDoneAction {
-            isReady = true
+        vm.importPostsWithDoneAction { posts ->
+            DataStore.updatePosts(posts)
+            if (sharedPreferences[Key.User.KakaoProfile] != null) {
+                // 자동 로그인 상태
+                val me = sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>()
+                DataStore.me = me
+                logeukes {
+                    listOf(
+                        "자동 로그인됨",
+                        me,
+                        posts
+                    )
+                }
+                startMainActivity()
+            } else {
+                isReady = true
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
             splashScreen.setOnExitAnimationListener { splashScreenView ->
-                ObjectAnimator.ofFloat(splashScreenView, View.ALPHA, 1f, 0f).run {
+                splashScreenView.animate().run {
+                    alpha(0f)
+                    scaleX(0f)
+                    scaleY(0f)
                     interpolator = AnticipateInterpolator()
                     duration = 200L
-                    doOnEnd { splashScreenView.remove() }
+                    withEndAction { splashScreenView.remove() }
+                    withLayer()
                     start()
                 }
             }
@@ -81,12 +123,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         vm.eventFlow.collectWithLifecycle(this) { event ->
             when (event) {
                 is ResultEvent.Failure -> {
-                    toast(getString(R.string.activity_login_toast_start_fail)) // TODO: handle exception
+                    logeukes(type = LoggerType.E) { event.exception }
+                    toast(getString(R.string.activity_login_toast_start_fail))
                 }
                 is ResultEvent.Success -> {
                     DataStore.me = event.data
-                    toast("로그인 성공!") // TODO: 하드코딩, 자동 로그인 처리
+                    toast(getString(R.string.activity_login_toast_welcome))
                     startMainActivity()
+                    sharedPreferences[Key.User.KakaoProfile] = event.data.toJsonString()
                 }
             }
         }

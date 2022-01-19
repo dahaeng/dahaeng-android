@@ -10,12 +10,13 @@
 package team.dahaeng.android.domain.community.model
 
 import team.dahaeng.android.domain.community.model.travel.Travel
+import java.util.Date
 import kotlin.random.Random
 
 data class Post(
     val id: Long = Random.nextLong(),
-    val imageUrl: String = "",
     val title: String = "",
     val content: String = "",
-    val travel: Travel = Travel()
+    val travel: Travel = Travel(),
+    val createdAt: Long = Date().time
 )

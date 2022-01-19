@@ -10,20 +10,46 @@
 package team.dahaeng.android
 
 import android.app.Application
+import android.content.Intent
 import dagger.hilt.android.HiltAndroidApp
 import io.github.jisungbin.erratum.Erratum
+import io.github.jisungbin.erratum.ErratumExceptionActivity
 import io.github.jisungbin.logeukes.Logeukes
-import team.dahaeng.android.data.util.initKakaoSdk
+import team.dahaeng.android.activity.error.ErrorActivity
+import team.dahaeng.android.data.util.DataLayerUtil
+import team.dahaeng.android.util.constants.Key
 
 @HiltAndroidApp
 class DahaengAndroid : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Erratum.setup(this) // TODO: Exception activity
-        initKakaoSdk(this, BuildConfig.KAKAO_API_KEY)
+        Erratum.setup(
+            application = this,
+            registerExceptionActivityIntent = { _, throwable, lastActivity ->
+                Intent(lastActivity, ErrorActivity::class.java).apply {
+                    putExtra(ErratumExceptionActivity.EXTRA_EXCEPTION_STRING, throwable.toString())
+                    putExtra(
+                        ErratumExceptionActivity.EXTRA_LAST_ACTIVITY_INTENT,
+                        lastActivity.intent
+                    )
+                    putExtra(Key.Intent.Error, Key.Intent.Exception)
+                }
+            }
+        )
+        DataLayerUtil.initKakaoSdk(this, BuildConfig.KAKAO_API_KEY)
         if (BuildConfig.DEBUG) {
             Logeukes.setup()
         }
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        GlideApp.get(this).clearMemory()
+    }
+
+    override fun onTrimMemory(level: Int) {
+        super.onTrimMemory(level)
+        GlideApp.get(this).trimMemory(level)
     }
 }

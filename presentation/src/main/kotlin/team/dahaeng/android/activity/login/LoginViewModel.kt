@@ -12,16 +12,14 @@ package team.dahaeng.android.activity.login
 import android.content.Context
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.activity.base.ResultEvent
-import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.di.qualifier.IoDispatcher
 import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
+import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import javax.inject.Inject
 
@@ -42,14 +40,12 @@ class LoginViewModel @Inject constructor(
     }
 
     // TODO: 이게 좋은 방법일까
-    fun importPostsWithDoneAction(doneAction: () -> Unit) = viewModelScope.launch {
+    fun importPostsWithDoneAction(doneAction: (posts: List<Post>) -> Unit) = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
-                DataStore.updatePosts(posts)
-                doneAction()
+                doneAction(posts)
             }
             .onFailure { exception ->
-                logeukes(type = LoggerType.E) { exception }
                 event(ResultEvent.Failure(exception))
             }
     }

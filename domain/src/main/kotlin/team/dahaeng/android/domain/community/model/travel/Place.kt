@@ -9,4 +9,4 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-data class Place(val price: Int, val name: String, val location: String)
+data class Place(val price: Int, val name: String, val address: String)

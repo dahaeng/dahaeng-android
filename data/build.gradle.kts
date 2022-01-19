@@ -1,7 +1,6 @@
 plugins {
     id("com.android.library")
     id("kotlin-android")
-    id("kotlin-kapt")
     id("com.google.gms.google-services")
 }
 
@@ -17,6 +16,7 @@ android {
     sourceSets {
         getByName("main").run {
             java.srcDirs("src/main/kotlin")
+            kotlin.srcDir("build/generated/ksp/main/kotlin")
         }
     }
 
@@ -31,14 +31,10 @@ android {
 }
 
 dependencies {
+    implementation(projects.domain)
     implementation(Dependencies.Kakao)
-    implementation(project(":domain"))
-
-    Dependencies.Room.forEach(::implementation)
     implementation(platform(Dependencies.FirebaseBom))
 
     Dependencies.Firebase.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
-
-    kapt(Dependencies.RoomCompiler) // TODO: ksp
 }

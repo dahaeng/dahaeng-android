@@ -15,5 +15,5 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
 
-    <color name="backgroundWhite">#fafafa</color>
+    <color name="lightGray">#eeeeee</color>
 </resources>

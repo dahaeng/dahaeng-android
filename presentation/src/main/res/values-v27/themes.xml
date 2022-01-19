@@ -9,9 +9,8 @@
 
 <resources>
 
-    <style name="Theme.Dahaeng.MainActivity" parent="Theme.Dahaeng">
-        <item name="android:windowBackground">@color/backgroundWhite</item>
-        <item name="android:statusBarColor">@color/backgroundWhite</item>
+    <style name="Theme.Dahaeng.WhiteScreen" parent="Theme.Dahaeng">
+        <item name="android:statusBarColor">@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar">true</item>

@@ -2,12 +2,12 @@
  * Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  * Dahaeng license is under the MIT.
  *
- * [BaseModule.kt] created by Ji Sungbin on 22. 1. 13. 오후 7:19
+ * [DispatcherModule.kt] created by Ji Sungbin on 22. 1. 13. 오후 7:19
  *
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.base
+package team.dahaeng.android.di.common
 
 import dagger.Module
 import dagger.Provides

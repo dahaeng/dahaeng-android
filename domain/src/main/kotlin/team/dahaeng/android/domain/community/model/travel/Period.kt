@@ -14,6 +14,6 @@ data class Period(
     val to: String // 12월 25일
 ) {
     companion object {
-        val NONE = Period("0", "0")
+        val None = Period("0", "0")
     }
 }

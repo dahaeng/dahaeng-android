@@ -15,7 +15,7 @@
         android:title="@string/menu_main_place" />
 
     <item
-        android:id="@+id/favorite"
+        android:id="@+id/like"
         android:icon="@drawable/ic_round_favorite_24"
         android:title="@string/menu_main_favorite" />
 

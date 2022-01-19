@@ -12,7 +12,8 @@ package team.dahaeng.android.domain.community.model.travel
 @JvmInline
 value class Theme(val value: String) {
     companion object {
-        val NONE = Theme("")
+        val None = Theme("")
+        val Random get() = ThemeList.All.random()
     }
 }
 
@@ -22,7 +23,7 @@ object ThemeList {
     val Camping = Theme("캠핑")
     val Sport = Theme("스포츠")
     val Healing = Theme("힐링")
-    val All = listOf(Pension, Camping, Sport, Healing).map(Theme::value)
+    val All = listOf(Pension, Camping, Sport, Healing)
 
     fun Other(theme: String) = Theme(theme)
 }

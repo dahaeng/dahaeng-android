@@ -14,7 +14,6 @@ object Application {
 
 object Versions {
     const val Kakao = "2.8.4"
-    const val Glide = "4.12.0"
     const val FirebaseBom = "29.0.3"
 
     object Essential {
@@ -33,6 +32,9 @@ object Versions {
     }
 
     object Ui {
+        const val Glide = "4.12.0"
+        const val Lottie = "4.2.2"
+        const val Flexbox = "3.0.0"
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.16.1"
@@ -41,16 +43,22 @@ object Versions {
     }
 
     object Util {
+        const val Moshi = "1.13.0"
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
+        const val Jackson = "2.13.1"
         const val LeakCanary = "2.8.1"
         const val SystemUiController = "1.0.0"
         const val SecretsGradlePlugin = "2.0.0"
         const val CheckDependencyUpdates = "1.5.0"
     }
 
+    object Location {
+        const val Gms = "19.0.1"
+        const val Locus = "4.0.1"
+    }
+
     object Jetpack {
-        const val Room = "2.4.1"
         const val Hilt = "2.40.5"
     }
 
@@ -61,17 +69,14 @@ object Versions {
 }
 
 object Dependencies {
+    const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
     const val Hilt = "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
-    const val HiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
-
-    const val RoomCompiler = "androidx.room:room-compiler:${Versions.Jetpack.Room}"
-
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
-    const val Glide = "com.github.bumptech.glide:glide:${Versions.Glide}"
-    const val GlideCompiler = "com.github.bumptech.glide:compiler:${Versions.Glide}"
-
-    const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
+    object Compiler {
+        const val Glide = "com.github.bumptech.glide:compiler:${Versions.Ui.Glide}"
+        const val Hilt = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
+    }
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
@@ -92,8 +97,11 @@ object Dependencies {
     )
 
     val Ui = listOf(
+        "com.airbnb.android:lottie:${Versions.Ui.Lottie}",
+        "com.github.bumptech.glide:glide:${Versions.Ui.Glide}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
+        "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
@@ -102,14 +110,22 @@ object Dependencies {
     )
 
     val Util = listOf(
+        "com.squareup.moshi:moshi:${Versions.Util.Moshi}",
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
         "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
         "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"
     )
 
-    val Room = listOf(
-        "androidx.room:room-ktx:${Versions.Jetpack.Room}",
-        "androidx.room:room-runtime:${Versions.Jetpack.Room}"
+    val Location = listOf(
+        "com.github.BirjuVachhani:locus-android:${Versions.Location.Locus}",
+        "com.google.android.gms:play-services-location:${Versions.Location.Gms}"
+    )
+
+    val Jackson = listOf(
+        "com.fasterxml.jackson.core:jackson-core:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.core:jackson-databind:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.core:jackson-annotations:${Versions.Util.Jackson}",
+        "com.fasterxml.jackson.module:jackson-module-kotlin:${Versions.Util.Jackson}"
     )
 
     val Debug = listOf(
