@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
+ ~ Dahaeng license is under the MIT.
+ ~
+ ~ [layout_schedule.kt] created by 210202
+ ~
+ ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+ -->
+
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:layout_marginLeft="16dp"
+            style="@style/tv_task_content"
+            android:fontFamily="@font/nanumbarungothic"
+            android:id="@+id/tv_period"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1월 2일 ~ 1월 4일"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            style="@style/tv_task_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="제주도여행"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tv_period"
+            app:layout_constraintTop_toBottomOf="@+id/tv_period" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/ic_more_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_period" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView1"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView2"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView2"
+            app:shapeAppearance="@style/iv_circle"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView2"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView3"
+            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView3"
+            app:layout_constraintTop_toTopOf="@+id/shapeableImageView3"
+            app:shapeAppearance="@style/iv_circle"
+            tools:src="@tools:sample/avatars" />
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/shapeableImageView3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginRight="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2"
+            app:shapeAppearance="@style/iv_circle"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:layout_marginRight="8dp"
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+3"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

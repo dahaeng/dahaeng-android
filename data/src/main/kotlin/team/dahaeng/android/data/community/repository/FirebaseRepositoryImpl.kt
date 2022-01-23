@@ -19,6 +19,7 @@ import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
 import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.Schedule
 import kotlin.coroutines.resume
 
 class FirebaseRepositoryImpl : FirebaseRepository {
@@ -60,4 +61,17 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 throw exception
             }
     }
+
+    override suspend fun uploadSchedule(schedule: Schedule, id: String): Unit =
+        suspendCancellableCoroutine { continuation ->
+            firestore.collection(Constants.Firestore.Schedule)
+                .document(id) // id별로 폴더 나눠서 업로드
+                .set(schedule)
+                .addOnSuccessListener {
+                    continuation.resume(Unit)
+                }
+                .addOnFailureListener { exception ->
+                    throw exception
+                }
+        }
 }

@@ -11,6 +11,7 @@ package team.dahaeng.android.data
 
 import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.schedule.Schedule
 
 // TODO: 이게 맞나?? ㅋㅋ
 @Suppress("ObjectPropertyName")
@@ -20,7 +21,14 @@ object DataStore {
     private val _posts = mutableListOf<Post>()
     val posts: List<Post> get() = _posts
 
+    private val _schedules = mutableListOf<Schedule>()
+    val schedules: List<Schedule> get() = _schedules
+
     fun updatePosts(posts: List<Post>) {
         _posts.addAll(posts)
+    }
+
+    fun updateSchedule(schedule: Schedule){
+        _schedules.add(schedule)
     }
 }
