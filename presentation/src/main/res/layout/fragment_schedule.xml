@@ -28,6 +28,7 @@
         tools:theme="@style/Theme.Dahaeng">
 
         <TextView
+            android:id="@+id/textView4"
             style="@style/tv_task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,5 +49,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            tools:listitem="@layout/layout_schedule"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

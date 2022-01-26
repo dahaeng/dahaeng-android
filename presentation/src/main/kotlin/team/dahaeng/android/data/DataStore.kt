@@ -28,7 +28,7 @@ object DataStore {
         _posts.addAll(posts)
     }
 
-    fun updateSchedule(schedule: Schedule){
-        _schedules.add(schedule)
+    fun updateSchedules(schedules: List<Schedule>){
+        _schedules.addAll(schedules)
     }
 }

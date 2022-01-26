@@ -17,5 +17,7 @@ interface FirebaseRepository {
     suspend fun uploadImage(uri: Uri, imageName: String)
     suspend fun uploadPost(post: Post)
     suspend fun importPosts(): List<Post>
+    suspend fun importSchedules(id : String): List<Schedule>
     suspend fun uploadSchedule(schedule: Schedule, id : String)
+
 }

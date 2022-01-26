@@ -29,7 +29,7 @@ class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainV
         super.onCreate(savedInstanceState)
 
         binding.btnCreateScheduleComplete.setOnClickListener {
-            vm.addSchedule(Schedule(), DataStore.me.nickname)
+            vm.addSchedule(Schedule(binding.textInputEditText.text.toString()), DataStore.me.nickname)
             finish()
         }
     }
