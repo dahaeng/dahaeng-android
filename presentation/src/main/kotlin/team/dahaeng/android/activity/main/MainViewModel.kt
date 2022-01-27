@@ -20,7 +20,6 @@ import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
-import team.dahaeng.android.domain.community.usecase.UploadPostUseCase
 import team.dahaeng.android.domain.schedule.Schedule
 import team.dahaeng.android.domain.schedule.usecase.ImportScheduleUseCase
 import team.dahaeng.android.domain.schedule.usecase.UploadScheduleUseCase
@@ -53,9 +52,9 @@ class MainViewModel @Inject constructor(
 
     fun importSchedule(id: String) = viewModelScope.launch {
         importScheduleUseCase(id)
-            .onSuccess { schedules ->
-                DataStore.updateSchedules(schedules)
-                _schedules.emit(schedules)
+            .onSuccess { scheduleList ->
+                DataStore.updateSchedules(scheduleList)
+                _schedules.emit(scheduleList)
             }
             .onFailure {
                     exception ->

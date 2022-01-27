@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutScheduleBinding
-import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.schedule.Schedule
 
 class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUtil) {
@@ -35,10 +34,10 @@ class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUt
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Schedule>() {
             override fun areContentsTheSame(oldItem: Schedule, newItem: Schedule) =
-                oldItem == newItem
+                oldItem.title == newItem.title
 
             override fun areItemsTheSame(oldItem: Schedule, newItem: Schedule) =
-                oldItem.title == newItem.title
+                oldItem == newItem
         }
     }
 
