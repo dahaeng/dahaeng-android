@@ -10,10 +10,6 @@
 package team.dahaeng.android.domain.community.model.travel
 
 data class Period(
-    val from: String, // 12월 2일
-    val to: String // 12월 25일
-) {
-    companion object {
-        val None = Period("0", "0")
-    }
-}
+    val from: String = "0", // 12월 2일
+    val to: String = "0" // 12월 25일
+)
