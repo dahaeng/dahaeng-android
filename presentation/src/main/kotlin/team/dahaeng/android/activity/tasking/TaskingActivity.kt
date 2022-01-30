@@ -21,7 +21,7 @@ class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
 ) {
 
     override val vm: TaskingViewModel by viewModels()
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
