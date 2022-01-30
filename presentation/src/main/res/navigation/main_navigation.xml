@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/tasking"
-        android:name="team.dahaeng.android.activity.main.fragment.tasking.TaskingFragment"
-        tools:layout="@layout/fragment_tasking" />
+        android:name="team.dahaeng.android.activity.main.fragment.schedule.ScheduleFragment"
+        tools:layout="@layout/fragment_schedule" />
 
 </navigation>

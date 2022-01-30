@@ -12,5 +12,6 @@ package team.dahaeng.android.data.util
 object Constants {
     object Firestore {
         const val Post = "post"
+        const val Schedule = "schedule"
     }
 }
