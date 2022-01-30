@@ -48,7 +48,7 @@
             android:layout_marginTop="100sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/iv_round_cornor"
+            app:shapeAppearanceOverlay="@style/iv_round_corner"
             app:srcCompat="@mipmap/ic_launcher"
             tools:src="@mipmap/ic_launcher" />
 
