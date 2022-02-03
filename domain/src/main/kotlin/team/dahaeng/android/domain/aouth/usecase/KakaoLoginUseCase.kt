@@ -10,11 +10,10 @@
 package team.dahaeng.android.domain.aouth.usecase
 
 import android.content.Context
-import kotlinx.coroutines.CoroutineDispatcher
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 
 class KakaoLoginUseCase(private val repository: AouthRepository) {
-    suspend operator fun invoke(context: Context, dispatcher: CoroutineDispatcher) = runCatching {
-        repository.kakaoLogin(context, dispatcher)
+    suspend operator fun invoke(context: Context) = runCatching {
+        repository.kakaoLogin(context)
     }
 }

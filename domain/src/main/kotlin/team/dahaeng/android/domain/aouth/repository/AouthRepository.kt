@@ -10,9 +10,8 @@
 package team.dahaeng.android.domain.aouth.repository
 
 import android.content.Context
-import kotlinx.coroutines.CoroutineDispatcher
 import team.dahaeng.android.domain.aouth.model.User
 
 interface AouthRepository {
-    suspend fun kakaoLogin(context: Context, dispatcher: CoroutineDispatcher): User
+    suspend fun kakaoLogin(context: Context): User
 }

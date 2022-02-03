@@ -71,4 +71,5 @@
             tools:src="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

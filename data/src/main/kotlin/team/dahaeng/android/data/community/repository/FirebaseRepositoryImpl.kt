@@ -12,7 +12,6 @@ package team.dahaeng.android.data.community.repository
 import android.net.Uri
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.firestore.ktx.toObject
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -20,7 +19,7 @@ import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
 import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 import kotlin.coroutines.resume
 
 class FirebaseRepositoryImpl : FirebaseRepository {
@@ -56,7 +55,6 @@ class FirebaseRepositoryImpl : FirebaseRepository {
         firestore.collection(Constants.Firestore.Post)
             .get()
             .addOnSuccessListener { result ->
-
                 continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
             }
             .addOnFailureListener { exception ->
@@ -64,7 +62,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
             }
     }
 
-    override suspend fun importSchedules(id : String): List<Schedule> =
+    override suspend fun importSchedules(id: String): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.Schedule) // 컬렉션 이름
                 .document(id) // 문서 이름
@@ -76,9 +74,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 .addOnFailureListener { exception ->
                     throw exception
                 }
-
         }
-
 
     override suspend fun uploadSchedule(schedule: Schedule, id: String): Unit =
         suspendCancellableCoroutine { continuation ->

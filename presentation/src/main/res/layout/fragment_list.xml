@@ -124,4 +124,5 @@
             tools:listitem="@layout/layout_post" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

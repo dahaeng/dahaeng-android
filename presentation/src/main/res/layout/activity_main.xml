@@ -31,7 +31,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph='@navigation/main_navigation' />
 
-        <team.dahaeng.android.ui.smoothbottombar.SmoothBottomBar
+        <me.ibrahimsn.lib.SmoothBottomBar
             android:id="@+id/sbb_menu"
             android:layout_width="match_parent"
             android:layout_height="70dp"
@@ -47,4 +47,5 @@
             app:textColor="@color/primaryDark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

@@ -20,7 +20,7 @@ import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 import team.dahaeng.android.domain.schedule.usecase.ImportScheduleUseCase
 import team.dahaeng.android.domain.schedule.usecase.UploadScheduleUseCase
 import javax.inject.Inject
@@ -29,7 +29,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val importPostsUseCase: ImportPostsUseCase,
     private val importScheduleUseCase: ImportScheduleUseCase,
-    private val uploadScheduleUseCase: UploadScheduleUseCase
+    private val uploadScheduleUseCase: UploadScheduleUseCase,
 ) : BaseViewModel<ResultEvent<Nothing>>() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
@@ -56,8 +56,7 @@ class MainViewModel @Inject constructor(
                 DataStore.updateSchedules(scheduleList)
                 _schedules.emit(scheduleList)
             }
-            .onFailure {
-                    exception ->
+            .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
                 event(ResultEvent.Failure(exception))
             }
@@ -65,12 +64,9 @@ class MainViewModel @Inject constructor(
 
     fun addSchedule(schedule: Schedule, id: String) = viewModelScope.launch {
         uploadScheduleUseCase(schedule, id)
-            .onSuccess {
-            }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
                 event(ResultEvent.Failure(exception))
             }
     }
-
 }

@@ -42,7 +42,7 @@ class PostAdapter(private val onPostClick: (Post) -> Unit) :
 
     class ViewHolder(
         private val binding: LayoutPostBinding,
-        private val onPostClick: (Post) -> Unit
+        private val onPostClick: (Post) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(post: Post) {
             binding.run {

@@ -12,9 +12,7 @@ package team.dahaeng.android.data.aouth.repository
 import android.content.Context
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.model.User
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.suspendCancellableCoroutine
-import kotlinx.coroutines.withContext
 import team.dahaeng.android.data.aouth.mapper.toDomain
 import team.dahaeng.android.data.util.UserDomain
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
@@ -23,13 +21,11 @@ import kotlin.coroutines.resume
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
 class AouthRepositoryImpl : AouthRepository {
-    override suspend fun kakaoLogin(context: Context, dispatcher: CoroutineDispatcher): UserDomain {
-        withContext(dispatcher) {
-            if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
-                loginWithKakaoTalk(context)
-            } else {
-                loginWithWebView(context)
-            }
+    override suspend fun kakaoLogin(context: Context): UserDomain {
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
+            loginWithKakaoTalk(context)
+        } else {
+            loginWithWebView(context)
         }
         return getUser().toDomain()
     }

@@ -9,11 +9,13 @@
 
 package team.dahaeng.android.util
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 
 object NetworkUtil {
+    @SuppressLint("MissingPermission")
     fun isNetworkAvailable(context: Context) =
         (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).run {
             getNetworkCapabilities(activeNetwork)?.run {

@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  ~ Dahaeng © 2022 Ji Sungbin, 210202. all rights reserved.
  ~ Dahaeng license is under the MIT.
  ~
@@ -46,6 +45,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/ic_post_add_24"
+            android:contentDescription="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,6 +60,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4"
-            tools:listitem="@layout/layout_schedule"/>
+            tools:listitem="@layout/layout_schedule" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

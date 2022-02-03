@@ -11,13 +11,12 @@ package team.dahaeng.android.domain.community.repository
 
 import android.net.Uri
 import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 interface FirebaseRepository {
     suspend fun uploadImage(uri: Uri, imageName: String)
     suspend fun uploadPost(post: Post)
     suspend fun importPosts(): List<Post>
-    suspend fun importSchedules(id : String): List<Schedule>
-    suspend fun uploadSchedule(schedule: Schedule, id : String)
-
+    suspend fun importSchedules(id: String): List<Schedule>
+    suspend fun uploadSchedule(schedule: Schedule, id: String)
 }

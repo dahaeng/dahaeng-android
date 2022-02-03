@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.Flow
 
 fun <T> Flow<T>.collectWithLifecycle(
     lifecycleOwner: LifecycleOwner,
-    action: suspend (T) -> Unit
+    action: suspend (T) -> Unit,
 ) {
     lifecycleOwner.lifecycleScope.launchWhenCreated {
         flowWithLifecycle(lifecycleOwner.lifecycle).collect { value ->
