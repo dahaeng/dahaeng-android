@@ -13,7 +13,6 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.activity.login.LoginViewModel
 import team.dahaeng.android.databinding.ActivityTaskingBinding
 
 class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
@@ -21,7 +20,7 @@ class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
 ) {
 
     override val vm: TaskingViewModel by viewModels()
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }

@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutScheduleBinding
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUtil) {
 
@@ -21,7 +21,7 @@ class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUt
     }
 
     class ViewHolder(
-        private val binding: LayoutScheduleBinding
+        private val binding: LayoutScheduleBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(schedule: Schedule) {
             binding.run {
@@ -40,5 +40,4 @@ class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUt
                 oldItem == newItem
         }
     }
-
 }

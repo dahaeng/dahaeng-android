@@ -17,7 +17,7 @@ import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 @AndroidEntryPoint
 class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(
@@ -29,7 +29,10 @@ class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainV
         super.onCreate(savedInstanceState)
 
         binding.btnCreateScheduleComplete.setOnClickListener {
-            vm.addSchedule(Schedule(binding.textInputEditText.text.toString()), DataStore.me.nickname)
+            vm.addSchedule(
+                Schedule(binding.textInputEditText.text.toString()),
+                DataStore.me.nickname
+            )
             finish()
         }
     }

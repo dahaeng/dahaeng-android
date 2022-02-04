@@ -34,7 +34,6 @@ android {
     sourceSets {
         getByName("main").run {
             java.srcDirs("src/main/kotlin")
-            kotlin.srcDir("build/generated/ksp/main/kotlin")
         }
     }
 

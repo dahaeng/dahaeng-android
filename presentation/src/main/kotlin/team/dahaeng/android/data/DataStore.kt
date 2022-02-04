@@ -11,7 +11,7 @@ package team.dahaeng.android.data
 
 import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 // TODO: 이게 맞나?? ㅋㅋ
 @Suppress("ObjectPropertyName")
@@ -28,7 +28,7 @@ object DataStore {
         _posts.addAll(posts)
     }
 
-    fun updateSchedules(schedules: List<Schedule>){
+    fun updateSchedules(schedules: List<Schedule>) {
         _schedules.addAll(schedules)
     }
 }

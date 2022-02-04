@@ -38,7 +38,7 @@
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/iv_round_cornor"
+            app:shapeAppearance="@style/iv_round_corner"
             app:with_glide_small="@{datastore.INSTANCE.me.profileImageUrl}"
             tools:src="@tools:sample/avatars" />
 
@@ -124,4 +124,5 @@
             tools:listitem="@layout/layout_post" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

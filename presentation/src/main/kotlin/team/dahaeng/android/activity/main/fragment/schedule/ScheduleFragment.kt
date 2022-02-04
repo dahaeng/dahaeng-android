@@ -13,45 +13,39 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
+import team.dahaeng.android.util.extensions.collectWithLifecycle
 
-class ScheduleFragment :
-    BaseFragment<FragmentScheduleBinding, MainViewModel>(R.layout.fragment_schedule) {
+class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
+    R.layout.fragment_schedule
+) {
+
+    private val adapter by lazy { ScheduleAdapter() }
     override val vm: MainViewModel by activityViewModels()
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.rvSchedule.run {
-            setHasFixedSize(true)
-            setItemViewCacheSize(10)
-            adapter = ScheduleAdapter()
-            (adapter as ScheduleAdapter).submitList(listOf())
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vm.schedules.collect { scheduleList ->
-                    (binding.rvSchedule.adapter as ScheduleAdapter).submitList(scheduleList.toMutableList())
-                }
+        binding.rvSchedule.run {
+            setHasFixedSize(true)
+            setItemViewCacheSize(10)
+            adapter = this@ScheduleFragment.adapter.apply {
+                submitList(emptyList())
             }
+        }
+
+        vm.schedules.collectWithLifecycle(viewLifecycleOwner) { scheduleList ->
+            adapter.submitList(scheduleList)
         }
 
         binding.ibAddSchedule.setOnClickListener {
             startActivity(Intent(context, CreateScheduleActivity::class.java))
         }
-
     }
 
     override fun onResume() {

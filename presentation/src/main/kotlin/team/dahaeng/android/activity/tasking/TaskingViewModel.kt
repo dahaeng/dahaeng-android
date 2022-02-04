@@ -12,6 +12,4 @@ package team.dahaeng.android.activity.tasking
 import team.dahaeng.android.activity.base.BaseEvent
 import team.dahaeng.android.activity.base.BaseViewModel
 
-class TaskingViewModel : BaseViewModel<BaseEvent>() {
-
-}
+class TaskingViewModel : BaseViewModel<BaseEvent>()
