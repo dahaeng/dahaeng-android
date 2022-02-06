@@ -22,10 +22,6 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import team.dahaeng.android.domain.schedule.model.Schedule
 import kotlin.coroutines.resume
 
-/**
- *
- */
-
 private const val UPLOAD_IMAGE_EXCEPTION = "이미지 업로드중 에러"
 
 class FirebaseRepositoryImpl : FirebaseRepository {
