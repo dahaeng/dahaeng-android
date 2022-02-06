@@ -32,7 +32,7 @@ object Versions {
     }
 
     object Ui {
-        const val Glide = "4.12.0"
+        const val Coil = "1.4.0"
         const val Lottie = "4.2.2"
         const val Flexbox = "3.0.0"
         const val Material = "1.5.0"
@@ -75,7 +75,6 @@ object Dependencies {
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
 
     object Compiler {
-        const val Glide = "com.github.bumptech.glide:compiler:${Versions.Ui.Glide}"
         const val Hilt = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
     }
 
@@ -98,8 +97,8 @@ object Dependencies {
     )
 
     val Ui = listOf(
+        "io.coil-kt:coil:${Versions.Ui.Coil}",
         "com.airbnb.android:lottie:${Versions.Ui.Lottie}",
-        "com.github.bumptech.glide:glide:${Versions.Ui.Glide}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
         "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
