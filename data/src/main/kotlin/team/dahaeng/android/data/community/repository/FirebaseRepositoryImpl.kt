@@ -81,6 +81,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
                 }
                 .addOnFailureListener { exception ->
+                    continuation.resume(emptyList())
                     throw exception
                 }
         }
