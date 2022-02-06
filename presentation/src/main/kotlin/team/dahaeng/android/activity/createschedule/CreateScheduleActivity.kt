@@ -30,7 +30,7 @@ class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainV
 
         binding.btnCreateScheduleComplete.setOnClickListener {
             vm.addSchedule(
-                Schedule(binding.textInputEditText.text.toString()),
+                Schedule(title = binding.textInputEditText.text.toString()),
                 DataStore.me.nickname
             )
             finish()

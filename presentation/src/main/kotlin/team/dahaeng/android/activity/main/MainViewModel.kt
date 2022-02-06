@@ -17,7 +17,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import team.dahaeng.android.domain.schedule.model.Schedule
@@ -48,7 +47,7 @@ class MainViewModel @Inject constructor(
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 
@@ -60,7 +59,7 @@ class MainViewModel @Inject constructor(
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 
@@ -68,7 +67,7 @@ class MainViewModel @Inject constructor(
         uploadScheduleUseCase(schedule, id)
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 }
