@@ -22,7 +22,7 @@ object TestUtil {
     private const val TestPostImageUrl =
         "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1283&q=80"
 
-    fun post(count: Int = 10) = List(count) { index ->
+    fun posts(count: Int = 10) = List(count) { index ->
         Post(
             title = "여행지 - $index",
             content = "이것은 아름다운 ${index}번째 여행지 입니다.",

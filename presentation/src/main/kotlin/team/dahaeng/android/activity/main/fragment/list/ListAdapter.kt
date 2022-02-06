@@ -17,8 +17,10 @@ import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutPostBinding
 import team.dahaeng.android.domain.community.model.Post
 
-class PostAdapter(private val onPostClick: (Post) -> Unit) :
-    ListAdapter<Post, PostAdapter.ViewHolder>(diffUtil) {
+private typealias ListAdapterViewHolder = team.dahaeng.android.activity.main.fragment.list.ListAdapter.ViewHolder
+
+class ListAdapter(private val onPostClick: (Post) -> Unit) :
+    ListAdapter<Post, ListAdapterViewHolder>(diffUtil) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = LayoutPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding, onPostClick)
@@ -50,7 +52,6 @@ class PostAdapter(private val onPostClick: (Post) -> Unit) :
                 root.setOnClickListener {
                     onPostClick(post)
                 }
-                executePendingBindings()
             }
         }
     }

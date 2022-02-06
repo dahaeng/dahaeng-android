@@ -56,6 +56,7 @@ dependencies {
     implementation(projects.data)
     implementation(projects.domain)
     implementation(Dependencies.Hilt)
+    implementation("io.coil-kt:coil:1.4.0")
 
     Dependencies.Ui.forEach(::implementation)
     Dependencies.Ktx.forEach(::implementation)
