@@ -17,6 +17,7 @@ import kotlin.random.Random
 
 data class Schedule(
     val id: Long = Random.nextLong(), // 일정 uuid
+    val participant: List<Long> = emptyList(), // 일정 참여자 uuid, first element must be owner id
     val title: String = "",
     val theme: String = Theme.None.value, // 테마
     val totalPrice: Long = 0, // 총 가격

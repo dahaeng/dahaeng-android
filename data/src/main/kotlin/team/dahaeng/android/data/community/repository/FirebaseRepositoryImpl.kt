@@ -61,11 +61,10 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     /**
      * @return 성공 여부 boolean
      */
-    override suspend fun uploadPost(ownerId: Long, post: Post): Boolean =
+    override suspend fun uploadPost(post: Post): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.Post)
-                .document(ownerId.toString())
-                .collection()
+                .document(post.id.toString())
                 .set(post)
                 .addOnSuccessListener {
                     continuation.resume(true)
@@ -91,12 +90,13 @@ class FirebaseRepositoryImpl : FirebaseRepository {
         }
 
     /**
-     * 내 스케줄 조회
+     * 내 스케줄 리스트 조회
      */
-    override suspend fun importSchedules(onwerId: Long): List<Schedule> =
+    override suspend fun importSchedules(ownerId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.Schedule)
-                .document(id)
+            firestore.collection(Constants.Firestore.User)
+                .document(ownerId.toString())
+                .collection(Constants.Firestore.Schedule)
                 .get()
                 .addOnSuccessListener { result ->
                     continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
@@ -107,9 +107,15 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 }
         }
 
+    /**
+     * 일정 업로드
+     *  @return 성공 여부 boolean
+     */
     override suspend fun uploadSchedule(schedule: Schedule): Boolean =
         suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.Schedule)
+            firestore.collection(Constants.Firestore.User)
+                .document(schedule.participant.first().toString())
+                .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .set(schedule)
                 .addOnSuccessListener {

@@ -15,7 +15,7 @@ import team.dahaeng.android.domain.schedule.model.Schedule
 
 interface FirebaseRepository {
     suspend fun uploadImage(uri: Uri, imageName: String): String?
-    suspend fun uploadPost(ownerId: Long, post: Post): Boolean
+    suspend fun uploadPost(post: Post): Boolean
     suspend fun importPosts(): List<Post>
     suspend fun importSchedules(ownerId: Long): List<Schedule>
     suspend fun uploadSchedule(schedule: Schedule): Boolean
