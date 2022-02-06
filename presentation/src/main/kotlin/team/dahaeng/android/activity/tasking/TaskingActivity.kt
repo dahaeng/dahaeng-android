@@ -11,12 +11,12 @@ package team.dahaeng.android.activity.tasking
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityTaskingBinding
 
-@HiltViewModel
+@AndroidEntryPoint
 class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
     R.layout.activity_tasking
 ) {
