@@ -38,6 +38,8 @@ class MainViewModel @Inject constructor(
     private val _schedules = MutableStateFlow(DataStore.schedules)
     val schedules = _schedules.asStateFlow()
 
+    var lastLocate = ""
+
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
