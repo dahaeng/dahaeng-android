@@ -19,3 +19,9 @@ fun LifecycleOwner.doDelayed(ms: Long, action: suspend () -> Unit) {
         action()
     }
 }
+
+fun LifecycleOwner.launchedWhenCreated(action: suspend () -> Unit) {
+    lifecycleScope.launchWhenCreated {
+        action()
+    }
+}

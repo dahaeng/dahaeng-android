@@ -47,9 +47,4 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             startActivity(Intent(context, CreateScheduleActivity::class.java))
         }
     }
-
-    override fun onResume() {
-        super.onResume()
-        vm.importSchedule(DataStore.me.nickname)
-    }
 }

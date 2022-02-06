@@ -15,11 +15,11 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<EVENT : BaseEvent> : ViewModel() {
-    private val _eventFlow = MutableSharedFlow<EVENT>()
-    val eventFlow = _eventFlow.asSharedFlow()
+abstract class BaseViewModel : ViewModel() {
+    private val _exceptionFlow = MutableSharedFlow<Throwable>()
+    val exceptionFlow = _exceptionFlow.asSharedFlow()
 
-    open fun event(event: EVENT) = viewModelScope.launch {
-        _eventFlow.emit(event)
+    open fun emitException(throwable: Throwable) = viewModelScope.launch {
+        _exceptionFlow.emit(throwable)
     }
 }

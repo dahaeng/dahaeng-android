@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor(
     private val importPostsUseCase: ImportPostsUseCase,
     private val importScheduleUseCase: ImportScheduleUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
-) : BaseViewModel<ResultEvent<Nothing>>() {
+) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
     val posts = _posts.asStateFlow()

@@ -28,7 +28,6 @@ import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
@@ -38,6 +37,7 @@ import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.get
+import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
 import team.dahaeng.android.util.extensions.toJsonString
 import team.dahaeng.android.util.extensions.toModel
@@ -73,22 +73,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        vm.importPostsWithDoneAction { posts ->
-            DataStore.updatePosts(posts)
-            if (sharedPreferences[Key.User.KakaoProfile] != null) {
-                // 자동 로그인 상태
-                val me = sharedPreferences[Key.User.KakaoProfile]!!.toModel<User>()
-                DataStore.me = me
-                logeukes {
-                    listOf(
-                        "자동 로그인됨",
-                        me,
-                        posts
-                    )
+        launchedWhenCreated {
+            vm.importPostsWithDoneAction()?.let { posts ->
+                DataStore.updatePosts(posts)
+                if (sharedPreferences[Key.User.KakaoProfile] != null) {
+                    // 자동 로그인 상태
+                    val me: User = sharedPreferences[Key.User.KakaoProfile]!!.toModel()
+                    DataStore.me = me
+                    startMainActivity()
+                } else {
+                    isReady = true
                 }
-                startMainActivity()
-            } else {
-                isReady = true
             }
         }
 
@@ -120,19 +115,20 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             }
         )
 
-        vm.eventFlow.collectWithLifecycle(this) { event ->
-            when (event) {
-                is ResultEvent.Failure -> {
-                    logeukes(type = LoggerType.E) { event.exception }
-                    toast(getString(R.string.activity_login_toast_start_fail))
-                }
-                is ResultEvent.Success -> {
-                    DataStore.me = event.data
+        binding.btnLogin.setOnClickListener {
+            launchedWhenCreated {
+                vm.login()?.let { user ->
+                    DataStore.me = user
                     toast(getString(R.string.activity_login_toast_welcome))
                     startMainActivity()
-                    sharedPreferences[Key.User.KakaoProfile] = event.data.toJsonString()
+                    sharedPreferences[Key.User.KakaoProfile] = user.toJsonString()
                 }
             }
+        }
+
+        vm.exceptionFlow.collectWithLifecycle(this) { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            toast(getString(R.string.activity_login_toast_start_fail))
         }
     }
 
