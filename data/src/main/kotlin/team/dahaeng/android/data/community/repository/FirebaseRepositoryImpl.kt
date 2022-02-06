@@ -22,51 +22,65 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import team.dahaeng.android.domain.schedule.model.Schedule
 import kotlin.coroutines.resume
 
+/**
+ *
+ */
+
+private const val UPLOAD_IMAGE_EXCEPTION = "이미지 업로드중 에러"
+
 class FirebaseRepositoryImpl : FirebaseRepository {
 
     private val firestore by lazy { Firebase.firestore }
     private val storageRef by lazy { Firebase.storage.reference }
 
-    override suspend fun uploadImage(uri: Uri, imageName: String): Unit =
+    /**
+     * @return 성공시 이미지 주소, 실패시 null
+     */
+    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
         suspendCancellableCoroutine { continuation ->
-            storageRef.child(Constants.Firestore.Post)
-                .child(imageName)
-                .putFile(uri)
-                .addOnSuccessListener {
-                    continuation.resume(Unit)
-                }.addOnFailureListener { exception ->
-                    throw exception
-                }
+            storageRef.child(Constants.Firestore.Post).run {
+                child(imageName)
+                    .putFile(uri)
+                    .continueWithTask { task ->
+                        if (!task.isSuccessful && task.exception != null) {
+                            continuation.resume(null)
+                            throw task.exception!!
+                        }
+                        downloadUrl
+                    }.addOnCompleteListener { task ->
+                        if (task.isSuccessful && task.result != null) {
+                            continuation.resume(task.result!!.toString())
+                        } else {
+                            continuation.resume(null)
+                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
+                        }
+                    }
+            }
         }
 
-    override suspend fun uploadPost(post: Post): Unit =
+    /**
+     * @return 성공 여부 boolean
+     */
+    override suspend fun uploadPost(ownerId: Long, post: Post): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.Post)
-                .document(post.id.toString())
+                .document(ownerId.toString())
+                .collection()
                 .set(post)
                 .addOnSuccessListener {
-                    continuation.resume(Unit)
+                    continuation.resume(true)
                 }.addOnFailureListener { exception ->
+                    continuation.resume(false)
                     throw exception
                 }
         }
 
-    override suspend fun importPosts(): List<Post> = suspendCancellableCoroutine { continuation ->
-        firestore.collection(Constants.Firestore.Post)
-            .get()
-            .addOnSuccessListener { result ->
-                continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
-            }
-            .addOnFailureListener { exception ->
-                throw exception
-            }
-    }
-
-    override suspend fun importSchedules(id: String): List<Schedule> =
+    /**
+     * 전체 포스트 조회
+     */
+    override suspend fun importPosts(): List<Post> =
         suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.Schedule) // 컬렉션 이름
-                .document(id) // 문서 이름
-                .collection("0126")
+            firestore.collection(Constants.Firestore.Post)
                 .get()
                 .addOnSuccessListener { result ->
                     continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
@@ -76,17 +90,33 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 }
         }
 
-    override suspend fun uploadSchedule(schedule: Schedule, id: String): Unit =
+    /**
+     * 내 스케줄 조회
+     */
+    override suspend fun importSchedules(onwerId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.Schedule)
-                .document(id) // id별로 폴더 나눠서 업로드
-                .collection("0126")
-                .document()
-                .set(schedule)
-                .addOnSuccessListener {
-                    continuation.resume(Unit)
+                .document(id)
+                .get()
+                .addOnSuccessListener { result ->
+                    continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
                 }
                 .addOnFailureListener { exception ->
+                    continuation.resume(emptyList())
+                    throw exception
+                }
+        }
+
+    override suspend fun uploadSchedule(schedule: Schedule): Boolean =
+        suspendCancellableCoroutine { continuation ->
+            firestore.collection(Constants.Firestore.Schedule)
+                .document(schedule.id.toString())
+                .set(schedule)
+                .addOnSuccessListener {
+                    continuation.resume(true)
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resume(false)
                     throw exception
                 }
         }

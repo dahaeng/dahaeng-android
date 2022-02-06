@@ -18,5 +18,6 @@ data class Post(
     val title: String = "",
     val content: String = "",
     val travel: Travel = Travel(),
-    val createdAt: Long = Date().time
+    val createdAt: Long = Date().time,
+    val images: List<String> = emptyList(),
 )

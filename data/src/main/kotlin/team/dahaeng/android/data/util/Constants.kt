@@ -13,5 +13,6 @@ object Constants {
     object Firestore {
         const val Post = "post"
         const val Schedule = "schedule"
+        const val Data = "data"
     }
 }

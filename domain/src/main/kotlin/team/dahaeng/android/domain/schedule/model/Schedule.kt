@@ -16,7 +16,7 @@ import team.dahaeng.android.domain.community.model.travel.Transportation
 import kotlin.random.Random
 
 data class Schedule(
-    val id: Int = Random.nextInt(), // 일정 uuid
+    val id: Long = Random.nextLong(), // 일정 uuid
     val title: String = "",
     val theme: String = Theme.None.value, // 테마
     val totalPrice: Long = 0, // 총 가격

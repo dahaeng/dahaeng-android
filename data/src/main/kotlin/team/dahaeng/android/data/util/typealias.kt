@@ -5,7 +5,7 @@
  * [typealias.kt] created by Ji Sungbin on 22. 1. 13. 오후 6:06
  *
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
- */ // ktlint-disable filename
+ */
 
 package team.dahaeng.android.data.util
 
