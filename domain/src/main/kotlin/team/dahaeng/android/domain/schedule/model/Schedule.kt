@@ -13,9 +13,12 @@ import team.dahaeng.android.domain.community.model.travel.Period
 import team.dahaeng.android.domain.community.model.travel.Place
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Transportation
+import kotlin.random.Random
 
 data class Schedule(
-    val title: String = "no title",
+    val id: Long = Random.nextLong(), // 일정 uuid
+    val participant: List<Long> = emptyList(), // 일정 참여자 uuid, first element must be owner id
+    val title: String = "",
     val theme: String = Theme.None.value, // 테마
     val totalPrice: Long = 0, // 총 가격
     val transportation: String = Transportation.None.value, // 교통 수단

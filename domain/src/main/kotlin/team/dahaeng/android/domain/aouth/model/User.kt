@@ -13,7 +13,7 @@ import android.graphics.drawable.ColorDrawable
 import kotlin.random.Random
 
 // profileImageUrl: String or ColorDrawable
-data class User(val nickname: String, val profileImageUrl: Any) {
+data class User(val id: Long, val nickname: String, val profileImageUrl: Any) {
     companion object {
         private val randomColor get() = (Math.random() * 16777215).toInt() or (0xFF shl 24)
         fun getDefaultNickname() = "사용자${Random.nextInt(1000, 10000)}"

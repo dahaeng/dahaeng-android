@@ -24,5 +24,5 @@ allprojects {
 }
 
 tasks.register("clean", Delete::class) {
-    delete(rootProject.buildDir)
+    allprojects.map { it.buildDir }.forEach(::delete)
 }

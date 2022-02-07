@@ -15,7 +15,7 @@ object ScheduleUseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideUploadScheduleUseCase(reposiotry : FirebaseRepository): UploadScheduleUseCase =
+    fun provideUploadScheduleUseCase(reposiotry: FirebaseRepository): UploadScheduleUseCase =
         UploadScheduleUseCase(reposiotry)
 
     @Provides

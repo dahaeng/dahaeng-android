@@ -9,15 +9,9 @@
 
 package team.dahaeng.android.activity.login
 
-import android.content.Context
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.activity.base.ResultEvent
-import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
-import team.dahaeng.android.domain.community.model.Post
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import javax.inject.Inject
 
@@ -25,25 +19,14 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
     private val importPostsUseCase: ImportPostsUseCase,
-) : BaseViewModel<ResultEvent<User>>() {
-    fun login(context: Context) = viewModelScope.launch {
-        kakaoLoginUseCase(context)
-            .onSuccess { user ->
-                event(ResultEvent.Success(user))
-            }
-            .onFailure { exception ->
-                event(ResultEvent.Failure(exception))
-            }
+) : BaseViewModel() {
+    suspend fun login() = kakaoLoginUseCase().getOrElse { exception ->
+        emitException(exception)
+        null
     }
 
-    // TODO: 이게 좋은 방법일까
-    fun importPostsWithDoneAction(doneAction: (posts: List<Post>) -> Unit) = viewModelScope.launch {
-        importPostsUseCase()
-            .onSuccess { posts ->
-                doneAction(posts)
-            }
-            .onFailure { exception ->
-                event(ResultEvent.Failure(exception))
-            }
+    suspend fun importPostsWithDoneAction() = importPostsUseCase().getOrElse { exception ->
+        emitException(exception)
+        null
     }
 }

@@ -32,23 +32,29 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         lastestAddress = getString(R.string.fragment_list_loading_location)
-        // GlideApp.with(this).load(DataStore.me.profileImageUrl).override(100).into(binding.ivAvatar)
-        Locus.startLocationUpdates(this) { result ->
-            result.location?.let { location ->
-                binding.tvLocate.text = location.tryParseAddress()
+
+        if (vm.lastLocate.isEmpty()) {
+            Locus.startLocationUpdates(this) { result ->
+                result.location?.let { location ->
+                    vm.lastLocate = location.tryParseAddress()
+                    binding.tvLocate.text = vm.lastLocate
+                    Locus.stopLocationUpdates()
+                }
+                result.error?.let { exception ->
+                    logeukes(type = LoggerType.E) { exception }
+                }
             }
-            result.error?.let { exception ->
-                logeukes(type = LoggerType.E) { exception }
-            }
+        } else {
+            binding.tvLocate.text = vm.lastLocate
         }
 
         binding.rvPost.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
-            adapter = PostAdapter { post ->
+            adapter = ListAdapter { post ->
                 logeukes { "Post clicked: $post" }
             }.apply {
-                submitList(TestUtil.post())
+                submitList(TestUtil.posts())
             }
         }
 
@@ -69,7 +75,7 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
     }
 
     override fun onPause() {
-        super.onPause()
         Locus.stopLocationUpdates()
+        super.onPause()
     }
 }

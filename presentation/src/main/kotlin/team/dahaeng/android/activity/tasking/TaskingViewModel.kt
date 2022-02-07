@@ -9,7 +9,9 @@
 
 package team.dahaeng.android.activity.tasking
 
-import team.dahaeng.android.activity.base.BaseEvent
+import dagger.hilt.android.lifecycle.HiltViewModel
 import team.dahaeng.android.activity.base.BaseViewModel
+import javax.inject.Inject
 
-class TaskingViewModel : BaseViewModel<BaseEvent>()
+@HiltViewModel
+class TaskingViewModel @Inject constructor() : BaseViewModel()

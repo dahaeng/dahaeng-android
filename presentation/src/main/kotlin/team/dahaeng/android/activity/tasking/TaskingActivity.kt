@@ -11,14 +11,15 @@ package team.dahaeng.android.activity.tasking
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityTaskingBinding
 
+@AndroidEntryPoint
 class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
     R.layout.activity_tasking
 ) {
-
     override val vm: TaskingViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

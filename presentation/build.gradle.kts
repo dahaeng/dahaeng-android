@@ -48,10 +48,7 @@ android {
 }
 
 dependencies {
-    val kapts = listOf(
-        Dependencies.Compiler.Hilt,
-        Dependencies.Compiler.Glide
-    )
+    val kapts = listOf(Dependencies.Compiler.Hilt)
 
     implementation(projects.data)
     implementation(projects.domain)

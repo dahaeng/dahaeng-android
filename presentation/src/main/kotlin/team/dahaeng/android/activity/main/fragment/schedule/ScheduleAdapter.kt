@@ -24,17 +24,18 @@ class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUt
         private val binding: LayoutScheduleBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(schedule: Schedule) {
-            binding.run {
-                this.schedule = schedule
-                executePendingBindings()
-            }
+            binding.schedule = schedule
         }
     }
 
-    companion object {
-        private val diffUtil = object : DiffUtil.ItemCallback<Schedule>() {
+    override fun getItemId(position: Int) = getItem(position).id
+
+    override fun getItemCount() = currentList.count()
+
+    private companion object {
+        val diffUtil = object : DiffUtil.ItemCallback<Schedule>() {
             override fun areContentsTheSame(oldItem: Schedule, newItem: Schedule) =
-                oldItem.title == newItem.title
+                oldItem.id == newItem.id
 
             override fun areItemsTheSame(oldItem: Schedule, newItem: Schedule) =
                 oldItem == newItem

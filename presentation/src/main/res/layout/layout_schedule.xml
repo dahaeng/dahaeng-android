@@ -20,107 +20,85 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp"
+        tools:padding="16dp">
 
         <TextView
             android:id="@+id/tv_period_to"
-            style="@style/tv_task_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumbarungothic"
             android:text="@{schedule.period.to}"
+            android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="12월 2일" />
 
         <TextView
-            android:id="@+id/tv_period_and"
-            style="@style/tv_task_content"
+            android:id="@+id/tv_period_range"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumbarungothic"
             android:text=" ~ "
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/tv_period_to"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/tv_period_from"
-            style="@style/tv_task_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumbarungothic"
             android:text="@{schedule.period.from}"
-            app:layout_constraintStart_toEndOf="@id/tv_period_and"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_period_to"
+            app:layout_constraintStart_toEndOf="@id/tv_period_range"
+            app:layout_constraintTop_toTopOf="@+id/tv_period_to"
+            tools:text="12월 25일" />
 
         <TextView
             android:id="@+id/textView"
-            style="@style/tv_task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="@{schedule.title}"
             android:textColor="@color/black"
+            android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tv_period_to"
-            app:layout_constraintTop_toBottomOf="@+id/tv_period_to" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="제주 레포츠랜드" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/imageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
             android:background="@drawable/ic_more_24"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_period_from"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_period_to" />
+            app:layout_constraintTop_toTopOf="@+id/tv_period_from" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shapeableImageView1"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView2"
-            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView2"
-            app:layout_constraintTop_toTopOf="@+id/shapeableImageView2"
-            app:shapeAppearance="@style/iv_circle"
-            tools:src="@tools:sample/avatars" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shapeableImageView2"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/shapeableImageView3"
-            app:layout_constraintEnd_toStartOf="@+id/shapeableImageView3"
-            app:layout_constraintTop_toTopOf="@+id/shapeableImageView3"
-            app:shapeAppearance="@style/iv_circle"
-            tools:src="@tools:sample/avatars" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/shapeableImageView3"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginRight="4dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView2"
-            app:layout_constraintEnd_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toTopOf="@+id/textView2"
-            app:shapeAppearance="@style/iv_circle"
-            tools:src="@tools:sample/avatars" />
-
-        <TextView
-            android:id="@+id/textView2"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_avatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="8dp"
-            android:text="+3"
-            app:layout_constraintBottom_toBottomOf="@+id/textView"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_participant_more"
+            tools:itemCount="3"
+            tools:listitem="@layout/layout_avatar" />
+
+        <TextView
+            android:id="@+id/tv_participant_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_avatar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rv_avatar"
+            tools:text="+3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -15,9 +15,9 @@ import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.activity.base.ResultEvent
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
 import team.dahaeng.android.domain.schedule.model.Schedule
@@ -30,7 +30,7 @@ class MainViewModel @Inject constructor(
     private val importPostsUseCase: ImportPostsUseCase,
     private val importScheduleUseCase: ImportScheduleUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
-) : BaseViewModel<ResultEvent<Nothing>>() {
+) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
     val posts = _posts.asStateFlow()
@@ -38,35 +38,46 @@ class MainViewModel @Inject constructor(
     private val _schedules = MutableStateFlow(DataStore.schedules)
     val schedules = _schedules.asStateFlow()
 
+    var lastLocate = ""
+
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
-                DataStore.updatePosts(posts)
-                _posts.emit(posts)
+                if (posts.isNotEmpty()) {
+                    DataStore.updatePosts(posts)
+                    _posts.emit(posts)
+                }
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 
-    fun importSchedule(id: String) = viewModelScope.launch {
-        importScheduleUseCase(id)
+    fun importSchedule(ownerId: Long) = viewModelScope.launch {
+        importScheduleUseCase(ownerId)
             .onSuccess { scheduleList ->
-                DataStore.updateSchedules(scheduleList)
-                _schedules.emit(scheduleList)
+                if (scheduleList.isNotEmpty()) {
+                    DataStore.updateSchedules(scheduleList)
+                    _schedules.emit(scheduleList)
+                }
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 
-    fun addSchedule(schedule: Schedule, id: String) = viewModelScope.launch {
-        uploadScheduleUseCase(schedule, id)
+    fun addSchedule(schedule: Schedule) = viewModelScope.launch {
+        uploadScheduleUseCase(schedule)
+            .onSuccess { isSuccess ->
+                if (isSuccess) {
+                    _schedules.update { it + schedule }
+                }
+            }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
-                event(ResultEvent.Failure(exception))
+                emitException(exception)
             }
     }
 }
