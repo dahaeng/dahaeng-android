@@ -15,6 +15,7 @@ import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
@@ -42,8 +43,10 @@ class MainViewModel @Inject constructor(
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()
             .onSuccess { posts ->
-                DataStore.updatePosts(posts)
-                _posts.emit(posts)
+                if (posts.isNotEmpty()) {
+                    DataStore.updatePosts(posts)
+                    _posts.emit(posts)
+                }
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
@@ -54,8 +57,10 @@ class MainViewModel @Inject constructor(
     fun importSchedule(ownerId: Long) = viewModelScope.launch {
         importScheduleUseCase(ownerId)
             .onSuccess { scheduleList ->
-                DataStore.updateSchedules(scheduleList)
-                _schedules.emit(scheduleList)
+                if (scheduleList.isNotEmpty()) {
+                    DataStore.updateSchedules(scheduleList)
+                    _schedules.emit(scheduleList)
+                }
             }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
@@ -65,6 +70,11 @@ class MainViewModel @Inject constructor(
 
     fun addSchedule(schedule: Schedule) = viewModelScope.launch {
         uploadScheduleUseCase(schedule)
+            .onSuccess { isSuccess ->
+                if (isSuccess) {
+                    _schedules.update { it + schedule }
+                }
+            }
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
                 emitException(exception)

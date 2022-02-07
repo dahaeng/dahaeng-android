@@ -30,18 +30,6 @@ class ListAdapter(private val onPostClick: (Post) -> Unit) :
         holder.bind(getItem(position))
     }
 
-    /* TODO: 메모리 할당 해제
-    override fun onViewRecycled(holder: ViewHolder) {
-        super.onViewRecycled(holder)
-        GlideApp.with(holder.itemView).clear(holder.)
-    }
-
-    override fun onViewDetachedFromWindow(holder: ViewHolder) {
-        super.onViewDetachedFromWindow(holder)
-        Glide.with(context)
-            .clear(holder.imageView)
-    }*/
-
     class ViewHolder(
         private val binding: LayoutPostBinding,
         private val onPostClick: (Post) -> Unit,
@@ -57,6 +45,8 @@ class ListAdapter(private val onPostClick: (Post) -> Unit) :
     }
 
     override fun getItemId(position: Int) = getItem(position).id
+
+    override fun getItemCount() = currentList.count()
 
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Post>() {

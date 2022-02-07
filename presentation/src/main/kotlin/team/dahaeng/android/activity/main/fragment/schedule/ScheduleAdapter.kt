@@ -28,6 +28,10 @@ class ScheduleAdapter : ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUt
         }
     }
 
+    override fun getItemId(position: Int) = getItem(position).id
+
+    override fun getItemCount() = currentList.count()
+
     private companion object {
         val diffUtil = object : DiffUtil.ItemCallback<Schedule>() {
             override fun areContentsTheSame(oldItem: Schedule, newItem: Schedule) =

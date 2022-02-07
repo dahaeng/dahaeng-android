@@ -12,6 +12,7 @@ package team.dahaeng.android.activity.main.fragment.schedule
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
@@ -34,16 +35,19 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             setHasFixedSize(true)
             setItemViewCacheSize(10)
             adapter = this@ScheduleFragment.adapter.apply {
+                // logeukes { DataStore.schedules }
                 submitList(DataStore.schedules)
             }
         }
 
         vm.schedules.collectWithLifecycle(viewLifecycleOwner) { scheduleList ->
+            logeukes { scheduleList }
             adapter.submitList(scheduleList)
         }
 
         binding.fabNewSchedule.setOnClickListener {
             // startActivity(Intent(context, CreateScheduleActivity::class.java))
+            // logeukes { TestUtil.schedules(1).first() }
             vm.addSchedule(TestUtil.schedules(1).first())
         }
     }

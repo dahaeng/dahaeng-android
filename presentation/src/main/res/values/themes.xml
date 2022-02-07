@@ -32,13 +32,13 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="tv_task_title">
+    <style name="tv_title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">30sp</item>
         <item name="android:fontFamily">@font/nanumbarungothic</item>
     </style>
 
-    <style name="tv_task_content">
+    <style name="tv_task_content_title">
         <item name="android:textColor">@color/black</item>
         <item name="android:textSize">20sp</item>
         <item name="android:fontFamily">@font/nanumbarungothic</item>
