@@ -32,23 +32,6 @@
         <item name="android:windowLightStatusBar">true</item>
     </style>
 
-    <style name="tv_title">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="tv_content">
-        <item name="android:textSize">10sp</item>
-    </style>
-
-    <style name="tv_task_title">
-        <item name="android:textSize">24sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-    <style name="tv_task_content">
-        <item name="android:textSize">20sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
     <style name="iv_circle">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>

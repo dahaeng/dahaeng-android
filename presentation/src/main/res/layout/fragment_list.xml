@@ -121,7 +121,8 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_sesarch_container"
-            tools:listitem="@layout/layout_post" />
+            tools:listitem="@layout/layout_post"
+            tools:paddingHorizontal="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
