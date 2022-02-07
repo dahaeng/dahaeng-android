@@ -7,7 +7,6 @@
  ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  -->
 
-
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
@@ -27,26 +26,17 @@
         tools:theme="@style/Theme.Dahaeng">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_my_schedule"
             style="@style/tv_task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumbarunpen_b"
-            android:text="내 일정"
+            android:text="@string/fragment_schedule_my_task"
+            android:textColor="@color/black"
+            android:textSize="25sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageButton
-            android:id="@+id/ib_add_schedule"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/ic_post_add_24"
-            android:contentDescription="@null"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -55,12 +45,26 @@
             android:layout_height="0dp"
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="16dp"
+            android:clipToPadding="false"
+            android:fadingEdge="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/tv_my_schedule"
+            tools:layout_marginHorizontal="0dp"
             tools:listitem="@layout/layout_schedule" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_new_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_post_add_24" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
