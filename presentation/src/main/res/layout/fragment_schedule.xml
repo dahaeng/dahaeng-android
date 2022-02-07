@@ -32,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/nanumbarunpen_b"
+            android:fontFamily="@font/nanumbarungothic"
             android:text="@string/fragment_schedule_my_task"
             android:textColor="@color/black"
             android:textSize="25sp"
