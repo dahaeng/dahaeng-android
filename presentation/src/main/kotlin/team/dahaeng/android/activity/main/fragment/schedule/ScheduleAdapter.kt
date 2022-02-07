@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutScheduleBinding
-import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.community.model.Schedule
 
-class ScheduleAdapter(private val onMoreClick: (View) -> Unit) :
+class ScheduleAdapter(private val onMoreClick: (View, Schedule) -> Unit) :
     ListAdapter<Schedule, ScheduleAdapter.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,12 +24,12 @@ class ScheduleAdapter(private val onMoreClick: (View) -> Unit) :
 
     class ViewHolder(
         private val binding: LayoutScheduleBinding,
-        private val onMoreClick: (View) -> Unit,
+        private val onMoreClick: (View, Schedule) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(schedule: Schedule) {
             binding.schedule = schedule
             binding.ivMore.setOnClickListener { view ->
-                onMoreClick(view)
+                onMoreClick(view, schedule)
             }
         }
     }

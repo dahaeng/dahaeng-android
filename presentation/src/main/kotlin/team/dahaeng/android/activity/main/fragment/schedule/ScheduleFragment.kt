@@ -19,6 +19,7 @@ import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
+import team.dahaeng.android.domain.community.model.Schedule
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.test.TestUtil
 
@@ -27,8 +28,8 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
 ) {
 
     private val adapter by lazy {
-        ScheduleAdapter { view ->
-            openMorePopup(view)
+        ScheduleAdapter { view, schedule ->
+            openMorePopup(view, schedule)
         }
     }
     override val vm: MainViewModel by activityViewModels()
@@ -54,7 +55,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
         }
     }
 
-    private fun openMorePopup(view: View) {
+    private fun openMorePopup(view: View, schedule: Schedule) {
         PopupMenu(requireActivity(), view).apply {
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
@@ -68,6 +69,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
                     }
                     R.id.menu_delete -> {
                         logeukes { "삭제" }
+                        vm.deleteSchedule(schedule)
                         true
                     }
                     else -> false

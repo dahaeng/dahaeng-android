@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.usecase
+package team.dahaeng.android.domain.community.usecase.post
 
 import android.net.Uri
 import team.dahaeng.android.domain.community.repository.FirebaseRepository

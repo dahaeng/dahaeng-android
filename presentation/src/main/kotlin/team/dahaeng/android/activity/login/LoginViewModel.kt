@@ -12,7 +12,7 @@ package team.dahaeng.android.activity.login
 import dagger.hilt.android.lifecycle.HiltViewModel
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
-import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
+import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
 import javax.inject.Inject
 
 @HiltViewModel
