@@ -15,11 +15,12 @@ import team.dahaeng.android.domain.community.model.travel.Target
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Transportation
 import team.dahaeng.android.domain.community.model.travel.Travel
+import team.dahaeng.android.domain.schedule.model.Schedule
 import java.util.Date
 import kotlin.random.Random
 
 object TestUtil {
-    private const val TestPostImageUrl =
+    private const val TestImageUrl =
         "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1283&q=80"
 
     fun posts(count: Int = 10) = List(count) { index ->
@@ -31,12 +32,26 @@ object TestUtil {
                 transportation = Transportation.Random,
                 period = Period(from = "어제", to = "내일"),
                 places = listOf(),
-                photos = listOf(TestPostImageUrl),
+                photos = listOf(TestImageUrl),
                 theme = Theme.Random,
                 target = Target.Random,
                 commonAddress = "서울시 한강로"
             ),
             createdAt = Date().time
+        )
+    }
+
+    fun schedules(count: Int = 10) = List(count) { index ->
+        Schedule(
+            participant = listOf(),
+            title = "제주 레포츠렌드 - $index",
+            theme = "",
+            totalPrice = 0,
+            transportation = "",
+            period = Period(from = "", to = ""),
+            photos = listOf(),
+            places = listOf(),
+            accommodation = ""
         )
     }
 }

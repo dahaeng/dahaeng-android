@@ -9,16 +9,16 @@
 
 package team.dahaeng.android.activity.main.fragment.schedule
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
-import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
 import team.dahaeng.android.activity.main.MainViewModel
+import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
 import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.test.TestUtil
 
 class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
     R.layout.fragment_schedule
@@ -34,7 +34,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             setHasFixedSize(true)
             setItemViewCacheSize(10)
             adapter = this@ScheduleFragment.adapter.apply {
-                submitList(emptyList())
+                submitList(DataStore.schedules)
             }
         }
 
@@ -42,8 +42,9 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             adapter.submitList(scheduleList)
         }
 
-        binding.ibAddSchedule.setOnClickListener {
-            startActivity(Intent(context, CreateScheduleActivity::class.java))
+        binding.fabNewSchedule.setOnClickListener {
+            // startActivity(Intent(context, CreateScheduleActivity::class.java))
+            vm.addSchedule(TestUtil.schedules(1).first())
         }
     }
 }

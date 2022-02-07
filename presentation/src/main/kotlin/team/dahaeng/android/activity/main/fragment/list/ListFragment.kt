@@ -20,7 +20,6 @@ import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentListBinding
 import team.dahaeng.android.util.test.TestUtil
 import java.util.Locale
@@ -35,7 +34,6 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
         lastestAddress = getString(R.string.fragment_list_loading_location)
 
         if (vm.lastLocate.isEmpty()) {
-            vm.importSchedule(DataStore.me.nickname)
             Locus.startLocationUpdates(this) { result ->
                 result.location?.let { location ->
                     vm.lastLocate = location.tryParseAddress()
