@@ -32,7 +32,7 @@
             android:layout_height="75dp"
             android:scaleType="fitXY"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_glide_small="@{post.travel.photos.get(0)}"
+            app:with_coil_small="@{post.travel.photos.get(0)}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.flexbox.FlexboxLayout

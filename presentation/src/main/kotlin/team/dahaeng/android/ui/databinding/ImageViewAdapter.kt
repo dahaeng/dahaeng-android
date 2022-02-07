@@ -16,8 +16,8 @@ import coil.loadAny
 import coil.request.CachePolicy
 import team.dahaeng.android.R
 
-@BindingAdapter("with_glide_small")
-fun loadSrcWithGlideSmallSize(view: ImageView, src: Any) {
+@BindingAdapter("with_coil_small")
+fun loadSrcWithCoilSmallSize(view: ImageView, src: Any) {
     view.loadAny(src) {
         crossfade(true)
         placeholder(R.drawable.ic_round_airplane_ticket_24)
@@ -27,8 +27,8 @@ fun loadSrcWithGlideSmallSize(view: ImageView, src: Any) {
     }
 }
 
-@BindingAdapter("with_glide_big")
-fun loadSrcWithGlideBigSize(view: ImageView, src: Any) {
+@BindingAdapter("with_coil_big")
+fun loadSrcWithCoilBigSize(view: ImageView, src: Any) {
     view.loadAny(src) {
         crossfade(true)
         placeholder(R.drawable.ic_round_airplane_ticket_24)
