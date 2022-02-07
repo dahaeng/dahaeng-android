@@ -51,8 +51,8 @@ class MainViewModel @Inject constructor(
             }
     }
 
-    fun importSchedule(id: String) = viewModelScope.launch {
-        importScheduleUseCase(id)
+    fun importSchedule(ownerId: Long) = viewModelScope.launch {
+        importScheduleUseCase(ownerId)
             .onSuccess { scheduleList ->
                 DataStore.updateSchedules(scheduleList)
                 _schedules.emit(scheduleList)
@@ -63,8 +63,8 @@ class MainViewModel @Inject constructor(
             }
     }
 
-    fun addSchedule(schedule: Schedule, id: String) = viewModelScope.launch {
-        uploadScheduleUseCase(schedule, id)
+    fun addSchedule(schedule: Schedule) = viewModelScope.launch {
+        uploadScheduleUseCase(schedule)
             .onFailure { exception ->
                 logeukes(type = LoggerType.E) { exception }
                 emitException(exception)

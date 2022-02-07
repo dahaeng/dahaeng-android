@@ -18,16 +18,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         tools:context=".activity.tasking.TaskingActivity">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_title"
             style="@style/tv_task_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="일정 생성"
+            android:layout_marginStart="30dp"
+            android:text="@string/activity_create_schedule_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -38,7 +38,7 @@
             android:layout_marginHorizontal="16dp"
             android:layout_marginTop="8dp"
             android:hint="일정 제목"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:layout_editor_absoluteX="16dp" />
 
 
