@@ -15,7 +15,7 @@ import team.dahaeng.android.domain.community.model.travel.Target
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Transportation
 import team.dahaeng.android.domain.community.model.travel.Travel
-import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.community.model.Schedule
 import java.util.Date
 import kotlin.random.Random
 

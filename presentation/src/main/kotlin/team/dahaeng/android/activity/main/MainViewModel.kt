@@ -19,10 +19,11 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
-import team.dahaeng.android.domain.community.usecase.ImportPostsUseCase
-import team.dahaeng.android.domain.schedule.model.Schedule
-import team.dahaeng.android.domain.schedule.usecase.ImportScheduleUseCase
-import team.dahaeng.android.domain.schedule.usecase.UploadScheduleUseCase
+import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,6 +31,7 @@ class MainViewModel @Inject constructor(
     private val importPostsUseCase: ImportPostsUseCase,
     private val importScheduleUseCase: ImportScheduleUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
+    private val deleteScheduleUseCase: DeleteScheduleUseCase,
 ) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
@@ -73,6 +75,19 @@ class MainViewModel @Inject constructor(
             .onSuccess { isSuccess ->
                 if (isSuccess) {
                     _schedules.update { it + schedule }
+                }
+            }
+            .onFailure { exception ->
+                logeukes(type = LoggerType.E) { exception }
+                emitException(exception)
+            }
+    }
+
+    fun deleteSchedule(schedule: Schedule) = viewModelScope.launch {
+        deleteScheduleUseCase(schedule)
+            .onSuccess { isSuccess ->
+                if (isSuccess) {
+                    _schedules.update { it - schedule }
                 }
             }
             .onFailure { exception ->

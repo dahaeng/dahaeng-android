@@ -37,4 +37,7 @@
     <string name="fragment_list_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
     <string name="fragment_schedule_my_task">내 일정</string>
     <string name="activity_create_schedule_title">일정 생성</string>
+    <string name="menu_schedule_share">공유</string>
+    <string name="menu_schedule_modify">수정</string>
+    <string name="menu_schedule_delete">삭제</string>
 </resources>

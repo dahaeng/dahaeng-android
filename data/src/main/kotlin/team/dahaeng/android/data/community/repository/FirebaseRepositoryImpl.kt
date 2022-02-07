@@ -18,8 +18,8 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
 import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.schedule.model.Schedule
 import kotlin.coroutines.resume
 
 private const val UPLOAD_IMAGE_EXCEPTION = "이미지 업로드중 에러"
@@ -115,6 +115,26 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .set(schedule)
+                .addOnSuccessListener {
+                    continuation.resume(true)
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resume(false)
+                    throw exception
+                }
+        }
+
+    /**
+     * 일정 삭제
+     *  @return 성공 여부 boolean
+     */
+    override suspend fun deleteSchedule(schedule: Schedule): Boolean =
+        suspendCancellableCoroutine { continuation ->
+            firestore.collection(Constants.Firestore.User)
+                .document(schedule.participant.first().toString())
+                .collection(Constants.Firestore.Schedule)
+                .document(schedule.id.toString())
+                .delete()
                 .addOnSuccessListener {
                     continuation.resume(true)
                 }
