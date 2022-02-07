@@ -58,7 +58,7 @@
             tools:text="12월 25일" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/iv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumbarungothic"
@@ -70,7 +70,7 @@
             tools:text="제주 레포츠랜드" />
 
         <ImageView
-            android:id="@+id/imageButton"
+            android:id="@+id/iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_more_24"
