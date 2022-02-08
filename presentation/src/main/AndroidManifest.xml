@@ -14,35 +14,34 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Dahaeng.Splash">
-
+        <activity
+            android:name=".activity.modifyschedule.ModifyScheduleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
         <activity
             android:name=".activity.tasking.TaskingActivity"
             android:exported="true"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
         <activity
             android:name=".activity.createschedule.CreateScheduleActivity"
             android:exported="true"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
         <activity
             android:name=".activity.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activity.main.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
         <activity
             android:name=".activity.error.ErrorActivity"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -56,9 +55,7 @@
                     android:host="oauth"
                     android:scheme="${KAKAO_AOUTH_HOST_SCHEME}" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>

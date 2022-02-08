@@ -10,6 +10,7 @@
 package team.dahaeng.android.data.community.repository
 
 import android.net.Uri
+import android.util.Log
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -92,7 +93,8 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     override suspend fun importSchedules(ownerId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(ownerId.toString())
+                //.document(ownerId.toString())
+                .document("null")
                 .collection(Constants.Firestore.Schedule)
                 .get()
                 .addOnSuccessListener { result ->
@@ -111,7 +113,8 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     override suspend fun uploadSchedule(schedule: Schedule): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(schedule.participant.first().toString())
+                // .document(schedule.participant.first().toString())
+                .document(schedule.participant.firstOrNull().toString())
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .set(schedule)
@@ -131,7 +134,8 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     override suspend fun deleteSchedule(schedule: Schedule): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(schedule.participant.first().toString())
+                // .document(schedule.participant.first().toString())
+                .document(schedule.participant.firstOrNull().toString())
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .delete()
