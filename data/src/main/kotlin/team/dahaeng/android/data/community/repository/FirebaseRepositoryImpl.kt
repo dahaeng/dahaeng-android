@@ -17,8 +17,8 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
-import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.post.Post
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import kotlin.coroutines.resume
 

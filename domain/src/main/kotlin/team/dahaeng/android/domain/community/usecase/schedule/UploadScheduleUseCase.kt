@@ -9,7 +9,7 @@
 
 package team.dahaeng.android.domain.community.usecase.schedule
 
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class UploadScheduleUseCase(private val repository: FirebaseRepository) {

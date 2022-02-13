@@ -9,7 +9,7 @@
 
 package team.dahaeng.android.domain.community.usecase.post
 
-import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class UploadPostUseCase(private val repository: FirebaseRepository) {
