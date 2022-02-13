@@ -9,7 +9,9 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 data class Period(
     val from: String = "0", // 12월 2일
     val to: String = "0" // 12월 25일
-)
+) : Serializable

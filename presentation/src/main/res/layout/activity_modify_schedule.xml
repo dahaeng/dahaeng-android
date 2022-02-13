@@ -37,9 +37,10 @@
         <EditText
             android:id="@+id/et_title"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
             android:hint="@{schedule.title}"
+            android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/tv_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_title"
@@ -51,10 +52,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
             android:text="기간: "
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+            app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
         <TextView
             android:id="@+id/tv_scheduledate"
@@ -89,5 +89,83 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_theme"
             app:layout_constraintTop_toTopOf="@+id/tv_theme" />
+
+        <TextView
+            android:id="@+id/tv_totalprice"
+            style="@style/tv_task_content_title"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="비용: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_theme" />
+
+        <EditText
+            android:id="@+id/et_totalprice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:hint="@{Long.toString(schedule.totalPrice)}"
+            android:textColorHint="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_totalprice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_totalprice"
+            app:layout_constraintTop_toTopOf="@+id/tv_totalprice" />
+
+        <TextView
+            android:id="@+id/tv_transportation"
+            style="@style/tv_task_content_title"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="교통수단: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_totalprice" />
+
+        <Spinner
+            android:id="@+id/sn_transportation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_transportation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_transportation"
+            app:layout_constraintTop_toTopOf="@+id/tv_transportation" />
+
+        <TextView
+            android:id="@+id/tv_accommodation"
+            style="@style/tv_task_content_title"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:text="숙소: "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_transportation" />
+
+        <Spinner
+            android:id="@+id/sn_accommodation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_accommodation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_accommodation"
+            app:layout_constraintTop_toTopOf="@+id/tv_accommodation" />
+
+
+        <Button
+            android:text="완료"
+            android:background="@color/primary"
+            android:id="@+id/btn_complete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -147,4 +147,19 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     throw exception
                 }
         }
+
+    override suspend fun changeSchedule(schedule: Schedule): Boolean =
+        suspendCancellableCoroutine { continuation ->
+            firestore.collection(Constants.Firestore.User)
+                .document(schedule.participant.firstOrNull().toString())
+                .collection(Constants.Firestore.Schedule)
+                .document(schedule.id.toString())
+                .update(schedule.toMap())
+                .addOnSuccessListener {
+                    continuation.resume(true)
+                }.addOnFailureListener { exception ->
+                    continuation.resume(false)
+                    throw exception
+                }
+        }
 }

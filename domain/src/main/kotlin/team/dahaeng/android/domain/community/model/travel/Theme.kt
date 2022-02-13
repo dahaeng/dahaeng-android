@@ -9,8 +9,10 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 @JvmInline
-value class Theme(val value: String) {
+value class Theme(val value: String) : Serializable {
     companion object {
         val None = Theme("")
         val Random get() = ThemeList.All.random()

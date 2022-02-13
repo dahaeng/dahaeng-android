@@ -9,4 +9,6 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-data class Place(val price: Int, val name: String, val address: String)
+import java.io.Serializable
+
+data class Place(val price: Int, val name: String, val address: String) : Serializable

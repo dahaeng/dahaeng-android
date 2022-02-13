@@ -67,8 +67,10 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
                         true
                     }
                     R.id.menu_modify -> {
+                        val intent = Intent(context, ModifyScheduleActivity::class.java)
+                        intent.putExtra("schedule", schedule)
                         // TODO: send schedule to ModifiyScheduleActivity
-                        startActivity(Intent(context, ModifyScheduleActivity::class.java))
+                        startActivity(intent)
                         true
                     }
                     R.id.menu_delete -> {

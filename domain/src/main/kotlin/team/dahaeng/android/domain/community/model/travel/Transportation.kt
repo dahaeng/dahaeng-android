@@ -9,8 +9,10 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 @JvmInline
-value class Transportation(val value: String) {
+value class Transportation(val value: String) : Serializable {
     companion object {
         val None = Transportation("")
         val Random get() = TransportationList.All.random()
