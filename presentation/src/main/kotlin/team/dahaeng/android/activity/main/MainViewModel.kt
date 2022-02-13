@@ -19,7 +19,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase

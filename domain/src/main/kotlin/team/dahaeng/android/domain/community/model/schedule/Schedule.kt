@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model
+package team.dahaeng.android.domain.community.model.schedule
 
 import team.dahaeng.android.domain.community.model.travel.Period
 import team.dahaeng.android.domain.community.model.travel.Place

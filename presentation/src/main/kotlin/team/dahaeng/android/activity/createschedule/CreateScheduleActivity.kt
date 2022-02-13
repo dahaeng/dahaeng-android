@@ -16,7 +16,7 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 
 @AndroidEntryPoint
 class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(

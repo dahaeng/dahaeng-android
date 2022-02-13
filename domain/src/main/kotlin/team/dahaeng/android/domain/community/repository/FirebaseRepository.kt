@@ -9,14 +9,18 @@
 
 package team.dahaeng.android.domain.community.repository
 
-import android.net.Uri
-import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.post.Photo
+import team.dahaeng.android.domain.community.model.post.Post
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 
 interface FirebaseRepository {
-    suspend fun uploadImage(uri: Uri, imageName: String): String?
+    /**
+     * 포스트 업로드에 쓰일 이미지들 업로드
+     */
+    suspend fun uploadPhotos(photos: List<Photo>, imageName: String): String?
     suspend fun uploadPost(post: Post): Boolean
     suspend fun importPosts(): List<Post>
+    suspend fun deletePost(): Boolean
     suspend fun importSchedules(ownerId: Long): List<Schedule>
     suspend fun uploadSchedule(schedule: Schedule): Boolean
     suspend fun deleteSchedule(schedule: Schedule): Boolean

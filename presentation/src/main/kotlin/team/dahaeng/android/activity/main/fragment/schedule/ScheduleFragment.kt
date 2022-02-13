@@ -19,7 +19,7 @@ import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.test.TestUtil
 
