@@ -10,12 +10,10 @@
 package team.dahaeng.android.domain.community.model.common
 
 import android.graphics.Bitmap
-import team.dahaeng.android.domain.community.model.post.Post
-import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.community.model.travel.Place
 
 /**
- * [Post], [Schedule] 에 들어갈 이미지를
- * Firestore 에 올리기 위해 필요한 정보들을 담는 객체
+ * [Place] 에 들어갈 이미지를 Firestore 에 올리기 위해 필요한 정보들을 담는 객체
  *
  * @property bitmap 이미지 비트맵
  * 갤러리에서 이미지를 가져옴: URI 변환, 카메라에서 이미지를 바로 찍음: Bitmap 변환
