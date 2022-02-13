@@ -9,4 +9,15 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-data class Place(val price: Int, val name: String, val address: String)
+/**
+ * 장소 객체
+ *
+ * @property price 금액
+ * @property name 장소 이름
+ * @property locate 장소 위치
+ */
+data class Place(
+    val price: Int = 0,
+    val name: String = "",
+    val locate: Locate = Locate(),
+)

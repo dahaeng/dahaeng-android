@@ -9,4 +9,13 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-data class Accommodation()
+/**
+ * 숙소 객체
+ *
+ * @property name 숙소 이름
+ * @property locate 숙소 위치
+ */
+data class Accommodation(
+    val name: String = "",
+    val locate: Locate = Locate(),
+)

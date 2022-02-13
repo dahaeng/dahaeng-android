@@ -9,7 +9,15 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+/**
+ * 기간 객체
+ *
+ * 모든 값은 Date().time 형태로 가져옴
+ *
+ * @property from 시작 일
+ * @property to 종료 일
+ */
 data class Period(
-    val from: String = "0", // 12월 2일
-    val to: String = "0" // 12월 25일
+    val from: Long = 0L,
+    val to: Long = 0L,
 )

@@ -9,7 +9,7 @@
 
 package team.dahaeng.android.domain.community.repository
 
-import team.dahaeng.android.domain.community.model.post.Photo
+import team.dahaeng.android.domain.community.model.common.Photo
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 

@@ -9,6 +9,10 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+/**
+ * 여행지 객체
+ *
+ */
 data class Travel(
     val totalPrice: Long = 0, // 총 가격
     val transportation: Transportation = Transportation.None, // 교통 수단
@@ -18,5 +22,5 @@ data class Travel(
     val theme: Theme = Theme.None, // 태그
     val target: Target = Target.None, // 추천 대상
     val rating: Float = 4.8f, // 평점, 최대 5점
-    var commonAddress: String = "" // 공통 주소
+    var commonAddress: String = "", // 공통 주소
 )

@@ -9,12 +9,15 @@
 
 package team.dahaeng.android.domain.community.model.post
 
+import team.dahaeng.android.domain.community.model.common.Photo
 import team.dahaeng.android.domain.community.model.travel.Travel
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import java.util.Date
 import kotlin.random.Random
 
 /**
+ * 여행지 추천 게시글 객체
+ *
  * @property id 포스트 UUID
  * @property ownerId 포스트 등록자 UUID
  * @property title 포스트 제목
