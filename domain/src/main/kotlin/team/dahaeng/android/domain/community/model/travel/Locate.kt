@@ -12,6 +12,8 @@ package team.dahaeng.android.domain.community.model.travel
 /**
  * 위치 객체
  *
+ * 위도와 경도는 지도에 정확한 마커를 찍기 위해 필요함
+ *
  * @property latitude 위도
  * @property longitude 경도
  * @property address 주소 (충청남도 서산시 석림동 ~~~~)
