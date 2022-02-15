@@ -10,8 +10,8 @@
 package team.dahaeng.android.data
 
 import team.dahaeng.android.domain.aouth.model.User
-import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.post.Post
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 
 // TODO: 이게 맞나?? ㅋㅋ
 @Suppress("ObjectPropertyName")

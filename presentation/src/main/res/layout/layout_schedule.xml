@@ -14,8 +14,16 @@
     <data>
 
         <variable
+            name="to"
+            type="Long" />
+
+        <variable
+            name="from"
+            type="Long" />
+
+        <variable
             name="schedule"
-            type="team.dahaeng.android.domain.community.model.Schedule" />
+            type="team.dahaeng.android.domain.community.model.schedule.Schedule" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +37,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/nanumbarungothic"
-            android:text="@{schedule.period.to}"
+            android:text="@{Long.toString(to)}"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -52,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/nanumbarungothic"
-            android:text="@{schedule.period.from}"
+            android:text="@{Long.toString(from)}"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/tv_period_to"
             app:layout_constraintStart_toEndOf="@id/tv_period_range"

@@ -15,7 +15,7 @@
 
         <variable
             name="schedule"
-            type="team.dahaeng.android.domain.community.model.Schedule" />
+            type="team.dahaeng.android.domain.community.model.schedule.Schedule" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -56,29 +56,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
-        <TextView
-            android:id="@+id/tv_scheduledate"
-            style="@style/tv_task_content_title"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_periods"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:text="asdasd"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_date"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/et_title"
             app:layout_constraintStart_toEndOf="@+id/tv_date"
-            app:layout_constraintTop_toTopOf="@+id/tv_date" />
+            app:layout_constraintTop_toBottomOf="@+id/et_title" />
 
         <TextView
             android:id="@+id/tv_theme"
             style="@style/tv_task_content_title"
-
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="테마: "
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_date" />
+            app:layout_constraintTop_toBottomOf="@+id/rv_periods" />
 
         <Spinner
             android:id="@+id/sn_theme"
@@ -107,7 +104,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="8dp"
-            android:hint="@{Long.toString(schedule.totalPrice)}"
+            android:hint="@{Integer.toString(schedule.travel.totalPrice)}"
             android:textColorHint="@color/black"
             app:layout_constraintBottom_toBottomOf="@+id/tv_totalprice"
             app:layout_constraintEnd_toEndOf="parent"
@@ -160,11 +157,11 @@
 
 
         <Button
-            android:text="완료"
-            android:background="@color/primary"
             android:id="@+id/btn_complete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:text="완료"
             app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

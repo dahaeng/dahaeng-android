@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutPostBinding
-import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.post.Post
 
 private typealias ListAdapterViewHolder = team.dahaeng.android.activity.main.fragment.list.ListAdapter.ViewHolder
 

@@ -18,8 +18,9 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
-import team.dahaeng.android.domain.community.model.Post
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.common.Photo
+import team.dahaeng.android.domain.community.model.post.Post
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import kotlin.coroutines.resume
 
@@ -33,27 +34,31 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     /**
      * @return 성공시 이미지 주소, 실패시 null
      */
-    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
-        suspendCancellableCoroutine { continuation ->
-            storageRef.child(Constants.Firestore.Post).run {
-                child(imageName)
-                    .putFile(uri)
-                    .continueWithTask { task ->
-                        if (!task.isSuccessful && task.exception != null) {
-                            continuation.resume(null)
-                            throw task.exception!!
-                        }
-                        downloadUrl
-                    }.addOnCompleteListener { task ->
-                        if (task.isSuccessful && task.result != null) {
-                            continuation.resume(task.result!!.toString())
-                        } else {
-                            continuation.resume(null)
-                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
-                        }
-                    }
-            }
-        }
+//    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
+//        suspendCancellableCoroutine { continuation ->
+//            storageRef.child(Constants.Firestore.Post).run {
+//                child(imageName)
+//                    .putFile(uri)
+//                    .continueWithTask { task ->
+//                        if (!task.isSuccessful && task.exception != null) {
+//                            continuation.resume(null)
+//                            throw task.exception!!
+//                        }
+//                        downloadUrl
+//                    }.addOnCompleteListener { task ->
+//                        if (task.isSuccessful && task.result != null) {
+//                            continuation.resume(task.result!!.toString())
+//                        } else {
+//                            continuation.resume(null)
+//                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
+//                        }
+//                    }
+//            }
+//        }
+
+    override suspend fun uploadPhotos(photos: List<Photo>, imageName: String): String? {
+        TODO("Not yet implemented")
+    }
 
     /**
      * @return 성공 여부 boolean
@@ -86,6 +91,10 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     throw exception
                 }
         }
+
+    override suspend fun deletePost(): Boolean {
+        TODO("Not yet implemented")
+    }
 
     /**
      * 내 스케줄 리스트 조회
@@ -162,4 +171,5 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     throw exception
                 }
         }
+
 }

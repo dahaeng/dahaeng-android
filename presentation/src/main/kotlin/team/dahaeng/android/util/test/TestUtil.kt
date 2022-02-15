@@ -9,13 +9,13 @@
 
 package team.dahaeng.android.util.test
 
-import team.dahaeng.android.domain.community.model.Post
+import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.travel.Period
 import team.dahaeng.android.domain.community.model.travel.Target
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Transportation
 import team.dahaeng.android.domain.community.model.travel.Travel
-import team.dahaeng.android.domain.community.model.Schedule
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import java.util.Date
 import kotlin.random.Random
 
@@ -23,7 +23,7 @@ object TestUtil {
     private const val TestImageUrl =
         "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1283&q=80"
 
-    fun posts(count: Int = 10) = List(count) { index ->
+/*    fun posts(count: Int = 10) = List(count) { index ->
         Post(
             title = "여행지 - $index",
             content = "이것은 아름다운 ${index}번째 여행지 입니다.",
@@ -54,4 +54,6 @@ object TestUtil {
             accommodation = ""
         )
     }
+*/
 }
+
