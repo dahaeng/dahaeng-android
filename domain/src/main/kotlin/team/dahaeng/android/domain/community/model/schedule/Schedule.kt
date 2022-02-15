@@ -10,6 +10,7 @@
 package team.dahaeng.android.domain.community.model.schedule
 
 import team.dahaeng.android.domain.community.model.travel.Travel
+import java.io.Serializable
 import kotlin.random.Random
 
 /**
@@ -24,5 +25,14 @@ data class Schedule(
     val id: Long = Random.nextLong(),
     val participant: List<Long> = emptyList(),
     val title: String = "",
-    val travel: Travel,
-)
+    val travel: Travel = Travel(),
+) : Serializable {
+    fun toMap(): Map<String, Any> {
+        return mapOf(
+            "id" to id,
+            "participant" to participant,
+            "title" to title,
+            "travel" to travel
+        )
+    }
+}

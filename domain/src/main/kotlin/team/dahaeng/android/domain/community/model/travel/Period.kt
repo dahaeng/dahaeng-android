@@ -9,6 +9,8 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 /**
  * 기간 객체
  *
@@ -20,4 +22,4 @@ package team.dahaeng.android.domain.community.model.travel
 data class Period(
     val from: Long = 0L,
     val to: Long = 0L,
-)
+) : Serializable

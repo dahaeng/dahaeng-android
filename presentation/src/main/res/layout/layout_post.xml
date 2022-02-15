@@ -32,7 +32,6 @@
             android:layout_height="75dp"
             android:scaleType="fitXY"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small="@{post.travel.photos.get(0)}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.flexbox.FlexboxLayout
@@ -75,7 +74,6 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
-                    android:text="@{String.valueOf(post.travel.rating)}"
                     app:drawableStartCompat="@drawable/ic_round_star_24"
                     app:drawableTint="@color/primary"
                     app:layout_constraintBottom_toBottomOf="parent"

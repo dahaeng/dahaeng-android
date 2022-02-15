@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.activity.main.fragment.schedule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
@@ -16,7 +17,9 @@ import androidx.fragment.app.activityViewModels
 import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
+import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
 import team.dahaeng.android.activity.main.MainViewModel
+import team.dahaeng.android.activity.modifyschedule.ModifyScheduleActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
@@ -51,7 +54,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
         }
 
         binding.fabNewSchedule.setOnClickListener {
-            vm.addSchedule(TestUtil.schedules(1).first())
+            startActivity(Intent(context, CreateScheduleActivity::class.java))
         }
     }
 
@@ -64,11 +67,13 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
                         true
                     }
                     R.id.menu_modify -> {
-                        logeukes { "수정" }
+                        val intent = Intent(context, ModifyScheduleActivity::class.java)
+                        intent.putExtra("schedule", schedule)
+                        // TODO: send schedule to ModifiyScheduleActivity
+                        startActivity(intent)
                         true
                     }
                     R.id.menu_delete -> {
-                        logeukes { "삭제" }
                         vm.deleteSchedule(schedule)
                         true
                     }

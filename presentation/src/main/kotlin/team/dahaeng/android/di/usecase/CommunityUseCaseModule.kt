@@ -18,6 +18,7 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadImageUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadPostUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
@@ -54,4 +55,9 @@ object CommunityUseCaseModule {
     @ViewModelScoped
     fun provideDeleteScheduleUseCase(reposiotry: FirebaseRepository): DeleteScheduleUseCase =
         DeleteScheduleUseCase(reposiotry)
+
+    @Provides
+    @ViewModelScoped
+    fun provideChangeScheduleUseCase(repository: FirebaseRepository): ChangeScheduleUseCase =
+        ChangeScheduleUseCase(repository)
 }

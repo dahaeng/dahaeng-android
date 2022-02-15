@@ -40,4 +40,33 @@
     <string name="menu_schedule_share">공유</string>
     <string name="menu_schedule_modify">수정</string>
     <string name="menu_schedule_delete">삭제</string>
+
+    <string-array name="modify_schedule_theme_array">
+        <item>펜션</item>
+        <item>캠핑</item>
+        <item>스포츠</item>
+        <item>힐링</item>
+        <item>바다</item>
+        <item>산</item>
+        <item>음식</item>
+        <item>명소</item>
+    </string-array>
+
+    <string-array name="modify_schedule_transportation_array">
+        <item>항공</item>
+        <item>배</item>
+        <item>기차</item>
+        <item>차</item>
+        <item>대중교통</item>
+        <item>도보</item>
+    </string-array>
+
+    <string-array name="modify_schedule_accomodation_array">
+        <item>모텔</item>
+        <item>호텔</item>
+        <item>리조트</item>
+        <item>펜션</item>
+        <item>게스트하우스</item>
+        <item>한옥</item>
+    </string-array>
 </resources>

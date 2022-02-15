@@ -17,6 +17,7 @@ import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.toObjectNonNull
+import team.dahaeng.android.domain.community.model.common.Photo
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
@@ -32,27 +33,31 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     /**
      * @return 성공시 이미지 주소, 실패시 null
      */
-    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
-        suspendCancellableCoroutine { continuation ->
-            storageRef.child(Constants.Firestore.Post).run {
-                child(imageName)
-                    .putFile(uri)
-                    .continueWithTask { task ->
-                        if (!task.isSuccessful && task.exception != null) {
-                            continuation.resume(null)
-                            throw task.exception!!
-                        }
-                        downloadUrl
-                    }.addOnCompleteListener { task ->
-                        if (task.isSuccessful && task.result != null) {
-                            continuation.resume(task.result!!.toString())
-                        } else {
-                            continuation.resume(null)
-                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
-                        }
-                    }
-            }
-        }
+//    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
+//        suspendCancellableCoroutine { continuation ->
+//            storageRef.child(Constants.Firestore.Post).run {
+//                child(imageName)
+//                    .putFile(uri)
+//                    .continueWithTask { task ->
+//                        if (!task.isSuccessful && task.exception != null) {
+//                            continuation.resume(null)
+//                            throw task.exception!!
+//                        }
+//                        downloadUrl
+//                    }.addOnCompleteListener { task ->
+//                        if (task.isSuccessful && task.result != null) {
+//                            continuation.resume(task.result!!.toString())
+//                        } else {
+//                            continuation.resume(null)
+//                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
+//                        }
+//                    }
+//            }
+//        }
+
+    override suspend fun uploadPhotos(photos: List<Photo>, imageName: String): String? {
+        TODO("Not yet implemented")
+    }
 
     /**
      * @return 성공 여부 boolean
@@ -86,13 +91,18 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                 }
         }
 
+    override suspend fun deletePost(): Boolean {
+        TODO("Not yet implemented")
+    }
+
     /**
      * 내 스케줄 리스트 조회
      */
     override suspend fun importSchedules(ownerId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(ownerId.toString())
+                //.document(ownerId.toString())
+                .document("null")
                 .collection(Constants.Firestore.Schedule)
                 .get()
                 .addOnSuccessListener { result ->
@@ -111,7 +121,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     override suspend fun uploadSchedule(schedule: Schedule): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(schedule.participant.first().toString())
+                .document(schedule.participant.firstOrNull().toString())
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .set(schedule)
@@ -131,7 +141,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     override suspend fun deleteSchedule(schedule: Schedule): Boolean =
         suspendCancellableCoroutine { continuation ->
             firestore.collection(Constants.Firestore.User)
-                .document(schedule.participant.first().toString())
+                .document(schedule.participant.firstOrNull().toString())
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .delete()
@@ -143,4 +153,20 @@ class FirebaseRepositoryImpl : FirebaseRepository {
                     throw exception
                 }
         }
+
+    override suspend fun changeSchedule(schedule: Schedule): Boolean =
+        suspendCancellableCoroutine { continuation ->
+            firestore.collection(Constants.Firestore.User)
+                .document(schedule.participant.firstOrNull().toString())
+                .collection(Constants.Firestore.Schedule)
+                .document(schedule.id.toString())
+                .update(schedule.toMap())
+                .addOnSuccessListener {
+                    continuation.resume(true)
+                }.addOnFailureListener { exception ->
+                    continuation.resume(false)
+                    throw exception
+                }
+        }
+
 }

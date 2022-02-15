@@ -9,6 +9,8 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 /**
  * 숙소 객체
  *
@@ -18,4 +20,4 @@ package team.dahaeng.android.domain.community.model.travel
 data class Accommodation(
     val name: String = "",
     val locate: Locate = Locate(),
-)
+) : Serializable

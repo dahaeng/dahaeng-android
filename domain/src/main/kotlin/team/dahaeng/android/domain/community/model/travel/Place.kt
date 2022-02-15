@@ -11,6 +11,7 @@ package team.dahaeng.android.domain.community.model.travel
 
 import team.dahaeng.android.domain.community.model.common.Photo
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import java.io.Serializable
 
 /**
  * 장소 객체
@@ -29,4 +30,4 @@ data class Place(
     val name: String = "",
     val locate: Locate = Locate(),
     val photos: List<String> = emptyList(),
-)
+) : Serializable

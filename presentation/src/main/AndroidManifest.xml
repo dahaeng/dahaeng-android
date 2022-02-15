@@ -16,6 +16,11 @@
         android:theme="@style/Theme.Dahaeng.Splash">
 
         <activity
+            android:name=".activity.modifyschedule.ModifyScheduleActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
+
+        <activity
             android:name=".activity.tasking.TaskingActivity"
             android:exported="true"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />

@@ -11,7 +11,7 @@ package team.dahaeng.android.domain.community.model.travel
 
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import kotlin.annotation.Target
+import java.io.Serializable
 
 /**
  * 여행지 객체
@@ -55,4 +55,4 @@ data class Travel(
     val periods: List<List<Period>> = emptyList(),
     val places: List<List<Place>> = emptyList(),
     val accommodations: List<List<Accommodation>> = emptyList(),
-)
+) : Serializable

@@ -23,35 +23,35 @@ object TestUtil {
     private const val TestImageUrl =
         "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1283&q=80"
 
-    fun posts(count: Int = 10) = List(count) { index ->
-        Post(
-            title = "여행지 - $index",
-            content = "이것은 아름다운 ${index}번째 여행지 입니다.",
-            travel = Travel(
-                totalPrice = Random.nextLong(10_000, 1_000_000_000),
-                transportation = Transportation.Random,
-                period = Period(from = "어제", to = "내일"),
-                places = listOf(),
-                photos = listOf(TestImageUrl),
-                theme = Theme.Random,
-                target = Target.Random,
-                commonAddress = "서울시 한강로"
-            ),
-            createdAt = Date().time
-        )
-    }
-
-    fun schedules(count: Int = 10) = List(count) { index ->
-        Schedule(
-            participant = listOf(),
-            title = "제주 레포츠렌드 - $index",
-            theme = "",
-            totalPrice = 0,
-            transportation = "",
-            period = Period(from = "", to = ""),
-            photos = listOf(),
-            places = listOf(),
-            accommodation = ""
-        )
-    }
+//    fun posts(count: Int = 10) = List(count) { index ->
+//        Post(
+//            title = "여행지 - $index",
+//            content = "이것은 아름다운 ${index}번째 여행지 입니다.",
+//            travel = Travel(
+//                totalPrice = Random.nextLong(10_000, 1_000_000_000),
+//                transportation = Transportation.Random,
+//                period = Period(from = "어제", to = "내일"),
+//                places = listOf(),
+//                photos = listOf(TestImageUrl),
+//                theme = Theme.Random,
+//                target = Target.Random,
+//                commonAddress = "서울시 한강로"
+//            ),
+//            createdAt = Date().time
+//        )
+//    }
+//
+//    fun schedules(count: Int = 10) = List(count) { index ->
+//        Schedule(
+//            participant = listOf(),
+//            title = "제주 레포츠렌드 - $index",
+//            theme = "",
+//            totalPrice = 0,
+//            transportation = "",
+//            period = Period(from = "", to = ""),
+//            photos = listOf(),
+//            places = listOf(),
+//            accommodation = ""
+//        )
+//    }
 }

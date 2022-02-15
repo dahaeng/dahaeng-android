@@ -9,6 +9,8 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 /**
  * 교통수단 객체
  *
@@ -24,14 +26,14 @@ data class Transportation(
     val description: String = "",
     val price: Int = 0,
     val availableTime: String = "",
-) {
+) : Serializable {
     companion object {
         val Random get() = TransportationList.All.random()
     }
 }
 
 @Suppress("FunctionName", "MemberVisibilityCanBePrivate")
-object TransportationList {
+object TransportationList : Serializable {
     val Car = Transportation("자동차")
     val Bus = Transportation("버스")
     val Subway = Transportation("지하철")
