@@ -23,146 +23,135 @@
         android:layout_height="match_parent"
         tools:context=".activity.modifyschedule.ModifyScheduleActivity">
 
-        <TextView
-            android:id="@+id/tv_title"
-            style="@style/tv_task_content_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:text="제목: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/et_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:hint="@{schedule.title}"
-            android:textColorHint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_title"
-            app:layout_constraintTop_toTopOf="@+id/tv_title" />
-
-        <TextView
-            android:id="@+id/tv_date"
-            style="@style/tv_task_content_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:text="기간: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_title" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_periods"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            app:layout_constraintEnd_toEndOf="@+id/et_title"
-            app:layout_constraintStart_toEndOf="@+id/tv_date"
-            app:layout_constraintTop_toBottomOf="@+id/et_title" />
-
-        <TextView
-            android:id="@+id/tv_theme"
-            style="@style/tv_task_content_title"
-            android:layout_width="wrap_content"
-
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="테마: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_periods" />
-
-        <Spinner
-            android:id="@+id/sn_theme"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_theme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_theme"
-            app:layout_constraintTop_toTopOf="@+id/tv_theme" />
-
-        <TextView
-            android:id="@+id/tv_totalprice"
-            style="@style/tv_task_content_title"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="비용: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_theme" />
-
-        <EditText
-            android:id="@+id/et_totalprice"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:hint="@{Integer.toString(schedule.travel.totalPrice)}"
-            android:textColorHint="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_totalprice"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_totalprice"
-            app:layout_constraintTop_toTopOf="@+id/tv_totalprice" />
-
-        <TextView
-            android:id="@+id/tv_transportation"
-            style="@style/tv_task_content_title"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="교통수단: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_totalprice" />
-
-        <Spinner
-            android:id="@+id/sn_transportation"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_transportation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_transportation"
-            app:layout_constraintTop_toTopOf="@+id/tv_transportation" />
-
-        <TextView
-            android:id="@+id/tv_accommodation"
-            style="@style/tv_task_content_title"
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="숙소: "
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_transportation" />
-
-        <Spinner
-            android:id="@+id/sn_accommodation"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="8dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_accommodation"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/tv_accommodation"
-            app:layout_constraintTop_toTopOf="@+id/tv_accommodation" />
-
-
-        <Button
-            android:id="@+id/btn_complete"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/primary"
-            android:text="완료"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:background=""
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/tv_task_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="제목: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:hint="@{schedule.title}"
+                android:textColorHint="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_title" />
+
+            <TextView
+                android:id="@+id/tv_theme"
+                style="@style/tv_task_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="16dp"
+                android:text="테마: "
+                app:layout_constraintBottom_toBottomOf="@+id/sn_theme"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sn_theme" />
+
+            <Spinner
+                android:id="@+id/sn_theme"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_theme"
+                app:layout_constraintTop_toBottomOf="@+id/et_title" />
+
+            <TextView
+                android:id="@+id/tv_commonaddress"
+                style="@style/tv_task_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="공통주소: "
+                app:layout_constraintBottom_toBottomOf="@+id/et_commonaddress"
+                app:layout_constraintStart_toStartOf="@+id/tv_theme"
+                app:layout_constraintTop_toTopOf="@+id/et_commonaddress" />
+
+            <EditText
+                android:id="@+id/et_commonaddress"
+                style="@style/tv_task_content_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_commonaddress"
+                app:layout_constraintTop_toBottomOf="@+id/sn_theme" />
+
+            <TextView
+                android:id="@+id/tv_totalperiod"
+                style="@style/tv_task_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="총 여행기간: "
+                app:layout_constraintBottom_toBottomOf="@+id/et_totalperiod"
+                app:layout_constraintStart_toStartOf="@+id/tv_commonaddress"
+                app:layout_constraintTop_toTopOf="@+id/et_totalperiod" />
+
+            <EditText
+                android:id="@+id/et_totalperiod"
+                style="@style/tv_task_content_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_totalperiod"
+                app:layout_constraintTop_toBottomOf="@+id/et_commonaddress" />
+
+            <TextView
+
+                android:id="@+id/tv_totalprice"
+                style="@style/tv_task_content_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="총 금액: "
+                app:layout_constraintBottom_toBottomOf="@+id/et_totalprice"
+                app:layout_constraintStart_toStartOf="@+id/tv_totalperiod"
+                app:layout_constraintTop_toTopOf="@+id/et_totalprice" />
+
+            <EditText
+                android:id="@+id/et_totalprice"
+                style="@style/tv_task_content_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="8dp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_totalprice"
+                app:layout_constraintTop_toBottomOf="@+id/et_totalperiod" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
