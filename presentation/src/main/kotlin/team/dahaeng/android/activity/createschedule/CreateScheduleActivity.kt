@@ -17,7 +17,8 @@ import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.travel.Travel
+import team.dahaeng.android.domain.community.model.travel.*
+import team.dahaeng.android.domain.community.model.travel.Target
 
 @AndroidEntryPoint
 class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(
@@ -29,8 +30,43 @@ class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainV
         super.onCreate(savedInstanceState)
 
         binding.btnCreateScheduleComplete.setOnClickListener {
-            vm.addSchedule(Schedule(travel = Travel()))
+            vm.addSchedule(
+                testSchedule()
+            )
+
             finish()
         }
+    }
+
+    private fun testSchedule() : Schedule {
+        return Schedule(
+            travel = Travel(
+                courseLists = listOf(
+                    CourseList(
+                        courses = listOf(
+                            Course(
+                                transportation = Transportation(
+                                    name = "항공"
+                                )
+                            ),
+                            Course(
+                                transportation = Transportation(
+                                    name = "배"
+                                )
+                            )
+                        )
+                    ),
+                    CourseList(
+                        courses = listOf(
+                            Course(
+                                transportation = Transportation(
+                                    name = "항공"
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
     }
 }

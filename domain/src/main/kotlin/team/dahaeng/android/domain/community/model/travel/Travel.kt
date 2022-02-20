@@ -51,8 +51,5 @@ data class Travel(
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
-    val transportations: List<List<Transportation>> = emptyList(),
-    val periods: List<List<Period>> = emptyList(),
-    val places: List<List<Place>> = emptyList(),
-    val accommodations: List<List<Accommodation>> = emptyList(),
+    val courseLists: List<CourseList> = emptyList(),
 ) : Serializable

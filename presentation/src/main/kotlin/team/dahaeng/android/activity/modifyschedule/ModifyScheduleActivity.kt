@@ -41,25 +41,16 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
             R.array.modify_schedule_theme_array,
             android.R.layout.simple_dropdown_item_1line
         )
-        binding.snTransportation.adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.modify_schedule_transportation_array,
-            android.R.layout.simple_dropdown_item_1line
-        )
-        binding.snAccommodation.adapter = ArrayAdapter.createFromResource(
-            this,
-            R.array.modify_schedule_accomodation_array,
-            android.R.layout.simple_dropdown_item_1line
-        )
+        val schedule = binding.schedule
+        binding.rvModifySchedule.run {
+            setHasFixedSize(true)
+            setItemViewCacheSize(10)
+            adapter = ModifyScheduleAdapter().apply {
+               submitList(schedule!!.travel.courseLists )
+            }
+        }
+
         binding.btnComplete.setOnClickListener {
-
-            // Todo : Create new schedule -> changeSchedule
-            val schedule = Schedule(
-                title = binding.etTitle.text.toString(),
-            )
-
-            // schedule.period = getPeriod(binding.tvScheduledate.text.toString())
-            // vm.changeSchedule(schedule, binding.schedule as Schedule)
             vm.importSchedule(DataStore.me.id)
             finish()
         }

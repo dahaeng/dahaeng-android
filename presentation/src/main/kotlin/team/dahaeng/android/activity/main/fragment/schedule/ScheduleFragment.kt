@@ -15,7 +15,6 @@ import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
 import io.github.jisungbin.logeukes.logeukes
-import team.dahaeng.android.activity.modifyschedule.ModifyScheduleActivity
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
