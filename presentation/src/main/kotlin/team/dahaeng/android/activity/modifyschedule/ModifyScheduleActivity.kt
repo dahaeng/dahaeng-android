@@ -49,7 +49,8 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
                submitList(schedule!!.travel.courseLists )
             }
         }
-
+        // theme spinner setting
+        // total period setonclick setting
         binding.btnComplete.setOnClickListener {
             vm.importSchedule(DataStore.me.id)
             finish()

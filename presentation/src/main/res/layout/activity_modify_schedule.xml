@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
-                android:text="제목: "
+                android:text="@string/activity_modify_title"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +61,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginLeft="16dp"
-                android:text="테마: "
+                android:text="@string/activity_modify_theme"
                 app:layout_constraintBottom_toBottomOf="@+id/sn_theme"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/sn_theme" />
@@ -81,7 +81,7 @@
                 style="@style/tv_task_content_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="공통주소: "
+                android:text="@string/activity_modify_commonaddress"
                 app:layout_constraintBottom_toBottomOf="@+id/et_commonaddress"
                 app:layout_constraintStart_toStartOf="@+id/tv_theme"
                 app:layout_constraintTop_toTopOf="@+id/et_commonaddress" />
@@ -93,6 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
+                android:text="@{schedule.travel.commonAddress}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_commonaddress"
                 app:layout_constraintTop_toBottomOf="@+id/sn_theme" />
@@ -102,18 +103,19 @@
                 style="@style/tv_task_content_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="총 여행기간: "
-                app:layout_constraintBottom_toBottomOf="@+id/et_totalperiod"
+                android:text="@string/activity_modify_totalperiod"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_totalperiodselect"
                 app:layout_constraintStart_toStartOf="@+id/tv_commonaddress"
-                app:layout_constraintTop_toTopOf="@+id/et_totalperiod" />
+                app:layout_constraintTop_toTopOf="@+id/tv_totalperiodselect" />
 
-            <EditText
-                android:id="@+id/et_totalperiod"
+            <TextView
+                android:id="@+id/tv_totalperiodselect"
                 style="@style/tv_task_content_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
+                android:text="@{Long.toString(schedule.travel.totalPeriod.to)}"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_totalperiod"
@@ -125,7 +127,7 @@
                 style="@style/tv_task_content_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="총 금액: "
+                android:text="@string/activity_modify_totalprice"
                 app:layout_constraintBottom_toBottomOf="@+id/et_totalprice"
                 app:layout_constraintStart_toStartOf="@+id/tv_totalperiod"
                 app:layout_constraintTop_toTopOf="@+id/et_totalprice" />
@@ -137,29 +139,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
+                android:text="@{Integer.toString(schedule.travel.totalPrice)}"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_totalprice"
-                app:layout_constraintTop_toBottomOf="@+id/et_totalperiod" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_totalperiodselect" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:id="@+id/rv_modify_schedule"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btn_complete"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></androidx.recyclerview.widget.RecyclerView>
 
         <Button
-            android:textColor="@color/white"
-            android:text="완료"
-            android:background="@color/primary"
             android:id="@+id/btn_complete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:text="완료"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

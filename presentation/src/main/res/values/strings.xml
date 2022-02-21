@@ -40,6 +40,11 @@
     <string name="menu_schedule_share">공유</string>
     <string name="menu_schedule_modify">수정</string>
     <string name="menu_schedule_delete">삭제</string>
+    <string name="activity_modify_title">제목:</string>
+    <string name="activity_modify_theme">테마:</string>
+    <string name="activity_modify_commonaddress">공통주소:</string>
+    <string name="activity_modify_totalperiod">총 여행기간:</string>
+    <string name="activity_modify_totalprice">총 금액:</string>
 
     <string-array name="modify_schedule_theme_array">
         <item>펜션</item>
