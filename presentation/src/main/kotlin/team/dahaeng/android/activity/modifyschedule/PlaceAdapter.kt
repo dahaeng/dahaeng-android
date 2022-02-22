@@ -29,16 +29,27 @@ class PlaceAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.moreBtn.setOnClickListener {
+            // set more button onclick
+        }
+        // imageview glide
+
+        // buttons image set
+        // buttons onclick
+
     }
 
     class ViewHolder(
         private val binding: LayoutModifyScheduleBinding,
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        val moreBtn = binding.ivMore
+        val photoIv = binding.ivPhoto
+        val transportationIv = binding.ivTransportation
+        val accommodationIv = binding.ivAccommodation
 
         fun bind(course : Course) {
-            binding.period = "" + course.period.to + "~" + course.period.from
-            binding.place = course.place
+            binding.course = course
         }
     }
 

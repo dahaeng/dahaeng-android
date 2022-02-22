@@ -46,15 +46,52 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
             setHasFixedSize(true)
             setItemViewCacheSize(10)
             adapter = ModifyScheduleAdapter().apply {
-               submitList(schedule!!.travel.courseLists )
+                submitList(schedule!!.travel.courseLists)
             }
         }
-        // theme spinner setting
-        // total period setonclick setting
+        binding.snTheme.adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.modify_schedule_theme_array,
+            android.R.layout.simple_dropdown_item_1line
+        )
+        binding.snTheme.setSelection(getThemePosition(schedule!!.travel.theme.value))
+        binding.tvTotalperiodselect.setOnClickListener {
+            showDatePicker()
+        }
         binding.btnComplete.setOnClickListener {
             vm.importSchedule(DataStore.me.id)
             finish()
         }
+    }
+
+    private fun getThemePosition(theme: String): Int {
+        when (theme) {
+            "펜션" -> {
+                return 0
+            }
+            "캠핑" -> {
+                return 1
+            }
+            "스포츠" -> {
+                return 2
+            }
+            "힐링" -> {
+                return 3
+            }
+            "바다" -> {
+                return 4
+            }
+            "산" -> {
+                return 5
+            }
+            "음식" -> {
+                return 6
+            }
+            "명소" -> {
+                return 7
+            }
+        }
+        return 0
     }
 
     private fun showDatePicker() {
@@ -74,6 +111,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
                 val startDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.first)
                 val endDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.second)
                 // Todo : Change date
+                binding.tvTotalperiodselect.text = startDate + "~" + endDate
             }
         }
     }
