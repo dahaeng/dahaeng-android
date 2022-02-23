@@ -35,7 +35,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.schedule = intent.getSerializableExtra("schedule") as Schedule
+        binding.schedule = intent.getSerializableExtra("modifyschedule") as Schedule
         binding.snTheme.adapter = ArrayAdapter.createFromResource(
             this,
             R.array.modify_schedule_theme_array,
@@ -110,7 +110,6 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
             addOnPositiveButtonClickListener {
                 val startDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.first)
                 val endDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.second)
-                // Todo : Change date
                 binding.tvTotalperiodselect.text = startDate + "~" + endDate
             }
         }

@@ -20,6 +20,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/lightblue"
         android:layout_width="match_parent"
         android:layout_height="100dp">
 
@@ -61,17 +62,19 @@
             tools:text="12월 25일" />
 
         <TextView
-            android:id="@+id/iv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginBottom="16dp"
+            android:gravity="center_vertical"
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:paddingHorizontal="16dp"
             android:fontFamily="@font/nanumbarungothic"
             android:text="@{schedule.title}"
             android:textColor="@color/black"
             android:textSize="23sp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_more"
             tools:text="제주 레포츠랜드" />
 
         <ImageView
@@ -84,29 +87,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_period_from"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_period_from" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_avatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/tv_participant_more"
-            tools:itemCount="3"
-            tools:listitem="@layout/layout_avatar" />
-
-        <TextView
-            android:id="@+id/tv_participant_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="16dp"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="@+id/rv_avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rv_avatar"
-            tools:text="+3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

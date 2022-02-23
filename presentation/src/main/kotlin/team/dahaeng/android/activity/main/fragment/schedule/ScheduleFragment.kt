@@ -30,9 +30,11 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
 ) {
 
     private val adapter by lazy {
-        ScheduleAdapter { view, schedule ->
+        ScheduleAdapter(onClick = { view, schedule ->
+
+        }, onMoreClick = { view, schedule ->
             openMorePopup(view, schedule)
-        }
+        })
     }
     override val vm: MainViewModel by activityViewModels()
 
@@ -68,7 +70,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
                     }
                     R.id.menu_modify -> {
                         val intent = Intent(context, ModifyScheduleActivity::class.java)
-                        intent.putExtra("schedule", schedule)
+                        intent.putExtra("modifyschedule", schedule)
                         // TODO: send schedule to ModifiyScheduleActivity
                         startActivity(intent)
                         true
