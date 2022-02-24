@@ -10,15 +10,19 @@
 package team.dahaeng.android.activity.modifyschedule
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutRvModfiyScheduleItemBinding
+import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.model.travel.Course
 import team.dahaeng.android.domain.community.model.travel.CourseList
 
-class ModifyScheduleAdapter :
+class ModifyScheduleAdapter(
+    private val onEditClick: (View, CourseList) -> Unit
+) :
     ListAdapter<CourseList, ModifyScheduleAdapter.ViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,19 +32,26 @@ class ModifyScheduleAdapter :
                 parent,
                 false
             )
-        return ViewHolder(binding)
+        return ViewHolder(binding, onEditClick)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+        holder.coursepositionTextview.text = "코스 " + (position + 1)
     }
 
     class ViewHolder(
-        private val binding: LayoutRvModfiyScheduleItemBinding
+        private val binding: LayoutRvModfiyScheduleItemBinding,
+        private val onEditClick: (View, CourseList) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
+        val coursepositionTextview = binding.tvCourse
+
         fun bind(courseList: CourseList) {
             binding.rvHorizontal.adapter = PlaceAdapter().apply {
                 submitList(courseList.courses)
+            }
+            binding.ibEdit.setOnClickListener { view ->
+                onEditClick(view, courseList)
             }
         }
     }

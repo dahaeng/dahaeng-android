@@ -10,6 +10,7 @@
 package team.dahaeng.android.activity.modifyschedule
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
@@ -36,16 +37,22 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, MainV
         super.onCreate(savedInstanceState)
 
         binding.schedule = intent.getSerializableExtra("modifyschedule") as Schedule
+        val schedule = binding.schedule
         binding.snTheme.adapter = ArrayAdapter.createFromResource(
             this,
             R.array.modify_schedule_theme_array,
             android.R.layout.simple_dropdown_item_1line
         )
-        val schedule = binding.schedule
         binding.rvModifySchedule.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
-            adapter = ModifyScheduleAdapter().apply {
+            adapter = ModifyScheduleAdapter(
+                onEditClick = { view, courseList ->
+                    val intent = Intent(context, ModifyCourseActivity::class.java)
+                    intent.putExtra("modifycourselist", courseList)
+                    startActivity(intent)
+                }
+            ).apply {
                 submitList(schedule!!.travel.courseLists)
             }
         }

@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
@@ -31,7 +32,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
 
     private val adapter by lazy {
         ScheduleAdapter(onClick = { view, schedule ->
-
+            findNavController().navigate(R.id.detailScheduleFragment)
         }, onMoreClick = { view, schedule ->
             openMorePopup(view, schedule)
         })

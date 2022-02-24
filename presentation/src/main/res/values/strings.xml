@@ -45,6 +45,7 @@
     <string name="activity_modify_commonaddress">공통주소:</string>
     <string name="activity_modify_totalperiod">총 여행기간:</string>
     <string name="activity_modify_totalprice">총 금액:</string>
+    <string name="activity_modify_course_complete">완료</string>
 
     <string-array name="modify_schedule_theme_array">
         <item>펜션</item>
