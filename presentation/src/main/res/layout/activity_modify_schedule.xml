@@ -16,6 +16,9 @@
         <variable
             name="schedule"
             type="team.dahaeng.android.domain.community.model.schedule.Schedule" />
+        <variable
+            name="period"
+            type="team.dahaeng.android.domain.community.model.travel.Period" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -115,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
                 android:layout_marginTop="8dp"
-                android:text="@{(Long.toString(schedule.travel.totalPeriod.to)) + '~' + Long.toString(schedule.travel.totalPeriod.from)}"
+                android:text="@{(Long.toString(period.to)) + '~' + Long.toString(period.from)}"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_totalperiod"
@@ -153,7 +156,7 @@
             android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btn_complete"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout"></androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
         <Button
             android:id="@+id/btn_complete"

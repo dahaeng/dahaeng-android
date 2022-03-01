@@ -29,10 +29,10 @@ class PlaceAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
-        // imageview glide
+        // photoIv glide
 
-        // buttons image set
-        // buttons onclick
+        // transportationIv, accommodationIv image set
+        // transportationIv, accommodationIv onclick
 
     }
 

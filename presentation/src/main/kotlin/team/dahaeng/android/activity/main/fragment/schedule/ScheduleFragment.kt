@@ -31,7 +31,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
 ) {
 
     private val adapter by lazy {
-        ScheduleAdapter(onClick = { view, schedule ->
+        ScheduleAdapter(onClick = { _, _ ->
             findNavController().navigate(R.id.detailScheduleFragment)
         }, onMoreClick = { view, schedule ->
             openMorePopup(view, schedule)
@@ -65,14 +65,13 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.menu_share -> {
-                        // TODO: 카카오톡 공유기능
+                        // TODO: 카카오톡 공유
                         logeukes { "공유" }
                         true
                     }
                     R.id.menu_modify -> {
                         val intent = Intent(context, ModifyScheduleActivity::class.java)
                         intent.putExtra("modifyschedule", schedule)
-                        // TODO: send schedule to ModifiyScheduleActivity
                         startActivity(intent)
                         true
                     }

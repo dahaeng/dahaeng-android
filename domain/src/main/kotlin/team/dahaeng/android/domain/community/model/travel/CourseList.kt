@@ -12,5 +12,5 @@ package team.dahaeng.android.domain.community.model.travel
 import java.io.Serializable
 
 data class CourseList(
-    val courses : List<Course> = emptyList()
+    var courses : List<Course> = emptyList()
 ): Serializable

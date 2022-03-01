@@ -15,7 +15,6 @@ import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.getAndUpdate
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
@@ -86,12 +85,12 @@ class MainViewModel @Inject constructor(
             }
     }
 
-    fun changeSchedule(changeSchedule: Schedule, originalSchedule: Schedule) =
+    fun changeSchedule(changeSchedule: Schedule) =
         viewModelScope.launch {
             changeScheduleUseCase(changeSchedule)
                 .onSuccess { isSuccess ->
                     if (isSuccess) {
-                        // update
+                        logeukes { "update!" }
                     }
                 }
                 .onFailure { exception ->

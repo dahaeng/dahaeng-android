@@ -9,6 +9,8 @@
 
 package team.dahaeng.android.activity.modifyschedule
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -17,16 +19,15 @@ import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.ActivityModifyCourseBinding
 import team.dahaeng.android.domain.community.model.travel.CourseList
 
 @AndroidEntryPoint
-class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, MainViewModel>(
+class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, ModifyScheduleViewModel>(
     R.layout.activity_modify_course
 ) {
 
-    override val vm: MainViewModel by viewModels()
+    override val vm: ModifyScheduleViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,15 +41,24 @@ class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, MainViewM
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
             adapter = ModifyCourseAdapter(
             ).apply {
-                submitList(courseList!!.courses)
+                submitList(courseList.courses)
             }
             setItemTouchCallback()
         }
-        // 리사이클러뷰에서 오른쪽 드래그로 순서 바꿀 수 있게
-        // 코스 아이템 스와이프 삭제
+
+        binding.btnComplete.setOnClickListener {
+            val intent = Intent(applicationContext, ModifyScheduleActivity::class.java).apply {
+                val list =
+                    (binding.rvModifyCourse.adapter as ModifyCourseAdapter).currentList.toMutableList()
+                courseList.courses = list
+                putExtra("modifycourselistresult", courseList)
+            }
+            setResult(Activity.RESULT_OK, intent)
+            finish()
+        }
     }
 
-    fun setItemTouchCallback() {
+    private fun setItemTouchCallback() {
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.LEFT
         ) {
@@ -57,11 +67,14 @@ class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, MainViewM
                 viewHolder: RecyclerView.ViewHolder,
                 target: RecyclerView.ViewHolder
             ): Boolean {
-                TODO("Move Scroll")
+                val fromPos: Int = viewHolder.absoluteAdapterPosition
+                val toPos: Int = target.absoluteAdapterPosition
+                (binding.rvModifyCourse.adapter as ModifyCourseAdapter).swapItem(fromPos, toPos)
+                return true
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-               (binding.rvModifyCourse.adapter as ModifyCourseAdapter).removeItem(viewHolder.layoutPosition)
+                (binding.rvModifyCourse.adapter as ModifyCourseAdapter).removeItem(viewHolder.layoutPosition)
             }
 
         }

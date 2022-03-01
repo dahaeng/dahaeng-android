@@ -18,7 +18,6 @@ import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.model.travel.*
-import team.dahaeng.android.domain.community.model.travel.Target
 
 @AndroidEntryPoint
 class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(

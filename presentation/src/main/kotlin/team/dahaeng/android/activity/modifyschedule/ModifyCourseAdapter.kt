@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutModifyCourseBinding
 import team.dahaeng.android.domain.community.model.travel.Course
+import java.util.*
 
 class ModifyCourseAdapter :
     ListAdapter<Course, ModifyCourseAdapter.ViewHolder>(diffUtil) {
@@ -27,10 +28,16 @@ class ModifyCourseAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
-        // imageview glide
-        // buttons image set
-        // buttons onclick
+        // TODO: imageview glide
+        // TODO: buttons image set
+        // TODO: buttons onclickListener
 
+    }
+
+    fun swapItem(fromPos : Int, toPos : Int){
+        val list = currentList.toMutableList()
+        Collections.swap(list, fromPos, toPos)
+        submitList(list)
     }
 
     fun removeItem(position: Int) {

@@ -9,7 +9,6 @@
 
 package team.dahaeng.android.activity.tasking
 
-import android.os.Bundle
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R

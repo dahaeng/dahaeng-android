@@ -24,8 +24,8 @@ import kotlin.random.Random
 data class Schedule(
     val id: Long = Random.nextLong(),
     val participant: List<Long> = emptyList(),
-    val title: String = "",
-    val travel: Travel = Travel(),
+    var title: String = "",
+    var travel: Travel = Travel(),
 ) : Serializable {
     fun toMap(): Map<String, Any> {
         return mapOf(

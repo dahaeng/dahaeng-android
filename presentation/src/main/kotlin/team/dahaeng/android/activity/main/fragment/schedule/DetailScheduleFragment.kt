@@ -3,8 +3,6 @@ package team.dahaeng.android.activity.main.fragment.schedule
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.NavController
-import androidx.navigation.fragment.findNavController
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel

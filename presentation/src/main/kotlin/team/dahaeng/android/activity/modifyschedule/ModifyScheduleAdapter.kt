@@ -16,8 +16,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutRvModfiyScheduleItemBinding
-import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.travel.Course
 import team.dahaeng.android.domain.community.model.travel.CourseList
 
 class ModifyScheduleAdapter(

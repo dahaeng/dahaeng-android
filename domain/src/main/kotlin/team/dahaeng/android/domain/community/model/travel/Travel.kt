@@ -44,6 +44,12 @@ import java.io.Serializable
  * @property periods 여행지 장소들 ([places]) 의 기간 리스트
  * @property places 여행지 장소 리스트
  * @property accommodations 여행지 장소들 ([places]) 마다 머물 숙소들
+ *
+ *
+ *  2022-03-01 변경점
+ *  val courseLists -> var courseLists, courseList 하위 val -> var
+ *  변경점은 데이터 update시에 변경점이있는 부분만 변경하는것이 좋을것 같아서 var로 변경.
+ *
  */
 data class Travel(
     val theme: Theme = Theme(),
@@ -51,5 +57,5 @@ data class Travel(
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
-    val courseLists: List<CourseList> = emptyList(),
+    var courseLists: List<CourseList> = emptyList(),
 ) : Serializable
