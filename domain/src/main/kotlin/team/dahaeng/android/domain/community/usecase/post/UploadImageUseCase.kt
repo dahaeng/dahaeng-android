@@ -14,6 +14,6 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class UploadImageUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke(uri: Uri, imageName: String) = runCatching {
-        repository.uploadImage(uri, imageName)
+       //repository.uploadImage(uri, imageName)
     }
 }

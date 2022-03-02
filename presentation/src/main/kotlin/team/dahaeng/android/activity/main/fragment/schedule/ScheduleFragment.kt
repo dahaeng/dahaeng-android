@@ -9,28 +9,33 @@
 
 package team.dahaeng.android.activity.main.fragment.schedule
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.widget.PopupMenu
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
+import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
 import team.dahaeng.android.activity.main.MainViewModel
+import team.dahaeng.android.activity.modifyschedule.ModifyScheduleActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.util.extensions.collectWithLifecycle
-import team.dahaeng.android.util.test.TestUtil
 
 class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
     R.layout.fragment_schedule
 ) {
 
     private val adapter by lazy {
-        ScheduleAdapter { view, schedule ->
+        ScheduleAdapter(onClick = { _, _ ->
+            findNavController().navigate(R.id.detailScheduleFragment)
+        }, onMoreClick = { view, schedule ->
             openMorePopup(view, schedule)
-        }
+        })
     }
     override val vm: MainViewModel by activityViewModels()
 
@@ -51,7 +56,7 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
         }
 
         binding.fabNewSchedule.setOnClickListener {
-            vm.addSchedule(TestUtil.schedules(1).first())
+            startActivity(Intent(context, CreateScheduleActivity::class.java))
         }
     }
 
@@ -60,15 +65,17 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
             setOnMenuItemClickListener { item ->
                 when (item.itemId) {
                     R.id.menu_share -> {
+                        // TODO: 카카오톡 공유
                         logeukes { "공유" }
                         true
                     }
                     R.id.menu_modify -> {
-                        logeukes { "수정" }
+                        val intent = Intent(context, ModifyScheduleActivity::class.java)
+                        intent.putExtra("modifyschedule", schedule)
+                        startActivity(intent)
                         true
                     }
                     R.id.menu_delete -> {
-                        logeukes { "삭제" }
                         vm.deleteSchedule(schedule)
                         true
                     }

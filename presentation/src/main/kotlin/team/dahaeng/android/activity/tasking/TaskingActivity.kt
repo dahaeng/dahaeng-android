@@ -9,7 +9,6 @@
 
 package team.dahaeng.android.activity.tasking
 
-import android.os.Bundle
 import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
@@ -22,7 +21,4 @@ class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
 ) {
     override val vm: TaskingViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 }

@@ -24,4 +24,5 @@ interface FirebaseRepository {
     suspend fun importSchedules(ownerId: Long): List<Schedule>
     suspend fun uploadSchedule(schedule: Schedule): Boolean
     suspend fun deleteSchedule(schedule: Schedule): Boolean
+    suspend fun changeSchedule(schedule: Schedule): Boolean
 }

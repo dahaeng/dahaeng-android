@@ -9,6 +9,8 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
+
 /**
  * 위치 객체
  *
@@ -22,4 +24,4 @@ data class Locate(
     val latitude: Double = Double.NaN,
     val longitude: Double = Double.NaN,
     val address: String = "",
-)
+) : Serializable

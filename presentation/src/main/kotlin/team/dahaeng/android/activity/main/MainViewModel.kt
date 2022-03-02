@@ -21,6 +21,7 @@ import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
@@ -32,6 +33,7 @@ class MainViewModel @Inject constructor(
     private val importScheduleUseCase: ImportScheduleUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
     private val deleteScheduleUseCase: DeleteScheduleUseCase,
+    private val changeScheduleUseCase: ChangeScheduleUseCase,
 ) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
@@ -82,6 +84,20 @@ class MainViewModel @Inject constructor(
                 emitException(exception)
             }
     }
+
+    fun changeSchedule(changeSchedule: Schedule) =
+        viewModelScope.launch {
+            changeScheduleUseCase(changeSchedule)
+                .onSuccess { isSuccess ->
+                    if (isSuccess) {
+                        logeukes { "update!" }
+                    }
+                }
+                .onFailure { exception ->
+                    logeukes(type = LoggerType.E) { exception }
+                    emitException(exception)
+                }
+        }
 
     fun deleteSchedule(schedule: Schedule) = viewModelScope.launch {
         deleteScheduleUseCase(schedule)

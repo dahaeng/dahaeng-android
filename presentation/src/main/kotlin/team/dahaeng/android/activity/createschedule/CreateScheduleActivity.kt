@@ -17,6 +17,7 @@ import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.community.model.travel.*
 
 @AndroidEntryPoint
 class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(
@@ -28,8 +29,114 @@ class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainV
         super.onCreate(savedInstanceState)
 
         binding.btnCreateScheduleComplete.setOnClickListener {
-            vm.addSchedule(Schedule(title = binding.textInputEditText.text.toString()))
+            vm.addSchedule(
+                testSchedule()
+            )
+
             finish()
         }
+    }
+
+    private fun testSchedule(): Schedule {
+        return Schedule(
+            title = binding.textInputEditText.text.toString(),
+            travel = Travel(
+                theme = Theme(),
+                commonAddress = "공통 주소",
+                totalPrice = 1000000,
+                totalPeriod = Period(
+                    to = 20220221,
+                    from = 20220225
+                ),
+                courseLists = listOf(
+                    CourseList(
+                        courses = listOf(
+                            Course(
+                                transportation = Transportation(
+                                    name = "항공"
+                                ),
+                                period = Period(
+                                    to = 20220221,
+                                    from = 20220222
+                                ),
+                                place = Place(
+                                    mainPrice = 10000,
+                                    name = "장소 이름",
+                                    locate = Locate(),
+                                    photos = listOf("사진들")
+                                ),
+                                accommodation = Accommodation(
+                                    name = "호텔",
+                                    locate = Locate(),
+                                ),
+                            ),
+
+                            Course(
+                                transportation = Transportation(
+                                    name = "배"
+                                ),
+                                period = Period(
+                                    to = 20220222,
+                                    from = 20220223
+                                ),
+                                place = Place(
+                                    mainPrice = 20000,
+                                    name = "장소 이름",
+                                    locate = Locate(),
+                                    photos = listOf("사진들")
+                                ),
+                                accommodation = Accommodation(
+                                    name = "펜션",
+                                    locate = Locate(),
+                                ),
+                            ),
+                        )
+                    ),
+                    CourseList(
+                        courses = listOf(
+                            Course(
+                                transportation = Transportation(
+                                    name = "항공"
+                                ),
+                                period = Period(
+                                    to = 20220223,
+                                    from = 20220224
+                                ),
+                                place = Place(
+                                    mainPrice = 30000,
+                                    name = "장소 이름",
+                                    locate = Locate(),
+                                    photos = listOf("사진들")
+                                ),
+                                accommodation = Accommodation(
+                                    name = "호텔",
+                                    locate = Locate(),
+                                ),
+                            ),
+
+                            Course(
+                                transportation = Transportation(
+                                    name = "배"
+                                ),
+                                period = Period(
+                                    to = 20220224,
+                                    from = 20220225
+                                ),
+                                place = Place(
+                                    mainPrice = 40000,
+                                    name = "장소 이름",
+                                    locate = Locate(),
+                                    photos = listOf("사진들")
+                                ),
+                                accommodation = Accommodation(
+                                    name = "펜션",
+                                    locate = Locate(),
+                                ),
+                            ),
+                        )
+                    )
+                )
+            )
+        )
     }
 }

@@ -11,7 +11,7 @@ package team.dahaeng.android.domain.community.model.travel
 
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import kotlin.annotation.Target
+import java.io.Serializable
 
 /**
  * 여행지 객체
@@ -44,6 +44,12 @@ import kotlin.annotation.Target
  * @property periods 여행지 장소들 ([places]) 의 기간 리스트
  * @property places 여행지 장소 리스트
  * @property accommodations 여행지 장소들 ([places]) 마다 머물 숙소들
+ *
+ *
+ *  2022-03-01 변경점
+ *  val courseLists -> var courseLists, courseList 하위 val -> var
+ *  변경점은 데이터 update시에 변경점이있는 부분만 변경하는것이 좋을것 같아서 var로 변경.
+ *
  */
 data class Travel(
     val theme: Theme = Theme(),
@@ -51,8 +57,5 @@ data class Travel(
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
-    val transportations: List<List<Transportation>> = emptyList(),
-    val periods: List<List<Period>> = emptyList(),
-    val places: List<List<Place>> = emptyList(),
-    val accommodations: List<List<Accommodation>> = emptyList(),
-)
+    var courseLists: List<CourseList> = emptyList(),
+) : Serializable
