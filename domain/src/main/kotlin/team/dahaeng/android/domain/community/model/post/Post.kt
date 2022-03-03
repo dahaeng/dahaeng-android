@@ -10,6 +10,7 @@
 package team.dahaeng.android.domain.community.model.post
 
 import team.dahaeng.android.domain.community.model.travel.Travel
+import team.dahaeng.android.domain.util.constant.EmptyString
 import java.util.Date
 import kotlin.random.Random
 
@@ -28,8 +29,8 @@ import kotlin.random.Random
 data class Post(
     val id: Long = Random.nextLong(),
     val ownerId: Long = 0L,
-    val title: String = "",
-    val content: String = "",
+    val title: String = EmptyString,
+    val content: String = EmptyString,
     val travel: Travel = Travel(),
-    val createdAt: Long = Date().time,
+    val createdAt: Date = Date(),
 )

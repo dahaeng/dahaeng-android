@@ -9,9 +9,11 @@
 
 package team.dahaeng.android.data.community.repository
 
+import android.graphics.Bitmap
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.util.Constants
@@ -20,7 +22,9 @@ import team.dahaeng.android.domain.community.model.common.Photo
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import java.io.ByteArrayOutputStream
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 private const val UPLOAD_IMAGE_EXCEPTION = "이미지 업로드중 에러"
 
@@ -29,145 +33,147 @@ class FirebaseRepositoryImpl : FirebaseRepository {
     private val firestore by lazy { Firebase.firestore }
     private val storageRef by lazy { Firebase.storage.reference }
 
-    /**
-     * @return 성공시 이미지 주소, 실패시 null
-     */
-//    override suspend fun uploadImage(uri: Uri, imageName: String): String? =
-//        suspendCancellableCoroutine { continuation ->
-//            storageRef.child(Constants.Firestore.Post).run {
-//                child(imageName)
-//                    .putFile(uri)
-//                    .continueWithTask { task ->
-//                        if (!task.isSuccessful && task.exception != null) {
-//                            continuation.resume(null)
-//                            throw task.exception!!
-//                        }
-//                        downloadUrl
-//                    }.addOnCompleteListener { task ->
-//                        if (task.isSuccessful && task.result != null) {
-//                            continuation.resume(task.result!!.toString())
-//                        } else {
-//                            continuation.resume(null)
-//                            throw task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
-//                        }
-//                    }
-//            }
-//        }
-
-    override suspend fun uploadPhotos(photos: List<Photo>, imageName: String): String? {
-        TODO("Not yet implemented")
+    private fun StorageReference.setPhotoPath(
+        parentPath: String,
+        photoName: String,
+    ): StorageReference {
+        var reference = this
+        parentPath.split("/").forEach { subPath ->
+            reference = reference.child(subPath)
+        }
+        return reference.child("$photoName.jpg")
     }
 
-    /**
-     * @return 성공 여부 boolean
-     */
-    override suspend fun uploadPost(post: Post): Boolean =
-        suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.Post)
+    private fun Bitmap.toByeArray(): ByteArray {
+        val baos = ByteArrayOutputStream()
+        compress(Bitmap.CompressFormat.JPEG, 100, baos)
+        return baos.toByteArray()
+    }
+
+    private suspend fun updatePhoto(
+        photo: Photo,
+        parentPath: String,
+        exceptionHandler: (exception: Exception) -> Unit,
+    ): String? = suspendCancellableCoroutine { continuation ->
+        storageRef
+            .child(Constants.Firestore.Post)
+            .run {
+                setPhotoPath(
+                    parentPath = parentPath,
+                    photoName = photo.name
+                ).putBytes(photo.bitmap.toByeArray())
+                    .continueWithTask {
+                        downloadUrl
+                    }.addOnCompleteListener { task ->
+                        if (task.isSuccessful && task.result != null) {
+                            continuation.resume(task.result.toString())
+                        } else {
+                            val exception = task.exception ?: Exception(UPLOAD_IMAGE_EXCEPTION)
+                            exceptionHandler(exception)
+                            continuation.resume(null)
+                        }
+                    }
+            }
+    }
+
+    override suspend fun uploadPhotos(
+        photos: List<Photo>,
+        parentPath: String,
+        exceptionHandler: (exception: Exception) -> Unit,
+    ) = photos.map { photo ->
+        updatePhoto(
+            photo = photo,
+            parentPath = parentPath,
+            exceptionHandler = exceptionHandler
+        )
+    }
+
+    override suspend fun uploadPost(post: Post) {
+        suspendCancellableCoroutine<Unit> { continuation ->
+            firestore
+                .collection(Constants.Firestore.Post)
                 .document(post.id.toString())
                 .set(post)
                 .addOnSuccessListener {
-                    continuation.resume(true)
+                    continuation.resume(Unit)
                 }.addOnFailureListener { exception ->
-                    continuation.resume(false)
-                    throw exception
+                    continuation.resumeWithException(exception)
                 }
         }
+    }
 
-    /**
-     * 전체 포스트 조회
-     */
-    override suspend fun importPosts(): List<Post> =
+    override suspend fun importAllPosts(): List<Post> =
         suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.Post)
+            firestore
+                .collection(Constants.Firestore.Post)
                 .get()
                 .addOnSuccessListener { result ->
                     continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
                 }
                 .addOnFailureListener { exception ->
-                    continuation.resume(emptyList())
-                    throw exception
+                    continuation.resumeWithException(exception)
                 }
         }
 
-    override suspend fun deletePost(): Boolean {
-        TODO("Not yet implemented")
+    override suspend fun deletePost(postId: Long) {
+        suspendCancellableCoroutine<Unit> { continuation ->
+            firestore
+                .collection(Constants.Firestore.Post)
+                .document(postId.toString())
+                .delete()
+                .addOnSuccessListener {
+                    continuation.resume(Unit)
+                }.addOnFailureListener { exception ->
+                    continuation.resumeWithException(exception)
+                }
+        }
     }
 
-    /**
-     * 내 스케줄 리스트 조회
-     */
-    override suspend fun importSchedules(ownerId: Long): List<Schedule> =
+    override suspend fun importSchedules(userId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.User)
-                //.document(ownerId.toString())
-                .document("null")
+            firestore
+                .collection(Constants.Firestore.User)
+                .document(userId.toString())
                 .collection(Constants.Firestore.Schedule)
                 .get()
                 .addOnSuccessListener { result ->
                     continuation.resume(result.documents.map(DocumentSnapshot::toObjectNonNull))
                 }
                 .addOnFailureListener { exception ->
-                    continuation.resume(emptyList())
-                    throw exception
+                    continuation.resumeWithException(exception)
                 }
         }
 
-    /**
-     * 일정 업로드
-     *  @return 성공 여부 boolean
-     */
-    override suspend fun uploadSchedule(schedule: Schedule): Boolean =
-        suspendCancellableCoroutine { continuation ->
+    override suspend fun uploadSchedule(schedule: Schedule) =
+        suspendCancellableCoroutine<Unit> { continuation ->
             firestore.collection(Constants.Firestore.User)
-                // .document(schedule.participant.first().toString())
-                .document(schedule.participant.firstOrNull().toString())
+                .document(
+                    schedule.participant.firstOrNull()?.toString()
+                        ?: throw IllegalArgumentException("schedule.participant is empty.")
+                )
                 .collection(Constants.Firestore.Schedule)
                 .document(schedule.id.toString())
                 .set(schedule)
                 .addOnSuccessListener {
-                    continuation.resume(true)
+                    continuation.resume(Unit)
                 }
                 .addOnFailureListener { exception ->
-                    continuation.resume(false)
-                    throw exception
+                    continuation.resumeWithException(exception)
                 }
         }
 
-    /**
-     * 일정 삭제
-     *  @return 성공 여부 boolean
-     */
-    override suspend fun deleteSchedule(schedule: Schedule): Boolean =
-        suspendCancellableCoroutine { continuation ->
+    override suspend fun deleteSchedule(userId: Long, scheduleId: Long) =
+        suspendCancellableCoroutine<Unit> { continuation ->
             firestore.collection(Constants.Firestore.User)
-                // .document(schedule.participant.first().toString())
-                .document(schedule.participant.firstOrNull().toString())
+                .document(userId.toString())
                 .collection(Constants.Firestore.Schedule)
-                .document(schedule.id.toString())
+                .document(scheduleId.toString())
                 .delete()
                 .addOnSuccessListener {
-                    continuation.resume(true)
+                    continuation.resume(Unit)
                 }
                 .addOnFailureListener { exception ->
-                    continuation.resume(false)
-                    throw exception
+                    continuation.resumeWithException(exception)
                 }
         }
-
-    override suspend fun changeSchedule(schedule: Schedule): Boolean =
-        suspendCancellableCoroutine { continuation ->
-            firestore.collection(Constants.Firestore.User)
-                .document(schedule.participant.firstOrNull().toString())
-                .collection(Constants.Firestore.Schedule)
-                .document(schedule.id.toString())
-                .update(schedule.toMap())
-                .addOnSuccessListener {
-                    continuation.resume(true)
-                }.addOnFailureListener { exception ->
-                    continuation.resume(false)
-                    throw exception
-                }
-        }
-
 }

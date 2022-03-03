@@ -17,54 +17,47 @@ import team.dahaeng.android.data.aouth.mapper.toDomain
 import team.dahaeng.android.data.util.UserDomain
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
-class AouthRepositoryImpl : AouthRepository {
-    override suspend fun kakaoLogin(context: Context): UserDomain {
+class AouthRepositoryImpl(private val context: Context) : AouthRepository {
+    override suspend fun kakaoLogin(): UserDomain {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
-            loginWithKakaoTalk(context)
+            loginWithKakaoTalk()
         } else {
-            loginWithWebView(context)
+            loginWithWebView()
         }
         return getUser().toDomain()
     }
 
-    private suspend fun loginWithKakaoTalk(context: Context): Unit =
-        suspendCancellableCoroutine { continuation ->
-            UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
-                continuation.resume(
-                    when {
-                        error != null -> throw error
-                        token != null -> Unit
-                        else -> throw Throwable(RESPONSE_NOTHING)
-                    }
-                )
+    private suspend fun loginWithKakaoTalk(): Unit = suspendCancellableCoroutine { continuation ->
+        UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
+            when {
+                token != null -> continuation.resume(Unit)
+                error != null -> continuation.resumeWithException(error)
+                else -> continuation.resumeWithException(Exception(RESPONSE_NOTHING))
             }
         }
+    }
 
-    private suspend fun loginWithWebView(context: Context): Unit =
-        suspendCancellableCoroutine { continuation ->
-            UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
-                continuation.resume(
-                    when {
-                        error != null -> throw error
-                        token != null -> Unit
-                        else -> throw Throwable(RESPONSE_NOTHING)
-                    }
-                )
+    private suspend fun loginWithWebView(): Unit = suspendCancellableCoroutine { continuation ->
+        UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
+            when {
+                token != null -> continuation.resume(Unit)
+                error != null -> continuation.resumeWithException(error)
+                else -> continuation.resumeWithException(Exception(RESPONSE_NOTHING))
             }
         }
+    }
 
     private suspend fun getUser(): User = suspendCancellableCoroutine { continuation ->
         UserApiClient.instance.me { user, error ->
-            continuation.resume(
-                when {
-                    error != null -> throw error
-                    user != null -> user
-                    else -> throw Throwable(RESPONSE_NOTHING)
-                }
-            )
+            when {
+                user != null -> continuation.resume(user)
+                error != null -> continuation.resumeWithException(error)
+                else -> continuation.resumeWithException(Exception(RESPONSE_NOTHING))
+            }
         }
     }
 }

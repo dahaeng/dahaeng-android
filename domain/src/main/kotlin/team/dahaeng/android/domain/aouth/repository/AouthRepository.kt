@@ -9,9 +9,8 @@
 
 package team.dahaeng.android.domain.aouth.repository
 
-import android.content.Context
 import team.dahaeng.android.domain.aouth.model.User
 
 interface AouthRepository {
-    suspend fun kakaoLogin(context: Context): User
+    suspend fun kakaoLogin(): User
 }
