@@ -34,6 +34,7 @@ object Versions {
     object Ui {
         const val Coil = "1.4.0"
         const val Lottie = "5.0.2"
+        const val CasCade = "1.3.0"
         const val Flexbox = "3.0.0"
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
@@ -61,22 +62,18 @@ object Versions {
 
     object Jetpack {
         const val Hilt = "2.41"
+        // TODO: offline support with Room
     }
 
     object OssLicense {
-        const val Master = "17.0.0"
+        const val Main = "17.0.0"
         const val Classpath = "0.10.4"
     }
 }
 
 object Dependencies {
     const val Kakao = "com.kakao.sdk:v2-user:${Versions.Kakao}"
-    const val Hilt = "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
     const val FirebaseBom = "com.google.firebase:firebase-bom:${Versions.FirebaseBom}"
-
-    object Compiler {
-        const val Hilt = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
-    }
 
     val Firebase = listOf(
         "com.google.firebase:firebase-storage-ktx",
@@ -98,6 +95,7 @@ object Dependencies {
 
     val Ui = listOf(
         "io.coil-kt:coil:${Versions.Ui.Coil}",
+        "me.saket.cascade:cascade:${Versions.Ui.CasCade}",
         "com.airbnb.android:lottie:${Versions.Ui.Lottie}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
@@ -107,7 +105,7 @@ object Dependencies {
         "com.google.android.exoplayer:exoplayer-core:${Versions.Ui.ExoPlayer}",
         "com.github.ibrahimsn98:SmoothBottomBar:${Versions.Ui.SmoothBottomBar}",
         "androidx.constraintlayout:constraintlayout:${Versions.Ui.ConstraintLayout}",
-        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Master}",
+        "com.google.android.gms:play-services-oss-licenses:${Versions.OssLicense.Main}",
     )
 
     val Util = listOf(
@@ -122,6 +120,10 @@ object Dependencies {
         "com.google.android.gms:play-services-location:${Versions.Location.Gms}"
     )
 
+    object Jetpack {
+        const val Hilt = "com.google.dagger:hilt-android:${Versions.Jetpack.Hilt}"
+    }
+
     val Jackson = listOf(
         "com.fasterxml.jackson.core:jackson-core:${Versions.Util.Jackson}",
         "com.fasterxml.jackson.core:jackson-databind:${Versions.Util.Jackson}",
@@ -132,4 +134,8 @@ object Dependencies {
     val Debug = listOf(
         "com.squareup.leakcanary:leakcanary-android:${Versions.Util.LeakCanary}"
     )
+
+    object Compiler {
+        const val Hilt = "com.google.dagger:hilt-android-compiler:${Versions.Jetpack.Hilt}"
+    }
 }

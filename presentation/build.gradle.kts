@@ -53,7 +53,7 @@ dependencies {
 
     implementation(projects.data)
     implementation(projects.domain)
-    implementation(Dependencies.Hilt)
+    implementation(Dependencies.Jetpack.Hilt)
     implementation(platform(Dependencies.FirebaseBom))
 
     Dependencies.Ui.forEach(::implementation)
