@@ -9,4 +9,4 @@
 
 package team.dahaeng.android.data.util
 
-typealias UserDomain = team.dahaeng.android.domain.aouth.model.User
+internal typealias UserDomain = team.dahaeng.android.domain.aouth.model.User
