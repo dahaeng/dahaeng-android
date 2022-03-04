@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.main.fragment.list
+package team.dahaeng.android.activity.main.fragment.board
 
 import android.location.Geocoder
 import android.location.Location
@@ -24,7 +24,7 @@ import team.dahaeng.android.databinding.FragmentListBinding
 import team.dahaeng.android.util.test.TestUtil
 import java.util.Locale
 
-class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
+class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
 
     override val vm: MainViewModel by activityViewModels()
     private var lastestAddress = ""
@@ -51,7 +51,7 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
         binding.rvPost.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
-            adapter = ListAdapter { post ->
+            adapter = BoardAdapter { post ->
                 logeukes { "Post clicked: $post" }
             }.apply {
                 submitList(TestUtil.posts())

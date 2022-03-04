@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.main.fragment.list
+package team.dahaeng.android.activity.main.fragment.board
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -17,20 +17,20 @@ import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutPostBinding
 import team.dahaeng.android.domain.community.model.post.Post
 
-private typealias ListAdapterViewHolder = team.dahaeng.android.activity.main.fragment.list.ListAdapter.ViewHolder
+class BoardAdapter(
+    private val onPostClick: (Post) -> Unit,
+) : ListAdapter<Post, BoardAdapter.BoardViewHolder>(diffUtil) {
 
-class ListAdapter(private val onPostClick: (Post) -> Unit) :
-    ListAdapter<Post, ListAdapterViewHolder>(diffUtil) {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardViewHolder {
         val binding = LayoutPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding, onPostClick)
+        return BoardViewHolder(binding, onPostClick)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: BoardViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class ViewHolder(
+    class BoardViewHolder(
         private val binding: LayoutPostBinding,
         private val onPostClick: (Post) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -46,7 +46,7 @@ class ListAdapter(private val onPostClick: (Post) -> Unit) :
 
     override fun getItemId(position: Int) = getItem(position).id
 
-    override fun getItemCount() = currentList.count()
+    override fun getItemCount() = currentList.size
 
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Post>() {

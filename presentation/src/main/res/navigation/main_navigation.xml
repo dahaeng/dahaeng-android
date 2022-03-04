@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/list"
-        android:name="team.dahaeng.android.activity.main.fragment.list.ListFragment"
+        android:name="team.dahaeng.android.activity.main.fragment.board.BoardFragment"
         tools:layout="@layout/fragment_list" />
 
     <fragment
