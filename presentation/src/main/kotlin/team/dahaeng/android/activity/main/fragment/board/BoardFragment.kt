@@ -20,8 +20,8 @@ import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
+import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentListBinding
-import team.dahaeng.android.util.test.TestUtil
 import java.util.Locale
 
 class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
@@ -54,12 +54,12 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
             adapter = BoardAdapter { post ->
                 logeukes { "Post clicked: $post" }
             }.apply {
-                submitList(TestUtil.posts())
+                submitList(DataStore.posts)
             }
         }
 
         binding.tilSesarchContainer.setEndIconOnClickListener {
-            // TODO
+            // TODO: filter menu
         }
     }
 
