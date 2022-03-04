@@ -10,6 +10,7 @@
 package team.dahaeng.android.domain.community.model.travel
 
 import team.dahaeng.android.domain.community.model.travel.wrapper.PhotoList
+import team.dahaeng.android.domain.util.constant.EmptyString
 import java.io.Serializable
 
 /**
@@ -28,7 +29,7 @@ import java.io.Serializable
  */
 data class Place(
     val mainPrice: Int = 0,
-    val name: String = "",
+    val name: String = EmptyString,
     val locate: Locate = Locate(),
     val photos: PhotoList = PhotoList(),
 ) : Serializable

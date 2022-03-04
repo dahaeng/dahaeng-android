@@ -9,16 +9,14 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-import java.io.Serializable
-import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
+import java.io.Serializable
 
 /**
  * 여행지 객체
- * [Post] 와 [Schedule] 에 공통적으로 쓰임
  *
- * 사용되는 객체에 다 id 필드가 있기 때문에 따로 아이디를 받지 않음
+ * 사용되는 객채([Schedule])에 id 필드([Schedule.id])가 있기 때문에 따로 아이디를 받지 않음
  *
  * 여행지 객체를 사용하는 필드에서 아이디로 갖고 있게 되면
  * source 여행지가 업데이트 됐을 경우 내가 가져와
@@ -39,7 +37,7 @@ import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
  * @property commonAddress 여행지의 공통되는 주소 (충청남도 서산시)
  * @property totalPrice 여행지 장소들의 총 금액 (여행지 등록할 때 시스템에서 계산)
  * @property totalPeriod 여행지 장소들의 총 기간 (여행지 등록할 때 시스템에서 계산)
- * @property courseLists 여행지 방문 코스 리스트
+ * @property courses 여행지 방문 코스 리스트
  */
 data class Travel(
     val theme: Theme = Theme(),
@@ -47,5 +45,5 @@ data class Travel(
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
-    var courseLists: List<CourseList> = emptyList(),
+    var courses: List<CourseList> = emptyList(),
 ) : Serializable

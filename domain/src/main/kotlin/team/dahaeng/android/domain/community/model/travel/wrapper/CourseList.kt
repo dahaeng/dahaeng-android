@@ -26,5 +26,5 @@ import java.io.Serializable
  * N일차마다 정보를 조회할 때 해당 정보 리스트의 N-1 번째 index로 접근하여 가져옴
  */
 data class CourseList(
-    var courses: List<Course> = emptyList(),
+    val courses: List<Course> = emptyList(),
 ) : Serializable

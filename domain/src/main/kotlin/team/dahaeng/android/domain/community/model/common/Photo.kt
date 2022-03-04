@@ -23,4 +23,7 @@ import team.dahaeng.android.domain.community.model.travel.Place
  * 관련 이슈: (applemango-runnerbe/RunnerBe-Android/#46)[https://github.com/applemango-runnerbe/RunnerBe-Android/issues/46]
  * @property name Firebase Storage에 저장될 이미지 이름 (${name}.jpg 로 저장됨)
  */
-data class Photo(val bitmap: Bitmap, val name: String)
+data class Photo(
+    val bitmap: Bitmap,
+    val name: String,
+)

@@ -9,9 +9,11 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import team.dahaeng.android.domain.util.constant.EmptyString
+
 /**
  * 타켓 객체
  *
  * value class 로 하게 되면 inline 되서 string type 으로 바뀜
  */
-data class Target(val name: String = "")
+data class Target(val name: String = EmptyString)

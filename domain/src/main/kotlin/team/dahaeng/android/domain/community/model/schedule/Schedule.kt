@@ -27,7 +27,7 @@ import kotlin.random.Random
  *
  * @property id 일정 UUID
  * @property ownerId 일정 등록자 UUID
- * @property participant 일정 참여자 UUID 리스트, <b>첫 요소는 무조건 해당 일정의 owner 임</b>
+ * @property participant 일정 참여자 UUID 리스트
  * @property title 일정 제목
  * @property content 일정 내용, HTML 컨텐츠 텍스트 span 한정으로 지원
  * @property travel 일정에 첨부된 여행 정보

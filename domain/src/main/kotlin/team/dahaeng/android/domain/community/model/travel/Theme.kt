@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import team.dahaeng.android.domain.util.constant.EmptyString
 import java.io.Serializable
 
 /**
@@ -16,4 +17,4 @@ import java.io.Serializable
  *
  * value class 로 하게 되면 inline 되서 string type 으로 바뀜
  */
-data class Theme(val name: String = "") : Serializable
+data class Theme(val name: String = EmptyString) : Serializable
