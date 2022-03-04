@@ -25,14 +25,14 @@
 
     <string name="activity_login_btn_start">카카오톡으로 시작하기</string>
     <string name="activity_login_toast_start_fail">앱 시작에 실패했어요 😢\n잠시후 다시 시도해 주세요.</string>
-    <string name="activity_login_toast_welcome">첫 로그인을 환영해요 🥰</string>
+    <string name="activity_login_toast_welcome">다행에 오신걸 환영해요 🥰</string>
 
     <string name="activity_error_unexpected_issue">알 수 없는 오류가 발생했어요</string>
     <string name="activity_error_no_internet">인터넷이 불안정하여 다행 서버에 연결할 수 없어요 😢</string>
     <string name="activity_error_exception">현재 다행 사용자가 많아 일시적 오류가 발생했어요 😢\n문제가 지속되면 고객센터로 문의해 주세요.</string>
+    <string name="activity_error_btn_retry">다시 시도</string>
 
     <string name="fragment_list_loading_location">위치 조회중…</string>
-    <string name="activity_error_btn_retry">다시 시도</string>
     <string name="fragment_list_hint_search_place">장소 검색</string>
     <string name="fragment_list_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
     <string name="fragment_schedule_my_task">내 일정</string>
@@ -47,7 +47,7 @@
     <string name="activity_modify_totalprice">총 금액:</string>
     <string name="activity_modify_course_complete">완료</string>
 
-    <string-array name="modify_schedule_theme_array">
+    <string-array name="schedule_theme_list">
         <item>펜션</item>
         <item>캠핑</item>
         <item>스포츠</item>
@@ -58,7 +58,7 @@
         <item>명소</item>
     </string-array>
 
-    <string-array name="modify_schedule_transportation_array">
+    <string-array name="schedule_transportation_list">
         <item>항공</item>
         <item>배</item>
         <item>기차</item>
@@ -67,7 +67,7 @@
         <item>도보</item>
     </string-array>
 
-    <string-array name="modify_schedule_accomodation_array">
+    <string-array name="schedule_accomodation_list">
         <item>모텔</item>
         <item>호텔</item>
         <item>리조트</item>
