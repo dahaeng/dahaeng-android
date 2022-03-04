@@ -14,8 +14,6 @@ import java.io.Serializable
 /**
  * 교통수단 객체
  *
- * value class 로 하게 되면 Firestore 에서 object 변환할 때 값 주입을 못하게 됨
- *
  * @property name 교통수단 이름
  * @property description 교통수단에 대해 자유롭게 추가 설명 기제할 필드 (버스 번호 등등)
  * @property price 교통수단 금액
@@ -26,20 +24,4 @@ data class Transportation(
     val description: String = "",
     val price: Int = 0,
     val availableTime: String = "",
-) : Serializable {
-    companion object {
-        val Random get() = TransportationList.All.random()
-    }
-}
-
-@Suppress("FunctionName", "MemberVisibilityCanBePrivate")
-object TransportationList : Serializable {
-    val Car = Transportation("자동차")
-    val Bus = Transportation("버스")
-    val Subway = Transportation("지하철")
-    val Plane = Transportation("비행기")
-    val Ship = Transportation("배")
-    val All = listOf(Car, Bus, Subway, Plane, Ship)
-
-    fun Other(transportation: String) = Transportation(transportation)
-}
+) : Serializable

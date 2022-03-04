@@ -9,9 +9,10 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import java.io.Serializable
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import java.io.Serializable
+import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
 
 /**
  * 여행지 객체
@@ -25,6 +26,9 @@ import java.io.Serializable
  * 여행지 객체를 통체로 받음
  * (내가 바꾼 여행 정보를 source 에 영향을
  * 미치지 않게 반영하는 법도 고려해야 하는 문제가 생김)
+ *
+ * 액티비티 전환할 때 Intent 로 이 객체를 넘겨야 해서
+ * 이 객체를 포함한 하위 객체들은 다 Serializable 임
  *
  * 여행지 추가 시나리오
  * 1. 여행 장소인 [Place] 입력 받음

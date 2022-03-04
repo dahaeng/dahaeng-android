@@ -9,8 +9,7 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
-import team.dahaeng.android.domain.community.model.common.Photo
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.community.model.travel.wrapper.PhotoList
 import java.io.Serializable
 
 /**
@@ -19,15 +18,17 @@ import java.io.Serializable
  * 어느 상황에서나 공통되는 정보들로만 구성함
  * 교통수단이나 기간 등은 매 상황마다 달라질 수 있는 정보임
  *
+ * Place 는 Array 안에 들어가서 Array 를 내부에서 사용할 수 없음
+ * 따라서 [photos] 를 [PhotoList] 로 받음
+ *
  * @property mainPrice 대표되는 금액 (식당이면 대표 메뉴 금액)
  * @property name 장소 이름
  * @property locate 장소 위치
- * @property photos 장소의 사진들인 [Photo] 객체들을
- * [FirebaseRepository.uploadPhotos] 로 업로드 하여 받은 결과 -> 이미지 다운로드 주소 배열
+ * @property photos 장소 사진 리스트
  */
 data class Place(
     val mainPrice: Int = 0,
     val name: String = "",
     val locate: Locate = Locate(),
-    val photos: List<String> = emptyList(),
+    val photos: PhotoList = PhotoList(),
 ) : Serializable

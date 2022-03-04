@@ -16,14 +16,16 @@ import java.io.Serializable
  *
  * N일차에 여러가지 장소에 갈 수 있으므로 element 를 리스트로 받음
  *
- * @property transportation 여행지 교통편
- * @property period 여행지에서 머물 기간
- * @property place 여행 장소
- * @property accommodation 머물 숙소
+ * Course 는 Map 안에 들어가서 다중 Array 가능
+ *
+ * @property transportations 여행지 교통편 리스트
+ * @property periods 여행지에서 머물 기간 리스트
+ * @property places 여행 장소 리스트
+ * @property accommodations 머물 숙소 리스트
  */
 data class Course(
-    val transportation: Transportation = Transportation(),
-    val period: Period = Period(),
-    val place: Place = Place(),
-    val accommodation: Accommodation = Accommodation(),
+    val transportations: List<Transportation> = emptyList(),
+    val periods: List<Period> = emptyList(),
+    val places: List<Place> = emptyList(),
+    val accommodations: List<Accommodation> = emptyList(),
 ) : Serializable
