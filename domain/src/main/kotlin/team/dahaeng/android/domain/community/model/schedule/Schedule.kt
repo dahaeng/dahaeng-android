@@ -26,13 +26,4 @@ data class Schedule(
     val participant: List<Long> = emptyList(),
     var title: String = "",
     var travel: Travel = Travel(),
-) : Serializable {
-    fun toMap(): Map<String, Any> {
-        return mapOf(
-            "id" to id,
-            "participant" to participant,
-            "title" to title,
-            "travel" to travel
-        )
-    }
-}
+) : Serializable

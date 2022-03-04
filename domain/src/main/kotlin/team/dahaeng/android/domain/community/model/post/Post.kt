@@ -32,5 +32,5 @@ data class Post(
     val title: String = EmptyString,
     val content: String = EmptyString,
     val travel: Travel = Travel(),
-    val createdAt: Date = Date(),
+    val createdAt: Long = Date().time,
 )
