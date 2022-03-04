@@ -33,7 +33,7 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  * @property participant 일정 참여자 UUID 리스트
  * @property title 일정 개인 제목
  * @property publicTitle 일정 전체 공개 제목
- * @property content 일정 내용, HTML 컨텐츠 텍스트 span 한정으로 지원
+ * @property description 일정 설명
  * @property travel 일정에 첨부된 여행 정보
  * @property forkCount 일정이 쓰인 휫수 (fork된 휫수)
  * @property bookmarkedCount 일정이 북마크된 휫수
@@ -50,7 +50,7 @@ data class Schedule(
     val participant: List<Long> = emptyList(),
     val title: String = EmptyString,
     val publicTitle: String = EmptyString,
-    val content: String = EmptyString,
+    val description: String = EmptyString,
     val travel: Travel = Travel(),
     val forkCount: Int = 0,
     val bookmarkedCount: Int = 0,
