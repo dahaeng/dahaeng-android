@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutPostBinding
-import team.dahaeng.android.domain.community.model.post.Post
+import team.dahaeng.android.domain.schedule.model.post.Post
 
 class BoardAdapter(
     private val onPostClick: (Post) -> Unit,

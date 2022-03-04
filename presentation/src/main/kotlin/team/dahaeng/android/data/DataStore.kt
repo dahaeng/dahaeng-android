@@ -10,8 +10,8 @@
 package team.dahaeng.android.data
 
 import team.dahaeng.android.domain.aouth.model.User
-import team.dahaeng.android.domain.community.model.post.Post
-import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.post.Post
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 @Suppress("ObjectPropertyName")
 object DataStore {

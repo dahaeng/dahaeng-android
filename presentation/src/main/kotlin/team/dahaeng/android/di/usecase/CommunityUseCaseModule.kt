@@ -14,13 +14,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.community.usecase.UploadPhotosUseCase
-import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
-import team.dahaeng.android.domain.community.usecase.post.UploadPostUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.usecase.UploadPhotosUseCase
+import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
+import team.dahaeng.android.domain.schedule.usecase.post.UploadPostUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.DeleteScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ImportScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCase
 
 @Module
 @InstallIn(ViewModelComponent::class)

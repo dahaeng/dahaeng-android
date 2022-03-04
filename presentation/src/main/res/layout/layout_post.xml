@@ -15,7 +15,7 @@
 
         <variable
             name="post"
-            type="team.dahaeng.android.domain.community.model.post.Post" />
+            type="team.dahaeng.android.domain.schedule.model.post.Post" />
     </data>
 
     <LinearLayout

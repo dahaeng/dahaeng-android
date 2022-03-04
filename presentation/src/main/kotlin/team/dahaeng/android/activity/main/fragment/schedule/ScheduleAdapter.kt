@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutScheduleBinding
-import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 class ScheduleAdapter(
     private val onMoreClick: (View, Schedule) -> Unit,

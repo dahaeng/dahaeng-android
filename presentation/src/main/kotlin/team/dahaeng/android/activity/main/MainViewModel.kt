@@ -19,12 +19,12 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
-import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
+import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ChangeScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.DeleteScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ImportScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCase
 import javax.inject.Inject
 
 @HiltViewModel

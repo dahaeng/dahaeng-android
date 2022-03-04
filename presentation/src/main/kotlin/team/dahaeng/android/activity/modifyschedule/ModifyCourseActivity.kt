@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityModifyCourseBinding
-import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
+import team.dahaeng.android.domain.schedule.model.travel.wrapper.CourseList
 
 @AndroidEntryPoint
 class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, ModifyScheduleViewModel>(
