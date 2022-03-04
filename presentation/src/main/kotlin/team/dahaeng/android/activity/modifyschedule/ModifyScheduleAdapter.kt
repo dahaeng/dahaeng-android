@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutRvModfiyScheduleItemBinding
-import team.dahaeng.android.domain.community.model.travel.CourseList
+import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
 
 class ModifyScheduleAdapter(
     private val onEditClick: (View, CourseList) -> Unit,

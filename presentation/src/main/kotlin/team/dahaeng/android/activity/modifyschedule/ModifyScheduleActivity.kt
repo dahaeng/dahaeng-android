@@ -24,7 +24,7 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityModifyScheduleBinding
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.travel.CourseList
+import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
 import team.dahaeng.android.domain.community.model.travel.Period
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Travel
@@ -78,7 +78,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
             R.array.schedule_theme_list,
             android.R.layout.simple_dropdown_item_1line
         )
-        binding.snTheme.setSelection(getThemePosition(schedule.travel.theme.value))
+        binding.snTheme.setSelection(getThemePosition(schedule.travel.theme.name))
         binding.tvTotalperiodselect.setOnClickListener {
             showDatePicker()
         }
