@@ -32,7 +32,7 @@
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
 
         <activity
-            android:name=".activity.createschedule.CreateScheduleActivity"
+            android:name=".activity.schedule.create.CreateScheduleActivity"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
 
         <activity

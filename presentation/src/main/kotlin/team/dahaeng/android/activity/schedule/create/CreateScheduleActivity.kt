@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.createschedule
+package team.dahaeng.android.activity.schedule.create
 
 import android.os.Bundle
 import androidx.activity.viewModels
