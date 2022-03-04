@@ -9,17 +9,22 @@
 
 package team.dahaeng.android.util.extensions
 
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
 fun <T> Flow<T>.collectWithLifecycle(
     lifecycleOwner: LifecycleOwner,
-    action: suspend (T) -> Unit,
+    action: suspend CoroutineScope.(T) -> Unit,
 ) {
     lifecycleOwner.lifecycleScope.launchWhenCreated {
-        flowWithLifecycle(lifecycleOwner.lifecycle).collect { value ->
+        flowWithLifecycle(
+            lifecycle = lifecycleOwner.lifecycle,
+            minActiveState = Lifecycle.State.CREATED
+        ).collect { value ->
             action(value)
         }
     }

@@ -13,7 +13,6 @@ import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 
-// TODO: 이게 맞나?? ㅋㅋ
 @Suppress("ObjectPropertyName")
 object DataStore {
     lateinit var me: User

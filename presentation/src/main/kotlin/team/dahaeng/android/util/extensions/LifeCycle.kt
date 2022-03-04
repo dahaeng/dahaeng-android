@@ -11,16 +11,17 @@ package team.dahaeng.android.util.extensions
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
 
-fun LifecycleOwner.doDelayed(ms: Long, action: suspend () -> Unit) {
+fun LifecycleOwner.doDelayed(ms: Long, action: suspend CoroutineScope.() -> Unit) {
     lifecycleScope.launchWhenCreated {
         delay(ms)
         action()
     }
 }
 
-fun LifecycleOwner.launchedWhenCreated(action: suspend () -> Unit) {
+fun LifecycleOwner.launchedWhenCreated(action: suspend CoroutineScope.() -> Unit) {
     lifecycleScope.launchWhenCreated {
         action()
     }
