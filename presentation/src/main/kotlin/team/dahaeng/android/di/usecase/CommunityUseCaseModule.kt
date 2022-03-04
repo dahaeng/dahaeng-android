@@ -15,10 +15,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
 import team.dahaeng.android.domain.community.usecase.UploadPhotosUseCase
+import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadPostUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
@@ -55,9 +54,4 @@ object CommunityUseCaseModule {
     @ViewModelScoped
     fun provideDeleteScheduleUseCase(reposiotry: FirebaseRepository): DeleteScheduleUseCase =
         DeleteScheduleUseCase(reposiotry)
-
-    @Provides
-    @ViewModelScoped
-    fun provideChangeScheduleUseCase(repository: FirebaseRepository): ChangeScheduleUseCase =
-        ChangeScheduleUseCase(repository)
 }

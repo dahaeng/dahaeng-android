@@ -9,10 +9,12 @@
 
 package team.dahaeng.android.di.repository
 
+import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.data.aouth.repository.AouthRepositoryImpl
 import team.dahaeng.android.data.community.repository.FirebaseRepositoryImpl
@@ -24,7 +26,8 @@ import team.dahaeng.android.domain.community.repository.FirebaseRepository
 object RepositoryModule {
     @Provides
     @ViewModelScoped
-    fun provideAouthRepository(): AouthRepository = AouthRepositoryImpl()
+    fun provideAouthRepository(@ApplicationContext context: Context): AouthRepository =
+        AouthRepositoryImpl(context)
 
     @Provides
     @ViewModelScoped

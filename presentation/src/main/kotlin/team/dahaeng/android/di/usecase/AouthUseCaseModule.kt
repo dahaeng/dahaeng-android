@@ -9,12 +9,10 @@
 
 package team.dahaeng.android.di.usecase
 
-import android.content.Context
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
@@ -24,8 +22,6 @@ import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
 object AouthUseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideKakaoLoginUseCase(
-        repository: AouthRepository,
-        @ApplicationContext context: Context,
-    ): KakaoLoginUseCase = KakaoLoginUseCase(repository, context)
+    fun provideKakaoLoginUseCase(repository: AouthRepository): KakaoLoginUseCase =
+        KakaoLoginUseCase(repository)
 }
