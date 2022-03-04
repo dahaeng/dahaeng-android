@@ -29,6 +29,7 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  * @property createdAt 일정이 최종적으로 생성된 시간 (모든 단계를 마침)
  * @property id 일정 UUID
  * @property ownerId 일정 등록자 UUID
+ * @property voteOption 일정 투표 옵션
  * @property participant 일정 참여자 UUID 리스트
  * @property title 일정 개인 제목
  * @property publicTitle 일정 전체 공개 제목
@@ -45,6 +46,7 @@ data class Schedule(
     val createdAt: Long = Date().time,
     val id: Long = Random.nextLong(),
     val ownerId: Long = 0L,
+    val voteOption: VoteOption = VoteOption(),
     val participant: List<Long> = emptyList(),
     val title: String = EmptyString,
     val publicTitle: String = EmptyString,
