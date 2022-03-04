@@ -19,6 +19,7 @@ import team.dahaeng.android.R
 import team.dahaeng.android.databinding.ActivityErrorBinding
 import team.dahaeng.android.util.constants.Key
 
+// TODO: firebase crashlytics
 class ErrorActivity : ErratumExceptionActivity() {
 
     private lateinit var binding: ActivityErrorBinding

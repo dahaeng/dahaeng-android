@@ -19,6 +19,7 @@ import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.data.util.DataLayerUtil
 import team.dahaeng.android.util.constants.Key
 
+// TODO: firebase analytics
 @HiltAndroidApp
 class DahaengAndroid : Application() {
     override fun onCreate() {
