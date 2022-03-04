@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.domain.community.model.travel
 
+import team.dahaeng.android.domain.util.constant.EmptyString
 import java.io.Serializable
 
 /**
@@ -18,6 +19,6 @@ import java.io.Serializable
  * @property locate 숙소 위치
  */
 data class Accommodation(
-    val name: String = "",
+    val name: String = EmptyString,
     val locate: Locate = Locate(),
 ) : Serializable
