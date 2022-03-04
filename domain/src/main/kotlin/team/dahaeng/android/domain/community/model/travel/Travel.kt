@@ -19,11 +19,6 @@ import java.io.Serializable
  *
  * 사용되는 객체에 다 id 필드가 있기 때문에 따로 아이디를 받지 않음
  *
- * 일정에도 1일차, 2일차,...,N일차와 같이 단계가 있으므로
- * 단계에 대응하기 위해 [transportations] ~ [accommodations] 는 모두 리스트이며,
- * N일차에 여러가지 장소에 갈 수 있으므로 element 를 list 로 받음
- * N일차마다 정보를 조회할 때 해당 정보 list 의 N-1 번째 index로 접근하여 가져옴
- *
  * 여행지 객체를 사용하는 필드에서 아이디로 갖고 있게 되면
  * source 여행지가 업데이트 됐을 경우 내가 가져와
  * 수정한 여행지에도 source 에서 바뀐게 반영되기 때문에
@@ -38,18 +33,9 @@ import java.io.Serializable
  * @property theme 여행지 테마
  * @property target 여행지 추천 타켓
  * @property commonAddress 여행지의 공통되는 주소 (충청남도 서산시)
- * @property totalPrice 여행지 장소들 ([places]) 의 총 금액 (여행지 등록할 때 시스템에서 계산)
- * @property totalPeriod 여행지 장소들 ([places]) 의 총 기간 (여행지 등록할 때 시스템에서 계산)
- * @property transportations 여행지 장소들 ([places]) 의 교통편 리스트
- * @property periods 여행지 장소들 ([places]) 의 기간 리스트
- * @property places 여행지 장소 리스트
- * @property accommodations 여행지 장소들 ([places]) 마다 머물 숙소들
- *
- *
- *  2022-03-01 변경점
- *  val courseLists -> var courseLists, courseList 하위 val -> var
- *  변경점은 데이터 update시에 변경점이있는 부분만 변경하는것이 좋을것 같아서 var로 변경.
- *
+ * @property totalPrice 여행지 장소들의 총 금액 (여행지 등록할 때 시스템에서 계산)
+ * @property totalPeriod 여행지 장소들의 총 기간 (여행지 등록할 때 시스템에서 계산)
+ * @property courseLists 여행지 방문 코스 리스트
  */
 data class Travel(
     val theme: Theme = Theme(),
