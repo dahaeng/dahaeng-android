@@ -19,7 +19,7 @@ import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.data.aouth.repository.AouthRepositoryImpl
 import team.dahaeng.android.data.community.repository.FirebaseRepositoryImpl
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 @Module
 @InstallIn(ViewModelComponent::class)

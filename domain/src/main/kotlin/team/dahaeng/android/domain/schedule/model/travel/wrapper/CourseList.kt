@@ -7,9 +7,9 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model.travel.wrapper
+package team.dahaeng.android.domain.schedule.model.travel.wrapper
 
-import team.dahaeng.android.domain.community.model.travel.Course
+import team.dahaeng.android.domain.schedule.model.travel.Course
 import java.io.Serializable
 
 /**

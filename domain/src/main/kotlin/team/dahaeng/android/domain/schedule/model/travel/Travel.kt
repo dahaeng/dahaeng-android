@@ -7,11 +7,11 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model.travel
+package team.dahaeng.android.domain.schedule.model.travel
 
-import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
 import java.io.Serializable
+import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.model.travel.wrapper.CourseList
 
 /**
  * 여행지 객체

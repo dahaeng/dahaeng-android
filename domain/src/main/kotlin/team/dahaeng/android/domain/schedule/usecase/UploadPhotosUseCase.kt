@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.usecase
+package team.dahaeng.android.domain.schedule.usecase
 
-import team.dahaeng.android.domain.community.model.common.Photo
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.model.Photo
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 class UploadPhotosUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke(

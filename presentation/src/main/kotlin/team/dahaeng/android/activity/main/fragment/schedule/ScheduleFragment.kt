@@ -23,7 +23,7 @@ import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.activity.modifyschedule.ModifyScheduleActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
-import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Schedule
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 
 class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(

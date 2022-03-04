@@ -15,7 +15,7 @@
 
         <variable
             name="schedule"
-            type="team.dahaeng.android.domain.community.model.schedule.Schedule" />
+            type="team.dahaeng.android.domain.schedule.model.Schedule" />
 
     </data>
 

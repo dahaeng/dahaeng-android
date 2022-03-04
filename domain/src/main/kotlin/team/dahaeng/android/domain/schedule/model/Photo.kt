@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model.common
+package team.dahaeng.android.domain.schedule.model
 
 import android.graphics.Bitmap
-import team.dahaeng.android.domain.community.model.travel.Place
+import team.dahaeng.android.domain.schedule.model.travel.Place
 
 /**
  * [Place] 에 들어갈 이미지를 Firestore 에 올리기 위해 필요한 정보들을 담는 객체

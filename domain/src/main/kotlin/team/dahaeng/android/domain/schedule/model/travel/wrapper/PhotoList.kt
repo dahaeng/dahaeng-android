@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model.travel.wrapper
+package team.dahaeng.android.domain.schedule.model.travel.wrapper
 
-import team.dahaeng.android.domain.community.model.common.Photo
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.model.Photo
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 /**
  * 이미지 링크 리스트

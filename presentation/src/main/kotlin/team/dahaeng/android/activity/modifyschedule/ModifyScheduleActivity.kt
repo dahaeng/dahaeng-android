@@ -23,11 +23,11 @@ import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityModifyScheduleBinding
-import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.travel.wrapper.CourseList
-import team.dahaeng.android.domain.community.model.travel.Period
-import team.dahaeng.android.domain.community.model.travel.Theme
-import team.dahaeng.android.domain.community.model.travel.Travel
+import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.model.travel.wrapper.CourseList
+import team.dahaeng.android.domain.schedule.model.travel.Period
+import team.dahaeng.android.domain.schedule.model.travel.Theme
+import team.dahaeng.android.domain.schedule.model.travel.Travel
 
 @AndroidEntryPoint
 class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, ModifyScheduleViewModel>(

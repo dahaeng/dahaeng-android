@@ -7,7 +7,7 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.model.travel
+package team.dahaeng.android.domain.schedule.model.travel
 
 import team.dahaeng.android.domain.util.constant.EmptyString
 import java.io.Serializable

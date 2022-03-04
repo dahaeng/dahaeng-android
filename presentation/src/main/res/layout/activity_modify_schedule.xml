@@ -15,10 +15,10 @@
 
         <variable
             name="schedule"
-            type="team.dahaeng.android.domain.community.model.schedule.Schedule" />
+            type="team.dahaeng.android.domain.schedule.model.Schedule" />
         <variable
             name="period"
-            type="team.dahaeng.android.domain.community.model.travel.Period" />
+            type="team.dahaeng.android.domain.schedule.model.travel.Period" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

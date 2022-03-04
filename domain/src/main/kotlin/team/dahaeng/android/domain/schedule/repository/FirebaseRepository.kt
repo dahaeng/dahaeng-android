@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.repository
+package team.dahaeng.android.domain.schedule.repository
 
-import team.dahaeng.android.domain.community.model.common.Photo
-import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.schedule.model.Photo
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 interface FirebaseRepository {
     /**
@@ -32,33 +32,49 @@ interface FirebaseRepository {
     /**
      * 특정 유저의 전체 일정 조회
      *
+     * @param address 일정을 조회할 주소
+     * @param userId 일정을 조회할 유저의 아이디
+     *
      * @throws Exception 실패시 repository 내부에서 throw
      */
     suspend fun importSchedulesFromUser(
-        locate: String,
+        address: String,
         userId: Long,
     ): List<Schedule>
 
     /**
      * 전체 일정 조회
      *
-     * @throws Exception 실패시 repository 내부에서 throw
-     */
-    suspend fun importAllSchedules(locate: String): List<Schedule>
-
-    /**
-     * 스케쥴 업로드/업데이트
+     * @param address 일정을 조회할 주소
      *
      * @throws Exception 실패시 repository 내부에서 throw
      */
-    suspend fun uploadSchedule(schedule: Schedule)
+    suspend fun importAllSchedules(address: String): List<Schedule>
 
     /**
-     * 스케쥴 삭제
+     * 일정 업로드/업데이트
+     *
+     * @param address 일정을 저장할(저장된) 주소
+     * @param schedule 작업할 일정
+     *
+     * @throws Exception 실패시 repository 내부에서 throw
+     */
+    suspend fun uploadSchedule(
+        address: String,
+        schedule: Schedule,
+    )
+
+    /**
+     * 일정 삭제
+     *
+     * @param address 일정이 저장된 주소
+     * @param userId 일정의 주인 (해당 일정을 만든 사람)
+     * @param scheduleId 일정의 아이디
      *
      * @throws Exception 실패시 repository 내부에서 throw
      */
     suspend fun deleteSchedule(
+        address: String,
         userId: Long,
         scheduleId: Long,
     )

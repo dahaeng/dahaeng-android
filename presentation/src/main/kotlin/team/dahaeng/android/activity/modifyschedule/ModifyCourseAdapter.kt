@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import java.util.Collections
 import team.dahaeng.android.databinding.LayoutModifyCourseBinding
-import team.dahaeng.android.domain.community.model.travel.Course
+import team.dahaeng.android.domain.schedule.model.travel.Course
 
 class ModifyCourseAdapter :
     ListAdapter<Course, ModifyCourseAdapter.ViewHolder>(diffUtil) {

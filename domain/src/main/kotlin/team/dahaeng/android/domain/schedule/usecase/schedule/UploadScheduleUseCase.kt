@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.usecase.schedule
+package team.dahaeng.android.domain.schedule.usecase.schedule
 
-import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 class UploadScheduleUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke(schedule: Schedule) = runCatching {

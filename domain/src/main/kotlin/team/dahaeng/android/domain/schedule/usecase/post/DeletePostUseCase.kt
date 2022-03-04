@@ -7,9 +7,9 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.community.usecase.post
+package team.dahaeng.android.domain.schedule.usecase.post
 
-import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 class DeletePostUseCase(private val repo: FirebaseRepository) {
     suspend operator fun invoke(postId: Long) = runCatching {
