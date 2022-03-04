@@ -15,7 +15,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.birjuvachhani.locus.Locus
-import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
@@ -27,22 +26,25 @@ import java.util.Locale
 class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
 
     override val vm: MainViewModel by activityViewModels()
-    private var lastestAddress = ""
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lastestAddress = getString(R.string.fragment_list_loading_location)
 
         if (vm.lastLocate.isEmpty()) {
+            // getCurrentLocate 하면 위치 권한이 없을 때도 딱 한 번만 실행되서
+            // Error 로 위치가 받아와 짐
+            // 따라서 지속적으로 위치를 받고, 한 번 제대로 들어오면(권한이 다 수락 돼서)
+            // 이후 위치 업데이트를 중단함
             Locus.startLocationUpdates(this) { result ->
                 result.location?.let { location ->
-                    vm.lastLocate = location.tryParseAddress()
-                    binding.tvLocate.text = vm.lastLocate
-                    Locus.stopLocationUpdates()
+                    location.tryParseAddress()?.let { address ->
+                        vm.lastLocate = address
+                        binding.tvLocate.text = address
+                        Locus.stopLocationUpdates()
+                    }
                 }
-                result.error?.let { exception ->
-                    logeukes(type = LoggerType.E) { exception }
-                }
+                // 여기서 발생하는 에러는 오직 위치 권한이 없는 에러임
+                // 따라서 별도로 에러를 처리하지 않음
             }
         } else {
             binding.tvLocate.text = vm.lastLocate
@@ -67,11 +69,10 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
         val geoCoder = Geocoder(requireContext().applicationContext, Locale.KOREA)
         val addressList = geoCoder.getFromLocation(latitude, longitude, 2)
         val address = addressList[1].getAddressLine(0).replace("대한민국 ", "")
-        lastestAddress = address
         address
     } catch (exception: Exception) {
-        logeukes(type = LoggerType.E) { exception }
-        lastestAddress
+        vm.emitException(exception)
+        null
     }
 
     override fun onPause() {

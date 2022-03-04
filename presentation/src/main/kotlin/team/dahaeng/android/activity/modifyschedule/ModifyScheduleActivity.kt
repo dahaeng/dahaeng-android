@@ -70,7 +70,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
                     courseList.courses = changeCourseList.courses
                 }
             ).apply {
-                submitList(schedule.travel.courseLists)
+                submitList(schedule.travel.courses)
             }
         }
         binding.snTheme.adapter = ArrayAdapter.createFromResource(
@@ -91,7 +91,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
                 commonAddress = binding.etCommonaddress.text.toString(),
                 totalPeriod = binding.period as Period,
                 totalPrice = binding.etTotalprice.text.toString().toInt(),
-                courseLists = (binding.rvModifySchedule.adapter as ModifyScheduleAdapter).currentList
+                courses = (binding.rvModifySchedule.adapter as ModifyScheduleAdapter).currentList
             )
 
             // Todo : change schedule in firestore
