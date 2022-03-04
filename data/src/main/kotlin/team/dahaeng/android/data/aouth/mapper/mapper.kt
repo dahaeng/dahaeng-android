@@ -16,6 +16,6 @@ import kotlin.random.Random
 fun User.toDomain() = UserDomain(
     id = id ?: Random.nextLong(),
     nickname = kakaoAccount?.profile?.nickname ?: UserDomain.getDefaultNickname(),
-    profileImageUrl = kakaoAccount?.profile?.profileImageUrl
+    profileImageSrc = kakaoAccount?.profile?.profileImageUrl
         ?: UserDomain.getDefaultProfileImageColor()
 )

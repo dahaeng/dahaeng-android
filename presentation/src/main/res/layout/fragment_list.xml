@@ -39,7 +39,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small="@{datastore.INSTANCE.me.profileImageUrl}"
+            app:with_coil_small="@{datastore.INSTANCE.me.profileImageSrc}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textview.MaterialTextView
