@@ -17,7 +17,7 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.data.aouth.repository.AouthRepositoryImpl
-import team.dahaeng.android.data.community.repository.FirebaseRepositoryImpl
+import team.dahaeng.android.data.schedule.repository.FirebaseRepositoryImpl
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 

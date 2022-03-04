@@ -11,6 +11,7 @@ package team.dahaeng.android.domain.schedule.repository
 
 import team.dahaeng.android.domain.schedule.model.Photo
 import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.model.SimpleAddress
 
 interface FirebaseRepository {
     /**
@@ -38,7 +39,7 @@ interface FirebaseRepository {
      * @throws Exception 실패시 repository 내부에서 throw
      */
     suspend fun importSchedulesFromUser(
-        address: String,
+        address: SimpleAddress,
         userId: Long,
     ): List<Schedule>
 
@@ -49,7 +50,7 @@ interface FirebaseRepository {
      *
      * @throws Exception 실패시 repository 내부에서 throw
      */
-    suspend fun importAllSchedules(address: String): List<Schedule>
+    suspend fun importAllSchedules(address: SimpleAddress): List<Schedule>
 
     /**
      * 일정 업로드/업데이트
@@ -60,7 +61,7 @@ interface FirebaseRepository {
      * @throws Exception 실패시 repository 내부에서 throw
      */
     suspend fun uploadSchedule(
-        address: String,
+        address: SimpleAddress,
         schedule: Schedule,
     )
 
@@ -68,14 +69,12 @@ interface FirebaseRepository {
      * 일정 삭제
      *
      * @param address 일정이 저장된 주소
-     * @param userId 일정의 주인 (해당 일정을 만든 사람)
      * @param scheduleId 일정의 아이디
      *
      * @throws Exception 실패시 repository 내부에서 throw
      */
     suspend fun deleteSchedule(
-        address: String,
-        userId: Long,
+        address: SimpleAddress,
         scheduleId: Long,
     )
 }

@@ -14,4 +14,8 @@ internal object Constants {
         const val User = "user"
         const val Schedule = "schedule"
     }
+
+    object Storage {
+        const val Photo = "travel-photo"
+    }
 }
