@@ -21,13 +21,12 @@ import kotlin.random.Random
  * String(프로필 이미지 주소) or ColorDrawable(단일 색) 이 될 수 있음
  */
 data class User(
-    val id: Long,
-    val nickname: String,
-    val profileImageSrc: Any,
+    val id: Long = Random.nextLong(),
+    val nickname: String = randomNickname,
+    val profileImageSrc: Any = randomColorDrawable,
 ) {
-    companion object {
-        private val randomColor get() = (Math.random() * 16777215).toInt() or (0xFF shl 24)
-        fun getDefaultNickname() = "사용자${Random.nextInt(1000, 10000)}"
-        fun getDefaultProfileImageColor() = ColorDrawable(randomColor)
+    private companion object {
+        val randomColorDrawable get() = ColorDrawable((Math.random() * 16777215).toInt() or (0xFF shl 24))
+        val randomNickname get() = "사용자${Random.nextInt(1000, 10000)}"
     }
 }
