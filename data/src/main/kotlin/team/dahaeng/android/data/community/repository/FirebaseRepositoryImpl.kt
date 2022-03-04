@@ -129,7 +129,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
         }
     }
 
-    override suspend fun importSchedules(userId: Long): List<Schedule> =
+    override suspend fun importSchedulesFromUser(userId: Long): List<Schedule> =
         suspendCancellableCoroutine { continuation ->
             firestore
                 .collection(Constants.Firestore.User)

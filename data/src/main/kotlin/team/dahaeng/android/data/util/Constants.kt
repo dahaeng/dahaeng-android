@@ -9,9 +9,8 @@
 
 package team.dahaeng.android.data.util
 
-object Constants {
+internal object Constants {
     object Firestore {
-        const val Post = "post"
         const val User = "user"
         const val Schedule = "schedule"
     }

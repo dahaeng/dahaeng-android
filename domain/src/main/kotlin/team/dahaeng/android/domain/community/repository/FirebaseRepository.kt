@@ -10,7 +10,6 @@
 package team.dahaeng.android.domain.community.repository
 
 import team.dahaeng.android.domain.community.model.common.Photo
-import team.dahaeng.android.domain.community.model.post.Post
 import team.dahaeng.android.domain.community.model.schedule.Schedule
 
 interface FirebaseRepository {
@@ -31,32 +30,21 @@ interface FirebaseRepository {
     ): List<String?>
 
     /**
-     * 포스트 업로드
-     *
-     * @throws Exception 실패시 repository 내부에서 throw
-     */
-    suspend fun uploadPost(post: Post)
-
-    /**
-     * 전체 포스트 조회
-     *
-     * @throws Exception 실패시 repository 내부에서 throw
-     */
-    suspend fun importAllPosts(): List<Post>
-
-    /**
-     * 포스트 삭제
-     *
-     * @throws Exception 실패시 repository 내부에서 throw
-     */
-    suspend fun deletePost(postId: Long)
-
-    /**
      * 특정 유저의 전체 일정 조회
      *
      * @throws Exception 실패시 repository 내부에서 throw
      */
-    suspend fun importSchedules(userId: Long): List<Schedule>
+    suspend fun importSchedulesFromUser(
+        locate: String,
+        userId: Long,
+    ): List<Schedule>
+
+    /**
+     * 전체 일정 조회
+     *
+     * @throws Exception 실패시 repository 내부에서 throw
+     */
+    suspend fun importAllSchedules(locate: String): List<Schedule>
 
     /**
      * 스케쥴 업로드/업데이트
