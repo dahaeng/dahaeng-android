@@ -46,7 +46,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
 
         binding.snTheme.adapter = ArrayAdapter.createFromResource(
             this,
-            R.array.modify_schedule_theme_array,
+            R.array.schedule_theme_list,
             android.R.layout.simple_dropdown_item_1line
         )
 
@@ -75,7 +75,7 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
         }
         binding.snTheme.adapter = ArrayAdapter.createFromResource(
             this,
-            R.array.modify_schedule_theme_array,
+            R.array.schedule_theme_list,
             android.R.layout.simple_dropdown_item_1line
         )
         binding.snTheme.setSelection(getThemePosition(schedule.travel.theme.value))
