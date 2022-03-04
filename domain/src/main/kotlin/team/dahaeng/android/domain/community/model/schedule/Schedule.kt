@@ -10,20 +10,35 @@
 package team.dahaeng.android.domain.community.model.schedule
 
 import team.dahaeng.android.domain.community.model.travel.Travel
+import team.dahaeng.android.domain.util.constant.EmptyString
 import java.io.Serializable
+import java.util.Date
 import kotlin.random.Random
 
 /**
  * 일정 객체
  *
+ * 일정과 포스트를 공유함
+ * 포스트란, 메인 화면에서 보일 아이템 인데
+ * 이 아이템들도 결국엔 다 일정으로 만들어진 아이템임
+ *
+ * 이 아이템을 이용해 본인만의 일정으로 새로 작성하게 된다면 (fork 와 유사)
+ * copy 로 [id] 만 바꿔서 재사용 하면 됨
+ *
  * @property id 일정 UUID
+ * @property ownerId 일정 등록자 UUID
  * @property participant 일정 참여자 UUID 리스트, <b>첫 요소는 무조건 해당 일정의 owner 임</b>
  * @property title 일정 제목
- * @property travel 일정동안 쓰일 여행지 객체
+ * @property content 일정 내용, HTML 컨텐츠 텍스트 span 한정으로 지원
+ * @property travel 일정에 첨부된 여행 정보
+ * @property createdAt 일정이 업로드된 시간
  */
 data class Schedule(
     val id: Long = Random.nextLong(),
+    val ownerId: Long = 0L,
     val participant: List<Long> = emptyList(),
-    var title: String = "",
-    var travel: Travel = Travel(),
+    val title: String = EmptyString,
+    val content: String = EmptyString,
+    val travel: Travel = Travel(),
+    val createdAt: Long = Date().time,
 ) : Serializable
