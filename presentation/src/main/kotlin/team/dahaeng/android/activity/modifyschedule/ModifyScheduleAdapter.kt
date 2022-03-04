@@ -19,7 +19,7 @@ import team.dahaeng.android.databinding.LayoutRvModfiyScheduleItemBinding
 import team.dahaeng.android.domain.community.model.travel.CourseList
 
 class ModifyScheduleAdapter(
-    private val onEditClick: (View, CourseList) -> Unit
+    private val onEditClick: (View, CourseList) -> Unit,
 ) :
     ListAdapter<CourseList, ModifyScheduleAdapter.ViewHolder>(diffUtil) {
 
@@ -40,7 +40,7 @@ class ModifyScheduleAdapter(
 
     class ViewHolder(
         private val binding: LayoutRvModfiyScheduleItemBinding,
-        private val onEditClick: (View, CourseList) -> Unit
+        private val onEditClick: (View, CourseList) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
         val coursepositionTextview = binding.tvCourse
 
@@ -53,7 +53,6 @@ class ModifyScheduleAdapter(
             }
         }
     }
-
 
     override fun getItemCount() = currentList.count()
 

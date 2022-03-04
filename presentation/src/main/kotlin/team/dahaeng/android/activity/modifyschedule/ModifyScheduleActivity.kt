@@ -9,7 +9,6 @@
 
 package team.dahaeng.android.activity.modifyschedule
 
-
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -19,6 +18,8 @@ import androidx.activity.viewModels
 import androidx.core.util.Pair
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
+import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
 import team.dahaeng.android.databinding.ActivityModifyScheduleBinding
@@ -27,8 +28,6 @@ import team.dahaeng.android.domain.community.model.travel.CourseList
 import team.dahaeng.android.domain.community.model.travel.Period
 import team.dahaeng.android.domain.community.model.travel.Theme
 import team.dahaeng.android.domain.community.model.travel.Travel
-import java.text.SimpleDateFormat
-import java.util.*
 
 @AndroidEntryPoint
 class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, ModifyScheduleViewModel>(
@@ -148,7 +147,6 @@ class ModifyScheduleActivity : BaseActivity<ActivityModifyScheduleBinding, Modif
                 val startDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.first)
                 val endDate = SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(it.second)
                 binding.period = Period(endDate.toLong(), startDate.toLong())
-
             }
         }
     }

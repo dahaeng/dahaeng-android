@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import team.dahaeng.android.databinding.LayoutModifyScheduleBinding
-
 import team.dahaeng.android.domain.community.model.travel.Course
 
 class PlaceAdapter :
@@ -33,7 +32,6 @@ class PlaceAdapter :
 
         // transportationIv, accommodationIv image set
         // transportationIv, accommodationIv onclick
-
     }
 
     class ViewHolder(
@@ -44,11 +42,10 @@ class PlaceAdapter :
         val transportationIv = binding.ivTransportation
         val accommodationIv = binding.ivAccommodation
 
-        fun bind(course : Course) {
+        fun bind(course: Course) {
             binding.course = course
         }
     }
-
 
     override fun getItemCount() = currentList.count()
 

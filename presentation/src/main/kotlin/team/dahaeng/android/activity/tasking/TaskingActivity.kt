@@ -20,5 +20,4 @@ class TaskingActivity : BaseActivity<ActivityTaskingBinding, TaskingViewModel>(
     R.layout.activity_tasking
 ) {
     override val vm: TaskingViewModel by viewModels()
-
 }

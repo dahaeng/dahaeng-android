@@ -39,8 +39,7 @@ class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, ModifySch
             setHasFixedSize(true)
             setItemViewCacheSize(10)
             addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
-            adapter = ModifyCourseAdapter(
-            ).apply {
+            adapter = ModifyCourseAdapter().apply {
                 submitList(courseList.courses)
             }
             setItemTouchCallback()
@@ -65,7 +64,7 @@ class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, ModifySch
             override fun onMove(
                 recyclerView: RecyclerView,
                 viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
+                target: RecyclerView.ViewHolder,
             ): Boolean {
                 val fromPos: Int = viewHolder.absoluteAdapterPosition
                 val toPos: Int = target.absoluteAdapterPosition
@@ -76,7 +75,6 @@ class ModifyCourseActivity : BaseActivity<ActivityModifyCourseBinding, ModifySch
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 (binding.rvModifyCourse.adapter as ModifyCourseAdapter).removeItem(viewHolder.layoutPosition)
             }
-
         }
         ItemTouchHelper(itemTouchCallback).attachToRecyclerView(binding.rvModifyCourse)
     }
