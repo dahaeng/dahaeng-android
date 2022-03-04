@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
+import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
@@ -29,7 +29,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val importPostsUseCase: ImportPostsUseCase,
+    private val importAllPostsUseCase: ImportAllPostsUseCase,
     private val importScheduleUseCase: ImportScheduleUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
     private val deleteScheduleUseCase: DeleteScheduleUseCase,
@@ -45,7 +45,7 @@ class MainViewModel @Inject constructor(
     var lastLocate = ""
 
     fun reimportPosts() = viewModelScope.launch {
-        importPostsUseCase()
+        importAllPostsUseCase()
             .onSuccess { posts ->
                 if (posts.isNotEmpty()) {
                     DataStore.updatePosts(posts)

@@ -15,8 +15,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
-import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
-import team.dahaeng.android.domain.community.usecase.post.UploadImageUseCase
+import team.dahaeng.android.domain.community.usecase.post.ImportAllPostsUseCase
+import team.dahaeng.android.domain.community.usecase.UploadPhotosUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadPostUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
@@ -28,8 +28,8 @@ import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseC
 object CommunityUseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideUploadImageUseCase(repository: FirebaseRepository): UploadImageUseCase =
-        UploadImageUseCase(repository)
+    fun provideUploadImageUseCase(repository: FirebaseRepository): UploadPhotosUseCase =
+        UploadPhotosUseCase(repository)
 
     @Provides
     @ViewModelScoped
@@ -38,8 +38,8 @@ object CommunityUseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideImportPostsUseCaseToViewModel(repository: FirebaseRepository): ImportPostsUseCase =
-        ImportPostsUseCase(repository)
+    fun provideImportPostsUseCaseToViewModel(repository: FirebaseRepository): ImportAllPostsUseCase =
+        ImportAllPostsUseCase(repository)
 
     @Provides
     @ViewModelScoped

@@ -9,11 +9,16 @@
 
 package team.dahaeng.android.domain.community.usecase.schedule
 
-import team.dahaeng.android.domain.community.model.schedule.Schedule
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
 class DeleteScheduleUseCase(private val repository: FirebaseRepository) {
-    suspend operator fun invoke(schedule: Schedule) = runCatching {
-        repository.deleteSchedule(schedule)
+    suspend operator fun invoke(
+        userId: Long,
+        scheduleId: Long,
+    ) = runCatching {
+        repository.deleteSchedule(
+            userId = userId,
+            scheduleId = scheduleId,
+        )
     }
 }

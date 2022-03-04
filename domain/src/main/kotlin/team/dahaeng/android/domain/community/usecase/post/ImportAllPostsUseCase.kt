@@ -11,7 +11,7 @@ package team.dahaeng.android.domain.community.usecase.post
 
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
 
-class ImportPostsUseCase(private val repository: FirebaseRepository) {
+class ImportAllPostsUseCase(private val repository: FirebaseRepository) {
     suspend operator fun invoke() = runCatching {
         repository.importAllPosts()
     }
