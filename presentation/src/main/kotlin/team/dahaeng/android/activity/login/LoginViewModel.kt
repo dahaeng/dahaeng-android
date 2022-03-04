@@ -20,12 +20,13 @@ class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
     private val importAllPostsUseCase: ImportAllPostsUseCase,
 ) : BaseViewModel() {
+
     suspend fun login() = kakaoLoginUseCase().getOrElse { exception ->
         emitException(exception)
         null
     }
 
-    suspend fun importPostsWithDoneAction() = importAllPostsUseCase().getOrElse { exception ->
+    suspend fun importAllPosts() = importAllPostsUseCase().getOrElse { exception ->
         emitException(exception)
         null
     }

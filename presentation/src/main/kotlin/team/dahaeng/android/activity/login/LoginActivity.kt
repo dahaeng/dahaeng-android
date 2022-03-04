@@ -39,6 +39,7 @@ import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
+import team.dahaeng.android.util.extensions.startActivityWithAnimation
 import team.dahaeng.android.util.extensions.toJsonString
 import team.dahaeng.android.util.extensions.toModel
 import team.dahaeng.android.util.extensions.toast
@@ -59,7 +60,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         super.onCreate(savedInstanceState)
 
         if (!NetworkUtil.isNetworkAvailable(applicationContext)) {
-            finish()
+            finish() // FIXED code line; Do NOT move. (finish on splashing)
             startActivity(
                 Intent(this, ErrorActivity::class.java).apply {
                     putExtra(Key.Intent.Error, Key.Intent.NoInternet)
@@ -74,14 +75,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         )
 
         launchedWhenCreated {
-            vm.importPostsWithDoneAction()?.let { posts ->
+            vm.importAllPosts()?.let { posts ->
                 DataStore.updatePosts(posts)
-                if (sharedPreferences[Key.User.KakaoProfile] != null) {
+                sharedPreferences[Key.User.KakaoProfile]?.let { userJson ->
                     // 자동 로그인 상태
-                    val me: User = sharedPreferences[Key.User.KakaoProfile]!!.toModel()
+                    val me: User = userJson.toModel()
                     DataStore.me = me
                     startMainActivity()
-                } else {
+                } ?: run {
                     isReady = true
                 }
             }
@@ -144,7 +145,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     binding.exoPlayer.visibility = View.VISIBLE
                     binding.ivIntroThumbnail.visibility = View.GONE
                 }
-                ExoPlayer.STATE_ENDED -> {}
+                ExoPlayer.STATE_ENDED -> Unit
             }
         }
     }
@@ -182,7 +183,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
     }
 
     private fun startMainActivity() {
-        finish()
-        startActivity(Intent(this, MainActivity::class.java))
+        finish() // FIXED code line; Do NOT move. (finish on splashing)
+        startActivityWithAnimation<MainActivity>()
     }
 }
