@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbarungothic"
-                android:text="@string/activity_error_unexpected_issue"
+                android:text="@string/unexpected_error_occured"
                 android:textColor="@color/primary"
                 android:textSize="20sp" />
 

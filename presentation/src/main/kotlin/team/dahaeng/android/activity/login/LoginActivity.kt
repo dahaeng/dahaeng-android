@@ -41,6 +41,7 @@ import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
 import team.dahaeng.android.util.extensions.startActivityWithAnimation
+import team.dahaeng.android.util.extensions.toMessage
 import team.dahaeng.android.util.extensions.toast
 import team.dahaeng.android.util.mapper.toUser
 
@@ -130,7 +131,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         vm.exceptionFlow.collectWithLifecycle(this) { exception ->
             logeukes(type = LoggerType.E) { exception }
-            // toast(getString(R.string.activity_login_toast_start_fail))
+            toast(exception.toMessage(applicationContext))
         }
     }
 
