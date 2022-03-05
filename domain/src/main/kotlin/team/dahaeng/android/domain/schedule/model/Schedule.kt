@@ -57,4 +57,28 @@ data class Schedule(
     val likeCount: Int = 0,
     val hateCount: Int = 0,
     val lastStep: LastStep = LastStep(),
-) : Serializable
+) : Serializable {
+    /**
+     * 일정 썸네일 사진 추출 및 다운로드 링크 반환
+     *
+     * @return 일정의 첫 번째 여행지 사진의 링크
+     * 만약 올라온 이미지가 없다면 null
+     */
+    fun getThumbnailImageOrNull(): String? {
+        return travel.courses
+            .firstOrNull()?.courses
+            ?.firstOrNull()?.places
+            ?.firstOrNull()?.photos
+            ?.urls?.firstOrNull()
+    }
+
+    /**
+     * 여행지 레이팅(점수) 반환
+     *
+     * @return 5점 만점의 레이팅 점수
+      */
+    fun geRating(): Float {
+        // TODO
+        return 2.5f
+    }
+}

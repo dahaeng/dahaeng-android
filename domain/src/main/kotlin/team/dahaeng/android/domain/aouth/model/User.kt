@@ -37,7 +37,7 @@ data class User(
     val bedges: List<Int> = emptyList(),
     val verifyScehdules: List<Long> = emptyList(),
 ) {
-    private companion object {
+    companion object {
         val randomColorDrawable get() = ColorDrawable((Math.random() * 16777215).toInt() or (0xFF shl 24))
         val randomNickname get() = "J${Random.nextInt(1000, 10000)}"
     }
