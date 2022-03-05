@@ -10,10 +10,17 @@
 package team.dahaeng.android.domain.schedule.usecase.schedule
 
 import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
 class UploadScheduleUseCase(private val repository: FirebaseRepository) {
-    suspend operator fun invoke(schedule: Schedule) = runCatching {
-        repository.uploadSchedule(schedule)
+    suspend operator fun invoke(
+        address: SimpleAddress,
+        schedule: Schedule,
+    ) = runCatching {
+        repository.uploadSchedule(
+            address = address,
+            schedule = schedule
+        )
     }
 }

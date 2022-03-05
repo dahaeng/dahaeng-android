@@ -23,14 +23,14 @@ import team.dahaeng.android.domain.schedule.model.Schedule
 import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.ChangeScheduleUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.schedule.usecase.schedule.ImportScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ImportSchedulesFromUserUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCase
 import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val importAllPostsUseCase: ImportAllPostsUseCase,
-    private val importScheduleUseCase: ImportScheduleUseCase,
+    private val importSchedulesFromUserUseCase: ImportSchedulesFromUserUseCase,
     private val uploadScheduleUseCase: UploadScheduleUseCase,
     private val deleteScheduleUseCase: DeleteScheduleUseCase,
     private val changeScheduleUseCase: ChangeScheduleUseCase,
@@ -59,7 +59,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun importSchedule(ownerId: Long) = viewModelScope.launch {
-        importScheduleUseCase(ownerId)
+        importSchedulesFromUserUseCase(ownerId)
             .onSuccess { scheduleList ->
                 if (scheduleList.isNotEmpty()) {
                     DataStore.updateSchedules(scheduleList)

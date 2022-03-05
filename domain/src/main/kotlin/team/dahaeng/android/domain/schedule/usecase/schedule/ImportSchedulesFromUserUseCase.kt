@@ -9,10 +9,17 @@
 
 package team.dahaeng.android.domain.schedule.usecase.schedule
 
+import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 
-class ImportScheduleUseCase(private val repository: FirebaseRepository) {
-    suspend operator fun invoke(ownerId: Long) = runCatching {
-        repository.importSchedulesFromUser(ownerId)
+class ImportSchedulesFromUserUseCase(private val repository: FirebaseRepository) {
+    suspend operator fun invoke(
+        address: SimpleAddress,
+        userId: Long,
+    ) = runCatching {
+        repository.importSchedulesFromUser(
+            address = address,
+            userId = userId
+        )
     }
 }

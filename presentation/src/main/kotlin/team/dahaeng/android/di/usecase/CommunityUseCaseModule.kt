@@ -19,7 +19,7 @@ import team.dahaeng.android.domain.schedule.usecase.UploadPhotosUseCase
 import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
 import team.dahaeng.android.domain.schedule.usecase.post.UploadPostUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.schedule.usecase.schedule.ImportScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ImportSchedulesFromUserUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCase
 
 @Module
@@ -47,8 +47,8 @@ object CommunityUseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideImportScheduleUseCase(repository: FirebaseRepository): ImportScheduleUseCase =
-        ImportScheduleUseCase(repository)
+    fun provideImportScheduleUseCase(repository: FirebaseRepository): ImportSchedulesFromUserUseCase =
+        ImportSchedulesFromUserUseCase(repository)
 
     @Provides
     @ViewModelScoped
