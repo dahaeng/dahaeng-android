@@ -12,7 +12,7 @@ package team.dahaeng.android.activity.login
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
+import team.dahaeng.android.domain.user.usecase.KakaoLoginUseCase
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(

@@ -33,7 +33,7 @@ import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
-import team.dahaeng.android.domain.aouth.model.User
+import team.dahaeng.android.domain.user.model.User
 import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
@@ -76,7 +76,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         )
 
         doDelayed(500) { // default splashing time
-            sharedPreferences[Key.User.KakaoProfile]?.let { userJson ->
+            sharedPreferences[Key.User.ProfileUuid]?.let { userJson ->
                 // 자동 로그인 상태
                 val me: User = userJson.toModel()
                 DataStore.me = me
@@ -120,7 +120,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     DataStore.me = user
                     toast(getString(R.string.activity_login_toast_welcome))
                     startMainActivity()
-                    sharedPreferences[Key.User.KakaoProfile] = user.toJsonString()
+                    sharedPreferences[Key.User.ProfileUuid] = user.toJsonString()
                 }
             }
         }

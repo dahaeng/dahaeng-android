@@ -7,28 +7,68 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.data.aouth.repository
+package team.dahaeng.android.data.user.repository
 
 import android.content.Context
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.kakao.sdk.user.UserApiClient
 import com.kakao.sdk.user.model.User
-import kotlinx.coroutines.suspendCancellableCoroutine
-import team.dahaeng.android.data.aouth.mapper.toDomain
-import team.dahaeng.android.data.util.UserDomain
-import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
+import kotlinx.coroutines.suspendCancellableCoroutine
+import team.dahaeng.android.data.user.mapper.toDomain
+import team.dahaeng.android.data.util.Constants
+import team.dahaeng.android.data.util.UserDomain
+import team.dahaeng.android.domain.user.model.KakaoProfile
+import team.dahaeng.android.domain.user.repository.UserRepository
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
-class AouthRepositoryImpl(private val context: Context) : AouthRepository {
-    override suspend fun kakaoLogin(): UserDomain {
+class UserRepositoryImpl(private val context: Context) : UserRepository {
+
+    private val firestore by lazy { Firebase.firestore }
+
+    private fun FirebaseFirestore.setUserPath(user: UserDomain) =
+        collection(Constants.Firestore.User)
+            .document(user.id.toString())
+
+    override suspend fun kakaoLogin(): KakaoProfile {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
             loginWithKakaoTalk()
         } else {
             loginWithWebView()
         }
         return getUser().toDomain()
+    }
+
+    override suspend fun updateUser(user: UserDomain) {
+        suspendCancellableCoroutine<Unit> { continuation ->
+            firestore
+                .setUserPath(user)
+                .set(user)
+                .addOnSuccessListener {
+                    continuation.resume(Unit)
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resumeWithException(exception)
+                }
+        }
+    }
+
+    override suspend fun removeUser(user: UserDomain) {
+        suspendCancellableCoroutine<Unit> { continuation ->
+            firestore
+                .setUserPath(user)
+                .delete()
+                .addOnSuccessListener {
+                    continuation.resume(Unit)
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resumeWithException(exception)
+                }
+        }
     }
 
     private suspend fun loginWithKakaoTalk(): Unit = suspendCancellableCoroutine { continuation ->

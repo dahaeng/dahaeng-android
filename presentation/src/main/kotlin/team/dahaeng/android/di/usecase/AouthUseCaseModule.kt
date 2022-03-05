@@ -14,14 +14,14 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
-import team.dahaeng.android.domain.aouth.repository.AouthRepository
-import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
+import team.dahaeng.android.domain.user.repository.UserRepository
+import team.dahaeng.android.domain.user.usecase.KakaoLoginUseCase
 
 @Module
 @InstallIn(ViewModelComponent::class)
 object AouthUseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideKakaoLoginUseCase(repository: AouthRepository): KakaoLoginUseCase =
+    fun provideKakaoLoginUseCase(repository: UserRepository): KakaoLoginUseCase =
         KakaoLoginUseCase(repository)
 }

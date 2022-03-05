@@ -9,7 +9,7 @@
 
 package team.dahaeng.android.data
 
-import team.dahaeng.android.domain.aouth.model.User
+import team.dahaeng.android.domain.user.model.User
 
 object DataStore {
     lateinit var me: User
