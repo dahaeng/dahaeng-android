@@ -9,13 +9,13 @@
 
 package team.dahaeng.android.ui.databinding
 
-import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import coil.loadAny
 import coil.request.CachePolicy
 import team.dahaeng.android.R
+import team.dahaeng.android.util.extensions.hide
 
 @BindingAdapter("with_coil_small")
 fun loadSrcWithCoilSmallSize(view: ImageView, src: Any) {
@@ -48,6 +48,6 @@ fun loadSrcWithCoilSmallSizeOrGone(view: ImageView, src: Any?) {
             diskCachePolicy(CachePolicy.ENABLED)
         }
     } else {
-        view.visibility = View.GONE
+        view.hide(isGone = true)
     }
 }
