@@ -9,25 +9,19 @@
 
 package team.dahaeng.android.data
 
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import team.dahaeng.android.domain.aouth.model.User
-import team.dahaeng.android.domain.schedule.model.post.Post
 import team.dahaeng.android.domain.schedule.model.Schedule
 
 @Suppress("ObjectPropertyName")
 object DataStore {
     lateinit var me: User
 
-    private val _posts = mutableListOf<Post>()
-    val posts: List<Post> get() = _posts
+    private val _schedules = MutableStateFlow<List<Schedule>>(emptyList())
+    val schedules = _schedules.asStateFlow()
 
-    private val _schedules = mutableListOf<Schedule>()
-    val schedules: List<Schedule> get() = _schedules
-
-    fun updatePosts(posts: List<Post>) {
-        _posts.addAll(posts)
-    }
-
-    fun updateSchedules(schedules: List<Schedule>) {
-        _schedules.addAll(schedules)
+    suspend fun updateSchedules(schedules: List<Schedule>) {
+        _schedules.emit(schedules)
     }
 }

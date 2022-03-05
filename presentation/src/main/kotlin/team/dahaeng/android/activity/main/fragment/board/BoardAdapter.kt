@@ -14,16 +14,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import team.dahaeng.android.databinding.LayoutPostBinding
-import team.dahaeng.android.domain.schedule.model.post.Post
+import team.dahaeng.android.databinding.LayoutSchedulePostBinding
+import team.dahaeng.android.domain.schedule.model.Schedule
 
 class BoardAdapter(
-    private val onPostClick: (Post) -> Unit,
-) : ListAdapter<Post, BoardAdapter.BoardViewHolder>(diffUtil) {
+    private val onScheduleClick: (schedule: Schedule) -> Unit,
+) : ListAdapter<Schedule, BoardAdapter.BoardViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BoardViewHolder {
-        val binding = LayoutPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return BoardViewHolder(binding, onPostClick)
+        val binding =
+            LayoutSchedulePostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return BoardViewHolder(binding, onScheduleClick)
     }
 
     override fun onBindViewHolder(holder: BoardViewHolder, position: Int) {
@@ -31,14 +32,14 @@ class BoardAdapter(
     }
 
     class BoardViewHolder(
-        private val binding: LayoutPostBinding,
-        private val onPostClick: (Post) -> Unit,
+        private val binding: LayoutSchedulePostBinding,
+        private val onScheduleClick: (schedule: Schedule) -> Unit,
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(post: Post) {
+        fun bind(schedule: Schedule) {
             binding.run {
-                this.post = post
+                this.schedule = schedule
                 root.setOnClickListener {
-                    onPostClick(post)
+                    onScheduleClick(schedule)
                 }
             }
         }
@@ -49,11 +50,11 @@ class BoardAdapter(
     override fun getItemCount() = currentList.size
 
     companion object {
-        private val diffUtil = object : DiffUtil.ItemCallback<Post>() {
-            override fun areContentsTheSame(oldItem: Post, newItem: Post) =
+        private val diffUtil = object : DiffUtil.ItemCallback<Schedule>() {
+            override fun areContentsTheSame(oldItem: Schedule, newItem: Schedule) =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: Post, newItem: Post) =
+            override fun areItemsTheSame(oldItem: Schedule, newItem: Schedule) =
                 oldItem.id == newItem.id
         }
     }

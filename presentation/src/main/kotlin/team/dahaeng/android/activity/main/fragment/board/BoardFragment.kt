@@ -22,10 +22,17 @@ import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentListBinding
+import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.launchedWhenCreated
 
 class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
 
     override val vm: MainViewModel by activityViewModels()
+    private val schedulesAdapter by lazy {
+        BoardAdapter { post ->
+            logeukes { "Post clicked: $post" }
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,15 +56,17 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
         binding.rvPost.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
-            adapter = BoardAdapter { post ->
-                logeukes { "Post clicked: $post" }
-            }.apply {
-                submitList(DataStore.posts)
-            }
+            adapter = schedulesAdapter
         }
 
         binding.tilSesarchContainer.setEndIconOnClickListener {
             // TODO: filter menu
+        }
+
+        launchedWhenCreated {
+            DataStore.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { schedules ->
+                schedulesAdapter.submitList(schedules)
+            }
         }
     }
 

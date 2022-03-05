@@ -16,38 +16,32 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.schedule.repository.FirebaseRepository
 import team.dahaeng.android.domain.schedule.usecase.UploadPhotosUseCase
-import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
-import team.dahaeng.android.domain.schedule.usecase.post.UploadPostUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.DeleteScheduleUseCase
+import team.dahaeng.android.domain.schedule.usecase.schedule.ImportAllSchedulesUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.ImportSchedulesFromUserUseCase
 import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCase
 
 @Module
 @InstallIn(ViewModelComponent::class)
-object CommunityUseCaseModule {
+object ScheduleUseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideUploadImageUseCase(repository: FirebaseRepository): UploadPhotosUseCase =
+    fun provideUploadPhotosUseCase(repository: FirebaseRepository): UploadPhotosUseCase =
         UploadPhotosUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideUploadPostUseCase(repository: FirebaseRepository): UploadPostUseCase =
-        UploadPostUseCase(repository)
+    fun provideUploadScheduleUseCase(repository: FirebaseRepository): UploadScheduleUseCase =
+        UploadScheduleUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideImportPostsUseCaseToViewModel(repository: FirebaseRepository): ImportAllPostsUseCase =
-        ImportAllPostsUseCase(repository)
+    fun provideImportAllSchedulesUseCase(repository: FirebaseRepository): ImportAllSchedulesUseCase =
+        ImportAllSchedulesUseCase(repository)
 
     @Provides
     @ViewModelScoped
-    fun provideUploadScheduleUseCase(reposiotry: FirebaseRepository): UploadScheduleUseCase =
-        UploadScheduleUseCase(reposiotry)
-
-    @Provides
-    @ViewModelScoped
-    fun provideImportScheduleUseCase(repository: FirebaseRepository): ImportSchedulesFromUserUseCase =
+    fun provideImportSchedulesFromUserUseCase(repository: FirebaseRepository): ImportSchedulesFromUserUseCase =
         ImportSchedulesFromUserUseCase(repository)
 
     @Provides

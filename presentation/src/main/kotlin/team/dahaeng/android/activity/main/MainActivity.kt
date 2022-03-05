@@ -17,7 +17,6 @@ import androidx.navigation.fragment.NavHostFragment
 import dagger.hilt.android.AndroidEntryPoint
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
@@ -28,8 +27,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        vm.importSchedule(DataStore.me.id)
 
         navController =
             (supportFragmentManager.findFragmentById(R.id.fcv_fragment) as NavHostFragment).navController
