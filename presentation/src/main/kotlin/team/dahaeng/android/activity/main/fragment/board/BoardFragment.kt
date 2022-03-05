@@ -15,6 +15,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.birjuvachhani.locus.Locus
+import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import java.util.Locale
 import team.dahaeng.android.R
@@ -46,10 +47,17 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
                         binding.tvLocate.text = address.toString()
                         vm.importAllSchedules(address)
                         Locus.stopLocationUpdates()
+                        logeukes("LocusResult") { location }
+                        logeukes("LocusResult-parseAddress") { address }
                     }
                 }
                 // 여기서 발생하는 에러는 오직 위치 권한이 없는 에러임
                 // 따라서 별도로 에러를 처리하지 않음
+                result.error?.let { exception ->
+                    logeukes(type = LoggerType.E, tag = "LocusError") {
+                        exception
+                    }
+                }
             }
         } else {
             vm.importAllSchedules(vm.lastAddress!!)
