@@ -19,6 +19,7 @@ import kotlin.random.Random
  * @property nickname 유저 닉네임
  * @property profileImageSrc 프로필 사진을 나타내기 위한 필드임
  * String(프로필 이미지 주소) or ColorDrawable(단일 색) 이 될 수 있음
+ * @property bookmakredScheduleIds 북마크한 일정 아이디들
  * @property likeScheduleIds 좋아요한 일정 아이디들
  * @property joinScheduleIds 참여한 일정 아이디들
  * @property bedges 휙득한 벳지 아이디들
@@ -28,6 +29,7 @@ data class User(
     val id: Long = Random.nextLong(),
     val nickname: String = randomNickname,
     val profileImageSrc: Any = randomColorDrawable,
+    val bookmakredScheduleIds: List<Long> = emptyList(),
     val likeScheduleIds: List<Long> = emptyList(),
     val joinScheduleIds: List<Long> = emptyList(),
     val bedges: List<Int> = emptyList(),
