@@ -16,4 +16,6 @@ package team.dahaeng.android.domain.schedule.model
 data class SimpleAddress(
     val ciDo: String,
     val gunGu: String,
-)
+) {
+    override fun toString() = "$ciDo $gunGu"
+}

@@ -20,11 +20,12 @@ import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentListBinding
+import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 
+// TODO: Show Skeleton UI while schedule loading at first time.
 class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
 
     override val vm: MainViewModel by activityViewModels()
@@ -37,12 +38,13 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (vm.lastLocate.isEmpty()) {
+        if (vm.lastAddress == null) {
             Locus.getCurrentLocation(requireContext()) { result ->
                 result.location?.let { location ->
                     location.tryParseAddress()?.let { address ->
-                        vm.lastLocate = address
-                        binding.tvLocate.text = address
+                        vm.lastAddress = address
+                        binding.tvLocate.text = address.toString()
+                        vm.importAllSchedules(address)
                         Locus.stopLocationUpdates()
                     }
                 }
@@ -50,7 +52,8 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
                 // 따라서 별도로 에러를 처리하지 않음
             }
         } else {
-            binding.tvLocate.text = vm.lastLocate
+            vm.importAllSchedules(vm.lastAddress!!)
+            binding.tvLocate.text = vm.lastAddress.toString()
         }
 
         binding.rvPost.run {
@@ -64,7 +67,7 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
         }
 
         launchedWhenCreated {
-            DataStore.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { schedules ->
+            vm.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { schedules ->
                 schedulesAdapter.submitList(schedules)
             }
         }
@@ -75,7 +78,12 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
         val geoCoder = Geocoder(requireContext().applicationContext, Locale.KOREA)
         val addressList = geoCoder.getFromLocation(latitude, longitude, 2)
         val address = addressList[1].getAddressLine(0).replace("대한민국 ", "")
-        address
+        with(address.split(" ")) {
+            SimpleAddress(
+                ciDo = first(),
+                gunGu = last()
+            )
+        }
     } catch (exception: Exception) {
         vm.emitException(exception)
         null

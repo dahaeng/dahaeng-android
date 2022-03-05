@@ -10,23 +10,16 @@
 package team.dahaeng.android.activity.login
 
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.domain.aouth.usecase.KakaoLoginUseCase
-import team.dahaeng.android.domain.schedule.usecase.post.ImportAllPostsUseCase
-import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
-    private val importAllPostsUseCase: ImportAllPostsUseCase,
 ) : BaseViewModel() {
 
     suspend fun login() = kakaoLoginUseCase().getOrElse { exception ->
-        emitException(exception)
-        null
-    }
-
-    suspend fun importAllPosts() = importAllPostsUseCase().getOrElse { exception ->
         emitException(exception)
         null
     }

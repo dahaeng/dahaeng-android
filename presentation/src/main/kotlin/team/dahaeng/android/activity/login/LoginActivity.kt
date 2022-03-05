@@ -25,6 +25,7 @@ import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
 import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
+import javax.inject.Inject
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
@@ -36,6 +37,7 @@ import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
 import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.doDelayed
 import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
@@ -43,7 +45,6 @@ import team.dahaeng.android.util.extensions.startActivityWithAnimation
 import team.dahaeng.android.util.extensions.toJsonString
 import team.dahaeng.android.util.extensions.toModel
 import team.dahaeng.android.util.extensions.toast
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
@@ -74,17 +75,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        launchedWhenCreated {
-            vm.importAllPosts()?.let { posts ->
-                DataStore.updatePosts(posts)
-                sharedPreferences[Key.User.KakaoProfile]?.let { userJson ->
-                    // 자동 로그인 상태
-                    val me: User = userJson.toModel()
-                    DataStore.me = me
-                    startMainActivity()
-                } ?: run {
-                    isReady = true
-                }
+        doDelayed(500) { // default splashing time
+            sharedPreferences[Key.User.KakaoProfile]?.let { userJson ->
+                // 자동 로그인 상태
+                val me: User = userJson.toModel()
+                DataStore.me = me
+                startMainActivity()
+            } ?: run {
+                isReady = true
             }
         }
 

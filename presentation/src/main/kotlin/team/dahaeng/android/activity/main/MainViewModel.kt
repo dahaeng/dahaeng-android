@@ -12,9 +12,11 @@ package team.dahaeng.android.activity.main
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.data.DataStore
+import team.dahaeng.android.domain.schedule.model.Schedule
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.domain.schedule.usecase.schedule.ImportAllSchedulesUseCase
 
@@ -22,13 +24,17 @@ import team.dahaeng.android.domain.schedule.usecase.schedule.ImportAllSchedulesU
 class MainViewModel @Inject constructor(
     private val importAllSchedulesUseCase: ImportAllSchedulesUseCase,
 ) : BaseViewModel() {
-    var lastLocate = ""
 
-    fun reimportAllSchedules(address: SimpleAddress) = viewModelScope.launch {
+    private val _schedules = MutableStateFlow<List<Schedule>>(emptyList())
+    val schedules = _schedules.asStateFlow()
+
+    var lastAddress: SimpleAddress? = null
+
+    fun importAllSchedules(address: SimpleAddress) = viewModelScope.launch {
         importAllSchedulesUseCase(address = address)
             .onSuccess { schedules ->
                 if (schedules.isNotEmpty()) {
-                    DataStore.updateSchedules(schedules)
+                    _schedules.emit(schedules)
                 }
             }
             .onFailure { exception ->
