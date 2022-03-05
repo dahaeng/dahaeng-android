@@ -18,5 +18,7 @@ object Key {
         const val Error = "intent-error"
         const val NoInternet = "intent-no-internet"
         const val Exception = "intent-exception"
+
+        const val ScheduleModel = "intent-schedule-model"
     }
 }
