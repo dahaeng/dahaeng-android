@@ -139,6 +139,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
                 binding.viewstubEmptyPublicSchedule.viewStub?.hide(isGone = true)
                 binding.tilSesarchContainer.show()
                 binding.rvVeiledSchedule.show()
+                binding.fabCreateSchedule.show()
             }
         }
     }
