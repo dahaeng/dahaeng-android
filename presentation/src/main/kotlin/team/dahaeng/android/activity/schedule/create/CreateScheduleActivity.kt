@@ -9,23 +9,4 @@
 
 package team.dahaeng.android.activity.schedule.create
 
-import android.os.Bundle
-import androidx.activity.viewModels
-import dagger.hilt.android.AndroidEntryPoint
-import team.dahaeng.android.R
-import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.databinding.ActivityCreateScheduleBinding
-
-@AndroidEntryPoint
-class CreateScheduleActivity : BaseActivity<ActivityCreateScheduleBinding, MainViewModel>(
-    R.layout.activity_create_schedule
-) {
-    override val vm: MainViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO
-    }
-}
+// TODO
