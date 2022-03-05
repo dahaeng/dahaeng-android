@@ -50,7 +50,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
                     location.tryParseAddress()?.let { address ->
                         vm.lastAddress = address
                         binding.tvLocate.text = address.toString()
-                        vm.importAllSchedules(address)
+                        // vm.importAllSchedules(address)
                         Locus.stopLocationUpdates()
                     }
                 }

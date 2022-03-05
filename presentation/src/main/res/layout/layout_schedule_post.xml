@@ -48,7 +48,7 @@
             app:justifyContent="space_evenly">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbarungothic"
                 android:text="@{schedule.title}"
@@ -64,7 +64,7 @@
 
                 <TextView
                     android:id="@+id/tv_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:text="@{schedule.travel.commonAddress}"
