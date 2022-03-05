@@ -22,6 +22,7 @@ import kotlin.random.Random
  * @property bookmakredScheduleIds 북마크한 일정 아이디들
  * @property likeScheduleIds 좋아요한 일정 아이디들
  * @property joinScheduleIds 참여한 일정 아이디들
+ * @property reportIds 문의 내역 아이이들
  * @property bedges 휙득한 벳지 아이디들
  * @property verifyScehdules 여행 실제 진행이 인증된 일정 아이디들
  */
@@ -32,6 +33,7 @@ data class User(
     val bookmakredScheduleIds: List<Long> = emptyList(),
     val likeScheduleIds: List<Long> = emptyList(),
     val joinScheduleIds: List<Long> = emptyList(),
+    val reportIds: List<Long> = emptyList(),
     val bedges: List<Int> = emptyList(),
     val verifyScehdules: List<Long> = emptyList(),
 ) {
