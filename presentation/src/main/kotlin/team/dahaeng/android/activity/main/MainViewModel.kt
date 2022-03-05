@@ -49,7 +49,7 @@ class MainViewModel @Inject constructor(
 
     fun testEmitting() = viewModelScope.launch {
         _schedules.emit(LoadState.Loading)
-        /*delay(10000)
-        _schedules.emit(LoadState.Empty)*/
+        delay(10000)
+        _schedules.emit(LoadState.Empty)
     }
 }
