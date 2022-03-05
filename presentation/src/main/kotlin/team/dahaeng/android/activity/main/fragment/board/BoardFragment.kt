@@ -20,7 +20,7 @@ import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.activity.schedule.create.ScheduleCreateActivity
+import team.dahaeng.android.activity.schedule.modify.ScheduleModifyActivity
 import team.dahaeng.android.databinding.FragmentBoardBinding
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.util.extensions.changeActivityWithAnimation
@@ -99,7 +99,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
     }
 
     private fun moveScheduleCreateActivity() {
-        changeActivityWithAnimation<ScheduleCreateActivity>()
+        changeActivityWithAnimation<ScheduleModifyActivity>()
     }
 
     override fun onPause() {

@@ -16,8 +16,8 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.schedule.create
+package team.dahaeng.android.activity.schedule.modify
 
 import team.dahaeng.android.activity.base.BaseViewModel
 
-class ScheduleCreateViewModel : BaseViewModel()
+class ScheduleModifyViewModel : BaseViewModel()

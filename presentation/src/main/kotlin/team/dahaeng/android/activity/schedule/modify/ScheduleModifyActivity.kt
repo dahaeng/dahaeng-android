@@ -7,15 +7,15 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.schedule.create
+package team.dahaeng.android.activity.schedule.modify
 
 import androidx.activity.viewModels
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseActivity
-import team.dahaeng.android.databinding.ActivityScheduleCreateBinding
+import team.dahaeng.android.databinding.ActivityScheduleModifyBinding
 
-class ScheduleCreateActivity : BaseActivity<ActivityScheduleCreateBinding, ScheduleCreateViewModel>(
-    R.layout.activity_schedule_create
+class ScheduleModifyActivity : BaseActivity<ActivityScheduleModifyBinding, ScheduleModifyViewModel>(
+    R.layout.activity_schedule_modify
 ) {
-    override val vm: ScheduleCreateViewModel by viewModels()
+    override val vm: ScheduleModifyViewModel by viewModels()
 }

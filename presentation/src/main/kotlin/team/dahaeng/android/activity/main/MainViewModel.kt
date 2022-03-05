@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
-import team.dahaeng.android.domain.schedule.model.Schedule
+import team.dahaeng.android.activity.main.constant.LoadState
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.domain.schedule.usecase.schedule.ImportAllSchedulesUseCase
 
@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
     private val importAllSchedulesUseCase: ImportAllSchedulesUseCase,
 ) : BaseViewModel() {
 
-    private val _schedules = MutableStateFlow<List<Schedule>>(emptyList())
+    private val _schedules = MutableStateFlow<LoadState>(LoadState.Loading)
     val schedules = _schedules.asStateFlow()
 
     var lastAddress: SimpleAddress? = null
@@ -33,9 +33,12 @@ class MainViewModel @Inject constructor(
     fun importAllSchedules(address: SimpleAddress) = viewModelScope.launch {
         importAllSchedulesUseCase(address = address)
             .onSuccess { schedules ->
-                if (schedules.isNotEmpty()) {
-                    _schedules.emit(schedules)
-                }
+                _schedules.emit(
+                    when (schedules.isEmpty()) {
+                        true -> LoadState.Empty
+                        else -> LoadState.Done(schedules)
+                    }
+                )
             }
             .onFailure { exception ->
                 emitException(exception)
