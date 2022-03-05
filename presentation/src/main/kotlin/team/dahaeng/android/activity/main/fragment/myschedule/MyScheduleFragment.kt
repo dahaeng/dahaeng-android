@@ -7,14 +7,14 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.main.fragment.mypage
+package team.dahaeng.android.activity.main.fragment.myschedule
 
 import androidx.fragment.app.activityViewModels
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.databinding.FragmentMypageBinding
+import team.dahaeng.android.databinding.FragmentMyScheduleBinding
 
-class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
+class MyScheduleFragment : BaseFragment<FragmentMyScheduleBinding>(R.layout.fragment_my_schedule) {
     private val vm: MainViewModel by activityViewModels()
 }

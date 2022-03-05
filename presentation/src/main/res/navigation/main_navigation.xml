@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/mypage"
-        android:name="team.dahaeng.android.activity.main.fragment.mypage.MypageFragment"
-        tools:layout="@layout/fragment_mypage" />
+        android:id="@+id/my_schedule"
+        android:name="team.dahaeng.android.activity.main.fragment.myschedule.MyScheduleFragment"
+        tools:layout="@layout/fragment_my_schedule" />
 
 </navigation>

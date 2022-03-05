@@ -16,12 +16,12 @@
 
     <item
         android:id="@+id/bookmark"
-        android:icon="@drawable/ic_round_favorite_24"
-        android:title="@string/menu_main_favorite" />
+        android:icon="@drawable/ic_round_bookmark_24"
+        android:title="@string/menu_main_bookmark" />
 
     <item
-        android:id="@+id/mypage"
+        android:id="@+id/my_schedule"
         android:icon="@drawable/ic_round_card_travel_24"
-        android:title="@string/menu_main_tasking" />
+        android:title="@string/menu_main_my_schedule" />
 
 </menu>
