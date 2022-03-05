@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.ui.databinding
 
+import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.findViewTreeLifecycleOwner
@@ -33,5 +34,20 @@ fun loadSrcWithCoilBigSize(view: ImageView, src: Any) {
         crossfade(true)
         placeholder(R.drawable.ic_round_airplane_ticket_24)
         lifecycle(view.findViewTreeLifecycleOwner())
+    }
+}
+
+@BindingAdapter("with_coil_small_or_gone")
+fun loadSrcWithCoilSmallSizeOrGone(view: ImageView, src: Any?) {
+    if (src != null) {
+        view.loadAny(src) {
+            crossfade(true)
+            placeholder(R.drawable.ic_round_airplane_ticket_24)
+            lifecycle(view.findViewTreeLifecycleOwner())
+            allowRgb565(true)
+            diskCachePolicy(CachePolicy.ENABLED)
+        }
+    } else {
+        view.visibility = View.GONE
     }
 }
