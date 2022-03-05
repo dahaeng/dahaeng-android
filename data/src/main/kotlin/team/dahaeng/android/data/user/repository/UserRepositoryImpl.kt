@@ -21,6 +21,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 import team.dahaeng.android.data.user.mapper.toDomain
 import team.dahaeng.android.data.util.Constants
 import team.dahaeng.android.data.util.UserDomain
+import team.dahaeng.android.data.util.toObjectNonNull
 import team.dahaeng.android.domain.user.model.KakaoProfile
 import team.dahaeng.android.domain.user.repository.UserRepository
 
@@ -33,6 +34,10 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
     private fun FirebaseFirestore.setUserPath(user: UserDomain) =
         collection(Constants.Firestore.User)
             .document(user.id.toString())
+
+    private fun FirebaseFirestore.setUserPath(id: Long) =
+        collection(Constants.Firestore.User)
+            .document(id.toString())
 
     override suspend fun kakaoLogin(): KakaoProfile {
         if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
@@ -70,6 +75,19 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
                 }
         }
     }
+
+    override suspend fun getUser(id: Long): UserDomain =
+        suspendCancellableCoroutine { continuation ->
+            firestore
+                .setUserPath(id)
+                .get()
+                .addOnSuccessListener { result ->
+                    continuation.resume(result.toObjectNonNull())
+                }
+                .addOnFailureListener { exception ->
+                    continuation.resumeWithException(exception)
+                }
+        }
 
     private suspend fun loginWithKakaoTalk(): Unit = suspendCancellableCoroutine { continuation ->
         UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->

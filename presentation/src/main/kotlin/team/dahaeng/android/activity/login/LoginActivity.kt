@@ -76,9 +76,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         )
 
         doDelayed(500) { // default splashing time
-            sharedPreferences[Key.User.ProfileUuid]?.let { userJson ->
+            sharedPreferences[Key.User.ProfileUuid]?.let { kakaoProfileJson ->
                 // 자동 로그인 상태
-                val me: User = userJson.toModel()
+                val me: User = kakaoProfileJson.toModel()
                 DataStore.me = me
                 startMainActivity()
             } ?: run {
