@@ -12,6 +12,7 @@ package team.dahaeng.android.activity.main
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -44,5 +45,11 @@ class MainViewModel @Inject constructor(
             .onFailure { exception ->
                 emitException(exception)
             }
+    }
+
+    fun testEmitting() = viewModelScope.launch {
+        _schedules.emit(LoadState.Loading)
+        delay(3000)
+        _schedules.emit(LoadState.Empty)
     }
 }

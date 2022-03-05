@@ -62,7 +62,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
             binding.tvLocate.text = vm.lastAddress.toString()
         }
 
-        vm.importAllSchedules(SimpleAddress("안", "녕"))
+        vm.testEmitting()
 
         binding.rvSchedule.run {
             setHasFixedSize(true)
