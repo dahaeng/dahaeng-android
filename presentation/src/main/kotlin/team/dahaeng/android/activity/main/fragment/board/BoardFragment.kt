@@ -20,8 +20,10 @@ import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
+import team.dahaeng.android.activity.schedule.create.ScheduleCreateActivity
 import team.dahaeng.android.databinding.FragmentBoardBinding
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
+import team.dahaeng.android.util.extensions.changeActivityWithAnimation
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 
@@ -69,6 +71,10 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
             // TODO: filter menu
         }
 
+        binding.fabCreateSchedule.setOnClickListener {
+            moveScheduleCreateActivity()
+        }
+
         launchedWhenCreated {
             vm.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { schedules ->
                 schedulesAdapter.submitList(schedules)
@@ -90,6 +96,10 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
     } catch (exception: Exception) {
         vm.emitException(exception)
         null
+    }
+
+    private fun moveScheduleCreateActivity() {
+        changeActivityWithAnimation<ScheduleCreateActivity>()
     }
 
     override fun onPause() {
