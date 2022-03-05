@@ -10,12 +10,11 @@
 package team.dahaeng.android.data.aouth.mapper
 
 import com.kakao.sdk.user.model.User
-import team.dahaeng.android.data.util.UserDomain
 import kotlin.random.Random
+import team.dahaeng.android.data.util.UserDomain
 
 fun User.toDomain() = UserDomain(
     id = id ?: Random.nextLong(),
-    nickname = kakaoAccount?.profile?.nickname ?: UserDomain.getDefaultNickname(),
-    profileImageSrc = kakaoAccount?.profile?.profileImageUrl
-        ?: UserDomain.getDefaultProfileImageColor()
+    nickname = kakaoAccount?.profile?.nickname ?: UserDomain.randomNickname,
+    profileImageSrc = kakaoAccount?.profile?.profileImageUrl ?: UserDomain.randomColorDrawable
 )
