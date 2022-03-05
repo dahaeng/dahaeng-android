@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.activity.login
 
+import android.app.Activity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import team.dahaeng.android.activity.base.BaseViewModel
@@ -24,7 +25,7 @@ class LoginViewModel @Inject constructor(
     private val getUserUseCase: GetUserUseCase,
 ) : BaseViewModel() {
 
-    suspend fun login() = kakaoLoginUseCase().getOrElse { exception ->
+    suspend fun login(activity: Activity) = kakaoLoginUseCase(activity).getOrElse { exception ->
         emitException(exception)
         null
     }

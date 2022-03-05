@@ -9,6 +9,7 @@
 
 package team.dahaeng.android.domain.user.repository
 
+import android.app.Activity
 import team.dahaeng.android.domain.user.model.KakaoProfile
 import team.dahaeng.android.domain.user.model.User
 
@@ -18,7 +19,7 @@ interface UserRepository {
      *
      * @throws Exception 작업 실패시 내부에서 throw
      */
-    suspend fun kakaoLogin(): KakaoProfile
+    suspend fun kakaoLogin(activity: Activity): KakaoProfile
 
     /**
      * 회원 등록 및 업데이트

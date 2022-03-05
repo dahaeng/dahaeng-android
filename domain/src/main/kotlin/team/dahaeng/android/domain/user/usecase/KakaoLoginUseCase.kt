@@ -9,10 +9,11 @@
 
 package team.dahaeng.android.domain.user.usecase
 
+import android.app.Activity
 import team.dahaeng.android.domain.user.repository.UserRepository
 
 class KakaoLoginUseCase(private val repository: UserRepository) {
-    suspend operator fun invoke() = runCatching {
-        repository.kakaoLogin()
+    suspend operator fun invoke(activity: Activity) = runCatching {
+        repository.kakaoLogin(activity)
     }
 }

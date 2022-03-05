@@ -113,7 +113,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         binding.btnLogin.setOnClickListener {
             launchedWhenCreated {
-                vm.login()?.let { kakaoProfile ->
+                vm.login(this@LoginActivity)?.let { kakaoProfile ->
                     val me = kakaoProfile.toUser()
                     vm.updateUser(me)?.let {
                         DataStore.me = me

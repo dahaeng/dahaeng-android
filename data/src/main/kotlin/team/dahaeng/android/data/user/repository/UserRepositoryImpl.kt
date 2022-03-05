@@ -9,7 +9,7 @@
 
 package team.dahaeng.android.data.user.repository
 
-import android.content.Context
+import android.app.Activity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -27,7 +27,7 @@ import team.dahaeng.android.domain.user.repository.UserRepository
 
 private const val RESPONSE_NOTHING = "Kakao API response is nothing."
 
-class UserRepositoryImpl(private val context: Context) : UserRepository {
+class UserRepositoryImpl : UserRepository {
 
     private val firestore by lazy { Firebase.firestore }
 
@@ -39,11 +39,11 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
         collection(Constants.Firestore.User)
             .document(id.toString())
 
-    override suspend fun kakaoLogin(): KakaoProfile {
-        if (UserApiClient.instance.isKakaoTalkLoginAvailable(context)) {
-            loginWithKakaoTalk()
+    override suspend fun kakaoLogin(activity: Activity): KakaoProfile {
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(activity)) {
+            loginWithKakaoTalk(activity)
         } else {
-            loginWithWebView()
+            loginWithWebView(activity)
         }
         return getUser().toDomain()
     }
@@ -89,8 +89,8 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
                 }
         }
 
-    private suspend fun loginWithKakaoTalk(): Unit = suspendCancellableCoroutine { continuation ->
-        UserApiClient.instance.loginWithKakaoTalk(context) { token, error ->
+    private suspend fun loginWithKakaoTalk(activity: Activity): Unit = suspendCancellableCoroutine { continuation ->
+        UserApiClient.instance.loginWithKakaoTalk(activity) { token, error ->
             when {
                 token != null -> continuation.resume(Unit)
                 error != null -> continuation.resumeWithException(error)
@@ -99,8 +99,8 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
         }
     }
 
-    private suspend fun loginWithWebView(): Unit = suspendCancellableCoroutine { continuation ->
-        UserApiClient.instance.loginWithKakaoAccount(context) { token, error ->
+    private suspend fun loginWithWebView(activity: Activity): Unit = suspendCancellableCoroutine { continuation ->
+        UserApiClient.instance.loginWithKakaoAccount(activity) { token, error ->
             when {
                 token != null -> continuation.resume(Unit)
                 error != null -> continuation.resumeWithException(error)
