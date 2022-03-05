@@ -14,6 +14,7 @@ import android.location.Location
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.birjuvachhani.locus.Locus
 import io.github.jisungbin.logeukes.logeukes
 import java.util.Locale
@@ -64,10 +65,15 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
 
         vm.testEmitting()
 
-        binding.rvSchedule.run {
-            setHasFixedSize(true)
-            setItemViewCacheSize(10)
-            adapter = schedulesAdapter
+        binding.rvVeiledSchedule.run {
+            val linear = LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false)
+            setLayoutManager(linear)
+            getRecyclerView().run {
+                setHasFixedSize(true)
+                setItemViewCacheSize(10)
+            }
+            addVeiledItems(10)
+            setAdapter(schedulesAdapter)
         }
 
         binding.tilSesarchContainer.setEndIconOnClickListener {
@@ -111,19 +117,20 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
     private fun toggleUi(state: LoadState<*>) {
         when (state) {
             LoadState.Loading -> {
-                // TODO: Show Skeleton UI
+                binding.rvVeiledSchedule.veil()
             }
             LoadState.Empty -> {
+                binding.rvVeiledSchedule.unVeil()
                 binding.viewstubEmptyPublicSchedule.viewStub?.show()
                 binding.tilSesarchContainer.hide()
-                binding.rvSchedule.hide()
+                binding.rvVeiledSchedule.hide()
                 binding.fabCreateSchedule.hide()
             }
             is LoadState.Done -> {
+                binding.rvVeiledSchedule.unVeil()
                 binding.viewstubEmptyPublicSchedule.viewStub?.hide(isGone = true)
                 binding.tilSesarchContainer.show()
-                binding.rvSchedule.show()
-                binding.rvSchedule.show()
+                binding.rvVeiledSchedule.show()
             }
         }
     }

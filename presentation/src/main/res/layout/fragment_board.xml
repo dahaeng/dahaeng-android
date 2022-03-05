@@ -76,7 +76,7 @@
             android:layout_height="0dp"
             android:inflatedId="@+id/ll_empty_public_schedule"
             android:layout="@layout/layout_public_schedule_empty"
-            app:layout_constraintBottom_toBottomOf="@+id/rv_schedule"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_veiled_schedule"
             app:layout_constraintTop_toBottomOf="@+id/tv_notice"
             tools:visibility="visible" />
 
@@ -114,20 +114,21 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_schedule"
+        <com.skydoves.androidveil.VeilRecyclerFrameView
+            android:id="@+id/rv_veiled_schedule"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:clipToPadding="false"
-            android:fadingEdge="vertical"
-            android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_sesarch_container"
-            tools:listitem="@layout/layout_schedule_post"
+            app:veilFrame_baseAlpha="0.6"
+            app:veilFrame_highlightAlpha="1.0"
+            app:veilFrame_layout="@layout/layout_schedule_post"
+            app:veilFrame_radius="8dp"
+            app:veilFrame_shimmerEnable="true"
             tools:paddingHorizontal="0dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
