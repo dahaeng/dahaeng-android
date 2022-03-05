@@ -78,14 +78,14 @@
             android:layout="@layout/layout_public_schedule_empty"
             app:layout_constraintBottom_toBottomOf="@+id/rv_veiled_schedule"
             app:layout_constraintTop_toBottomOf="@+id/tv_notice"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_sesarch_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
-            android:layout_marginVertical="16dp"
+            android:layout_marginTop="10dp"
             android:hint="@string/fragment_board_hint_search_place"
             app:boxBackgroundColor="@color/lightGray"
             app:boxCornerRadiusBottomEnd="10dp"
@@ -117,9 +117,10 @@
         <View
             android:id="@+id/view_top_fading_edge"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="30dp"
             android:background="@drawable/bg_top_fading_edge"
-            app:layout_constraintBottom_toTopOf="@+id/rv_veiled_schedule" />
+            app:layout_constraintTop_toTopOf="@+id/rv_veiled_schedule"
+            tools:background="@android:color/holo_blue_light" />
 
         <com.skydoves.androidveil.VeilRecyclerFrameView
             android:id="@+id/rv_veiled_schedule"
@@ -127,7 +128,6 @@
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             android:clipToPadding="false"
-            android:paddingHorizontal="16dp"
             android:paddingVertical="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/til_sesarch_container"
@@ -138,14 +138,15 @@
             app:veilFrame_layout="@layout/layout_schedule_post"
             app:veilFrame_radius="8dp"
             app:veilFrame_shimmerEnable="true"
-            tools:paddingHorizontal="0dp" />
+            tools:background="@android:color/holo_blue_dark" />
 
         <View
             android:id="@+id/view_bottom_fading_edge"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="30dp"
             android:background="@drawable/bg_bottom_fading_edge"
-            app:layout_constraintTop_toBottomOf="@+id/rv_veiled_schedule" />
+            app:layout_constraintBottom_toBottomOf="@id/rv_veiled_schedule"
+            tools:background="@android:color/holo_blue_light" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_create_schedule"
