@@ -20,22 +20,6 @@
         android:theme="@style/Theme.Dahaeng.Splash">
 
         <activity
-            android:name=".activity.modifyschedule.ModifyCourseActivity"
-            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
-        <activity
-            android:name=".activity.modifyschedule.ModifyScheduleActivity"
-            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
-        <activity
-            android:name=".activity.tasking.TaskingActivity"
-            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
-        <activity
-            android:name=".activity.schedule.create.CreateScheduleActivity"
-            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
-
-        <activity
             android:name=".activity.login.LoginActivity"
             android:exported="true">
 
@@ -52,6 +36,14 @@
 
         <activity
             android:name=".activity.error.ErrorActivity"
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
+
+        <activity
+            android:name=".activity.schedule.create.ScheduleCreateActivity"
+            android:theme="@style/Theme.Dahaeng.WhiteScreen" />
+
+        <activity
+            android:name=".activity.schedule.viewer.ScheduleViewActivity"
             android:theme="@style/Theme.Dahaeng.WhiteScreen" />
 
         <activity
