@@ -13,6 +13,10 @@
 
     <data>
 
+        <import
+            alias="ScheduleExtension"
+            type="team.dahaeng.android.domain.schedule.util.extension.ScheduleKt" />
+
         <variable
             name="schedule"
             type="team.dahaeng.android.domain.schedule.model.Schedule" />
@@ -33,7 +37,7 @@
             android:layout_marginEnd="16dp"
             android:scaleType="fitXY"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small_or_gone="@{schedule.thumbnailImageOrNull}"
+            app:with_coil_small_or_gone="@{ScheduleExtension.getThumbnailImageOrNull(schedule)}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.flexbox.FlexboxLayout
