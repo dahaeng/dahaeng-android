@@ -14,8 +14,8 @@
     <data>
 
         <variable
-            name="post"
-            type="team.dahaeng.android.domain.schedule.model.post.Post" />
+            name="schedule"
+            type="team.dahaeng.android.domain.schedule.model.Schedule" />
     </data>
 
     <LinearLayout
@@ -30,16 +30,16 @@
             android:id="@+id/iv_thumbnuil"
             android:layout_width="75dp"
             android:layout_height="75dp"
+            android:layout_marginEnd="16dp"
             android:scaleType="fitXY"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small="@{post.travel.photos.get(0)}"
+            app:with_coil_small_or_gone="@{schedule.thumbnailImageOrNull}"
             tools:src="@tools:sample/avatars" />
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/fbl_container"
             android:layout_width="match_parent"
             android:layout_height="75dp"
-            android:layout_marginStart="16dp"
             app:flexDirection="column"
             app:justifyContent="space_evenly">
 
@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbarungothic"
-                android:text="@{post.title}"
+                android:text="@{schedule.title}"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
-                    android:text="@{post.travel.commonAddress}"
+                    android:text="@{schedule.travel.commonAddress}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -75,13 +75,13 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
-                    android:text="@{String.valueOf(post.travel.rating)}"
+                    android:text="@{String.valueOf(schedule.geRating())}"
                     app:drawableStartCompat="@drawable/ic_round_star_24"
                     app:drawableTint="@color/primary"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="4.8" />
+                    tools:text="2.5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
