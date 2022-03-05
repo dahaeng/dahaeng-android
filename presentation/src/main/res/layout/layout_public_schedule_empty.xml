@@ -35,6 +35,6 @@
         android:padding="10dp"
         android:text="@string/layout_public_schedule_empty_create_first_public_schedule"
         android:textColor="@color/black"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
 </LinearLayout>

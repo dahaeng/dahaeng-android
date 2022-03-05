@@ -15,6 +15,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.birjuvachhani.locus.Locus
 import io.github.jisungbin.logeukes.logeukes
 import java.util.Locale
@@ -52,8 +53,8 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
                         vm.lastAddress = address
                         binding.tvLocate.text = address.toString()
                         // vm.importAllSchedules(address)
-                        Locus.stopLocationUpdates()
                     }
+                    Locus.stopLocationUpdates()
                 }
                 result.error?.let { exception ->
                     vm.emitException(exception)
@@ -72,6 +73,12 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
             getRecyclerView().run {
                 setHasFixedSize(true)
                 setItemViewCacheSize(10)
+                overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            }
+            getVeiledRecyclerView().run {
+                setHasFixedSize(true)
+                setItemViewCacheSize(10)
+                overScrollMode = RecyclerView.OVER_SCROLL_NEVER
             }
             addVeiledItems(10)
             setAdapter(schedulesAdapter)
