@@ -39,6 +39,8 @@
     <string name="activity_modify_schedule_total_price">총 금액</string>
     <string name="activity_modify_schedule_done">완료</string>
 
+    <string name="layout_public_schedule_empty_create_first_public_schedule">공개된 일정이 없어요 🥲\n첫 번째로 일정을 공개해보는 건 어때요?</string>
+
     <string name="menu_schedule_share">공유</string>
     <string name="menu_schedule_modify">수정</string>
     <string name="menu_schedule_delete">삭제</string>
