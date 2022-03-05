@@ -12,14 +12,29 @@ package team.dahaeng.android.activity.login
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import team.dahaeng.android.activity.base.BaseViewModel
+import team.dahaeng.android.domain.user.model.User
+import team.dahaeng.android.domain.user.usecase.GetUserUseCase
 import team.dahaeng.android.domain.user.usecase.KakaoLoginUseCase
+import team.dahaeng.android.domain.user.usecase.UpdateUserUseCase
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
     private val kakaoLoginUseCase: KakaoLoginUseCase,
+    private val updateUserUseCase: UpdateUserUseCase,
+    private val getUserUseCase: GetUserUseCase,
 ) : BaseViewModel() {
 
     suspend fun login() = kakaoLoginUseCase().getOrElse { exception ->
+        emitException(exception)
+        null
+    }
+
+    suspend fun updateUser(user: User) = updateUserUseCase(user).getOrElse { exception ->
+        emitException(exception)
+        null
+    }
+
+    suspend fun getUser(userId: Long) = getUserUseCase(userId).getOrElse { exception ->
         emitException(exception)
         null
     }
