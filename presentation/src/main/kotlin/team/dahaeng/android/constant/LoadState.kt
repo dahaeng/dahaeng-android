@@ -7,10 +7,10 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.main.constant
+package team.dahaeng.android.constant
 
-sealed class LoadState {
-    object Loading : LoadState()
-    object Empty : LoadState()
-    data class Done<T>(val value: T) : LoadState()
+sealed class LoadState<out T> {
+    object Loading : LoadState<Nothing>()
+    object Empty : LoadState<Nothing>()
+    data class Done<T>(val value: T) : LoadState<T>()
 }

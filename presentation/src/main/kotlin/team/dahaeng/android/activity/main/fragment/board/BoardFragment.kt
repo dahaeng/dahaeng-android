@@ -21,6 +21,7 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.activity.schedule.modify.ScheduleModifyActivity
+import team.dahaeng.android.constant.LoadState
 import team.dahaeng.android.databinding.FragmentBoardBinding
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.util.extensions.changeActivityWithAnimation
@@ -76,8 +77,16 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
         }
 
         launchedWhenCreated {
-            vm.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { schedules ->
-                schedulesAdapter.submitList(schedules)
+            vm.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { loadState ->
+                when (loadState) {
+                    LoadState.Loading -> {
+                    }
+                    LoadState.Empty -> {
+                    }
+                    is LoadState.Done -> {
+                        schedulesAdapter.submitList(loadState.value)
+                    }
+                }
             }
         }
     }
