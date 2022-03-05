@@ -17,4 +17,6 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  *
  * value class 로 하게 되면 inline 되서 string type 으로 바뀜
  */
-data class Theme(val name: String = EmptyString) : Serializable
+data class Theme(
+    val name: String = EmptyString,
+) : Serializable
