@@ -62,10 +62,10 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
         }
     }
 
-    override suspend fun removeUser(user: UserDomain) {
+    override suspend fun removeUser(userId: Long) {
         suspendCancellableCoroutine<Unit> { continuation ->
             firestore
-                .setUserPath(user)
+                .setUserPath(userId)
                 .delete()
                 .addOnSuccessListener {
                     continuation.resume(Unit)
@@ -76,10 +76,10 @@ class UserRepositoryImpl(private val context: Context) : UserRepository {
         }
     }
 
-    override suspend fun getUser(id: Long): UserDomain =
+    override suspend fun getUser(userId: Long): UserDomain =
         suspendCancellableCoroutine { continuation ->
             firestore
-                .setUserPath(id)
+                .setUserPath(userId)
                 .get()
                 .addOnSuccessListener { result ->
                     continuation.resume(result.toObjectNonNull())

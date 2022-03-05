@@ -26,26 +26,26 @@ import team.dahaeng.android.domain.schedule.usecase.schedule.UploadScheduleUseCa
 object ScheduleUseCaseModule {
     @Provides
     @ViewModelScoped
-    fun provideUploadPhotosUseCase(repository: FirebaseRepository): UploadPhotosUseCase =
-        UploadPhotosUseCase(repository)
+    fun provideUploadPhotosUseCase(repo: FirebaseRepository): UploadPhotosUseCase =
+        UploadPhotosUseCase(repo)
 
     @Provides
     @ViewModelScoped
-    fun provideUploadScheduleUseCase(repository: FirebaseRepository): UploadScheduleUseCase =
-        UploadScheduleUseCase(repository)
+    fun provideUploadScheduleUseCase(repo: FirebaseRepository): UploadScheduleUseCase =
+        UploadScheduleUseCase(repo)
 
     @Provides
     @ViewModelScoped
-    fun provideImportAllSchedulesUseCase(repository: FirebaseRepository): ImportAllSchedulesUseCase =
-        ImportAllSchedulesUseCase(repository)
+    fun provideImportAllSchedulesUseCase(repo: FirebaseRepository): ImportAllSchedulesUseCase =
+        ImportAllSchedulesUseCase(repo)
 
     @Provides
     @ViewModelScoped
-    fun provideImportSchedulesFromUserUseCase(repository: FirebaseRepository): ImportSchedulesFromUserUseCase =
-        ImportSchedulesFromUserUseCase(repository)
+    fun provideImportSchedulesFromUserUseCase(repo: FirebaseRepository): ImportSchedulesFromUserUseCase =
+        ImportSchedulesFromUserUseCase(repo)
 
     @Provides
     @ViewModelScoped
-    fun provideDeleteScheduleUseCase(reposiotry: FirebaseRepository): DeleteScheduleUseCase =
-        DeleteScheduleUseCase(reposiotry)
+    fun provideDeleteScheduleUseCase(repo: FirebaseRepository): DeleteScheduleUseCase =
+        DeleteScheduleUseCase(repo)
 }

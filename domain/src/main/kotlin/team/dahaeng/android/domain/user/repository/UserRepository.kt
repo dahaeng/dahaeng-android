@@ -34,12 +34,12 @@ interface UserRepository {
      *
      * @throws Exception 작업 실패시 내부에서 throw
      */
-    suspend fun removeUser(user: User)
+    suspend fun removeUser(userId: Long)
 
     /**
      * 유저 아이디로 유저 정보 불러오기
      *
      * @throws Exception 작업 실패시 내부에서 throw
      */
-    suspend fun getUser(id: Long): User
+    suspend fun getUser(userId: Long): User
 }
