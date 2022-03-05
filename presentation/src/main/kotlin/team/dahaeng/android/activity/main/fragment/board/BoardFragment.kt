@@ -24,11 +24,12 @@ import team.dahaeng.android.activity.schedule.modify.ScheduleModifyActivity
 import team.dahaeng.android.constant.LoadState
 import team.dahaeng.android.databinding.FragmentBoardBinding
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
-import team.dahaeng.android.util.extensions.changeActivityWithAnimation
 import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.hide
 import team.dahaeng.android.util.extensions.launchedWhenCreated
+import team.dahaeng.android.util.extensions.show
+import team.dahaeng.android.util.extensions.startActivityWithAnimation
 
-// TODO: Show Skeleton UI while schedule loading at first time.
 class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board) {
 
     private val vm: MainViewModel by activityViewModels()
@@ -42,15 +43,14 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
         super.onViewCreated(view, savedInstanceState)
 
         if (vm.lastAddress == null) {
-            Locus.getCurrentLocation(requireContext()) { result ->
+            // getCurrentLocate 로 하면 작동하지 않음
+            Locus.startLocationUpdates(this) { result ->
                 result.location?.let { location ->
                     location.tryParseAddress()?.let { address ->
                         vm.lastAddress = address
                         binding.tvLocate.text = address.toString()
                         vm.importAllSchedules(address)
                         Locus.stopLocationUpdates()
-                        logeukes("LocusResult") { location }
-                        logeukes("LocusResult-parseAddress") { address }
                     }
                 }
                 result.error?.let { exception ->
@@ -62,7 +62,9 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
             binding.tvLocate.text = vm.lastAddress.toString()
         }
 
-        binding.rvPost.run {
+        vm.importAllSchedules(SimpleAddress("안", "녕"))
+
+        binding.rvSchedule.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
             adapter = schedulesAdapter
@@ -78,15 +80,10 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
 
         launchedWhenCreated {
             vm.schedules.collectWithLifecycle(this@BoardFragment.viewLifecycleOwner) { loadState ->
-                when (loadState) {
-                    LoadState.Loading -> {
-                    }
-                    LoadState.Empty -> {
-                    }
-                    is LoadState.Done -> {
-                        schedulesAdapter.submitList(loadState.value)
-                    }
+                (loadState as? LoadState.Done)?.value?.let { schedules ->
+                    schedulesAdapter.submitList(schedules)
                 }
+                toggleUi(loadState)
             }
         }
     }
@@ -108,7 +105,27 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
     }
 
     private fun moveScheduleCreateActivity() {
-        changeActivityWithAnimation<ScheduleModifyActivity>()
+        startActivityWithAnimation<ScheduleModifyActivity>()
+    }
+
+    private fun toggleUi(state: LoadState<*>) {
+        when (state) {
+            LoadState.Loading -> {
+                // TODO: Show Skeleton UI
+            }
+            LoadState.Empty -> {
+                binding.viewstubEmptyPublicSchedule.viewStub?.show()
+                binding.tilSesarchContainer.hide()
+                binding.rvSchedule.hide()
+                binding.fabCreateSchedule.hide()
+            }
+            is LoadState.Done -> {
+                binding.viewstubEmptyPublicSchedule.viewStub?.hide(isGone = true)
+                binding.tilSesarchContainer.show()
+                binding.rvSchedule.show()
+                binding.rvSchedule.show()
+            }
+        }
     }
 
     override fun onPause() {

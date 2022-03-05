@@ -15,3 +15,7 @@ import androidx.fragment.app.Fragment
 inline fun <reified T : Activity> Fragment.changeActivityWithAnimation() {
     requireActivity().changeActivityWithAnimation<T>()
 }
+
+inline fun <reified T : Activity> Fragment.startActivityWithAnimation() {
+    requireActivity().startActivityWithAnimation<T>()
+}

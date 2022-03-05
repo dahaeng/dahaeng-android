@@ -58,7 +58,7 @@
             tools:text="서울 한강로" />
 
         <TextView
-            android:id="@+id/tv_title"
+            android:id="@+id/tv_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -69,6 +69,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_locate" />
+
+        <ViewStub
+            android:id="@+id/viewstub_empty_public_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:inflatedId="@+id/ll_empty_public_schedule"
+            android:layout="@layout/layout_public_schedule_empty"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_schedule"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notice"
+            tools:visibility="visible" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_sesarch_container"
@@ -89,7 +99,7 @@
             app:endIconTint="@color/primary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_notice"
             app:startIconDrawable="@drawable/ic_round_search_24">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -105,7 +115,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_post"
+            android:id="@+id/rv_schedule"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
