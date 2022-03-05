@@ -16,10 +16,6 @@
         <variable
             name="datastore"
             type="team.dahaeng.android.data.DataStore" />
-
-        <variable
-            name="vm"
-            type="team.dahaeng.android.activity.main.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -123,6 +119,17 @@
             app:layout_constraintTop_toBottomOf="@+id/til_sesarch_container"
             tools:listitem="@layout/layout_schedule_post"
             tools:paddingHorizontal="0dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_create_schedule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_round_airplane_ticket_24"
+            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

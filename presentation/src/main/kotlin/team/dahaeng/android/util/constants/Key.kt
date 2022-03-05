@@ -11,7 +11,7 @@ package team.dahaeng.android.util.constants
 
 object Key {
     object User {
-        const val KakaoProfile = "user-kakao-profile"
+        const val ProfileId = "user-kakao-profile-id"
     }
 
     object Intent {

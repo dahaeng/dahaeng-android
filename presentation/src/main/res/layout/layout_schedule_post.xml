@@ -69,6 +69,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:text="서울특별시 한강로 한강" />
 
+                <!-- TODO: 사용자 많아지면 기능 추가
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tv_rating"
                     android:layout_width="wrap_content"
@@ -81,7 +82,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:text="2.5" />
+                    tools:text="2.5" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

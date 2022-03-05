@@ -7,11 +7,11 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.domain.aouth.usecase
+package team.dahaeng.android.domain.user.usecase
 
-import team.dahaeng.android.domain.aouth.repository.AouthRepository
+import team.dahaeng.android.domain.user.repository.UserRepository
 
-class KakaoLoginUseCase(private val repository: AouthRepository) {
+class KakaoLoginUseCase(private val repository: UserRepository) {
     suspend operator fun invoke() = runCatching {
         repository.kakaoLogin()
     }

@@ -23,8 +23,6 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import javax.inject.Inject
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
@@ -33,18 +31,15 @@ import team.dahaeng.android.activity.error.ErrorActivity
 import team.dahaeng.android.activity.main.MainActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
-import team.dahaeng.android.domain.aouth.model.User
 import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
-import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.doDelayed
 import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
 import team.dahaeng.android.util.extensions.startActivityWithAnimation
-import team.dahaeng.android.util.extensions.toJsonString
-import team.dahaeng.android.util.extensions.toModel
 import team.dahaeng.android.util.extensions.toast
+import team.dahaeng.android.util.mapper.toUser
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layout.activity_login) {
@@ -76,12 +71,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
         )
 
         doDelayed(500) { // default splashing time
-            sharedPreferences[Key.User.KakaoProfile]?.let { userJson ->
+            sharedPreferences[Key.User.ProfileId]?.let { userId ->
                 // 자동 로그인 상태
-                val me: User = userJson.toModel()
-                DataStore.me = me
-                startMainActivity()
+                vm.getUser(userId.toLong())?.let { me ->
+                    DataStore.me = me
+                    startMainActivity()
+                }
             } ?: run {
+                // show login activity
                 isReady = true
             }
         }
@@ -116,18 +113,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
 
         binding.btnLogin.setOnClickListener {
             launchedWhenCreated {
-                vm.login()?.let { user ->
-                    DataStore.me = user
-                    toast(getString(R.string.activity_login_toast_welcome))
-                    startMainActivity()
-                    sharedPreferences[Key.User.KakaoProfile] = user.toJsonString()
+                vm.login()?.let { kakaoProfile ->
+                    val me = kakaoProfile.toUser()
+                    vm.updateUser(me)?.let {
+                        DataStore.me = me
+                        toast(getString(R.string.activity_login_toast_welcome))
+                        startMainActivity()
+                        sharedPreferences[Key.User.ProfileId] = kakaoProfile.id.toString()
+                    }
                 }
             }
-        }
-
-        vm.exceptionFlow.collectWithLifecycle(this) { exception ->
-            logeukes(type = LoggerType.E) { exception }
-            toast(getString(R.string.activity_login_toast_start_fail))
         }
     }
 

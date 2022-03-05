@@ -11,29 +11,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/list">
+    app:startDestination="@id/board">
 
     <fragment
-        android:id="@+id/list"
+        android:id="@+id/board"
         android:name="team.dahaeng.android.activity.main.fragment.board.BoardFragment"
-        tools:layout="@layout/fragment_list" />
+        tools:layout="@layout/fragment_board" />
 
     <fragment
-        android:id="@+id/like"
-        android:name="team.dahaeng.android.activity.main.fragment.like.LikeFragment"
-        tools:layout="@layout/fragment_like" />
+        android:id="@+id/bookmark"
+        android:name="team.dahaeng.android.activity.main.fragment.bookmark.BookmarkFragment"
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
-        android:id="@+id/tasking"
-        android:name="team.dahaeng.android.activity.main.fragment.mypage.ScheduleFragment"
-        tools:layout="@layout/fragment_schedule">
-        <action
-            android:id="@+id/action_tasking_to_detailScheduleFragment"
-            app:destination="@id/detailScheduleFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailScheduleFragment"
-        android:name="team.dahaeng.android.activity.main.fragment.mypage.DetailScheduleFragment"
-        tools:layout="@layout/fragment_deatil_schedule" />
+        android:id="@+id/mypage"
+        android:name="team.dahaeng.android.activity.main.fragment.mypage.MypageFragment"
+        tools:layout="@layout/fragment_mypage" />
 
 </navigation>
