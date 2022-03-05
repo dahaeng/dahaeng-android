@@ -15,6 +15,6 @@ import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
 import team.dahaeng.android.databinding.FragmentMypageBinding
 
-class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_bookmark) {
+class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_mypage) {
     private val vm: MainViewModel by activityViewModels()
 }
