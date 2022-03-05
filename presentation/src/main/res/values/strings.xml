@@ -20,10 +20,6 @@
     <string name="locus_location_resolution_title">위치 사용 불가</string>
     <string name="locus_location_resolution_message">현재 시스템의 위치 기능이 꺼져있어요.\n내 위치에 맞는 최적화된 여행지를 추천받기 위해 위치 기능을 사용해 주세요.</string>
 
-    <string name="menu_main_place">여행지</string>
-    <string name="menu_main_favorite">좋아요</string>
-    <string name="menu_main_tasking">내 여행</string>
-
     <string name="activity_login_btn_start">카카오톡으로 시작하기</string>
     <string name="activity_login_toast_welcome">다행에 오신걸 환영해요 🥰</string>
 
@@ -31,20 +27,21 @@
     <string name="activity_error_exception">현재 다행 사용자가 많아 일시적 오류가 발생했어요 😢\n문제가 지속되면 고객센터로 문의해 주세요.</string>
     <string name="activity_error_btn_retry">다시 시도</string>
 
-    <string name="fragment_list_loading_location">위치 조회중…</string>
-    <string name="fragment_list_hint_search_place">장소 검색</string>
-    <string name="fragment_list_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
-    <string name="fragment_schedule_my_task">내 일정</string>
-    <string name="activity_create_schedule_title">일정 생성</string>
+    <string name="fragment_board_loading_location">위치 조회중…</string>
+    <string name="fragment_board_hint_search_place">장소 검색</string>
+    <string name="fragment_board_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
+
+    <string name="activity_modifiy_schedule_title">일정 %s</string>
+    <string name="activity_modify_schedule_title">제목</string>
+    <string name="activity_modify_schedule_theme">테마</string>
+    <string name="activity_modify_schedule_common_address">공통 주소</string>
+    <string name="activity_modify_schedule_total_period">총 여행기간</string>
+    <string name="activity_modify_schedule_total_price">총 금액</string>
+    <string name="activity_modify_schedule_done">완료</string>
+
     <string name="menu_schedule_share">공유</string>
     <string name="menu_schedule_modify">수정</string>
     <string name="menu_schedule_delete">삭제</string>
-    <string name="activity_modify_title">제목:</string>
-    <string name="activity_modify_theme">테마:</string>
-    <string name="activity_modify_commonaddress">공통주소:</string>
-    <string name="activity_modify_totalperiod">총 여행기간:</string>
-    <string name="activity_modify_totalprice">총 금액:</string>
-    <string name="activity_modify_course_complete">완료</string>
 
     <string-array name="schedule_theme_list">
         <item>펜션</item>
@@ -74,5 +71,4 @@
         <item>게스트하우스</item>
         <item>한옥</item>
     </string-array>
-
 </resources>
