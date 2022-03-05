@@ -114,6 +114,13 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <View
+            android:id="@+id/view_top_fading_edge"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_top_fading_edge"
+            app:layout_constraintBottom_toTopOf="@+id/rv_veiled_schedule" />
+
         <com.skydoves.androidveil.VeilRecyclerFrameView
             android:id="@+id/rv_veiled_schedule"
             android:layout_width="match_parent"
@@ -132,6 +139,13 @@
             app:veilFrame_radius="8dp"
             app:veilFrame_shimmerEnable="true"
             tools:paddingHorizontal="0dp" />
+
+        <View
+            android:id="@+id/view_bottom_fading_edge"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@drawable/bg_bottom_fading_edge"
+            app:layout_constraintTop_toBottomOf="@+id/rv_veiled_schedule" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fab_create_schedule"

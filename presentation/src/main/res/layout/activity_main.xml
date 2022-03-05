@@ -34,7 +34,7 @@
             android:id="@+id/view_sbb_shadow"
             android:layout_width="match_parent"
             android:layout_height="3dp"
-            android:background="@drawable/bg_bottom_to_top_shadow"
+            android:background="@drawable/bg_top_shadow"
             app:layout_constraintBottom_toBottomOf="@+id/fcv_fragment" />
 
         <me.ibrahimsn.lib.SmoothBottomBar
