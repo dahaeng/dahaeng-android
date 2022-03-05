@@ -7,14 +7,14 @@
  * Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
  */
 
-package team.dahaeng.android.activity.main.fragment.like
+package team.dahaeng.android.activity.main.fragment.mypage
 
 import androidx.fragment.app.activityViewModels
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.databinding.FragmentLikeBinding
+import team.dahaeng.android.databinding.FragmentMypageBinding
 
-class LikeFragment : BaseFragment<FragmentLikeBinding, MainViewModel>(R.layout.fragment_like) {
-    override val vm: MainViewModel by activityViewModels()
+class MypageFragment : BaseFragment<FragmentMypageBinding>(R.layout.fragment_bookmark) {
+    private val vm: MainViewModel by activityViewModels()
 }

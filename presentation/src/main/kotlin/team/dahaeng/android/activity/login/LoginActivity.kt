@@ -23,8 +23,6 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.jisungbin.logeukes.LoggerType
-import io.github.jisungbin.logeukes.logeukes
 import javax.inject.Inject
 import team.dahaeng.android.BuildConfig
 import team.dahaeng.android.R
@@ -35,13 +33,11 @@ import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.ActivityLoginBinding
 import team.dahaeng.android.util.NetworkUtil
 import team.dahaeng.android.util.constants.Key
-import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.doDelayed
 import team.dahaeng.android.util.extensions.get
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 import team.dahaeng.android.util.extensions.set
 import team.dahaeng.android.util.extensions.startActivityWithAnimation
-import team.dahaeng.android.util.extensions.toMessage
 import team.dahaeng.android.util.extensions.toast
 import team.dahaeng.android.util.mapper.toUser
 
@@ -127,11 +123,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(R.layou
                     }
                 }
             }
-        }
-
-        vm.exceptionFlow.collectWithLifecycle(this) { exception ->
-            logeukes(type = LoggerType.E) { exception }
-            toast(exception.toMessage(applicationContext))
         }
     }
 

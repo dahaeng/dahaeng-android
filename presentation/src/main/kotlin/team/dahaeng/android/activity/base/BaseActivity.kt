@@ -14,12 +14,16 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.databinding.library.baseAdapters.BR
-import androidx.lifecycle.ViewModel
+import io.github.jisungbin.logeukes.LoggerType
+import io.github.jisungbin.logeukes.logeukes
+import team.dahaeng.android.util.extensions.collectWithLifecycle
+import team.dahaeng.android.util.extensions.toMessage
+import team.dahaeng.android.util.extensions.toast
 
 @Suppress("MemberVisibilityCanBePrivate")
-abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel>(@LayoutRes private val layoutId: Int) :
-    AppCompatActivity() {
+abstract class BaseActivity<B : ViewDataBinding, VM : BaseViewModel>(
+    @LayoutRes private val layoutId: Int,
+) : AppCompatActivity() {
 
     abstract val vm: VM
     protected lateinit var binding: B
@@ -27,9 +31,11 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel>(@LayoutRes priv
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, layoutId)
-        with(binding) {
-            lifecycleOwner = this@BaseActivity
-            setVariable(BR.vm, vm)
+        binding.lifecycleOwner = this
+
+        vm.exceptionFlow.collectWithLifecycle(this) { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            toast(exception.toMessage(applicationContext))
         }
     }
 }

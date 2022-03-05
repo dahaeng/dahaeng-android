@@ -10,17 +10,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/list"
+        android:id="@+id/board"
         android:icon="@drawable/ic_round_castle_24"
         android:title="@string/menu_main_place" />
 
     <item
-        android:id="@+id/like"
+        android:id="@+id/bookmark"
         android:icon="@drawable/ic_round_favorite_24"
         android:title="@string/menu_main_favorite" />
 
     <item
-        android:id="@+id/tasking"
+        android:id="@+id/mypage"
         android:icon="@drawable/ic_round_card_travel_24"
         android:title="@string/menu_main_tasking" />
 

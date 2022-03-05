@@ -15,21 +15,20 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.birjuvachhani.locus.Locus
-import io.github.jisungbin.logeukes.LoggerType
 import io.github.jisungbin.logeukes.logeukes
 import java.util.Locale
 import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.databinding.FragmentListBinding
+import team.dahaeng.android.databinding.FragmentBoardBinding
 import team.dahaeng.android.domain.schedule.model.SimpleAddress
 import team.dahaeng.android.util.extensions.collectWithLifecycle
 import team.dahaeng.android.util.extensions.launchedWhenCreated
 
 // TODO: Show Skeleton UI while schedule loading at first time.
-class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.fragment_list) {
+class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board) {
 
-    override val vm: MainViewModel by activityViewModels()
+    private val vm: MainViewModel by activityViewModels()
     private val schedulesAdapter by lazy {
         BoardAdapter { post ->
             logeukes { "Post clicked: $post" }
@@ -51,12 +50,8 @@ class BoardFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.
                         logeukes("LocusResult-parseAddress") { address }
                     }
                 }
-                // 여기서 발생하는 에러는 오직 위치 권한이 없는 에러임
-                // 따라서 별도로 에러를 처리하지 않음
                 result.error?.let { exception ->
-                    logeukes(type = LoggerType.E, tag = "LocusError") {
-                        exception
-                    }
+                    vm.emitException(exception)
                 }
             }
         } else {
