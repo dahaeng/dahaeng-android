@@ -18,7 +18,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:background="@color/white"
+        tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_place_photos"
@@ -32,7 +34,7 @@
             android:id="@+id/ci_place_photos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="15dp"
             app:layout_constraintBottom_toBottomOf="@+id/vp_place_photos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/vp_place_photos" />
@@ -40,7 +42,11 @@
         <View
             android:id="@+id/view_bottom_fading_edge"
             android:layout_width="match_parent"
-            android:layout_height="30dp" />
+            android:layout_height="30dp"
+            android:background="@drawable/bg_bottom_fading_edge"
+            app:layout_constraintBottom_toBottomOf="@+id/vp_place_photos" />
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
