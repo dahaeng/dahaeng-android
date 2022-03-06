@@ -12,7 +12,7 @@ package team.dahaeng.android.domain.schedule.model.travel
 import java.io.Serializable
 
 /**
- * 여행 코스 객체
+ * 여행 N일차 코스 객체
  *
  * N일차에 여러가지 장소에 갈 수 있으므로 element 를 리스트로 받음
  *
