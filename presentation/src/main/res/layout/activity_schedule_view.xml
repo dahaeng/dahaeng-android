@@ -7,7 +7,8 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -17,6 +18,11 @@
         android:id="@+id/ccl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
