@@ -94,8 +94,6 @@
             app:layout_constraintTop_toBottomOf="@+id/iv_title"
             tools:text="@tools:sample/lorem/random" />
 
-
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_bookmark"
             android:layout_width="50dp"
@@ -124,4 +122,5 @@
             app:layout_constraintTop_toTopOf="@+id/iv_bookmark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
