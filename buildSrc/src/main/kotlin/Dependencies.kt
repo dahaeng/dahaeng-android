@@ -32,6 +32,7 @@ object Versions {
     }
 
     object Ui {
+        const val Veil = "1.1.2"
         const val Coil = "1.4.0"
         const val Lottie = "5.0.2"
         const val CasCade = "1.3.0"
@@ -40,6 +41,7 @@ object Versions {
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.17.0"
         const val Splash = "1.0.0-beta01"
+        const val CircleIndicator = "2.1.6"
         const val SmoothBottomBar = "1.7.9"
         const val ConstraintLayout = "2.1.3"
     }
@@ -97,8 +99,10 @@ object Dependencies {
         "io.coil-kt:coil:${Versions.Ui.Coil}",
         "me.saket.cascade:cascade:${Versions.Ui.CasCade}",
         "com.airbnb.android:lottie:${Versions.Ui.Lottie}",
+        "com.github.skydoves:androidveil:${Versions.Ui.Veil}",
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
+        "me.relex:circleindicator:${Versions.Ui.CircleIndicator}",
         "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",

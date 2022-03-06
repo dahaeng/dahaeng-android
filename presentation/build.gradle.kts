@@ -64,7 +64,6 @@ dependencies {
     Dependencies.Essential.forEach(::implementation)
     // TODO: firebase analytics
 
-    implementation("com.github.skydoves:androidveil:1.1.2")
     Dependencies.Debug.forEach(::debugImplementation)
 
     kapts.forEach(::kapt)
