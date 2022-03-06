@@ -13,6 +13,9 @@
 
     <data>
 
+        <variable
+            name="schedule"
+            type="team.dahaeng.android.domain.schedule.model.Schedule" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +24,17 @@
         android:layout_height="match_parent"
         tools:background="@color/white"
         tools:theme="@style/Theme.Dahaeng.WhiteScreen">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_round_arrow_back_ios_new_24"
+            app:tint="@android:color/darker_gray" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/vp_place_photos"
@@ -45,6 +59,36 @@
             android:layout_height="30dp"
             android:background="@drawable/bg_bottom_fading_edge"
             app:layout_constraintBottom_toBottomOf="@+id/vp_place_photos" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/iv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/nanumbarungothic"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@{schedule.publicTitle}"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vp_place_photos"
+            tools:text="@tools:sample/lorem/random" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/nanumbarungothic"
+            android:maxLines="4"
+            android:text="@{schedule.description}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_title"
+            tools:text="@tools:sample/lorem/random" />
 
 
 
