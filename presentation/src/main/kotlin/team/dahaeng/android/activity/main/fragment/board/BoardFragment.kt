@@ -108,10 +108,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
         val addressList = geoCoder.getFromLocation(latitude, longitude, 2)
         val address = addressList[1].getAddressLine(0).replace("대한민국 ", "")
         with(address.split(" ")) {
-            SimpleAddress(
-                ciDo = first(),
-                gunGu = last()
-            )
+            SimpleAddress(ciDo = first(), gunGu = last())
         }
     } catch (exception: Exception) {
         vm.emitException(exception)
