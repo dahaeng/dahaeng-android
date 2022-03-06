@@ -23,7 +23,7 @@
     </data>
 
     <LinearLayout
-        android:id="@+id/ccl_container"
+        android:id="@+id/ll_container"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:gravity="center_vertical"

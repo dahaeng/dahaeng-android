@@ -18,13 +18,36 @@
             type="java.lang.String" />
     </data>
 
-    <ImageView
-        android:id="@+id/iv_photo"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
-        android:contentDescription="@null"
-        android:scaleType="fitCenter"
-        app:with_coil_big="@{photoUrl}"
-        tools:src="@tools:sample/avatars" />
+        tools:layout_height="300dp">
+
+        <ImageView
+            android:id="@+id/iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            app:with_coil_big="@{photoUrl}"
+            tools:src="@tools:sample/avatars" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_link"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="8dp"
+            android:background="@color/lightGray"
+            android:contentDescription="@null"
+            app:contentPadding="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:shapeAppearance="@style/iv_round_corner"
+            app:srcCompat="@drawable/ic_round_link_24"
+            app:tint="@android:color/darker_gray" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
