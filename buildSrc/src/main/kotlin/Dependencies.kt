@@ -40,6 +40,7 @@ object Versions {
         const val Material = "1.5.0"
         const val AppCompat = "1.4.1"
         const val ExoPlayer = "2.17.0"
+        const val ViewPager2 = "1.0.0"
         const val Splash = "1.0.0-beta01"
         const val CircleIndicator = "2.1.6"
         const val SmoothBottomBar = "1.7.9"
@@ -103,6 +104,7 @@ object Dependencies {
         "androidx.appcompat:appcompat:${Versions.Ui.AppCompat}",
         "androidx.core:core-splashscreen:${Versions.Ui.Splash}",
         "me.relex:circleindicator:${Versions.Ui.CircleIndicator}",
+        "androidx.viewpager2:viewpager2:${Versions.Ui.ViewPager2}",
         "com.google.android.flexbox:flexbox:${Versions.Ui.Flexbox}",
         "com.google.android.material:material:${Versions.Ui.Material}",
         "com.google.android.exoplayer:exoplayer:${Versions.Ui.ExoPlayer}",
