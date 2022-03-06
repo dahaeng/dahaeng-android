@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:background="@color/white"
-        tools:theme="@style/Theme.Dahaeng">
+        tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
         <TextView
             android:id="@+id/tv_test"

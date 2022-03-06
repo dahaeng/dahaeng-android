@@ -19,7 +19,7 @@
         android:id="@+id/cl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:theme="@style/Theme.Dahaeng">
+        tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
         <com.google.android.exoplayer2.ui.PlayerView
             android:id="@+id/exo_player"
