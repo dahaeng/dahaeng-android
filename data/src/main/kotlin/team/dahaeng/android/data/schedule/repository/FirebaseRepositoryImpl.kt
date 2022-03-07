@@ -90,6 +90,7 @@ class FirebaseRepositoryImpl : FirebaseRepository {
             }
     }
 
+    // TODO: 동시(concurrency) 처리
     override suspend fun uploadPhotos(
         photos: List<Photo>,
         parentPath: String,
