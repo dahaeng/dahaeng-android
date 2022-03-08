@@ -12,6 +12,7 @@ package team.dahaeng.android.domain.schedule.model.travel
 import java.io.Serializable
 import team.dahaeng.android.domain.schedule.model.Schedule
 import team.dahaeng.android.domain.schedule.model.travel.wrapper.CourseList
+import team.dahaeng.android.domain.util.constant.EmptyString
 
 /**
  * 여행지 객체
@@ -40,8 +41,8 @@ import team.dahaeng.android.domain.schedule.model.travel.wrapper.CourseList
  * @property courses 여행지 방문 코스 리스트
  */
 data class Travel(
-    val theme: Theme = Theme(),
-    val target: Target = Target(),
+    val theme: String = EmptyString,
+    val target: String = EmptyString,
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
