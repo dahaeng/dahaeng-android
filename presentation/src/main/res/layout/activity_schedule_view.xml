@@ -61,7 +61,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarunpen_b"
-                    android:text="@{@string/activity_schedule_view_step_title(schedule.travel.courses.size(), nowStep)}"
+                    android:text="@{@string/activity_schedule_view_step_title(schedule.travel.courses.list.size(), nowStep)}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -112,8 +112,11 @@
             android:text="@{schedule.description}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:readMoreColor="@color/primary"
+            app:readMoreMaxLine="3"
             tools:text="@tools:sample/lorem/random" />
 
         <androidx.viewpager2.widget.ViewPager2
