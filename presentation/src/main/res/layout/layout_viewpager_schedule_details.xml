@@ -21,7 +21,7 @@
             type="java.lang.Integer" />
 
         <variable
-            name="place"
+            name="placeWithInformation"
             type="team.dahaeng.android.domain.schedule.model.travel.PlaceWithInformation" />
     </data>
 
@@ -71,7 +71,7 @@
                 tools:text="+5" />
 
             <com.google.android.flexbox.FlexboxLayout
-                android:id="@+id/fbl_container"
+                android:id="@+id/fbl_place_container"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -89,9 +89,10 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
+                    android:text="@{placeWithInformation.place.name}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
-                    tools:text="서울 치킨대학" />
+                    tools:text="BHC 치킨 서울점" />
 
                 <team.dahaeng.android.ui.readmoretextview.ReadMoreTextView
                     android:id="@+id/tv_place_descrption"
@@ -100,6 +101,7 @@
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
                     android:maxLines="3"
+                    android:text="@{placeWithInformation.place.description}"
                     android:textColor="@color/gray"
                     android:textSize="13sp"
                     app:readMoreColor="@color/primary"
@@ -116,7 +118,7 @@
                 android:drawablePadding="10dp"
                 android:fontFamily="@font/nanumbarungothic"
                 android:gravity="center"
-                android:text="@{place.period.toString()}"
+                android:text="@{placeWithInformation.period.toString()}"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 app:drawableStartCompat="@drawable/ic_round_date_range_24"
@@ -141,12 +143,52 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_period" />
 
-            <com.google.android.gms.maps.MapView
-                android:id="@+id/map_accommodation"
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fcv_map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_accommodation" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_accommodation"
+                tools:background="@drawable/map_preview" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fbl_accommodation_container"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="8dp"
+                app:alignItems="center"
+                app:flexDirection="column"
+                app:justifyContent="space_evenly"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fcv_map"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_accommodation">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_accommodation_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    tools:text="BBQ 치킨 대학" />
+
+                <team.dahaeng.android.ui.readmoretextview.ReadMoreTextView
+                    android:id="@+id/tv_accommodation_descrption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:maxLines="5"
+                    android:textColor="@color/gray"
+                    android:textSize="13sp"
+                    app:readMoreColor="@color/primary"
+                    app:readMoreMaxLine="5"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </com.google.android.flexbox.FlexboxLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
