@@ -63,7 +63,7 @@
                 android:backgroundTint="@color/lightGray"
                 android:fontFamily="@font/nanumbarungothic"
                 android:padding="5dp"
-                android:text="@{@string/item_recyclerview_schedule_photo_more_count(morePhotoCount)}"
+                android:text="@{@string/layout_viewpager_schedule_details_photo_more_count(morePhotoCount)}"
                 android:textColor="@color/gray"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
