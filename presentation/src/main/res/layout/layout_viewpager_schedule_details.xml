@@ -5,6 +5,11 @@
   ~ [layout_viewpager_schedule_details.xml] created by Ji Sungbin on 22. 3. 8. 오후 7:45
   ~
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
+
+ * @property transportations 여행지 교통편 리스트
+ * @property periods 여행지에서 머물 기간 리스트
+ * @property places 여행 장소 리스트
+ * @property accommodations 머물 숙소 리스트
   -->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,13 +18,13 @@
 
     <data>
 
-        <import
-            alias="TravelExtension"
-            type="team.dahaeng.android.domain.schedule.util.extension.TravelKt" />
+        <variable
+            name="placePhotoUrlOrNull"
+            type="java.lang.String" />
 
         <variable
-            name="travel"
-            type="team.dahaeng.android.domain.schedule.model.travel.Travel" />
+            name="place"
+            type="team.dahaeng.android.domain.schedule.model.travel.PlaceWithInformation" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -36,7 +41,7 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small_or_gone="@{TravelExtension.getFirstImageOrNull(travel)}"
+            app:with_coil_small_or_gone="@{placePhotoUrlOrNull}"
             tools:src="@tools:sample/avatars" />
 
     </com.google.android.material.card.MaterialCardView>
