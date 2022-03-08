@@ -20,6 +20,10 @@
         <variable
             name="schedule"
             type="team.dahaeng.android.domain.schedule.model.Schedule" />
+
+        <variable
+            name="nowStep"
+            type="java.lang.Integer" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,7 +33,106 @@
         tools:background="@color/white"
         tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl_toolbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize">
+
+                <ImageView
+                    android:id="@+id/iv_previous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_round_chevron_left_24" />
+
+                <TextView
+                    android:id="@+id/tv_step"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarunpen_b"
+                    android:text="@{@string/activity_schedule_view_step_title(schedule.travel.courses.size(), nowStep)}"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_next"
+                    app:layout_constraintStart_toEndOf="@+id/iv_previous"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="7일차 중 1일차" />
+
+                <ImageView
+                    android:id="@+id/iv_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@null"
+                    android:padding="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_round_chevron_right_24" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/nanumbarunpen_b"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="@{schedule.publicTitle}"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/abl_toolbar_container"
+            tools:text="제주도 테마 여행" />
+
+        <team.dahaeng.android.ui.readmoretextview.ReadMoreTextView
+            android:id="@+id/rmtv_descrition"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanumbarunpen_b"
+            android:maxLines="4"
+            android:text="@{schedule.description}"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            tools:text="@tools:sample/lorem/random" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_schedule"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_fork"
+            app:layout_constraintTop_toBottomOf="@+id/rmtv_descrition" />
+
+        <View
+            android:id="@+id/view_bottom_fading_edge"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_bottom_fading_edge"
+            app:layout_constraintBottom_toTopOf="@+id/iv_bookmark" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_bookmark"

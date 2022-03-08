@@ -32,6 +32,7 @@
     <string name="fragment_board_hint_search_place">장소 검색</string>
     <string name="fragment_board_find_bestest_place_for_me">나에게 맞는\n최고의 여행지를 찾아보세요!</string>
 
+    <string name="activity_schedule_view_step_title">%d일차 중 %d일차</string>
     <string name="activity_schedule_view_fork">이 일정 사용하기</string>
 
     <string name="activity_modifiy_schedule_title">일정 %s</string>
