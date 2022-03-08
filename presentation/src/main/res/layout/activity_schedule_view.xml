@@ -93,7 +93,7 @@
             android:ellipsize="marquee"
             android:fontFamily="@font/nanumbarunpen_b"
             android:maxLines="1"
-            android:paddingStart="16dp"
+            android:paddingHorizontal="16dp"
             android:singleLine="true"
             android:text="@{schedule.publicTitle}"
             android:textColor="@color/black"
