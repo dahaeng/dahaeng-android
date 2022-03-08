@@ -7,8 +7,38 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <import
+            alias="TravelExtension"
+            type="team.dahaeng.android.domain.schedule.util.extension.TravelKt" />
+
+        <variable
+            name="travel"
+            type="team.dahaeng.android.domain.schedule.model.travel.Travel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cl_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        app:contentPadding="8dp"
+        tools:layout_margin="16dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_photo_preview"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:shapeAppearance="@style/iv_round_corner"
+            app:with_coil_small_or_gone="@{TravelExtension.getFirstImageOrNull(travel)}"
+            tools:src="@tools:sample/avatars" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>
