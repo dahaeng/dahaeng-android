@@ -54,6 +54,12 @@ object Versions {
         const val CheckDependencyUpdates = "1.5.0"
     }
 
+    object Network {
+        const val OkHttp = "4.9.1"
+        const val Retrofit = "2.9.0"
+        const val Scalars = "2.5.0"
+    }
+
     object Location {
         const val Gms = "19.0.1"
         const val Locus = "4.0.1"
@@ -131,5 +137,16 @@ object Dependencies {
 
     val Debug = listOf(
         "com.squareup.leakcanary:leakcanary-android:${Versions.Util.LeakCanary}"
+    )
+
+    val network = listOf(
+        "com.squareup.okhttp3:okhttp:${Versions.Network.OkHttp}",
+        "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}"
+    )
+
+    val networkutil = listOf(
+        "com.squareup.okhttp3:logging-interceptor:${Versions.Network.OkHttp}",
+        "com.squareup.retrofit2:converter-gson:${Versions.Network.Retrofit}",
+        "com.squareup.retrofit2:converter-scalars:${Versions.Network.Scalars}"
     )
 }

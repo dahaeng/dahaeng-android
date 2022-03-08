@@ -15,13 +15,12 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.community.repository.TMapRepository
+import team.dahaeng.android.domain.community.repository.TourRepository
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadImageUseCase
 import team.dahaeng.android.domain.community.usecase.post.UploadPostUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.*
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -60,4 +59,19 @@ object CommunityUseCaseModule {
     @ViewModelScoped
     fun provideChangeScheduleUseCase(repository: FirebaseRepository): ChangeScheduleUseCase =
         ChangeScheduleUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideTourAPIUseCase(repository: TourRepository): TourAPIUseCase =
+        TourAPIUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideTMapFullTextGeocodingUseCase(repository: TMapRepository): TMapFullTextGeocodingUseCase =
+        TMapFullTextGeocodingUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideTMapReverseGeocodingUseCase(repository: TMapRepository): TMapReverseGeocodingUseCase =
+        TMapReverseGeocodingUseCase(repository)
 }

@@ -54,7 +54,7 @@ class ListFragment : BaseFragment<FragmentListBinding, MainViewModel>(R.layout.f
             adapter = ListAdapter { post ->
                 logeukes { "Post clicked: $post" }
             }.apply {
-                submitList(TestUtil.posts())
+               // submitList(TestUtil.posts())
             }
         }
 

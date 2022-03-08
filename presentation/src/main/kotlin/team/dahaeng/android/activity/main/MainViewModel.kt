@@ -20,11 +20,9 @@ import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.model.schedule.Schedule
+import team.dahaeng.android.domain.community.model.tmap.FullTextGeocodingResult
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ChangeScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.DeleteScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.ImportScheduleUseCase
-import team.dahaeng.android.domain.community.usecase.schedule.UploadScheduleUseCase
+import team.dahaeng.android.domain.community.usecase.schedule.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -34,6 +32,9 @@ class MainViewModel @Inject constructor(
     private val uploadScheduleUseCase: UploadScheduleUseCase,
     private val deleteScheduleUseCase: DeleteScheduleUseCase,
     private val changeScheduleUseCase: ChangeScheduleUseCase,
+    private val tourAPIUseCase: TourAPIUseCase,
+    private val tMapFullTextGeocodingUseCase: TMapFullTextGeocodingUseCase,
+    private val tMapReverseGeocodingUseCase: TMapReverseGeocodingUseCase,
 ) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
@@ -43,6 +44,34 @@ class MainViewModel @Inject constructor(
     val schedules = _schedules.asStateFlow()
 
     var lastLocate = ""
+
+    fun getTourData() = viewModelScope.launch {
+        tourAPIUseCase().onSuccess {
+
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
+
+
+    fun getTmapFullTextGeocodingData(address : String) = viewModelScope.launch {
+        tMapFullTextGeocodingUseCase(address).onSuccess { fullTextGeocodingResult ->
+            logeukes { fullTextGeocodingResult }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
+
+    fun getTmapReverseGeocodingData(lat : Long, lon: Long) = viewModelScope.launch {
+        tMapReverseGeocodingUseCase(lat, lon).onSuccess { reverseGeocodingResult ->
+            logeukes { reverseGeocodingResult }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
 
     fun reimportPosts() = viewModelScope.launch {
         importPostsUseCase()

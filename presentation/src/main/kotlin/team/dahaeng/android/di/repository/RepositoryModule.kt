@@ -15,9 +15,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import team.dahaeng.android.data.aouth.repository.AouthRepositoryImpl
+import team.dahaeng.android.data.api.TMapApi
+import team.dahaeng.android.data.api.TourApi
+import team.dahaeng.android.data.tour.TourRepositoryImpl
 import team.dahaeng.android.data.community.repository.FirebaseRepositoryImpl
+import team.dahaeng.android.data.tmap.TMapRepositoryImpl
 import team.dahaeng.android.domain.aouth.repository.AouthRepository
 import team.dahaeng.android.domain.community.repository.FirebaseRepository
+import team.dahaeng.android.domain.community.repository.TMapRepository
+import team.dahaeng.android.domain.community.repository.TourRepository
 
 @Module
 @InstallIn(ViewModelComponent::class)
@@ -29,4 +35,12 @@ object RepositoryModule {
     @Provides
     @ViewModelScoped
     fun provideFirebaseRepository(): FirebaseRepository = FirebaseRepositoryImpl()
+
+    @Provides
+    @ViewModelScoped
+    fun provideTourRepository(api : TourApi) : TourRepository = TourRepositoryImpl(api)
+
+    @Provides
+    @ViewModelScoped
+    fun provideTmapRepository(api : TMapApi) : TMapRepository = TMapRepositoryImpl(api)
 }

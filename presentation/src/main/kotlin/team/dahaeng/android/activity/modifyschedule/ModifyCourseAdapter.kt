@@ -34,7 +34,7 @@ class ModifyCourseAdapter :
 
     }
 
-    fun swapItem(fromPos : Int, toPos : Int){
+    fun swapItem(fromPos: Int, toPos: Int) {
         val list = currentList.toMutableList()
         Collections.swap(list, fromPos, toPos)
         submitList(list)
@@ -42,14 +42,14 @@ class ModifyCourseAdapter :
 
     fun removeItem(position: Int) {
         val list = currentList.toMutableList()
-            list.removeAt(position)
+        list.removeAt(position)
         submitList(list)
     }
 
     class ViewHolder(
         private val binding: LayoutModifyCourseBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(course : Course){
+        fun bind(course: Course) {
             binding.course = course
         }
     }

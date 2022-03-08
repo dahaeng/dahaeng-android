@@ -76,4 +76,387 @@
         <item>한옥</item>
     </string-array>
 
+    <string-array name="travel_type_array">
+        <item>관광타입 선택</item>
+        <item>관광지</item>
+        <item>문화시설</item>
+        <item>축제공연행사</item>
+        <item>여행코스</item>
+        <item>레포츠</item>
+        <item>숙박</item>
+        <item>쇼핑</item>
+        <item>음식점</item>
+    </string-array>
+
+    <string-array name="service_main_tour_destination_array">
+        <item>대분류 선택</item>
+        <item>자연</item>
+        <item>인문(문화/예술/역사)</item>
+    </string-array>
+
+    <string-array name="service_main_culture_and_festival_array">
+        <item>대분류 선택</item>
+        <item>인문(문화/예술/역사)</item>
+    </string-array>
+
+    <string-array name="service_main_tour_course_array">
+        <item>대분류 선택</item>
+        <item>추천코스</item>
+    </string-array>
+
+    <string-array name="service_main_leports_array">
+        <item>대분류 선택</item>
+        <item>레포츠</item>
+    </string-array>
+
+    <string-array name="service_main_accomodation_array">
+        <item>대분류 선택</item>
+        <item>숙박</item>
+    </string-array>
+
+    <string-array name="service_main_shopping_array">
+        <item>대분류 선택</item>
+        <item>쇼핑</item>
+    </string-array>
+
+    <string-array name="service_main_food_array">
+        <item>대분류 선택</item>
+        <item>음식<item>
+    </string-array>
+
+    <string-array name="service_main_array">
+        <item>대분류 선택</item>
+        <item>자연</item>
+        <item>인문(문화/예술/역사)</item>
+        <item>레포츠</item>
+        <item>쇼핑</item>
+        <item>음식</item>
+        <item>숙박</item>
+        <item>추천코스</item>
+    </string-array>
+
+
+
+    <string-array name="service_middle_nature_array">
+        <item>중분류 선택</item>
+        <item>자연관광지</item>
+        <item>관광자원</item>
+    </string-array>
+
+    <string-array name="service_sub_nature_tour_destination_array">
+        <item>소분류 선택</item>
+        <item>국립공원</item>
+        <item>도립공원</item>
+        <item>군립공원</item>
+        <item>산</item>
+        <item>자연생태관광지</item>
+        <item>자연휴양림</item>
+        <item>수목원</item>
+        <item>폭포</item>
+        <item>계곡</item>
+        <item>약수터</item>
+        <item>해안절경</item>
+        <item>해수욕장</item>
+        <item>섬</item>
+        <item>항구/포구</item>
+        <item>어촌</item>
+        <item>등대</item>
+        <item>호수</item>
+        <item>강</item>
+        <item>동굴</item>
+    </string-array>
+    <string-array name="service_sub_nature_tour_resource_array">
+        <item>소분류 선택</item>
+        <item>희귀 동,식물</item>
+        <item>기암괴석</item>
+    </string-array>
+
+    <string-array name="service_middle_culture_array">
+        <item>중분류 선택</item>
+        <item>역사관광지</item>
+        <item>휴양관광지</item>
+        <item>체험관광지</item>
+        <item>산업관광지</item>
+        <item>건축/조형물</item>
+        <item>문화시설</item>
+        <item>축제</item>
+        <item>공연/행사</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_history_array">
+        <item>소분류 선택</item>
+        <item>고궁</item>
+        <item>성</item>
+        <item>문</item>
+        <item>고택</item>
+        <item>생가</item>
+        <item>민속마을</item>
+        <item>유적지/사적지</item>
+        <item>사찰</item>
+        <item>종교성지</item>
+        <item>안보관광</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_recreation_array">
+        <item>소분류 선택</item>
+        <item>유원지</item>
+        <item>관광단지</item>
+        <item>온천/욕장/스파</item>
+        <item>이색찜질방</item>
+        <item>헬스투어</item>
+        <item>테마공원</item>
+        <item>공원</item>
+        <item>유람선/잠수함관광</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_experience_array">
+        <item>소분류 선택</item>
+        <item>농,산,어촌 체험</item>
+        <item>전통체험</item>
+        <item>산사체험</item>
+        <item>이색체험</item>
+        <item>관광농원</item>
+        <item>이색거리</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_industry_array">
+        <item>소분류 선택</item>
+        <item>제철소</item>
+        <item>조선소</item>
+        <item>공단</item>
+        <item>발전소</item>
+        <item>광산</item>
+        <item>식음료</item>
+        <item>화학/금속</item>
+        <item>전자/반도체</item>
+        <item>자동차</item>
+        <item>기타</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_construct_array">
+        <item>소분류 선택</item>
+        <item>다리/대교</item>
+        <item>기념탑/기념비/전망대</item>
+        <item>분수</item>
+        <item>동상</item>
+        <item>터널</item>
+        <item>유명건물</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_facility_array">
+        <item>소분류 선택</item>
+        <item>박물관</item>
+        <item>기념관</item>
+        <item>전시관</item>
+        <item>컨벤션센터</item>
+        <item>미술관/화랑</item>
+        <item>공연장</item>
+        <item>문화원</item>
+        <item>외국문화원</item>
+        <item>도서관</item>
+        <item>대형서점</item>
+        <item>문화전수시설</item>
+        <item>영화관</item>
+        <item>어학당</item>
+        <item>학교</item>
+    </string-array>
+
+    <string-array name="service_sub_culture_festival_and_show_array">
+        <item>소분류 선택</item>
+        <item>문화관광축제</item>
+        <item>일반축제</item>
+    </string-array>
+
+    <string-array name="service_middle_leports_array">
+        <item>중분류 선택</item>
+        <item>레포츠소개</item>
+        <item>육상 레포츠</item>
+        <item>수상 레포츠</item>
+        <item>항공 레포츠</item>
+        <item>복합 레포츠</item>
+    </string-array>
+
+    <string-array name="service_sub_leports_introduce_array">
+        <item>소분류 선택</item>
+        <item>육상 레포츠</item>
+        <item>수상 레포츠</item>
+        <item>항공 레포츠</item>
+    </string-array>
+
+    <string-array name="service_sub_leports_field_array">
+        <item>소분류 선택</item>
+        <item>스포츠센터</item>
+        <item>수련시설</item>
+        <item>경기장</item>
+        <item>인라인(실내 인라인 포함)</item>
+        <item>자전가하이킹</item>
+        <item>카트</item>
+        <item>골프</item>
+        <item>경마</item>
+        <item>경륜</item>
+        <item>카지노</item>
+        <item>승마</item>
+        <item>스키/스노보드</item>
+        <item>스케이트</item>
+        <item>썰매장</item>
+        <item>수렵장</item>
+        <item>사격장</item>
+        <item>야영장,오토캠핑장</item>
+        <item>암벽등반</item>
+        <item>빙벽등반</item>
+        <item>서바이벌게임</item>
+        <item>ATV</item>
+        <item>MTB</item>
+        <item>오프로드</item>
+        <item>번지점프</item>
+        <item>자동차경주</item>
+        <item>스키(보드) 렌탈샵</item>
+        <item>트래킹</item>
+    </string-array>
+
+    <string-array name="service_sub_leports_water_array">
+        <item>소분류 선택</item>
+        <item>윈드서핑/제트스키</item>
+        <item>카약/카누</item>
+        <item>요트</item>
+        <item>스노쿨링/스킨스쿠버다이빙</item>
+        <item>민물낚시</item>
+        <item>바다낚시</item>
+        <item>수영</item>
+        <item>래프팅</item>
+    </string-array>
+
+    <string-array name="service_sub_leports_air_array">
+        <item>소분류 선택</item>
+        <item>스카이다이빙</item>
+        <item>초경량비행</item>
+        <item>행글라이딩/패러글라이딩</item>
+        <item>열기구</item>
+    </string-array>
+
+    <string-array name="service_sub_leports_complex_array">
+        <item>소분류 선택</item>
+        <item>전통공연</item>
+        <item>연극</item>
+        <item>뮤지컬</item>
+        <item>오페라</item>
+        <item>전시회</item>
+        <item>박람회</item>
+        <item>컨벤션</item>
+        <item>무용</item>
+        <item>클래식음악회</item>
+        <item>대중콘서트</item>
+        <item>영화</item>
+        <item>스포츠경기</item>
+        <item>기타행사</item>
+    </string-array>
+
+    <string-array name="service_middle_shopping_array">
+        <item>중분류 선택</item>
+        <item>쇼핑</item>
+    </string-array>
+
+    <string-array name="service_sub_shopping_array">
+        <item>소분류 선택</item>
+        <item>5일장</item>
+        <item>상설시장</item>
+        <item>백화점</item>
+        <item>면세점</item>
+        <item>할인매장</item>
+        <item>전문상가</item>
+        <item>공예,공방</item>
+        <item>관광기념품점</item>
+        <item>특산물판매점</item>
+    </string-array>
+
+    <string-array name="service_middle_food_array">
+        <item>중분류 선택</item>
+        <item>음식점</item>
+    </string-array>
+
+    <string-array name="service_sub_food_array">
+        <item>소분류 선택</item>
+        <item>한식</item>
+        <item>서양식</item>
+        <item>일식</item>
+        <item>중식</item>
+        <item>아시아식</item>
+        <item>패밀리레스토랑</item>
+        <item>이색음식점</item>
+        <item>채식전문점</item>
+        <item>바/까페</item>
+    </string-array>
+
+    <string-array name="service_middle_acoomodation_array">
+        <item>중분류 선택</item>
+        <item>숙박시설</item>
+    </string-array>
+
+    <string-array name="service_sub_acoomodation_array">
+        <item>소분류 선택</item>
+        <item>관광호텔</item>
+        <item>수상관광호텔</item>
+        <item>전통호텔</item>
+        <item>가족호텔</item>
+        <item>콘도미니엄</item>
+        <item>유스호스텔</item>
+        <item>펜션</item>
+        <item>여관</item>
+        <item>모텔</item>
+        <item>민박</item>
+        <item>게스트하우스</item>
+        <item>홈스테이</item>
+        <item>서비스드레지던스</item>
+        <item>의료관광호텔</item>
+        <item>소형호텔</item>
+        <item>한옥스테이</item>
+    </string-array>
+
+    <string-array name="service_middle_recommend_array">
+        <item>중분류 선택</item>
+        <item>가족코스</item>
+        <item>나홀로코스</item>
+        <item>힐링코스</item>
+        <item>도보코스</item>
+        <item>캠핑코스</item>
+        <item>맛코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_family_array">
+        <item>소분류 선택</item>
+        <item>가족코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_alone_array">
+        <item>소분류 선택</item>
+        <item>나홀로코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_healing_array">
+        <item>소분류 선택</item>
+        <item>힐링코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_walk_array">
+        <item>소분류 선택</item>
+        <item>도보코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_camping_array">
+        <item>소분류 선택</item>
+        <item>캠핑코스</item>
+    </string-array>
+
+    <string-array name="service_sub_recommend_eat_array">
+        <item>소분류 선택</item>
+        <item>맛코스</item>
+    </string-array>
+
+    <string-array name="service_middle_empty_array">
+        <item>중분류 선택</item>
+    </string-array>
+
+    <string-array name="service_sub_empty_array">
+        <item>소분류 선택</item>
+    </string-array>
 </resources>
