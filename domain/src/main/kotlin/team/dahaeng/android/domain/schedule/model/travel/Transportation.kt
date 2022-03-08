@@ -18,11 +18,9 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  * @property name 교통수단 이름
  * @property description 교통수단에 대해 자유롭게 추가 설명 기제할 필드 (버스 번호 등등)
  * @property price 교통수단 금액
- * @property availableTime 교통수단 이용가능 시간대 (자유롭게 쓸 수 있게 하기 위해 String 으로 받음)
  */
 data class Transportation(
     val name: String = EmptyString,
     val description: String = EmptyString,
     val price: Int = 0,
-    val availableTime: String = EmptyString,
 ) : Serializable

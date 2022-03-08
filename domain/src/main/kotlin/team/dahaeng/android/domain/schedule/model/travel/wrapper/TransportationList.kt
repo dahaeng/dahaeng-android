@@ -12,7 +12,7 @@ package team.dahaeng.android.domain.schedule.model.travel.wrapper
 import team.dahaeng.android.domain.schedule.model.travel.Transportation
 
 /**
- * 교통 수단 리스트
+ * 교통 수단 리스트 wrapper
  */
 data class TransportationList(
     val list: List<Transportation> = emptyList(),
