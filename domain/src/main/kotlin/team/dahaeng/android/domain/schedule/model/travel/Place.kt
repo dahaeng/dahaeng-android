@@ -24,12 +24,14 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  *
  * @property mainPrice 대표되는 금액 (식당이면 대표 메뉴 금액)
  * @property name 장소 이름
+ * @property description 장소 설명
  * @property locate 장소 위치
  * @property photos 장소 사진 리스트
  */
 data class Place(
     val mainPrice: Int = 0,
     val name: String = EmptyString,
+    val description: String = EmptyString,
     val locate: Locate = Locate(),
     val photos: PhotoList = PhotoList(),
 ) : Serializable
