@@ -125,6 +125,8 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_photo"
                 tools:text="2월 10일 ~ 5월 91일" />
 
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
