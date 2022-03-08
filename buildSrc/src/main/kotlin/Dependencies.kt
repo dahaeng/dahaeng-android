@@ -14,7 +14,7 @@ object Application {
 
 object Versions {
     const val Kakao = "2.8.4"
-    const val FirebaseBom = "29.0.3"
+    const val FirebaseBom = "29.1.0"
 
     object Essential {
         const val Kotlin = "1.6.10"
@@ -25,6 +25,7 @@ object Versions {
 
     object Ktx {
         const val Core = "1.7.0"
+        const val GmsMap = "3.3.0"
         const val Fragment = "1.4.1"
         const val LifeCycle = "2.4.1"
         const val ViewModel = "2.4.1"
@@ -34,7 +35,7 @@ object Versions {
     object Ui {
         const val Veil = "1.1.2"
         const val Coil = "1.4.0"
-        const val Lottie = "5.0.2"
+        const val Lottie = "5.0.3"
         const val CasCade = "1.3.0"
         const val Flexbox = "3.0.0"
         const val Material = "1.5.0"
@@ -48,10 +49,9 @@ object Versions {
     }
 
     object Util {
-        const val Moshi = "1.13.0"
         const val Erratum = "1.0.1"
         const val Logeukes = "1.0.1"
-        const val Jackson = "2.13.1"
+        const val Jackson = "2.13.2"
         const val LeakCanary = "2.8.1"
         const val SystemUiController = "1.0.0"
         const val SecretsGradlePlugin = "2.0.0"
@@ -59,8 +59,9 @@ object Versions {
     }
 
     object Location {
-        const val Gms = "19.0.1"
         const val Locus = "4.0.1"
+        const val GmsMap = "18.0.2"
+        const val GmsLocation = "19.0.1"
     }
 
     object Jetpack {
@@ -90,6 +91,7 @@ object Dependencies {
     val Ktx = listOf(
         "androidx.core:core-ktx:${Versions.Ktx.Core}",
         "androidx.fragment:fragment-ktx:${Versions.Ktx.Fragment}",
+        "com.google.maps.android:maps-ktx:${Versions.Ktx.GmsMap}",
         "androidx.navigation:navigation-ui-ktx:${Versions.Ktx.Navigation}",
         "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Ktx.LifeCycle}",
         "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Ktx.ViewModel}",
@@ -115,7 +117,6 @@ object Dependencies {
     )
 
     val Util = listOf(
-        "com.squareup.moshi:moshi:${Versions.Util.Moshi}",
         "io.github.jisungbin:erratum:${Versions.Util.Erratum}",
         "io.github.jisungbin:logeukes:${Versions.Util.Logeukes}",
         "land.sungbin:systemuicontroller:${Versions.Util.SystemUiController}"
@@ -123,7 +124,8 @@ object Dependencies {
 
     val Location = listOf(
         "com.github.BirjuVachhani:locus-android:${Versions.Location.Locus}",
-        "com.google.android.gms:play-services-location:${Versions.Location.Gms}"
+        "com.google.android.gms:play-services-maps:${Versions.Location.GmsMap}",
+        "com.google.android.gms:play-services-location:${Versions.Location.GmsLocation}"
     )
 
     object Jetpack {
