@@ -89,6 +89,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
+                    android:maxLines="2"
                     android:text="@{placeWithInformation.place.name}"
                     android:textColor="@color/black"
                     android:textSize="20sp"
@@ -160,7 +161,7 @@
                 app:alignItems="center"
                 app:flexDirection="column"
                 app:justifyContent="space_evenly"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/fcv_map"
                 app:layout_constraintEnd_toStartOf="@+id/fcv_map"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_accommodation">
@@ -171,6 +172,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
+                    android:maxLines="2"
                     android:textColor="@color/black"
                     android:textSize="17sp"
                     tools:text="BBQ 치킨 대학" />
@@ -189,6 +191,40 @@
                     tools:text="@tools:sample/lorem/random" />
 
             </com.google.android.flexbox.FlexboxLayout>
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_transportation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:gravity="center"
+                android:text="@string/layout_viewpager_schedule_details_transportation"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:drawableStartCompat="@drawable/ic_round_commute_24"
+                app:drawableTint="@color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fbl_accommodation_container" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_transportation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingVertical="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@+id/tv_transportation" />
+
+            <View
+                android:id="@+id/view_top_fading_edge"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_top_fading_edge"
+                app:layout_constraintTop_toTopOf="@+id/rv_transportation" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
