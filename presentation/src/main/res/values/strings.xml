@@ -45,6 +45,8 @@
 
     <string name="layout_public_schedule_empty_create_first_public_schedule">공개된 일정이 없어요 🥲\n첫 번째로 일정을 공개해보는 건 어때요?</string>
 
+    <string name="item_recyclerview_schedule_photo_more_count">+%d</string>
+
     <string name="menu_schedule_share">공유</string>
     <string name="menu_schedule_modify">수정</string>
     <string name="menu_schedule_delete">삭제</string>
