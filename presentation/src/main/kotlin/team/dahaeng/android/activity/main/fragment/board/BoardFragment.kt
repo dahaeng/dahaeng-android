@@ -44,7 +44,7 @@ class BoardFragment : BaseFragment<FragmentBoardBinding>(R.layout.fragment_board
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewTopFadingEdge.bringToFront()
+//        binding.viewTopFadingEdge.bringToFront()
         if (vm.lastAddress == null) {
             // getCurrentLocate 로 하면 작동하지 않음
             Locus.startLocationUpdates(this) { result ->
