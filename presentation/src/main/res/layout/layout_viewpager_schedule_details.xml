@@ -4,13 +4,7 @@
   ~
   ~ [layout_viewpager_schedule_details.xml] created by Ji Sungbin on 22. 3. 8. 오후 7:45
   ~
-  ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
-
- * @property transportations 여행지 교통편 리스트
- * @property periods 여행지에서 머물 기간 리스트
- * @property places 여행 장소 리스트
- * @property accommodations 머물 숙소 리스트
-  -->
+  ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.-->
 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,26 +17,94 @@
             type="java.lang.String" />
 
         <variable
+            name="morePhotoCount"
+            type="java.lang.Integer" />
+
+        <variable
             name="place"
             type="team.dahaeng.android.domain.schedule.model.travel.PlaceWithInformation" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cl_container"
+        android:id="@+id/cv_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
         app:contentPadding="8dp"
         tools:layout_margin="16dp">
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_photo_preview"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:shapeAppearance="@style/iv_round_corner"
-            app:with_coil_small_or_gone="@{placePhotoUrlOrNull}"
-            tools:src="@tools:sample/avatars" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                android:contentDescription="@null"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearance="@style/iv_round_corner"
+                app:with_coil_small_or_gone="@{placePhotoUrlOrNull}"
+                tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="@drawable/bg_round_radius_8"
+                android:backgroundTint="@color/gray"
+                android:fontFamily="@font/nanumbarungothic"
+                android:padding="5dp"
+                android:text="@{@string/item_recyclerview_schedule_photo_more_count(morePhotoCount)}"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+                app:layout_constraintEnd_toEndOf="@+id/iv_photo"
+                tools:text="+5" />
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                app:alignItems="center"
+                app:flexDirection="column"
+                app:justifyContent="space_evenly"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_photo"
+                app:layout_constraintTop_toTopOf="@+id/iv_photo">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_place_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:text="서울 치킨대학" />
+
+                <team.dahaeng.android.ui.readmoretextview.ReadMoreTextView
+                    android:id="@+id/tv_place_descrption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/nanumbarungothic"
+                    android:gravity="center"
+                    android:maxLines="3"
+                    app:readMoreColor="@color/primary"
+                    app:readMoreMaxLine="3"
+                    tools:text="@tools:sample/lorem/random" />
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
