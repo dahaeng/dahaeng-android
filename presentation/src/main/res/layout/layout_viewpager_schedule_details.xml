@@ -29,10 +29,11 @@
         android:id="@+id/cv_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:theme="@style/Theme.Dahaeng.WhiteScreen"
         app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="10dp"
-        app:contentPadding="8dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="2dp"
+        app:contentPadding="16dp"
         tools:layout_margin="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,22 +55,23 @@
                 tools:src="@tools:sample/avatars" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/materialTextView"
+                android:id="@+id/tv_more_photo_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/bg_round_radius_8"
-                android:backgroundTint="@color/gray"
+                android:backgroundTint="@color/lightGray"
                 android:fontFamily="@font/nanumbarungothic"
                 android:padding="5dp"
                 android:text="@{@string/item_recyclerview_schedule_photo_more_count(morePhotoCount)}"
-                android:textColor="@android:color/darker_gray"
+                android:textColor="@color/gray"
                 android:textSize="13sp"
                 app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
                 app:layout_constraintEnd_toEndOf="@+id/iv_photo"
                 tools:text="+5" />
 
             <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/fbl_container"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -98,6 +100,7 @@
                     android:fontFamily="@font/nanumbarungothic"
                     android:gravity="center"
                     android:maxLines="3"
+                    android:textColor="@color/gray"
                     app:readMoreColor="@color/primary"
                     app:readMoreMaxLine="3"
                     tools:text="@tools:sample/lorem/random" />
