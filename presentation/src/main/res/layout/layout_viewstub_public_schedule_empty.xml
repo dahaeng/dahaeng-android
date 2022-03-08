@@ -33,7 +33,7 @@
         android:fontFamily="@font/nanumbarungothic"
         android:gravity="center"
         android:padding="10dp"
-        android:text="@string/layout_public_schedule_empty_create_first_public_schedule"
+        android:text="@string/layout_viewstub_public_schedule_empty_create_first_public_schedule"
         android:textColor="@color/black"
         android:textSize="18sp" />
 
