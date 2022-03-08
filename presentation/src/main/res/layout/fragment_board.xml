@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:inflatedId="@+id/ll_empty_public_schedule"
-            android:layout="@layout/layout_public_schedule_empty"
+            android:layout="@layout/layout_viewstub_public_schedule_empty"
             app:layout_constraintBottom_toBottomOf="@+id/rv_veiled_schedule"
             app:layout_constraintTop_toBottomOf="@+id/tv_notice"
             tools:visibility="gone" />
@@ -136,7 +136,7 @@
             app:veilFrame_baseColor="@color/lightGray"
             app:veilFrame_highlightAlpha="1.0"
             app:veilFrame_highlightColor="@color/gray"
-            app:veilFrame_layout="@layout/layout_schedule_post"
+            app:veilFrame_layout="@layout/layout_recyclerview_schedule_post"
             app:veilFrame_radius="8dp"
             app:veilFrame_shimmerEnable="true"
             tools:background="@android:color/holo_blue_dark"

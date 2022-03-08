@@ -14,6 +14,10 @@
     <data>
 
         <variable
+            name="morePhotoCount"
+            type="java.lang.Integer" />
+
+        <variable
             name="photoUrl"
             type="java.lang.String" />
     </data>
@@ -32,22 +36,22 @@
             android:background="@color/white"
             android:contentDescription="@null"
             android:scaleType="fitCenter"
-            app:with_coil_big="@{photoUrl}"
+            app:with_coil_small="@{photoUrl}"
             tools:src="@tools:sample/avatars" />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/iv_link"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="8dp"
-            android:background="@color/lightGray"
-            android:contentDescription="@null"
-            app:contentPadding="8dp"
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_round_radius_8"
+            android:backgroundTint="@color/gray"
+            android:fontFamily="@font/nanumbarungothic"
+            android:padding="10dp"
+            android:text="@{@string/item_recyclerview_schedule_photo_more_count(morePhotoCount)}"
+            android:textColor="@android:color/darker_gray"
             app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
             app:layout_constraintEnd_toEndOf="parent"
-            app:shapeAppearance="@style/iv_round_corner"
-            app:srcCompat="@drawable/ic_round_link_24"
-            app:tint="@android:color/darker_gray" />
+            tools:text="+5" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
