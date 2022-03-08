@@ -139,7 +139,8 @@
             android:id="@+id/iv_bookmark"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_margin="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@color/primary"
             app:contentPadding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -148,6 +149,20 @@
             app:srcCompat="@{bookmarked ? @drawable/ic_round_bookmark_24 : @drawable/ic_outline_bookmark_border_24"
             app:tint="@color/white"
             tools:srcCompat="@drawable/ic_outline_bookmark_border_24" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_highlight_information"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/primary"
+            app:contentPadding="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_bookmark"
+            app:shapeAppearance="@style/iv_circle"
+            app:srcCompat="@drawable/ic_round_auto_awesome_24"
+            app:tint="@color/white" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_fork"
@@ -159,7 +174,7 @@
             app:cornerRadius="30dp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_bookmark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_bookmark"
+            app:layout_constraintStart_toEndOf="@+id/iv_highlight_information"
             app:layout_constraintTop_toTopOf="@+id/iv_bookmark" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
