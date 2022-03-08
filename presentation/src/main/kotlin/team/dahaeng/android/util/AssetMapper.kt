@@ -23,6 +23,7 @@ object AssetMapper {
                 Car -> R.drawable.ic_round_directions_car_24
                 Subway -> R.drawable.ic_round_directions_subway_24
                 Train -> R.drawable.ic_round_train_24
+                Walk -> R.drawable.ic_round_directions_walk_24
                 else -> R.drawable.ic_round_circle_24
             }
         }

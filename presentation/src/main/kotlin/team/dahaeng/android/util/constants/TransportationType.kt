@@ -17,4 +17,5 @@ object TransportationType {
     const val Car = "자동차"
     const val Subway = "지하철"
     const val Train = "기차"
+    const val Walk = "도보"
 }
