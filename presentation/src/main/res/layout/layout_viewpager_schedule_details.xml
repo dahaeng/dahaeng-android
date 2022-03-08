@@ -107,6 +107,24 @@
 
             </com.google.android.flexbox.FlexboxLayout>
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_period"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:drawablePadding="10dp"
+                android:fontFamily="@font/nanumbarungothic"
+                android:gravity="center"
+                android:text="@{place.period.toString()}"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_round_date_range_24"
+                app:drawableTint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_photo"
+                tools:text="2월 10일 ~ 5월 91일" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.card.MaterialCardView>
