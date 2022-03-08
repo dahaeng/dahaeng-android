@@ -54,6 +54,7 @@
     <string name="menu_main_place">여행지</string>
     <string name="menu_main_bookmark">북마크</string>
     <string name="menu_main_my_schedule">내 여행</string>
+    <string name="layout_viewpager_schedule_details_accommodation">숙소</string>
 
     <string-array name="schedule_theme_list">
         <item>펜션</item>
