@@ -87,16 +87,18 @@
 
         <TextView
             android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            android:ellipsize="marquee"
             android:fontFamily="@font/nanumbarunpen_b"
             android:maxLines="1"
+            android:paddingStart="16dp"
             android:singleLine="true"
             android:text="@{schedule.publicTitle}"
             android:textColor="@color/black"
             android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/abl_toolbar_container"
             tools:text="제주도 테마 여행" />

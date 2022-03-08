@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:layout_margin="30dp"
+        tools:paddingBottom="10dp"
         tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
         <com.google.android.material.textview.MaterialTextView

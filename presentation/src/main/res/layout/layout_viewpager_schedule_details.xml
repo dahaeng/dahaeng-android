@@ -212,10 +212,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:clipToPadding="false"
+                android:maxHeight="200dp"
                 android:orientation="vertical"
-                android:paddingVertical="10dp"
+                android:paddingVertical="15dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:layout_constraintTop_toBottomOf="@+id/tv_transportation" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_transportation"
+                tools:layout_height="200dp"
+                tools:listitem="@layout/layout_recyclerview_transportation" />
 
             <View
                 android:id="@+id/view_top_fading_edge"
@@ -223,6 +226,13 @@
                 android:layout_height="10dp"
                 android:background="@drawable/bg_top_fading_edge"
                 app:layout_constraintTop_toTopOf="@+id/rv_transportation" />
+
+            <View
+                android:id="@+id/view_bottom_fading_edge"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/bg_bottom_fading_edge"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
