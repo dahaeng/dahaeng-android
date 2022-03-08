@@ -15,12 +15,12 @@ import team.dahaeng.android.domain.util.constant.EmptyString
 /**
  * 교통수단 객체
  *
- * @property name 교통수단 이름
+ * @property type 교통수단 타입 (TransportationType constants 참조)
  * @property description 교통수단에 대해 자유롭게 추가 설명 기제할 필드 (버스 번호 등등)
  * @property price 교통수단 금액
  */
 data class Transportation(
-    val name: String = EmptyString,
+    val type: String = EmptyString,
     val description: String = EmptyString,
     val price: Int = 0,
 ) : Serializable
