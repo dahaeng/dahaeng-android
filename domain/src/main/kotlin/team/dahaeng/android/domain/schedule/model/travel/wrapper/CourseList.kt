@@ -9,11 +9,11 @@
 
 package team.dahaeng.android.domain.schedule.model.travel.wrapper
 
-import team.dahaeng.android.domain.schedule.model.travel.Course
 import java.io.Serializable
+import team.dahaeng.android.domain.schedule.model.travel.Course
 
 /**
- * [Course] 리스트
+ * [Course] 리스트 (N 일차 리스트)
  *
  * Firestore 에 중첩 배열 업로드가 안되서 CourseList 따로 생성
  * data class 는 Map 으로 저장되고,
@@ -26,5 +26,5 @@ import java.io.Serializable
  * N일차마다 정보를 조회할 때 해당 정보 리스트의 N-1 번째 index로 접근하여 가져옴
  */
 data class CourseList(
-    val courses: List<Course> = emptyList(),
+    val list: List<Course> = emptyList(),
 ) : Serializable

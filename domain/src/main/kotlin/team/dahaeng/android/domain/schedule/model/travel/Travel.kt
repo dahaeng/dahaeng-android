@@ -38,7 +38,7 @@ import team.dahaeng.android.domain.util.constant.EmptyString
  * @property commonAddress 여행지의 공통되는 주소 (충청남도 서산시)
  * @property totalPrice 여행지 장소들의 총 금액 (여행지 등록할 때 시스템에서 계산)
  * @property totalPeriod 여행지 장소들의 총 기간 (여행지 등록할 때 시스템에서 계산)
- * @property courses 여행지 방문 코스 리스트
+ * @property courses 여행지 방문 코스 리스트 (N 일차)
  */
 data class Travel(
     val theme: String = EmptyString,
@@ -46,5 +46,5 @@ data class Travel(
     val commonAddress: String = "",
     val totalPrice: Int = 0,
     val totalPeriod: Period = Period(),
-    var courses: List<CourseList> = emptyList(),
+    var courses: CourseList = CourseList(),
 ) : Serializable

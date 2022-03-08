@@ -18,14 +18,10 @@ import java.io.Serializable
  *
  * Course 는 Map 안에 들어가서 다중 Array 가능
  *
- * @property transportations 여행지 교통편 리스트
- * @property periods 여행지에서 머물 기간 리스트
- * @property places 여행 장소 리스트
+ * @property placeWithInformation 여행 장소와 그에 해당하는 정보들
  * @property accommodations 머물 숙소 리스트
  */
 data class Course(
-    val transportations: List<Transportation> = emptyList(),
-    val periods: List<Period> = emptyList(),
-    val places: List<Place> = emptyList(),
+    val placeWithInformation: List<PlaceWithInformation> = emptyList(),
     val accommodations: List<Accommodation> = emptyList(),
 ) : Serializable
