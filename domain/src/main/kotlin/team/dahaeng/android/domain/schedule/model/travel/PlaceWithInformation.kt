@@ -20,13 +20,13 @@ import team.dahaeng.android.domain.schedule.model.travel.wrapper.TransportationL
  * PlaceWithInformation 은 Array 안에 들어가서 Array 불가능
  *
  * @property place 여행 장소
- * @property periods [place] 에서 머물 기간
+ * @property period [place] 에서 머물 기간
  * @property accommodation 머물 숙소
  * @property transportations [place] 에 가기 위한 교통편 리스트
  */
 data class PlaceWithInformation(
     val place: Place = Place(),
-    val periods: Period = Period(),
+    val period: Period = Period(),
     val accommodation: Accommodation = Accommodation(),
     val transportations: TransportationList = TransportationList(),
 )
