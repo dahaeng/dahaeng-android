@@ -9,7 +9,8 @@
 
 package team.dahaeng.android.domain.schedule.model.travel
 
-import java.io.Serializable
+import java.util.Date
+import team.dahaeng.android.domain.util.extension.format
 
 /**
  * 기간 객체
@@ -22,4 +23,14 @@ import java.io.Serializable
 data class Period(
     val from: Long = 0L,
     val to: Long = 0L,
-) : Serializable
+) {
+    override fun toString(): String {
+        val fromDate = Date().apply { time = from }
+        val toDate = Date().apply { time = to }
+        return "${fromDate.format(DatePattern)} ~ ${toDate.format(DatePattern)}"
+    }
+
+    private companion object {
+        const val DatePattern = "MM월 dd일"
+    }
+}
