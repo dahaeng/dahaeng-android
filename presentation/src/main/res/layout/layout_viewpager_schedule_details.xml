@@ -105,7 +105,6 @@
                     android:text="@{placeWithInformation.place.description}"
                     android:textColor="@color/gray"
                     android:textSize="13sp"
-                    app:readMoreColor="@color/primary"
                     app:readMoreMaxLine="3"
                     tools:text="@tools:sample/lorem/random" />
 
@@ -186,7 +185,6 @@
                     android:maxLines="5"
                     android:textColor="@color/gray"
                     android:textSize="13sp"
-                    app:readMoreColor="@color/primary"
                     app:readMoreMaxLine="5"
                     tools:text="@tools:sample/lorem/random" />
 

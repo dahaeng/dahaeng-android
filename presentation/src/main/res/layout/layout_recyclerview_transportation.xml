@@ -7,25 +7,50 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="team.dahaeng.android.util.AssetMapper" />
 
         <variable
             name="transportation"
             type="team.dahaeng.android.domain.schedule.model.travel.Transportation" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/cl_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:layout_margin="30dp"
+        tools:theme="@style/Theme.Dahaeng.WhiteScreen">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tv_type"
+            android:id="@+id/tv_transportation_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nanumbarungothic"
+            android:text="@{transportation.type}"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            tools:text="도보" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <team.dahaeng.android.ui.readmoretextview.ReadMoreTextView
+            android:id="@+id/tv_transportation_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nanumbarungothic"
+            android:maxLines="3"
+            android:text="@{transportation.description}"
+            android:textColor="@color/gray"
+            android:textSize="15sp"
+            app:readMoreMaxLine="3"
+            tools:text="걸어서 약 3일 걸려요" />
+
+    </LinearLayout>
 
 </layout>
