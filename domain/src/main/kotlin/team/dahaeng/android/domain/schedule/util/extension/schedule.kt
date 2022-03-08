@@ -22,11 +22,7 @@ import team.dahaeng.android.domain.schedule.model.Schedule
  * 만약 올라온 이미지가 없다면 null
  */
 fun Schedule.getThumbnailImageOrNull(): String? {
-    return travel.courses
-        .firstOrNull()?.courses
-        ?.firstOrNull()?.places
-        ?.firstOrNull()?.photos
-        ?.urls?.firstOrNull()
+    return travel.getFirstImageOrNull()
 }
 
 /**
