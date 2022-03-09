@@ -33,11 +33,12 @@ class ErrorActivity : ErratumExceptionActivity() {
             Key.Intent.NoInternet -> {
                 binding.lavLottie.run {
                     setAnimation(R.raw.no_internet)
-                    repeatCount = 100
+                    repeatCount = Int.MAX_VALUE
                 }
                 binding.tvException.text = getString(R.string.activity_error_no_internet)
             }
             else -> { // Key.Intent.Exception
+                logeukes(type = LoggerType.E) { exceptionString }
                 binding.lavLottie.run {
                     setAnimation(R.raw.request_fail)
                     setOnClickListener {
@@ -45,7 +46,6 @@ class ErrorActivity : ErratumExceptionActivity() {
                     }
                 }
                 binding.tvException.text = if (BuildConfig.DEBUG) {
-                    logeukes(type = LoggerType.E) { exceptionString }
                     exceptionString
                 } else {
                     getString(R.string.activity_error_exception)
