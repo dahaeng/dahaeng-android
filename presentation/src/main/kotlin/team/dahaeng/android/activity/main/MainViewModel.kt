@@ -20,7 +20,6 @@ import kotlinx.coroutines.launch
 import team.dahaeng.android.activity.base.BaseViewModel
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.domain.community.model.schedule.Schedule
-import team.dahaeng.android.domain.community.model.tmap.FullTextGeocodingResult
 import team.dahaeng.android.domain.community.usecase.post.ImportPostsUseCase
 import team.dahaeng.android.domain.community.usecase.schedule.*
 import javax.inject.Inject
@@ -32,9 +31,13 @@ class MainViewModel @Inject constructor(
     private val uploadScheduleUseCase: UploadScheduleUseCase,
     private val deleteScheduleUseCase: DeleteScheduleUseCase,
     private val changeScheduleUseCase: ChangeScheduleUseCase,
-    private val tourAPIUseCase: TourAPIUseCase,
     private val tMapFullTextGeocodingUseCase: TMapFullTextGeocodingUseCase,
     private val tMapReverseGeocodingUseCase: TMapReverseGeocodingUseCase,
+    private val importAreaCodeUseCase: ImportAreaCodeUseCase,
+    private val importCategoryCodeUseCase: ImportCategoryCodeUseCase,
+    private val importAreaBasedListUseCase: ImportAreaBasedListUseCase,
+    private val importLocationBasedListUseCase: ImportLocationBasedListUseCase,
+    private val importSearchKeywordUseCase: ImportSearchKeywordUseCase,
 ) : BaseViewModel() {
 
     private val _posts = MutableStateFlow(DataStore.posts)
@@ -45,9 +48,45 @@ class MainViewModel @Inject constructor(
 
     var lastLocate = ""
 
-    fun getTourData() = viewModelScope.launch {
-        tourAPIUseCase().onSuccess {
+    fun getAreaCode() = viewModelScope.launch {
+        importAreaCodeUseCase().onSuccess { areaCodeResponse ->
+            logeukes { areaCodeResponse }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
 
+    fun getCategoryCode() = viewModelScope.launch {
+        importCategoryCodeUseCase().onSuccess { categoryCodeResponse ->
+            logeukes { categoryCodeResponse }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
+
+    fun getAreaBasedList() = viewModelScope.launch {
+        importAreaBasedListUseCase().onSuccess { areaBasedListResponse ->
+            logeukes { areaBasedListResponse }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
+
+    fun getLocationBasedList(mapX : Double, mapY : Double) = viewModelScope.launch {
+        importLocationBasedListUseCase(mapX, mapY).onSuccess { locationBasedListResponse ->
+            logeukes { locationBasedListResponse }
+        }.onFailure { exception ->
+            logeukes(type = LoggerType.E) { exception }
+            emitException(exception)
+        }
+    }
+
+    fun getSearchKeyword(keyword : String) = viewModelScope.launch {
+        importSearchKeywordUseCase(keyword).onSuccess { searchKeywordResponse ->
+            logeukes { searchKeywordResponse }
         }.onFailure { exception ->
             logeukes(type = LoggerType.E) { exception }
             emitException(exception)
@@ -55,7 +94,7 @@ class MainViewModel @Inject constructor(
     }
 
 
-    fun getTmapFullTextGeocodingData(address : String) = viewModelScope.launch {
+    fun getTmapFullTextGeocodingData(address: String) = viewModelScope.launch {
         tMapFullTextGeocodingUseCase(address).onSuccess { fullTextGeocodingResult ->
             logeukes { fullTextGeocodingResult }
         }.onFailure { exception ->
@@ -64,7 +103,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getTmapReverseGeocodingData(lat : Long, lon: Long) = viewModelScope.launch {
+    fun getTmapReverseGeocodingData(lat: Long, lon: Long) = viewModelScope.launch {
         tMapReverseGeocodingUseCase(lat, lon).onSuccess { reverseGeocodingResult ->
             logeukes { reverseGeocodingResult }
         }.onFailure { exception ->

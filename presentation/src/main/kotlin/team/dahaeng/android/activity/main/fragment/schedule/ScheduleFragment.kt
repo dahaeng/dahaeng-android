@@ -20,7 +20,6 @@ import team.dahaeng.android.R
 import team.dahaeng.android.activity.base.BaseFragment
 import team.dahaeng.android.activity.createschedule.CreateScheduleActivity
 import team.dahaeng.android.activity.main.MainViewModel
-import team.dahaeng.android.activity.main.TourAPITestActivity
 import team.dahaeng.android.activity.modifyschedule.ModifyScheduleActivity
 import team.dahaeng.android.data.DataStore
 import team.dahaeng.android.databinding.FragmentScheduleBinding
@@ -42,9 +41,13 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        vm.getTourData()
-        // vm.getTmapFullTextGeocodingData("서울특별시 영등포구 당산로 214, 422동 3001호 (당산동5가, 레미안아파트)")
-        // vm.getTmapReverseGeocodingData(37, 127)
+        //vm.getAreaCode()
+        //vm.getCategoryCode()
+        //vm.getAreaBasedList()
+        //vm.getLocationBasedList(126.981611, 37.568477)
+        //vm.getSearchKeyword("펜션")
+        //vm.getTmapFullTextGeocodingData("서울특별시 영등포구 당산로 214, 422동 3001호 (당산동5가, 레미안아파트)")
+        //vm.getTmapReverseGeocodingData(37, 127)
         binding.rvSchedule.run {
             setHasFixedSize(true)
             setItemViewCacheSize(10)
@@ -70,8 +73,6 @@ class ScheduleFragment : BaseFragment<FragmentScheduleBinding, MainViewModel>(
                     R.id.menu_share -> {
                         // TODO: 카카오톡 공유
                         logeukes { "공유" }
-                        val intent = Intent(context, TourAPITestActivity::class.java)
-                        startActivity(intent)
                         true
                     }
                     R.id.menu_modify -> {

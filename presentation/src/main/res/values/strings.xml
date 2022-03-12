@@ -121,7 +121,7 @@
 
     <string-array name="service_main_food_array">
         <item>대분류 선택</item>
-        <item>음식<item>
+        <item>음식</item>
     </string-array>
 
     <string-array name="service_main_array">
@@ -380,9 +380,9 @@
         <item>서양식</item>
         <item>일식</item>
         <item>중식</item>
+        <item>이색음식점</item>
         <item>아시아식</item>
         <item>패밀리레스토랑</item>
-        <item>이색음식점</item>
         <item>채식전문점</item>
         <item>바/까페</item>
     </string-array>

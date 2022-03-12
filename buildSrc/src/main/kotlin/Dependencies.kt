@@ -141,7 +141,8 @@ object Dependencies {
 
     val network = listOf(
         "com.squareup.okhttp3:okhttp:${Versions.Network.OkHttp}",
-        "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}"
+        "com.squareup.retrofit2:retrofit:${Versions.Network.Retrofit}",
+        "com.squareup.retrofit2:converter-jackson:${Versions.Network.Retrofit}"
     )
 
     val networkutil = listOf(

@@ -1,9 +1,9 @@
 package team.dahaeng.android.domain.community.repository
 
-import team.dahaeng.android.domain.community.model.tmap.FullTextGeocodingResult
-import team.dahaeng.android.domain.community.model.tmap.ReverseGeocodingResult
+import team.dahaeng.android.domain.community.model.tmap.FullTextGeocoding.FullTextGeocodingResponse
+import team.dahaeng.android.domain.community.model.tmap.ReverseGeocoding.ReverseGeocodingResponse
 
 interface TMapRepository {
-    suspend fun getFullTextGeocodingData(address : String) : FullTextGeocodingResult
-    suspend fun getReverseGeocodingData(lat : Long, lon : Long) : ReverseGeocodingResult
+    suspend fun getFullTextGeocodingData(address : String) : FullTextGeocodingResponse
+    suspend fun getReverseGeocodingData(lat : Long, lon : Long) : ReverseGeocodingResponse
 }

@@ -29,5 +29,6 @@ android {
 }
 
 dependencies {
+    Dependencies.Jackson.forEach(::implementation)
     Dependencies.Essential.forEach(::implementation)
 }

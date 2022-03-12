@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.jackson.JacksonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 import team.dahaeng.android.data.api.TMapApi
 import team.dahaeng.android.data.api.TourApi
@@ -23,7 +24,7 @@ object ApiModule {
     private const val tourBaseUrl =
         "http://api.visitkorea.or.kr/openapi/service/rest/KorService"
     private const val tmapBaseUrl = "https://apis.openapi.sk.com/tmap/geo"
-    private val gson = GsonBuilder().setLenient().create()
+
     private fun getInterceptor(vararg interceptors: Interceptor): OkHttpClient {
         val builder = OkHttpClient.Builder()
         for (interceptor in interceptors) builder.addInterceptor(interceptor)
@@ -36,17 +37,7 @@ object ApiModule {
         service: KClass<T>,
     ) = Retrofit.Builder()
         .baseUrl(baseUrl)
-        .addConverterFactory(GsonConverterFactory.create(gson))
-        .client(getInterceptor(loggingInterceptor))
-        .build()
-        .create(service.java)
-    private fun <T : Any> buildRetrofitWithScalarsConverterFactory(
-        loggingInterceptor: HttpLoggingInterceptor,
-        baseUrl: String,
-        service: KClass<T>,
-    ) = Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(ScalarsConverterFactory.create())
+        .addConverterFactory(JacksonConverterFactory.create())
         .client(getInterceptor(loggingInterceptor))
         .build()
         .create(service.java)
@@ -54,7 +45,7 @@ object ApiModule {
     @Provides
     @ViewModelScoped
     fun provideTourApi(loggingInterceptor: HttpLoggingInterceptor): TourApi =
-        buildRetrofitWithScalarsConverterFactory(loggingInterceptor, "$tourBaseUrl/", TourApi::class)
+        buildRetrofit(loggingInterceptor, "$tourBaseUrl/", TourApi::class)
 
     @Provides
     @ViewModelScoped

@@ -62,8 +62,8 @@ object CommunityUseCaseModule {
 
     @Provides
     @ViewModelScoped
-    fun provideTourAPIUseCase(repository: TourRepository): TourAPIUseCase =
-        TourAPIUseCase(repository)
+    fun provideImportSearchKeywordUseCase(repository: TourRepository): ImportSearchKeywordUseCase =
+        ImportSearchKeywordUseCase(repository)
 
     @Provides
     @ViewModelScoped
@@ -74,4 +74,24 @@ object CommunityUseCaseModule {
     @ViewModelScoped
     fun provideTMapReverseGeocodingUseCase(repository: TMapRepository): TMapReverseGeocodingUseCase =
         TMapReverseGeocodingUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideImportAreaCodeUseCase(repository: TourRepository): ImportAreaCodeUseCase =
+        ImportAreaCodeUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideImportCategoryCodeUseCase(repository: TourRepository): ImportCategoryCodeUseCase =
+        ImportCategoryCodeUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideImportAreaBasedListUseCase(repository: TourRepository): ImportAreaBasedListUseCase =
+        ImportAreaBasedListUseCase(repository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideImportLocationBasedListUseCase(repository: TourRepository): ImportLocationBasedListUseCase =
+        ImportLocationBasedListUseCase(repository)
 }
