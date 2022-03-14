@@ -7,7 +7,9 @@
   ~ Please see: https://github.com/dahaeng/dahaeng-android/blob/main/LICENSE.
   -->
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,7 +17,65 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:background="@color/white"
+        tools:theme="@style/Theme.Dahaeng.WhiteScreen">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@null"
+            android:padding="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_round_chevron_left_24" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:fontFamily="@font/nanumbarunpen_b"
+            android:text="@string/activity_schedule_create_title"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_back" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_schedule_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="30dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="30"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_schedule_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="no"
+                android:fontFamily="@font/nanumbarungothic"
+                android:hint="@string/activity_schedule_create_hint"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_round_done_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

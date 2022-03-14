@@ -56,6 +56,8 @@
     <string name="menu_main_place">여행지</string>
     <string name="menu_main_bookmark">북마크</string>
     <string name="menu_main_my_schedule">내 여행</string>
+    <string name="activity_schedule_create_title">새로운 일정을 만들어 볼까요?</string>
+    <string name="activity_schedule_create_hint">일정 제목</string>
 
     <string-array name="schedule_theme_list">
         <item>펜션</item>
