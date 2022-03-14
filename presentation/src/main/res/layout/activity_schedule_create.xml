@@ -63,6 +63,7 @@
                 android:hint="@string/activity_schedule_create_hint"
                 android:imeOptions="actionDone"
                 android:inputType="text"
+                android:maxLength="30"
                 android:maxLines="1"
                 android:singleLine="true" />
 
